@@ -8,7 +8,7 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 const GMap = dynamic(
   import('../components/GMap'),
   {
-    loading: () => (<p>...</p>)
+    loading: () => (<p>cargando ...</p>)
   }
 )
 

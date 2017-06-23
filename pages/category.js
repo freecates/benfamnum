@@ -10,6 +10,7 @@ const PostsByCategory = (props) => (
       <title>Beneficios - {props.posts[0]._embedded['wp:term'][0][0].name}</title>
     </Head>
     <h1><img src={'/static/' + props.posts[0]._embedded['wp:term'][0][0].slug +'-familias-numerosas.png'} /><br/>{props.posts[0]._embedded['wp:term'][0][0].name}</h1>
+    <p className='align-center'><small><Link prefetch as={`/m/${props.posts[0]._embedded['wp:term'][0][0].id}/${props.posts[0]._embedded['wp:term'][0][0].slug}`} href={`/mapa?id=${props.posts[0]._embedded['wp:term'][0][0].id}`}><a>ver en el mapa</a></Link></small></p>
     <IntlProvider defaultLocale='es'>
         <ul className='gallery'>
           {props.posts.map((post, index) => (
@@ -37,9 +38,11 @@ const PostsByCategory = (props) => (
 
     </IntlProvider>
         <style jsx>{`
+          h1, .align-center {
+            text-align:center;
+          }
           h1 {
             color:#391f92;
-            text-align:center;
           }
           .gallery {
             display: -ms-flexbox;

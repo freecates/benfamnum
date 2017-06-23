@@ -23,6 +23,13 @@ app.prepare()
     app.render(req, res, actualPage, queryParams, queryParamsS)
   })
 
+  server.get('/m/:id/:slug', (req, res) => {
+    const actualPage = '/mapa'
+    const queryParams = { id: req.params.id }
+    const queryParamsS = { id: req.params.slug }
+    app.render(req, res, actualPage, queryParams, queryParamsS)
+  })
+
   server.get('*', (req, res) => {
     return handle(req, res)
   })
