@@ -16,8 +16,6 @@ const Post =  (props) => (
     <Layout>
       <Head>
         {props.post.acf.nombre_del_establecimiento ? <title>{props.post.acf.nombre_del_establecimiento}</title> : ''}
-        {props.post.acf.lat ? <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90&callback=initMap'
-        type="text/javascript"></script> : '' }
         {props.post.acf.telefono ? <link rel="stylesheet" href="/static/custom.css" /> : '' }
         
       </Head>

@@ -24,8 +24,6 @@ const MapByCategory = (props) => (
   <Layout>
     <Head>
       <title>Beneficios - {props.markers[0]._embedded['wp:term'][0][0].name}</title>
-      {props.markers[0].acf.lat ? <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90&callback=initMap'
-      type='text/javascript'></script> : '' }
     </Head>
     <h1><img src={'/static/' + props.markers[0]._embedded['wp:term'][0][0].slug +'-familias-numerosas.png'} /><br/>{props.markers[0]._embedded['wp:term'][0][0].name}</h1>
     <IntlProvider defaultLocale='es'>
