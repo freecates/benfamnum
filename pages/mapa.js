@@ -10,15 +10,17 @@ const markerStyle = {
   width: '50px',
   'text-align': 'center',
   padding: '.5em',
-  margin: 0
+  'position': 'relative',
+  right: 25,
+  bottom: 25,
+  'border-radius': '50%'
+
 }
 
-const AnyReactComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
+const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 
 const CENTER = [40.1301508,-1.8518527]
 const ZOOM = 6
-
-const GET_DIRECTIONS = 'https://www.google.com/maps/dir/?api=1&destination=';
 
 const MapByCategory = (props) => (
   <Layout>
@@ -26,6 +28,7 @@ const MapByCategory = (props) => (
       <title>Beneficios - {props.markers[0]._embedded['wp:term'][0][0].name}</title>
     </Head>
     <h1><img src={'/static/' + props.markers[0]._embedded['wp:term'][0][0].slug +'-familias-numerosas.png'} /><br/>{props.markers[0]._embedded['wp:term'][0][0].name}</h1>
+    <p className='align-center'><small><Link prefetch as={`/c/${props.markers[0]._embedded['wp:term'][0][0].id}/${props.markers[0]._embedded['wp:term'][0][0].slug}`} href={`/category?id=${props.markers[0]._embedded['wp:term'][0][0].id}`}><a>ver listado</a></Link></small></p>
     <IntlProvider defaultLocale='es'>
       
       <div style={{width: '100%', height: '500px'}}>     
@@ -35,7 +38,7 @@ const MapByCategory = (props) => (
         >
         {props.markers.map((marker, index) => (
 
-          <AnyReactComponent
+          <MarkerComponent
             key={index}
             lat={marker.acf.lat}
             lng={marker.acf.lon}
@@ -49,9 +52,11 @@ const MapByCategory = (props) => (
       
     </IntlProvider>
         <style jsx>{`
+          h1, .align-center {
+            text-align:center;
+          }
           h1 {
             color:#391f92;
-            text-align:center;
           }
           .gallery {
             display: -ms-flexbox;
