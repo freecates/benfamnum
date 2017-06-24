@@ -1,9 +1,16 @@
 import Head from 'next/head'
 import Layout from '../components/MyLayout.js'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
-import GoogleMapReact from 'google-map-react'
+
+const GoogleMapReact = dynamic(
+  import('google-map-react'),
+  {
+    loading: () => (<p>cargando ...</p>)
+  }
+)
 
 const markerStyle = {
   'background-color': '#ffffff',
@@ -37,11 +44,11 @@ const MapByCategory = (props) => (
           zoom={ZOOM}
         >
         {props.markers.map((marker, index) => (
-
+          
           <MarkerComponent
             key={index}
-            lat={marker.acf.lat}
-            lng={marker.acf.lon}
+            lat={marker.acf.lat.includes(',') ? '' : marker.acf.lat}
+            lng={marker.acf.lon.includes(',') ? '' : marker.acf.lon}
             text={<Link prefetch as={`/p/${marker.id}/${marker.slug}`} href={`/post?id=${marker.id}`}><a title={marker.title.rendered}><span><img src={'/static/32/' + props.markers[0]._embedded['wp:term'][0][0].slug +'-familias-numerosas.png'} /></span></a></Link>}
           />
               ))}

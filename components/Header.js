@@ -29,7 +29,7 @@ const Header = () => (
         <Link prefetch href="/">
           <a><img src='/static/logo-familias-numerosas.png' alt='Inicio' /></a>
         </Link>
-        <Link prefetch href="/categories">
+        <Link prefetch href="/categorias">
           <a style={linkStyle}>Categorías</a>
         </Link>
         <Link prefetch href="/about">
