@@ -9,34 +9,45 @@ const PostsByCategory = (props) => (
     <Head>
       <title>Beneficios - {props.posts[0]._embedded['wp:term'][0][0].name}</title>
     </Head>
-    <h1><img src={'/static/' + props.posts[0]._embedded['wp:term'][0][0].slug +'-familias-numerosas.png'} /><br/>{props.posts[0]._embedded['wp:term'][0][0].name}</h1>
-    <p className='align-center'><small><Link prefetch as={`/m/${props.posts[0]._embedded['wp:term'][0][0].id}/${props.posts[0]._embedded['wp:term'][0][0].slug}`} href={`/mapa?id=${props.posts[0]._embedded['wp:term'][0][0].id}`}><a>ver en el mapa</a></Link></small></p>
-    <IntlProvider defaultLocale='es'>
-        <ul className='gallery'>
-          {props.posts.map((post, index) => (
-            <li className='benefit' key={index}>
-              {post.acf.imagen_destacada_de_la_oferta_general_thumb ? <p><Link prefetch as={`/p/${post.id}/${post.slug}`} href={`/post?id=${post.id}`}><a><img width='150' src={post.acf.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail} alt={post.acf.titulo_de_la_oferta_oferta_general} /></a></Link></p> : ''}
+    <nav aria-label="Estás aquí:" role="navigation">
+      <ul className="breadcrumbs">
+        <li><Link prefetch href="/"><a>Inicio</a></Link></li>
+        <li><Link prefetch href="/categorias"><a>Categorías</a></Link></li>
+        <li>
+          <span className="show-for-sr">Actual: </span> {props.posts[0]._embedded['wp:term'][0][0].name} 
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <h1><img src={'/static/' + props.posts[0]._embedded['wp:term'][0][0].slug +'-familias-numerosas.png'} /><br/>{props.posts[0]._embedded['wp:term'][0][0].name}</h1>
+      <p className='align-center'><small><Link prefetch as={`/m/${props.posts[0]._embedded['wp:term'][0][0].id}/${props.posts[0]._embedded['wp:term'][0][0].slug}`} href={`/mapa?id=${props.posts[0]._embedded['wp:term'][0][0].id}`}><a>ver en el mapa</a></Link></small></p>
+      <IntlProvider defaultLocale='es'>
+          <ul className='gallery'>
+            {props.posts.map((post, index) => (
+              <li className='benefit' key={index}>
+                {post.acf.imagen_destacada_de_la_oferta_general_thumb ? <p><Link prefetch as={`/p/${post.id}/${post.slug}`} href={`/post?id=${post.id}`}><a><img width='150' src={post.acf.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail} alt={post.acf.titulo_de_la_oferta_oferta_general} /></a></Link></p> : ''}
 
-              {post.acf.imagen_destacada_de_la_oferta_socios_thumb ? <p><Link prefetch as={`/p/${post.id}/${post.slug}`} href={`/post?id=${post.id}`}><a><img width='150' src={post.acf.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail} alt={post.acf.titulo_de_la_oferta_oferta_socios} /><span className='label alert gallery-label'><small>EXCLUSIVO<br/> SOCIOS</small></span></a></Link></p> : ''}
+                {post.acf.imagen_destacada_de_la_oferta_socios_thumb ? <p><Link prefetch as={`/p/${post.id}/${post.slug}`} href={`/post?id=${post.id}`}><a><img width='150' src={post.acf.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail} alt={post.acf.titulo_de_la_oferta_oferta_socios} /><span className='label alert gallery-label'><small>EXCLUSIVO<br/> SOCIOS</small></span></a></Link></p> : ''}
 
-              <Link prefetch as={`/p/${post.id}/${post.slug}`} href={`/post?id=${post.id}`}>
-                <a dangerouslySetInnerHTML={ {__html: post.title.rendered} } />
-              </Link>
+                <Link prefetch as={`/p/${post.id}/${post.slug}`} href={`/post?id=${post.id}`}>
+                  <a dangerouslySetInnerHTML={ {__html: post.title.rendered} } />
+                </Link>
 
-              <p><small>{post.acf.localidad}</small><br />
+                <p><small>{post.acf.localidad}</small><br />
 
-              {post.acf.titulo_de_la_oferta_oferta_general ?
-              <span className='titulo-oferta'>{post.acf.titulo_de_la_oferta_oferta_general}</span> : '' }
+                {post.acf.titulo_de_la_oferta_oferta_general ?
+                <span className='titulo-oferta'>{post.acf.titulo_de_la_oferta_oferta_general}</span> : '' }
 
-              {post.acf.titulo_de_la_oferta_oferta_socios ?
-              <span className='titulo-oferta'>{post.acf.titulo_de_la_oferta_oferta_socios}</span> : '' }
+                {post.acf.titulo_de_la_oferta_oferta_socios ?
+                <span className='titulo-oferta'>{post.acf.titulo_de_la_oferta_oferta_socios}</span> : '' }
 
-              </p>
-            </li>
-          ))}
-        </ul>
+                </p>
+              </li>
+            ))}
+          </ul>
 
-    </IntlProvider>
+      </IntlProvider>
+    </main>
         <style jsx>{`
           h1, .align-center {
             text-align:center;
@@ -61,6 +72,9 @@ const PostsByCategory = (props) => (
           }
           a:hover {
             text-decoration:underline;
+          }
+          nav a {
+            color:#3f3fff;
           }
           .benefit {
             width: 150px;

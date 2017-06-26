@@ -34,6 +34,15 @@ const MapByCategory = (props) => (
     <Head>
       <title>Beneficios - {props.markers[0]._embedded['wp:term'][0][0].name}</title>
     </Head>
+    <nav aria-label="Estás aquí:" role="navigation">
+      <ul className="breadcrumbs">
+        <li><Link prefetch href="/"><a>Inicio</a></Link></li>
+        <li><Link prefetch href="/categorias"><a>Categorías</a></Link></li>
+        <li>
+          <span className="show-for-sr">Actual: </span> {props.markers[0]._embedded['wp:term'][0][0].name} 
+        </li>
+      </ul>
+    </nav>
     <h1><img src={'/static/' + props.markers[0]._embedded['wp:term'][0][0].slug +'-familias-numerosas.png'} /><br/>{props.markers[0]._embedded['wp:term'][0][0].name}</h1>
     <p className='align-center'><small><Link prefetch as={`/c/${props.markers[0]._embedded['wp:term'][0][0].id}/${props.markers[0]._embedded['wp:term'][0][0].slug}`} href={`/category?id=${props.markers[0]._embedded['wp:term'][0][0].id}`}><a>ver listado</a></Link></small></p>
     <IntlProvider defaultLocale='es'>
@@ -82,6 +91,9 @@ const MapByCategory = (props) => (
           }
           a:hover {
             text-decoration:underline;
+          }
+          nav a {
+            color:#3f3fff;
           }
           .benefit {
             width: 150px;
