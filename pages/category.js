@@ -18,7 +18,7 @@ const PostsByCategory = (props) => (
         </li>
       </ul>
     </nav>
-    <main>
+    <section>
       <h1><img src={'/static/' + props.posts[0]._embedded['wp:term'][0][0].slug +'-familias-numerosas.png'} /><br/>{props.posts[0]._embedded['wp:term'][0][0].name}</h1>
       <p className='align-center'><small><Link prefetch as={`/m/${props.posts[0]._embedded['wp:term'][0][0].id}/${props.posts[0]._embedded['wp:term'][0][0].slug}`} href={`/mapa?id=${props.posts[0]._embedded['wp:term'][0][0].id}`}><a>ver en el mapa</a></Link></small></p>
       <IntlProvider defaultLocale='es'>
@@ -47,8 +47,11 @@ const PostsByCategory = (props) => (
           </ul>
 
       </IntlProvider>
-    </main>
+    </section>
         <style jsx>{`
+          .breadcrumbs {
+            margin-bottom:1em;
+          }
           h1, .align-center {
             text-align:center;
           }

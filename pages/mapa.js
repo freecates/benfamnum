@@ -68,6 +68,9 @@ const MapByCategory = (props) => (
       
     </IntlProvider>
         <style jsx>{`
+          .breadcrumbs {
+            margin-bottom:1em;
+          }
           h1, .align-center {
             text-align:center;
           }

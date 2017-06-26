@@ -30,7 +30,7 @@ const Post =  (props) => (
         </ul>
       </nav>
 
-      <main>
+      <section>
 
         <div className='file'>
             
@@ -74,9 +74,12 @@ const Post =  (props) => (
 
         </div>
 
-      </main>
+      </section>
         
       <style jsx>{`
+        .breadcrumbs {
+          margin-bottom:1em;
+        }
         .file {
           max-width:1024px;
           margin:0 auto;

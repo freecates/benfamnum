@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Layout from '../components/MyLayout.js'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
@@ -5,6 +6,9 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 
 const Categories = (props) => (
   <Layout>
+    <Head>
+      <title>Beneficios - Categorías</title>
+    </Head>
     <h1>Beneficios - Categorías</h1>
     <IntlProvider defaultLocale='ca'>
         <ul className='gallery'>
@@ -14,7 +18,7 @@ const Categories = (props) => (
             <li className='item'>
               <Link prefetch as={`/c/${category.id}/${category.slug}`} href={`/category?id=${category.id}`}>
                 <a><img src={'/static/32/' + category.slug +'-familias-numerosas.png'} /> <span dangerouslySetInnerHTML={ {__html: category.name} } /></a>
-              </Link> | <span dangerouslySetInnerHTML={ {__html: category.count} }/>
+              </Link>
             </li>
             : ''}
             </span>
