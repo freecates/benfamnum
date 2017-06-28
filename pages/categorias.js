@@ -87,7 +87,7 @@ const Categories = (props) => (
 )
 
 Categories.getInitialProps = async function() {
-  const res = await fetch('https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/categoria_del_beneficio?per_page=100&hide_empty=true&orderby=slug')
+  const res = await fetch('https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/categoria_del_beneficio')
   const categories = await res.json()
 
   console.log(`Categories data fetched. Count: ${categories.length}`)

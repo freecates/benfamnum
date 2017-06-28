@@ -7,39 +7,39 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 const PostsByCategory = (props) => (
   <Layout>
     <Head>
-      <title>Beneficios - {props.posts[0]._embedded['wp:term'][0][0].name}</title>
+      <title>Beneficios - {props.posts[0].categoria_de_la_prestacion.name}</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li><Link prefetch href="/"><a>Inicio</a></Link></li>
         <li><Link prefetch href="/categorias"><a>Categorías</a></Link></li>
         <li>
-          <span className="show-for-sr">Actual: </span> {props.posts[0]._embedded['wp:term'][0][0].name} 
+          <span className="show-for-sr">Actual: </span> {props.posts[0].categoria_de_la_prestacion.name} 
         </li>
       </ul>
     </nav>
     <section>
-      <h1><img src={'/static/' + props.posts[0]._embedded['wp:term'][0][0].slug +'-familias-numerosas.png'} /><br/>{props.posts[0]._embedded['wp:term'][0][0].name}</h1>
-      <p className='align-center'><small><Link prefetch as={`/m/${props.posts[0]._embedded['wp:term'][0][0].id}/${props.posts[0]._embedded['wp:term'][0][0].slug}`} href={`/mapa?id=${props.posts[0]._embedded['wp:term'][0][0].id}`}><a>ver en el mapa</a></Link></small></p>
+      <h1><img src={'/static/' + props.posts[0].categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /><br/>{props.posts[0].categoria_de_la_prestacion.name}</h1>
+      <p className='align-center'><small><Link prefetch as={`/m/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`} href={`/mapa?id=${props.posts[0].categoria_de_la_prestacion.term_id}`}><a>ver en el mapa</a></Link></small></p>
       <IntlProvider defaultLocale='es'>
           <ul className='gallery'>
             {props.posts.map((post, index) => (
               <li className='benefit' key={index}>
-                {post.acf.imagen_destacada_de_la_oferta_general_thumb ? <p><Link prefetch as={`/p/${post.id}/${post.slug}`} href={`/post?id=${post.id}`}><a><img width='150' src={post.acf.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail} alt={post.acf.titulo_de_la_oferta_oferta_general} /></a></Link></p> : ''}
+                {post.imagen_destacada_de_la_oferta_general_thumb ? <p><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a><img width='150' src={post.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_general} /></a></Link></p> : ''}
 
-                {post.acf.imagen_destacada_de_la_oferta_socios_thumb ? <p><Link prefetch as={`/p/${post.id}/${post.slug}`} href={`/post?id=${post.id}`}><a><img width='150' src={post.acf.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail} alt={post.acf.titulo_de_la_oferta_oferta_socios} /><span className='label alert gallery-label'><small>EXCLUSIVO<br/> SOCIOS</small></span></a></Link></p> : ''}
+                {post.imagen_destacada_de_la_oferta_socios_thumb ? <p><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a><img width='150' src={post.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_socios} /><span className='label alert gallery-label'><small>EXCLUSIVO<br/> SOCIOS</small></span></a></Link></p> : ''}
 
-                <Link prefetch as={`/p/${post.id}/${post.slug}`} href={`/post?id=${post.id}`}>
-                  <a dangerouslySetInnerHTML={ {__html: post.title.rendered} } />
+                <Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
+                  <a dangerouslySetInnerHTML={ {__html: post.name} } />
                 </Link>
 
-                <p><small>{post.acf.localidad}</small><br />
+                <p><small>{post.localidad}</small><br />
 
-                {post.acf.titulo_de_la_oferta_oferta_general ?
-                <span className='titulo-oferta'>{post.acf.titulo_de_la_oferta_oferta_general}</span> : '' }
+                {post.titulo_de_la_oferta_oferta_general ?
+                <span className='titulo-oferta'>{post.titulo_de_la_oferta_oferta_general}</span> : '' }
 
-                {post.acf.titulo_de_la_oferta_oferta_socios ?
-                <span className='titulo-oferta'>{post.acf.titulo_de_la_oferta_oferta_socios}</span> : '' }
+                {post.titulo_de_la_oferta_oferta_socios ?
+                <span className='titulo-oferta'>{post.titulo_de_la_oferta_oferta_socios}</span> : '' }
 
                 </p>
               </li>
@@ -130,7 +130,7 @@ const PostsByCategory = (props) => (
 
 PostsByCategory.getInitialProps = async function(context) {
   const { id } = context.query
-  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/beneficios?_embed&categoria_del_beneficio=${id}&per_page=100&orderby=slug&order=asc`)
+  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}`)
   const posts = await res.json()
 
   console.log(`Posts data fetched. Count: ${posts.length}`)
