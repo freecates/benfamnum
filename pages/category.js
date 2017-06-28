@@ -48,83 +48,83 @@ const PostsByCategory = (props) => (
 
       </IntlProvider>
     </section>
-      <style jsx>{`
-        .breadcrumbs {
-          margin-bottom:1em!important;
-        }
-        h1, .align-center {
-          text-align:center;
-        }
-        h1 {
-          color:#391f92;
-        }
-        .gallery {
-          display: -ms-flexbox;
-          display: flex;
-          -ms-flex-wrap: wrap;
-              flex-wrap: wrap;
-          padding: 5px;
-        }
-        ul {
-          list-style-type:none;
-          margin-left:0;
-          margin:0 auto!important;
-        }
-        a {
-          color:inherit;
-        }
-        a:hover {
-          text-decoration:underline;
-        }
-        nav a {
-          color:#3f3fff;
-        }
-        .benefit {
-          width: 150px;
-        }
-        .gallery-label {
-          position:relative;
-          margin-top:-45px;
-          margin-right:10px;
-          float:right;
-          text-align:center;
-          background:#cc0033;
-        }
-        .titulo-oferta {
-          color:#ff0000;
-        }
-        @media screen and (min-width: 320px) {   
+        <style jsx>{`
+          .breadcrumbs {
+            margin-bottom:1em;
+          }
+          h1, .align-center {
+            text-align:center;
+          }
+          h1 {
+            color:#391f92;
+          }
           .gallery {
-            width: 100%;
-          }              
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            padding: 5px;
+          }
+          ul {
+            list-style-type:none;
+            margin-left:0;
+            margin:0 auto!important;
+          }
+          a {
+            color:inherit;
+          }
+          a:hover {
+            text-decoration:underline;
+          }
+          nav a {
+            color:#3f3fff;
+          }
           .benefit {
-            margin: 5px;
+            width: 150px;
           }
-        }
-        @media screen and (max-width: 375px) {              
+          .gallery-label {
+            position:relative;
+            margin-top:-45px;
+            margin-right:10px;
+            float:right;
+            text-align:center;
+            background:#cc0033;
+          }
+          .titulo-oferta {
+            color:#ff0000;
+          }
+          @media screen and (min-width: 320px) {   
+            .gallery {
+              width: 100%;
+            }              
+            .benefit {
+              margin: 5px;
+            }
+          }
+          @media screen and (max-width: 375px) {              
+            .benefit {
+              width: 124px;
+            }
+          }
+          @media screen and (min-width: 360px) {   
+            .gallery {
+              width: 90%;
+            }
+          }
+          @media screen and (min-width: 768px) {   
+            .gallery {
+              width: 90%;
+            }
           .benefit {
-            width: 124px;
+              width: 200px;
+            }
           }
-        }
-        @media screen and (min-width: 360px) {   
-          .gallery {
-            width: 90%;
+          @media screen and (min-width: 1366px) {   
+            .gallery {
+              width: 82%;
+            }
           }
-        }
-        @media screen and (min-width: 768px) {   
-          .gallery {
-            width: 90%;
-          }
-        .benefit {
-            width: 200px;
-          }
-        }
-        @media screen and (min-width: 1366px) {   
-          .gallery {
-            width: 82%;
-          }
-        }
-      `}</style>
+        `}</style>
   </Layout>
 )
 

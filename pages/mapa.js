@@ -43,7 +43,7 @@ const MapByCategory = (props) => (
         </li>
       </ul>
     </nav>
-<<<<<<< HEAD
+    <section>
     <h1><img src={'/static/' + props.markers[0].categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /><br/>{props.markers[0].categoria_de_la_prestacion.name}</h1>
     <p className='align-center'><small><Link prefetch as={`/c/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}`} href={`/category?id=${props.markers[0].categoria_de_la_prestacion.term_id}`}><a>ver listado</a></Link></small></p>
     <IntlProvider defaultLocale='es'>
@@ -63,28 +63,6 @@ const MapByCategory = (props) => (
           />
               ))}
         </GoogleMapReact>
-=======
-    <section>
-      <h1><img src={'/static/' + props.markers[0]._embedded['wp:term'][0][0].slug +'-familias-numerosas.png'} /><br/>{props.markers[0]._embedded['wp:term'][0][0].name}</h1>
-      <p className='align-center'><small><Link prefetch as={`/c/${props.markers[0]._embedded['wp:term'][0][0].id}/${props.markers[0]._embedded['wp:term'][0][0].slug}`} href={`/category?id=${props.markers[0]._embedded['wp:term'][0][0].id}`}><a>ver listado</a></Link></small></p>
-      <IntlProvider defaultLocale='es'>
-        
-        <div style={{width: '100%', height: '500px'}}>     
-        <GoogleMapReact
-            center={CENTER}
-            zoom={ZOOM}
-          >
-          {props.markers.map((marker, index) => (
-            
-            <MarkerComponent
-              key={index}
-              lat={marker.acf.lat.includes(',') ? '' : marker.acf.lat}
-              lng={marker.acf.lon.includes(',') ? '' : marker.acf.lon}
-              text={<Link prefetch as={`/p/${marker.id}/${marker.slug}`} href={`/post?id=${marker.id}`}><a title={marker.title.rendered}><span><img src={'/static/32/' + props.markers[0]._embedded['wp:term'][0][0].slug +'-familias-numerosas.png'} /></span></a></Link>}
-            />
-                ))}
-          </GoogleMapReact>
->>>>>>> 2e549515e74caf138ea60b842c16e2924922e1ee
 
           </div>
         
