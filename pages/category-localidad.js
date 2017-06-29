@@ -4,22 +4,22 @@ import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
 
-const PostsByCategory = (props) => (
+const PostsByCategoryLocalidad = (props) => (
   <Layout>
     <Head>
-      <title>Beneficios - {props.posts[0].categoria_de_la_prestacion.name}</title>
+      <title>Beneficios - {props.posts[0].categoria_de_la_prestacion.name} - {props.posts[0].localidad}</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li><Link prefetch href="/"><a>Inicio</a></Link></li>
         <li><Link prefetch href="/categorias"><a>Categorías</a></Link></li>
         <li>
-          <span className="show-for-sr">Actual: </span> {props.posts[0].categoria_de_la_prestacion.name} 
+          <span className="show-for-sr">Actual: </span> {props.posts[0].localidad} 
         </li>
       </ul>
     </nav>
     <section>
-      <h1><img src={'/static/' + props.posts[0].categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /><br/>{props.posts[0].categoria_de_la_prestacion.name}</h1>
+      <h1>Beneficios - {props.posts[0].categoria_de_la_prestacion.name} - {props.posts[0].localidad}</h1>
       <p className='align-center'><small><Link prefetch as={`/m/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`} href={`/mapa?id=${props.posts[0].categoria_de_la_prestacion.term_id}`}><a>ver en el mapa</a></Link></small></p>
       <IntlProvider defaultLocale='es'>
           <ul className='gallery'>
@@ -33,7 +33,7 @@ const PostsByCategory = (props) => (
                   <a dangerouslySetInnerHTML={ {__html: post.name} } />
                 </Link>
 
-                <p>{post.categoria_de_la_prestacion ?<small><Link prefetch as={`/c-l/${post.categoria_de_la_prestacion.term_id}/${post.categoria_de_la_prestacion.slug}/${post.localidad}`} href={`/category-localidad?id=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad}`}><a title={'Ver los beneficios en ' + post.localidad}>{post.localidad}</a></Link></small> : <small>{post.localidad}</small>} <br/>
+                <p><small>{post.localidad}</small><br />
 
                 {post.titulo_de_la_oferta_oferta_general ?
                 <span className='titulo-oferta'>{post.titulo_de_la_oferta_oferta_general}</span> : '' }
@@ -128,9 +128,10 @@ const PostsByCategory = (props) => (
   </Layout>
 )
 
-PostsByCategory.getInitialProps = async function(context) {
+PostsByCategoryLocalidad.getInitialProps = async function(context) {
   const { id } = context.query
-  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}`)
+  const { localidad } = context.query
+  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}&localidad=${localidad}`)
   const posts = await res.json()
 
   console.log(`Posts data fetched. Count: ${posts.length}`)
@@ -138,4 +139,4 @@ PostsByCategory.getInitialProps = async function(context) {
   return { posts }
 }
 
-export default PostsByCategory
+export default PostsByCategoryLocalidad
