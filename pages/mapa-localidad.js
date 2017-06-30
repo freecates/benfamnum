@@ -26,10 +26,10 @@ const markerStyle = {
 
 const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 
-const CENTER = [40.1301508,-1.8518527]
+const CENTER = [40.1301508,-1.8518528]
 const ZOOM = 6
 
-const MapByCategory = (props) => (
+const MapByCategoryLocalidad = (props) => (
   <Layout>
     <Head>
       <title>Beneficios - {props.markers[0].categoria_de_la_prestacion.name}</title>
@@ -57,7 +57,7 @@ const MapByCategory = (props) => (
           
           <MarkerComponent
             key={index}
-            lat={marker.lat.includes(',') || marker.lat.includes('!')? '' : marker.lat}
+            lat={marker.lat.includes(',') || marker.lat.includes('!') ? '' : marker.lat}
             lng={marker.lon.includes(',') || marker.lon.includes('!') ? '' : marker.lon}
             text={<Link prefetch as={`/p/${marker.ID}/${marker.slug}`} href={`/post?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + props.markers[0].categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /></span></a></Link>}
           />
@@ -99,7 +99,7 @@ const MapByCategory = (props) => (
         nav a {
           color:#3f3fff;
         }
-        .benefit {/c-l/8/moda/Talavera%20de%20la%20Reina
+        .benefit {
           width: 150px;
         }
         .gallery-label {
@@ -153,9 +153,10 @@ const MapByCategory = (props) => (
   </Layout>
 )
 
-MapByCategory.getInitialProps = async function(context) {
+MapByCategoryLocalidad.getInitialProps = async function(context) {
   const { id } = context.query
-  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}`)
+  const { localidad } = context.query
+  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}&localidad=${localidad}`)
   const markers = await res.json()
 
   console.log(`Markers data fetched. Count: ${markers.length}`)
@@ -163,4 +164,4 @@ MapByCategory.getInitialProps = async function(context) {
   return { markers }
 }
 
-export default MapByCategory
+export default MapByCategoryLocalidad

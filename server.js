@@ -44,6 +44,14 @@ app.prepare()
     app.render(req, res, actualPage, queryParams, queryParamsS, queryParamsL)
   })
 
+  server.get('/m-l/:id/:slug/:localidad', (req, res) => {
+    const actualPage = '/mapa-localidad'
+    const queryParams = { id: req.params.id }
+    const queryParamsS = { id: req.params.slug }
+    const queryParamsL = { localidad: req.params.localidad }
+    app.render(req, res, actualPage, queryParams, queryParamsS, queryParamsL)
+  })
+
   server.get('*', (req, res) => {
     return handle(req, res)
   })

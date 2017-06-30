@@ -33,7 +33,7 @@ const PostsByCategory = (props) => (
                   <a dangerouslySetInnerHTML={ {__html: post.name} } />
                 </Link>
 
-                <p>{post.categoria_de_la_prestacion ?<small><Link prefetch as={`/c-l/${post.categoria_de_la_prestacion.term_id}/${post.categoria_de_la_prestacion.slug}/${post.localidad}`} href={`/category-localidad?id=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad}`}><a title={'Ver los beneficios en ' + post.localidad}>{post.localidad}</a></Link></small> : <small>{post.localidad}</small>} <br/>
+                <p>{post.categoria_de_la_prestacion ?<small><Link prefetch as={`/c-l/${post.categoria_de_la_prestacion.term_id}/${post.categoria_de_la_prestacion.slug}/${post.localidad.replace("&#039;", "%27")}`} href={`/category-localidad?id=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad.replace("&#039;", "%27")}`}><a title={'Ver los beneficios de ' + post.categoria_de_la_prestacion.name + ' en ' + post.localidad.replace("&#039;", "%27")}><span dangerouslySetInnerHTML={ {__html: post.localidad} } /></a></Link></small> : <small>{post.localidad}</small>} <br/>
 
                 {post.titulo_de_la_oferta_oferta_general ?
                 <span className='titulo-oferta'>{post.titulo_de_la_oferta_oferta_general}</span> : '' }
