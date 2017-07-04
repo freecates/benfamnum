@@ -26,8 +26,8 @@ const markerStyle = {
 
 const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 
-const CENTER = [40.1301508,-1.8518528]
-const ZOOM = 6
+const ZOOM = 12
+
 
 const MapByCategoryLocalidad = (props) => (
   <Layout>
@@ -44,13 +44,13 @@ const MapByCategoryLocalidad = (props) => (
       </ul>
     </nav>
     <section>
-    <h1><img src={'/static/' + props.markers[0].categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /><br/>{props.markers[0].categoria_de_la_prestacion.name}</h1>
+    <h1><img src={'/static/' + props.markers[0].categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /><br/>{props.markers[0].categoria_de_la_prestacion.name} - {props.markers[0].localidad.replace("&#039;", "'")}</h1>
     <p className='align-center'><small><Link prefetch as={`/c/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}`} href={`/category?id=${props.markers[0].categoria_de_la_prestacion.term_id}`}><a>ver listado</a></Link></small></p>
     <IntlProvider defaultLocale='es'>
       
       <div style={{width: '100%', height: '500px'}}>     
        <GoogleMapReact
-          center={CENTER}
+          center={[props.markers[0].lat.includes(',') || props.markers[0].lat.includes('!') ? 40.1301508 : Number(props.markers[0].lat), props.markers[0].lat.includes(',') || props.markers[0].lat.includes('!') ? -1.8518527 : Number(props.markers[0].lon)]}
           zoom={ZOOM}
         >
         {props.markers.map((marker, index) => (
