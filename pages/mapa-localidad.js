@@ -50,7 +50,7 @@ const MapByCategoryLocalidad = (props) => (
       
       <div style={{width: '100%', height: '500px'}}>     
        <GoogleMapReact
-          center={[props.markers[0].lat.includes(',') || props.markers[0].lat.includes('!') ? 40.1301508 : Number(props.markers[0].lat), props.markers[0].lat.includes(',') || props.markers[0].lat.includes('!') ? -1.8518527 : Number(props.markers[0].lon)]}
+          center={[props.markers[0].lat.includes(',') || props.markers[0].lat.includes('!') ? 40.1301508 : Number(props.markers[0].lat), props.markers[0].lon.includes(',') || props.markers[0].lon.includes('!') ? -1.8518527 : Number(props.markers[0].lon)]}
           zoom={ZOOM}
         >
         {props.markers.map((marker, index) => (

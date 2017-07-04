@@ -1,7 +1,5 @@
 import Link from 'next/link'
 import Layout from '../components/MyLayout.js'
-import NavigatorLongitude from '../components/NavigatorLongitude.js'
-import NavigatorLatitude from '../components/NavigatorLatitude.js'
 
 export default () => (
     <Layout>

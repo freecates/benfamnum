@@ -35,10 +35,10 @@ class GMap extends React.Component{
                 lat={this.state.lat}
                 lng={this.state.lng}
                 containerElement={
-                  <div style={{ height: `500px` }} />
+                  <div style={{ height: `300px`, marginBottom: `2em` }} />
                 }
                 mapElement={
-                  <div style={{ height: `500px` }} />
+                  <div style={{ height: `300px`, marginBottom: `2em` }} />
                 }
             />
     }

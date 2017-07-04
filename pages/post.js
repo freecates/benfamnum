@@ -42,6 +42,8 @@ const Post =  (props) => (
 
             <p className='category'><small><strong>Categoria</strong>: <Link prefetch as={`/c/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}`} href={`/category?id=${props.post.categoria_del_beneficio}`}><a>{props.post._embedded['wp:term'][0][0].name}</a></Link></small></p>
 
+            {props.post.acf.lat ? <GMap lat={props.post.acf.lat} lng={props.post.acf.lon} /> : '' }
+
           <div className='file-data'>
 
             {props.post.acf.imagen_destacada_de_la_oferta_socios_large ? 
@@ -61,6 +63,8 @@ const Post =  (props) => (
             </IntlProvider>
               
               {props.post.acf.descripcion_de_la_oferta_oferta_socios ? <p dangerouslySetInnerHTML={ {__html: props.post.acf.descripcion_de_la_oferta_oferta_socios} }/> : '' }
+
+              {props.post.acf.como_conseguir_la_oferta_oferta_socios ? <div className="callout large alert"><p dangerouslySetInnerHTML={ {__html: props.post.acf.como_conseguir_la_oferta_oferta_socios} }/></div> : '' }
               
               {props.post.acf.titulo_de_la_oferta_oferta_general ? <h4>{props.post.acf.titulo_de_la_oferta_oferta_general}</h4> : '' }
               
@@ -68,9 +72,7 @@ const Post =  (props) => (
 
             </div>
           
-          </div>
-
-          {props.post.acf.lat ? <GMap lat={props.post.acf.lat} lng={props.post.acf.lon} /> : '' }  
+          </div>  
 
         </div>
 
