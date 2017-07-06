@@ -1,9 +1,16 @@
 import Head from 'next/head'
 import Layout from '../components/MyLayout.js'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
-import SelectCity from '../components/SelectCity'
+
+const SelectCity = dynamic(
+  import('../components/SelectCity'),
+  {
+    loading: () => (<p>cargando ...</p>)
+  }
+)
 
 const PostsByCategory = (props) => (
   <Layout>
@@ -29,19 +36,10 @@ const PostsByCategory = (props) => (
            options={props.posts.map((post, index) => (
             {
               value: post.categoria_de_la_prestacion ? `/category-localidad?id=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad.replace("&#039;", "%27")}` : '',
-              label: post.categoria_de_la_prestacion ?  `${post.localidad}` : ''
+              label: post.categoria_de_la_prestacion ?  `${post.localidad.replace("&#039;", "'")}` : ''
             }
         ))} />
       </section>
-
-      {/*<section id='select-city'>
-        {props.posts.map((post, index) => (
-          <SelectCity
-          key={index} 
-            value={post.categoria_de_la_prestacion ? `/category-localidad?id=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad.replace("&#039;", "%27")}` : ''}
-            label={post.categoria_de_la_prestacion ? <span dangerouslySetInnerHTML={ {__html: post.localidad} } /> : ''} />
-        ))}
-      </section>*/}
 
       <IntlProvider defaultLocale='es'>
           <ul className='gallery'>
