@@ -46,13 +46,17 @@ const Post =  (props) => (
 
           <div className='file-data'>
 
+            <div className='file-img'>
+
             {props.post.acf.imagen_destacada_de_la_oferta_socios_large ? 
             
-            <div className='file-img'><p><img className='img-file' width='1024' src={props.post.acf.imagen_destacada_de_la_oferta_socios_large.sizes.large} alt={props.post.acf.titulo_de_la_oferta_oferta_socios} /></p></div> : ''}   
+              <p><img className='img-file' width='1024' src={props.post.acf.imagen_destacada_de_la_oferta_socios_large.sizes.large} alt={props.post.acf.titulo_de_la_oferta_oferta_socios} /></p> : ''}   
 
             {props.post.acf.imagen_destacada_de_la_oferta_general_large ? 
             
-            <div className='file-img'><p><img className='img-file' width='<1024></1024>' src={props.post.acf.imagen_destacada_de_la_oferta_general_large.sizes.large} alt={props.post.acf.titulo_de_la_oferta_general} /></p></div> : ''}
+              <p><img className='img-file' width='<1024></1024>' src={props.post.acf.imagen_destacada_de_la_oferta_general_large.sizes.large} alt={props.post.acf.titulo_de_la_oferta_general} /></p> : ''}
+
+            </div>
 
             <div className='file-content'>
               

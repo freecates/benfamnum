@@ -1,15 +1,19 @@
 const Options = ( props => {
-    console.log("here new props are used", props)
-    return <option value={props.value}>{props.label}</option>    
- }
-);
+  const renderedElements = props.options.map((option) => {
+    <div value={option.value}>{option.label}</div>
+    })
+    console.log(`Rendered Elements. Count: ${renderedElements.length}`)
+    console.log(renderedElements)
+    return (<option>{renderedElements}</option>);    
+ });
 
 class SelectCity extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        value: this.props.value,
-        label: this.props.label
+        options: this.props.options,
+        selectedValue: this.props.options[0].value
+        //label: this.props.label
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,11 +21,11 @@ class SelectCity extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({selectedValue: event.target.options[event.target.selectedIndex].value});
   }
 
   handleSubmit(event) {
-    window.location.href=this.props.value;
+    window.location.href=this.state.selectedValue;
     event.preventDefault();
   }
 
@@ -31,11 +35,11 @@ class SelectCity extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           Selecciona la localidad
-          <select value={this.state.value} onChange={this.handleChange}>
-            <Options value={this.state.value} label={this.state.label} />
+          <select onChange={this.handleChange}>
+            <Options options={this.state.options} />
           </select>
         </label>
-        <input type='submit' value='Submit' />
+        <input className='button' type='submit' value='Enviar' />
       </form>
     );
   }
