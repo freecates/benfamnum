@@ -26,7 +26,7 @@ const PostsByCategory = (props) => (
       <section id='select-city'>
         
           <SelectCity
-           options={props.posts.reduce((current, post) => (
+           options={props.posts.map((post, index) => (
             {
               value: post.categoria_de_la_prestacion ? `/category-localidad?id=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad.replace("&#039;", "%27")}` : '',
               label: post.categoria_de_la_prestacion ?  `${post.localidad}` : ''
