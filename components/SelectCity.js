@@ -1,17 +1,8 @@
-const Options = ( props => {
-  const renderedElements = props.options.map((option) => {
-    <div value={option.value}>{option.label}</div>
-    })
-    console.log(`Rendered Elements. Count: ${renderedElements.length}`)
-    console.log(renderedElements)
-    return (<option>{renderedElements}</option>);    
- });
-
 class SelectCity extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        options: this.props.options,
+        elements: this.props.options,
         selectedValue: this.props.options[0].value
         //label: this.props.label
     };
@@ -30,13 +21,18 @@ class SelectCity extends React.Component {
   }
 
   render() {
+    
+    const renderedElements = this.state.elements.map((element) => {
+      return ( <option value={element.value}>{element.label}</option> )
+   })
+
     console.log("New props ", this.props)
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
           Selecciona la localidad
           <select onChange={this.handleChange}>
-            <Options options={this.state.options} />
+            {renderedElements}
           </select>
         </label>
         <input className='button' type='submit' value='Enviar' />
