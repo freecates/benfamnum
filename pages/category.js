@@ -23,7 +23,7 @@ const PostsByCategory = (props) => (
       <h1><img src={'/static/' + props.posts[0].categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /><br/>{props.posts[0].categoria_de_la_prestacion.name}</h1>
       <p className='align-center'><small><Link prefetch as={`/m/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`} href={`/mapa?id=${props.posts[0].categoria_de_la_prestacion.term_id}`}><a>ver en el mapa</a></Link></small></p>
 
-      <section id='select-city'>
+      {/*<section id='select-city'>
         {props.posts.map((post, index) => (
           <SelectCity
           key={index} 
@@ -33,15 +33,15 @@ const PostsByCategory = (props) => (
             />
           </SelectCity>
         ))}
-      </section>
+      </section>*/}
 
       <IntlProvider defaultLocale='es'>
           <ul className='gallery'>
             {props.posts.map((post, index) => (
               <li className='benefit' key={index}>
-                {post.imagen_destacada_de_la_oferta_general_thumb ? <p><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a><img width='150' src={post.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_general} /></a></Link></p> : ''}
+                {post.imagen_destacada_de_la_oferta_general_thumb ? <p><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a><img width='250' src={post.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_general} /></a></Link></p> : ''}
 
-                {post.imagen_destacada_de_la_oferta_socios_thumb ? <p><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a><img width='150' src={post.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_socios} /><span className='label alert gallery-label'><small>EXCLUSIVO<br/> SOCIOS</small></span></a></Link></p> : ''}
+                {post.imagen_destacada_de_la_oferta_socios_thumb ? <p><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a><img width='250' src={post.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_socios} /><span className='label alert gallery-label'><small>EXCLUSIVO<br/> SOCIOS</small></span></a></Link></p> : ''}
 
                 <Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
                   <a dangerouslySetInnerHTML={ {__html: post.name} } />
@@ -98,8 +98,8 @@ const PostsByCategory = (props) => (
           }
           .gallery-label {
             position:relative;
-            margin-top:-45px;
-            margin-right:10px;
+            margin-top:-40px;
+            margin-right:5px;
             float:right;
             text-align:center;
             background:#cc0033;
@@ -131,11 +131,16 @@ const PostsByCategory = (props) => (
             }
           .benefit {
               width: 200px;
+              margin:7.5px;
             }
           }
-          @media screen and (min-width: 1366px) {   
+          @media screen and (min-width: 1024px) {   
             .gallery {
-              width: 82%;
+              width: 84%;
+            }
+          .benefit {
+              width: 250px;
+              margin:10px;
             }
           }
         `}</style>

@@ -25,9 +25,9 @@ const PostsByLocalidad = (props) => (
           <ul className='gallery'>
             {props.posts.map((post, index) => (
               <li className='benefit' key={index}>
-                {post.imagen_destacada_de_la_oferta_general_thumb ? <p><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a><img width='150' src={post.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_general} /></a></Link></p> : ''}
+                {post.imagen_destacada_de_la_oferta_general_thumb ? <p><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a><img width='250' src={post.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_general} /></a></Link></p> : ''}
 
-                {post.imagen_destacada_de_la_oferta_socios_thumb ? <p><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a><img width='150' src={post.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_socios} /><span className='label alert gallery-label'><small>EXCLUSIVO<br/> SOCIOS</small></span></a></Link></p> : ''}
+                {post.imagen_destacada_de_la_oferta_socios_thumb ? <p><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a><img width='250' src={post.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_socios} /><span className='label alert gallery-label'><small>EXCLUSIVO<br/> SOCIOS</small></span></a></Link></p> : ''}
 
                 <Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
                   <a dangerouslySetInnerHTML={ {__html: post.name} } />
@@ -84,8 +84,8 @@ const PostsByLocalidad = (props) => (
           }
           .gallery-label {
             position:relative;
-            margin-top:-45px;
-            margin-right:10px;
+            margin-top:-40px;
+            margin-right:5px;
             float:right;
             text-align:center;
             background:#cc0033;
@@ -117,11 +117,16 @@ const PostsByLocalidad = (props) => (
             }
           .benefit {
               width: 200px;
+              margin: 7.5px;
             }
           }
-          @media screen and (min-width: 1366px) {   
+          @media screen and (min-width: 1024px) {   
             .gallery {
-              width: 82%;
+              width: 84%;
+            }
+          .benefit {
+              width: 250px;
+              margin:10px;
             }
           }
         `}</style>
