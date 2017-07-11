@@ -35,8 +35,8 @@ const PostsByCategory = (props) => (
           <SelectCity
            options={props.posts.map((post, index) => (
             {
-              value: post.categoria_de_la_prestacion ? `/category-localidad?id=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad_del_beneficio.term_id}` : '',
-              label: post.categoria_de_la_prestacion ?  `${post.localidad_del_beneficio.name}` : ''
+              value: post.categoria_de_la_prestacion ? `/category-localidad?id=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad.term_id}` : '',
+              label: post.categoria_de_la_prestacion ?  `${post.localidad.name}` : ''
             }
         ))} />
       </section>
@@ -53,7 +53,7 @@ const PostsByCategory = (props) => (
                   <a dangerouslySetInnerHTML={ {__html: post.name} } />
                 </Link>
 
-                <p>{post.categoria_de_la_prestacion ?<small><Link prefetch as={`/c-l/${post.categoria_de_la_prestacion.term_id}/${post.categoria_de_la_prestacion.slug}/${post.localidad_del_beneficio.term_id}/${post.localidad_del_beneficio.slug}`} href={`/category-localidad?id=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad_del_beneficio.term_id}`}><a title={'Ver los beneficios de ' + post.categoria_de_la_prestacion.name + ' en ' + post.localidad_del_beneficio.name}><span dangerouslySetInnerHTML={ {__html: post.localidad_del_beneficio.name} } /></a></Link></small> : <small>{post.localidad_del_beneficio.name}</small>} <br/>
+                <p>{post.categoria_de_la_prestacion ?<small><Link prefetch as={`/c-l/${post.categoria_de_la_prestacion.term_id}/${post.categoria_de_la_prestacion.slug}/${post.localidad.term_id}/${post.localidad.slug}`} href={`/category-localidad?id=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad.term_id}`}><a title={'Ver los beneficios de ' + post.categoria_de_la_prestacion.name + ' en ' + post.localidad.name}><span dangerouslySetInnerHTML={ {__html: post.localidad} } /></a></Link></small> : <small>{post.localidad}</small>} <br/>
 
                 {post.titulo_de_la_oferta_oferta_general ?
                 <span className='titulo-oferta'>{post.titulo_de_la_oferta_oferta_general}</span> : '' }

@@ -16,29 +16,25 @@ function beneficios_constructMetaQuery($params){
                 	);
    }
 
-   $tax_query = array(
-        'relation' => 'AND'    
-    );
+   $tax_query  = array(
+       'relation' => 'AND'    
+   );
 
-    if(isset($params["categoria_del_beneficio"])){
-        $tax_query = array(
-                    array (
-                        'taxonomy' => 'categoria_del_beneficio',
-                        'field' => 'ID',
-                        'terms' => $params["categoria_del_beneficio"],
-                    )
-                );
-    }
-    
-    if(isset($params["localidad"])){
-        $tax_query = array(
-                    array (
-                        'taxonomy' => 'localidad',
-                        'field' => 'ID',
-                        'terms' => $params["localidad"],
-                    )
-                );
-    }
+   if(isset($params["categoria_del_beneficio"])){
+       $tax_query[] = array(
+                       'taxonomy' => 'categoria_del_beneficio',
+                       'field' => 'ID',
+                       'terms' => $params["categoria_del_beneficio"],
+                   );
+   }
+   
+   if(isset($params["localidad"])){
+       $tax_query[] = array(
+                       'taxonomy' => 'localidad',
+                       'field' => 'ID',
+                       'terms' => $params["localidad"],
+               );
+   }
     
     return array(
                'meta_query' => $meta_query,
