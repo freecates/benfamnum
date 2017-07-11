@@ -7,7 +7,7 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 const PostsByCategoryLocalidad = (props) => (
   <Layout>
     <Head>
-      <title>Beneficios - {props.posts[0].categoria_de_la_prestacion.name} - {props.posts[0].localidad.replace("&#039;", "'")}</title>
+      <title>Beneficios - {props.posts[0].categoria_de_la_prestacion.name} - {props.posts[0].localidad_del_beneficio.name}</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
@@ -15,13 +15,13 @@ const PostsByCategoryLocalidad = (props) => (
         <li><Link prefetch href="/categorias"><a>Categorías</a></Link></li>
         <li><Link prefetch as={`/c/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`} href={`/category?id=${props.posts[0].categoria_de_la_prestacion.term_id}`}><a>{props.posts[0].categoria_de_la_prestacion.name}</a></Link></li>
         <li>
-          <span className="show-for-sr">Actual: </span> {props.posts[0].localidad.replace("&#039;", "'")} 
+          <span className="show-for-sr">Actual: </span> {props.posts[0].localidad_del_beneficio.name} 
         </li>
       </ul>
     </nav>
     <section>
-      <h1>Beneficios - {props.posts[0].categoria_de_la_prestacion.name} - {props.posts[0].localidad.replace("&#039;", "'")}</h1>
-      <p className='align-center'><small><Link prefetch as={`/m-l/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].localidad.replace("&#039;", "%27")}`} href={`/mapa-localidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&localidad=${props.posts[0].localidad.replace("&#039;", "%27")}`}><a>ver en el mapa</a></Link></small></p>
+      <h1>Beneficios - {props.posts[0].categoria_de_la_prestacion.name} - {props.posts[0].localidad_del_beneficio.name}</h1>
+      <p className='align-center'><small><Link prefetch as={`/m-l/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`} href={`/mapa-localidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&localidad=${props.posts[0].localidad_del_beneficio.term_id}`}><a>ver en el mapa</a></Link></small></p>
       <IntlProvider defaultLocale='es'>
           <ul className='gallery'>
             {props.posts.map((post, index) => (
@@ -34,7 +34,7 @@ const PostsByCategoryLocalidad = (props) => (
                   <a dangerouslySetInnerHTML={ {__html: post.name} } />
                 </Link>
 
-                <p><small>{post.localidad}</small><br />
+                <p><small>{post.localidad_del_beneficio.name}</small><br />
 
                 {post.titulo_de_la_oferta_oferta_general ?
                 <span className='titulo-oferta'>{post.titulo_de_la_oferta_oferta_general}</span> : '' }

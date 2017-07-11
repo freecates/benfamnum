@@ -30,18 +30,20 @@ app.prepare()
     app.render(req, res, actualPage, queryParams, queryParamsS)
   })
 
-  server.get('/l/:localidad', (req, res) => {
+  server.get('/l/:localidad/:slug', (req, res) => {
     const actualPage = '/localidad'
     const queryParams = { localidad: req.params.localidad }
-    app.render(req, res, actualPage, queryParams)
+    const queryParamsS = { id: req.params.slug }
+    app.render(req, res, actualPage, queryParams, queryParamsS)
   })
 
-  server.get('/c-l/:id/:slug/:localidad', (req, res) => {
+  server.get('/c-l/:id/:slug/:localidad/:slug', (req, res) => {
     const actualPage = '/category-localidad'
     const queryParams = { id: req.params.id }
     const queryParamsS = { id: req.params.slug }
     const queryParamsL = { localidad: req.params.localidad }
-    app.render(req, res, actualPage, queryParams, queryParamsS, queryParamsL)
+    const queryParamsSL = {slug: req.params.slug }
+    app.render(req, res, actualPage, queryParams, queryParamsS, queryParamsL, queryParamsSL)
   })
 
   server.get('/m-l/:id/:slug/:localidad', (req, res) => {

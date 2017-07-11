@@ -7,19 +7,19 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 const PostsByLocalidad = (props) => (
   <Layout>
     <Head>
-      <title>Beneficios - {props.posts[0].localidad}</title>
+      <title>Beneficios - {props.posts[0].localidad_del_beneficio.name}</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li><Link prefetch href="/"><a>Inicio</a></Link></li>
         <li><Link prefetch href="/categorias"><a>Categorías</a></Link></li>
         <li>
-          <span className="show-for-sr">Actual: </span> Localidad: {props.posts[0].localidad} 
+          <span className="show-for-sr">Actual: </span> Localidad: {props.posts[0].localidad_del_beneficio.name} 
         </li>
       </ul>
     </nav>
     <section>
-      <h1>Beneficios - {props.posts[0].localidad}</h1>
+      <h1>Beneficios - {props.posts[0].localidad_del_beneficio.name}</h1>
       <p className='align-center'><small><Link prefetch as={`/m/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`} href={`/mapa?id=${props.posts[0].categoria_de_la_prestacion.term_id}`}><a>ver en el mapa</a></Link></small></p>
       <IntlProvider defaultLocale='es'>
           <ul className='gallery'>
@@ -33,7 +33,7 @@ const PostsByLocalidad = (props) => (
                   <a dangerouslySetInnerHTML={ {__html: post.name} } />
                 </Link>
 
-                <p><small>{post.localidad}</small><br />
+                <p><small>{post.localidad_del_beneficio.name}</small><br />
 
                 {post.titulo_de_la_oferta_oferta_general ?
                 <span className='titulo-oferta'>{post.titulo_de_la_oferta_oferta_general}</span> : '' }
