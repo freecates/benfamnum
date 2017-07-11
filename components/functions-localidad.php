@@ -16,6 +16,10 @@ function beneficios_constructMetaQuery($params){
                 	);
    }
 
+   $tax_query = array(
+        'relation' => 'AND'    
+    );
+
     if(isset($params["categoria_del_beneficio"])){
         $tax_query = array(
                     array (
@@ -24,10 +28,8 @@ function beneficios_constructMetaQuery($params){
                         'terms' => $params["categoria_del_beneficio"],
                     )
                 );
-    }else{
-        $tax_query = array();
     }
-
+    
     if(isset($params["localidad"])){
         $tax_query = array(
                     array (
@@ -36,8 +38,6 @@ function beneficios_constructMetaQuery($params){
                         'terms' => $params["localidad"],
                     )
                 );
-    }else{
-        $tax_query = array();
     }
     
     return array(
