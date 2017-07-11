@@ -67,16 +67,16 @@ const Post =  (props) => (
             </IntlProvider>
               
               {props.post.acf.descripcion_de_la_oferta_oferta_socios ? <p dangerouslySetInnerHTML={ {__html: props.post.acf.descripcion_de_la_oferta_oferta_socios} }/> : '' }
-
-              {props.post.acf.como_conseguir_la_oferta_oferta_socios ? <div className="callout large alert"><p dangerouslySetInnerHTML={ {__html: props.post.acf.como_conseguir_la_oferta_oferta_socios} }/></div> : '' }
-              
+             
               {props.post.acf.titulo_de_la_oferta_oferta_general ? <h4>{props.post.acf.titulo_de_la_oferta_oferta_general}</h4> : '' }
               
               {props.post.acf.descripcion_de_la_oferta_oferta_general ? <p dangerouslySetInnerHTML={ {__html: props.post.acf.descripcion_de_la_oferta_oferta_general} }/> : '' }
 
             </div>
           
-          </div>  
+          </div>
+
+          {props.post.acf.como_conseguir_la_oferta_oferta_socios ? <div className="callout large alert"><p dangerouslySetInnerHTML={ {__html: props.post.acf.como_conseguir_la_oferta_oferta_socios} }/></div> : '' }  
 
         </div>
 
