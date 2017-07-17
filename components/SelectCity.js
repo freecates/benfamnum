@@ -1,9 +1,10 @@
 class SelectCity extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props.options[Object.keys(this.props.options)[0]].value);
     this.state = {
         elements: this.props.options,
-        selectedValue: this.props.options[0].value
+        selectedValue: this.props.options[Object.keys(this.props.options)[0]].value
         //label: this.props.label
     };
 
@@ -29,7 +30,7 @@ class SelectCity extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Selecciona la localidad
+          ¿Dónde quieres disfrutar del beneficio? Selecciona la localidad
           <select onChange={this.handleChange}>
             {renderedElements}
           </select>

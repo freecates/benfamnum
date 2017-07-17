@@ -33,12 +33,25 @@ const PostsByCategory = (props) => (
       <section id='select-city'>
         
           <SelectCity
-           options={props.posts.map((post, index) => (
-            {
-              value: post.categoria_de_la_prestacion ? `/category-localidad?id=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad_del_beneficio.term_id}` : '',
-              label: post.categoria_de_la_prestacion ?  `${post.localidad_del_beneficio.name}` : ''
+           options={props.posts.reduce((ciutats, post) => {
+            if (post.localidad_del_beneficio == false) {
+              return ciutats
             }
-        ))} />
+             ciutats[post.localidad_del_beneficio.term_id] =
+              {
+                slug: post.localidad_del_beneficio.slug,
+                key: post.localidad_del_beneficio.term_id,
+                value: post.categoria_de_la_prestacion ? `/category-localidad?id=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad_del_beneficio.term_id}` : '',
+                label: post.categoria_de_la_prestacion ?  `${post.localidad_del_beneficio.name}` : ''
+              }
+              return ciutats
+        },[]).sort(function(a,b){
+          if (a.slug < b.slug)
+            return -1;
+          if (a.slug > b.slug)
+            return 1;
+          return 0;
+          })} />
       </section>
 
       <IntlProvider defaultLocale='es'>

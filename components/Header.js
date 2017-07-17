@@ -35,6 +35,9 @@ const Header = () => (
         <Link prefetch href="/la-federacion">
           <a style={linkStyle}>La Federación</a>
         </Link>
+        <Link prefetch href="/hazte-socio">
+          <a style={linkStyle}>Hazte socio</a>
+        </Link>
       </header>
 
       
