@@ -21,7 +21,7 @@ const PostsByCategoryLocalidad = (props) => (
     </nav>
     <section>
       <h1>Beneficios - {props.posts[0].categoria_de_la_prestacion.name} - {props.posts[0].localidad_del_beneficio.name}</h1>
-      <p className='align-center'><small><Link prefetch as={`/m-l/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`} href={`/mapa-localidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&localidad=${props.posts[0].localidad_del_beneficio.term_id}`}><a>ver en el mapa</a></Link></small></p>
+      <p className='align-center'><small><Link prefetch as={`/m-c-l/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`} href={`/mapa-category-localidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&localidad=${props.posts[0].localidad_del_beneficio.term_id}`}><a><img src='/static/icona-mapa-familias-numerosas.png' /> ver en el mapa</a></Link></small></p>
       <IntlProvider defaultLocale='es'>
           <ul className='gallery'>
             {props.posts.map((post, index) => (

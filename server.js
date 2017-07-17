@@ -37,6 +37,13 @@ app.prepare()
     app.render(req, res, actualPage, queryParams, queryParamsS)
   })
 
+  server.get('/m-l/:localidad/:slug', (req, res) => {
+    const actualPage = '/mapa-localidad'
+    const queryParams = { localidad: req.params.localidad }
+    const queryParamsS = { id: req.params.slug }
+    app.render(req, res, actualPage, queryParams, queryParamsS)
+  })
+
   server.get('/c-l/:id/:slug/:localidad/:slug', (req, res) => {
     const actualPage = '/category-localidad'
     const queryParams = { id: req.params.id }
@@ -46,8 +53,8 @@ app.prepare()
     app.render(req, res, actualPage, queryParams, queryParamsS, queryParamsL, queryParamsSL)
   })
 
-  server.get('/m-l/:id/:slug/:localidad', (req, res) => {
-    const actualPage = '/mapa-localidad'
+  server.get('/m-c-l/:id/:slug/:localidad', (req, res) => {
+    const actualPage = '/mapa-category-localidad'
     const queryParams = { id: req.params.id }
     const queryParamsS = { id: req.params.slug }
     const queryParamsL = { localidad: req.params.localidad }

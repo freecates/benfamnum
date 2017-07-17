@@ -29,23 +29,24 @@ const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 const ZOOM = 12
 
 
-const MapByLocalidad = (props) => (
+const MapByCategoryLocalidad = (props) => (
   <Layout>
     <Head>
-      <title>Beneficios - {props.markers[0].localidad_del_beneficio.name}</title>
+      <title>Beneficios - {props.markers[0].categoria_de_la_prestacion.name} - {props.markers[0].localidad_del_beneficio.name}</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li><Link prefetch href="/"><a>Inicio</a></Link></li>
         <li><Link prefetch href="/categorias"><a>Categorías</a></Link></li>
+        <li><Link prefetch as={`/m/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}`} href={`/mapa?id=${props.markers[0].categoria_de_la_prestacion.term_id}`}><a>{props.markers[0].categoria_de_la_prestacion.name}</a></Link></li>
         <li>
           <span className="show-for-sr">Actual: </span> {props.markers[0].localidad_del_beneficio.name} 
         </li>
       </ul>
     </nav>
     <section>
-    <h1>Beneficios - {props.markers[0].localidad_del_beneficio.name}</h1>
-    <p className='align-center'><small><Link prefetch as={`/l/${props.markers[0].localidad_del_beneficio.term_id}/${props.markers[0].localidad_del_beneficio.slug}`} href={`/localidad?localidad=${props.markers[0].localidad_del_beneficio.term_id}`}><a title={'Ver todos los beneficios de ' + props.markers[0].localidad_del_beneficio.name}>ver listado</a></Link></small></p>
+    <h1><img src={'/static/' + props.markers[0].categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /><br/>{props.markers[0].categoria_de_la_prestacion.name} - {props.markers[0].localidad_del_beneficio.name}</h1>
+    <p className='align-center'><small><Link prefetch as={`/c-l/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}/${props.markers[0].localidad_del_beneficio.term_id}/${props.markers[0].localidad_del_beneficio.slug}`} href={`/category-localidad?id=${props.markers[0].categoria_de_la_prestacion.term_id}&localidad=${props.markers[0].localidad_del_beneficio.term_id}`}><a title={'Ver los beneficios de ' + props.markers[0].categoria_de_la_prestacion.name + ' en ' + props.markers[0].localidad_del_beneficio.name}>ver listado</a></Link></small></p>
     <IntlProvider defaultLocale='es'>
       
       <div style={{width: '100%', height: '500px'}}>     
@@ -59,7 +60,7 @@ const MapByLocalidad = (props) => (
             key={index}
             lat={marker.lat.includes(',') || marker.lat.includes('!') ? '' : marker.lat}
             lng={marker.lon.includes(',') || marker.lon.includes('!') ? '' : marker.lon}
-            text={<Link prefetch as={`/p/${marker.ID}/${marker.slug}`} href={`/post?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + marker.categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /></span></a></Link>}
+            text={<Link prefetch as={`/p/${marker.ID}/${marker.slug}`} href={`/post?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + props.markers[0].categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /></span></a></Link>}
           />
               ))}
         </GoogleMapReact>
@@ -153,9 +154,10 @@ const MapByLocalidad = (props) => (
   </Layout>
 )
 
-MapByLocalidad.getInitialProps = async function(context) {
+MapByCategoryLocalidad.getInitialProps = async function(context) {
+  const { id } = context.query
   const { localidad } = context.query
-  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&localidad=${localidad}`)
+  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}&localidad=${localidad}`)
   const markers = await res.json()
 
   console.log(`Markers data fetched. Count: ${markers.length}`)
@@ -163,4 +165,4 @@ MapByLocalidad.getInitialProps = async function(context) {
   return { markers }
 }
 
-export default MapByLocalidad
+export default MapByCategoryLocalidad
