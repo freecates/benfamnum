@@ -1,6 +1,6 @@
 {
-  "name": "hello-next-fetch-data-filters",
-  "version": "1.1.4",
+  "name": "beneficios-familias-numerosas",
+  "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -9,8 +9,8 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["js", "isomorphic", "WP-API", "beneficios", "familias", "numerosas"],
+  "author": "Ramon Gil",
   "license": "ISC",
   "dependencies": {
     "async-reactor": "^1.2.0",
