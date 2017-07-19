@@ -9,7 +9,14 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js"
   },
-  "keywords": ["js", "isomorphic", "WP-API", "beneficios", "familias", "numerosas"],
+  "keywords": [
+    "js",
+    "isomorphic",
+    "WP-API",
+    "beneficios",
+    "familias",
+    "numerosas"
+  ],
   "author": "Ramon Gil",
   "license": "ISC",
   "dependencies": {

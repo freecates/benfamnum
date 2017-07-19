@@ -63,7 +63,7 @@ const PostsByCategory = (props) => (
                 {post.imagen_destacada_de_la_oferta_socios_thumb ? <p><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a><img width='250' src={post.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_socios} /><span className='label alert gallery-label'><small>EXCLUSIVO<br/> SOCIOS</small></span></a></Link></p> : ''}
 
                 <Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
-                  <a dangerouslySetInnerHTML={ {__html: post.name} } />
+                  <a title={'Ver la ficha de ' + post.name} dangerouslySetInnerHTML={ {__html: post.name} } />
                 </Link>
 
                 <p>{post.categoria_de_la_prestacion ?<small><Link prefetch as={`/c-l/${post.categoria_de_la_prestacion.term_id}/${post.categoria_de_la_prestacion.slug}/${post.localidad_del_beneficio.term_id}/${post.localidad_del_beneficio.slug}`} href={`/category-localidad?id=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad_del_beneficio.term_id}`}><a title={'Ver los beneficios de ' + post.categoria_de_la_prestacion.name + ' en ' + post.localidad_del_beneficio.name}><span dangerouslySetInnerHTML={ {__html: post.localidad_del_beneficio.name} } /></a></Link></small> : <small>{post.localidad_del_beneficio.name}</small>} <br/>

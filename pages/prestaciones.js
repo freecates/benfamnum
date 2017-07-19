@@ -8,26 +8,29 @@ export default () => (
       <title>Prestaciones Familias Numerosas</title>
       <link rel="stylesheet" href="/static/prestaciones.css" />
     </Head>
+        <nav aria-label="Estás aquí:" role="navigation">
+        <ul className="breadcrumbs">
+            <li><Link prefetch href="/"><a>Inicio</a></Link></li>
+            <li>
+            <span className="show-for-sr">Actual: </span> Prestaciones públicas 
+            </li>
+        </ul>
+        <style jsx>{`
+            a, li {
+                color:#ffffff;
+            }
+        `}</style>
+        </nav>
        <section className='call-to-action'>
-            <h1>¿Eres socio? ¿Quieres conseguir estos descuentos?</h1>
-            <p>Ser familia numerosa te ofrece la posibilidad de muchas ventajas al asociarte. Participa y disfruta de todas ellas de una manera fácil y rápida.</p>
-            <p><img src='/static/carnet-familias-numerosas.jpg'/></p>
-            <p><Link prefetch href="/categorias"><a className='hollow button'>Quiero participar de estas ventajas</a></Link></p>
+            <h1>Selecciona la prestación pública por ámbito geográfico</h1>
+            <p className='icones-prestacions'>
+                <img src='/static/icona-prestacions-municipals-familias-numerosas.png'/> <img src='/static/icona-prestacions-autonomiques-familias-numerosas.png'/> <img src='/static/icona-prestacions-estatals-familias-numerosas.png'/>
+            </p>
             <style jsx>{`
                 .call-to-action {
                     text-align:center;
                     margin:0 auto;
-                }
-                h1 {
-                    color:#391f92;
-                }
-                .button {
-                    color:inherit;
-                    text-transform:uppercase;
-                    border-color:#391f92;
-                }
-                .button:hover {
-                    color:#391f92;
+                    color:#ffffff;
                 }
                 @media screen and (min-width: 320px) {   
                     .call-to-action {
@@ -48,6 +51,9 @@ export default () => (
                     .call-to-action {
                     width: 62%;
                     }
+                }
+                .icones-prestacions img {
+                    padding:0 2em 1em 0;
                 }
             `}</style>
         </section>
