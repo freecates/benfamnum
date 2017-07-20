@@ -20,7 +20,7 @@ const MunicipiosPrestaciones = (props) => (
             (
             <span key={municipio.localidad.term_id}>            
             <li className='item'>
-              <Link prefetch as={`/p-m/${municipio.localidad.term_id}/${municipio.localidad.slug}`} href={`/prestaciones-municipio?id=${municipio.localidad.term_id}`}>
+              <Link prefetch as={`/p-m/${municipio.localidad.term_id}/${municipio.localidad.slug}`} href={`/prestaciones-municipio?localidad=${municipio.localidad.term_id}`}>
                 <a><span dangerouslySetInnerHTML={ {__html: municipio.localidad.name} } /></a>
               </Link>
             </li>

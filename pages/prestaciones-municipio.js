@@ -13,8 +13,9 @@ const PrestacionesByMunicipio = (props) => (
       <ul className="breadcrumbs">
         <li><Link prefetch href="/"><a>Inicio</a></Link></li>
         <li><Link prefetch href="/prestaciones"><a>Prestaciones</a></Link></li>
+        <li><Link prefetch href="/municipios-prestaciones"><a>Municipios</a></Link></li>
         <li>
-          <span className="show-for-sr">Actual: </span> Localidad: {props.prestaciones[0].localidad.name} 
+          <span className="show-for-sr">Actual: </span> Municipio: {props.prestaciones[0].localidad.name} 
         </li>
       </ul>
     </nav>
@@ -120,7 +121,7 @@ const PrestacionesByMunicipio = (props) => (
 
 PrestacionesByMunicipio.getInitialProps = async function(context) {
   const { localidad } = context.query
-  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/prestaciones?_embed&localidad=${localidad}&nivel=Municipal`)
+  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/prestaciones?_embed&nivel=Municipal&localidad=${localidad}`)
   const prestaciones = await res.json()
 
   console.log(`Prestaciones data fetched. Count: ${prestaciones.length}`)
