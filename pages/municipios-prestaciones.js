@@ -7,21 +7,21 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 const MunicipiosPrestaciones = (props) => (
   <Layout>
     <Head>
-      <title>Beneficios - Categorías</title>
+      <title>Prestaciones - Municipios</title>
     </Head>
-    <h1>Beneficios - Categorías</h1>
+    <h1>Prestaciones - Municipios</h1>
     <IntlProvider defaultLocale='ca'>
         <ul className='gallery'>
           {props.municipios.reduce((ciutats, municipio) => {
-            if (post.localidad_del_beneficio == false) {
+            if (municipio.localidad == false) {
               return ciutats
             }
-            ciutats[] =
+            ciutats[municipio.localidad.term_id] =
             (
-            <span key={index}>            
+            <span key={municipio.localidad.term_id}>            
             <li className='item'>
-              <Link prefetch as={`/p-m/${municipio.id}/${municipio.slug}`} href={`/municipio?id=${municipio.id}`}>
-                <a><span dangerouslySetInnerHTML={ {__html: municipio.name} } /></a>
+              <Link prefetch as={`/p-m/${municipio.localidad.term_id}/${municipio.localidad.slug}`} href={`/prestaciones-municipio?id=${municipio.localidad.term_id}`}>
+                <a><span dangerouslySetInnerHTML={ {__html: municipio.localidad.name} } /></a>
               </Link>
             </li>
             </span>

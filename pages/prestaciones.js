@@ -24,7 +24,7 @@ export default () => (
        <section className='call-to-action'>
             <h1>Selecciona la prestación pública por ámbito geográfico</h1>
             <p className='icones-prestacions'>
-                <img src='/static/icona-prestacions-municipals-familias-numerosas.png'/> <img src='/static/icona-prestacions-autonomiques-familias-numerosas.png'/> <img src='/static/icona-prestacions-estatals-familias-numerosas.png'/>
+                <Link prefetch href="/municipios-prestaciones"><a><img src='/static/icona-prestacions-municipals-familias-numerosas.png'/></a></Link> <img src='/static/icona-prestacions-autonomiques-familias-numerosas.png'/> <img src='/static/icona-prestacions-estatals-familias-numerosas.png'/>
             </p>
             <style jsx>{`
                 .call-to-action {
