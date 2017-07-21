@@ -32,7 +32,7 @@ const PrestacionesByMunicipio = (props) => (
                 <h3 className='align-center'>{prestacion.nombre_de_la_prestacion}</h3> : '' }
 
                 {prestacion.enlace_de_interes ? 
-                <p><small>Más info en <Link href={prestacion.enlace_de_interes}><a target='_blank'>{prestacion.enlace_de_interes}</a></Link></small></p> : '' }
+                <p><small>Más info <Link href={prestacion.enlace_de_interes}><a className='button tiny' target='_blank'>aquí</a></Link></small></p> : '' }
 
                 {prestacion.nombre_de_la_prestacion ? 
                 <p dangerouslySetInnerHTML={ {__html: prestacion.descripcion_de_la_prestacion} }/> : '' } 
