@@ -20,7 +20,7 @@ const ComunidadesPrestaciones = (props) => (
             (
             <span key={comunidad.comunidad_autonoma.term_id}>            
             <li className='item'>
-              <Link prefetch as={`/p-m/${comunidad.comunidad_autonoma.term_id}/${comunidad.comunidad_autonoma.slug}`} href={`/prestaciones-comunidad?comunidad_autonoma=${comunidad.comunidad_autonoma.term_id}`}>
+              <Link prefetch as={`/p-c/${comunidad.comunidad_autonoma.term_id}/${comunidad.comunidad_autonoma.slug}`} href={`/prestaciones-comunidad?comunidad=${comunidad.comunidad_autonoma.term_id}`}>
                 <a><span dangerouslySetInnerHTML={ {__html: comunidad.comunidad_autonoma.name} } /></a>
               </Link>
             </li>

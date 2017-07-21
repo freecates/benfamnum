@@ -83,6 +83,14 @@ function prestaciones_constructMetaQuery($params){
                        'terms' => $params["localidad"],
                );
    }
+   
+   if(isset($params["comunidad"])){
+       $tax_query[] = array(
+                       'taxonomy' => 'comunidad',
+                       'field' => 'ID',
+                       'terms' => $params["comunidad"],
+               );
+   }
     
     return array(
                'meta_query' => $meta_query,
@@ -116,6 +124,14 @@ function getLocalidades(WP_REST_Request $request){
     return new WP_REST_Response( $localidades_filtered );
 }
 
+function getComunidades(WP_REST_Request $request){
+	$comunidades = get_terms( 'comunidad', array(
+		'hide_empty' => true,
+	) );
+	$comunidades_filtered = array_map('comunidad_basic',$comunidades);
+    return new WP_REST_Response( $comunidades_filtered );
+}
+
 
 function categoria_del_beneficio_basic($fields){
 
@@ -133,6 +149,13 @@ function categorias_de_la_prestacion_basic($fields){
 }
 
 function localidad_basic($fields){
+
+   $fields->id = $fields->term_id;
+   
+   return $fields;
+}
+
+function comunidad_basic($fields){
 
    $fields->id = $fields->term_id;
    
@@ -157,6 +180,15 @@ add_action( 'rest_api_init', function () {
 			array(
 				'methods' => 'GET',
 				'callback' => 'getLocalidades',
+			)
+		);
+    
+    register_rest_route(
+			'lanauva/v1', 
+			'/comunidad', 
+			array(
+				'methods' => 'GET',
+				'callback' => 'getComunidades',
 			)
 		);
     

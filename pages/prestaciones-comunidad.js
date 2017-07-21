@@ -4,23 +4,23 @@ import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
 
-const PrestacionesByMunicipio = (props) => (
+const PrestacionesByComunidad = (props) => (
   <Layout>
     <Head>
-      <title>Prestaciones - {props.prestaciones[0].localidad.name}</title>
+      <title>Prestaciones - {props.prestaciones[0].comunidad_autonoma.name}</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li><Link prefetch href="/"><a>Inicio</a></Link></li>
         <li><Link prefetch href="/prestaciones"><a>Prestaciones</a></Link></li>
-        <li><Link prefetch href="/municipios-prestaciones"><a>Municipios</a></Link></li>
+        <li><Link prefetch href="/comunidades-prestaciones"><a>Comunidades</a></Link></li>
         <li>
-          <span className="show-for-sr">Actual: </span> Municipio: {props.prestaciones[0].localidad.name} 
+          <span className="show-for-sr">Actual: </span> Comunidad: {props.prestaciones[0].comunidad_autonoma.name} 
         </li>
       </ul>
     </nav>
     <section>
-      <h1>{props.prestaciones[0].localidad.name}</h1>
+      <h1>{props.prestaciones[0].comunidad_autonoma.name}</h1>
       <IntlProvider defaultLocale='es'>
           <ul className='gallery'>
             {props.prestaciones.map((prestacion, index) => (
@@ -113,9 +113,9 @@ const PrestacionesByMunicipio = (props) => (
   </Layout>
 )
 
-PrestacionesByMunicipio.getInitialProps = async function(context) {
-  const { localidad } = context.query
-  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/prestaciones?_embed&nivel=Municipal&localidad=${localidad}`)
+PrestacionesByComunidad.getInitialProps = async function(context) {
+  const { comunidad } = context.query
+  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/prestaciones?_embed&nivel=Autonomico&comunidad=${comunidad}`)
   const prestaciones = await res.json()
 
   console.log(`Prestaciones data fetched. Count: ${prestaciones.length}`)
@@ -123,4 +123,4 @@ PrestacionesByMunicipio.getInitialProps = async function(context) {
   return { prestaciones }
 }
 
-export default PrestacionesByMunicipio
+export default PrestacionesByComunidad

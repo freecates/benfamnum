@@ -44,6 +44,13 @@ app.prepare()
     app.render(req, res, actualPage, queryParams, queryParamsS)
   })
 
+  server.get('/p-c/:comunidad/:slug', (req, res) => {
+    const actualPage = '/prestaciones-comunidad'
+    const queryParams = { comunidad: req.params.comunidad }
+    const queryParamsS = { id: req.params.slug }
+    app.render(req, res, actualPage, queryParams, queryParamsS)
+  })
+
   server.get('/m-l/:localidad/:slug', (req, res) => {
     const actualPage = '/mapa-localidad'
     const queryParams = { localidad: req.params.localidad }
