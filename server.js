@@ -1,13 +1,23 @@
+const path = require('path')
+const compression = require('compression')
 const express = require('express')
 const next = require('next')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
+const serve = (subpath, cache) => express.static(
+	path.resolve(__dirname, subpath),
+	{maxAge: cache && !dev ? 1000 * 60 * 60 * 24 * 30 : 0}
+)
 
 app.prepare()
 .then(() => {
   const server = express()
+
+  server.use(compression({threshold: 0}))
+  server.use('/static', serve('./static', true))
+  server.use('/manifest.json', serve('./static/manifest.json', true))
 
   server.get('/p/:id/:slug', (req, res) => {
     const actualPage = '/post'

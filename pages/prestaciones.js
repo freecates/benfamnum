@@ -37,6 +37,9 @@ export default () => (
                     .call-to-action {
                     width: 100%;
                     }
+                    .icones-prestacions img {
+                        padding:0 0 1em 0;
+                    }
                 }
                 @media screen and (min-width: 360px) {   
                     .call-to-action {
@@ -47,14 +50,14 @@ export default () => (
                     .call-to-action {
                     width: 70%;
                     }
+                    .icones-prestacions img {
+                        padding:0 2em 1em 0;
+                    }
                 }
                 @media screen and (min-width: 1366px) {   
                     .call-to-action {
                     width: 62%;
                     }
-                }
-                .icones-prestacions img {
-                    padding:0 2em 1em 0;
                 }
             `}</style>
         </section>

@@ -16,7 +16,12 @@ const Header = () => (
     <Head>
       {/* Import CSS for nprogress */}
       <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+      <meta name="theme-color" content="#64bc58" />
+      <link rel="icon" href="/static/favicon.ico" />
+      <link rel="manifest" href="/manifest.json" />
       <link rel="stylesheet" href="/static/foundation.min.css" />
       <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90&callback=initMap'
         type="text/javascript"></script>
