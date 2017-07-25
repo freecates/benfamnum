@@ -11,10 +11,6 @@ Router.onRouteChangeStart = (url) => {
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
-const linkStyle = {
-  marginRight: 15
-}
-
 const Header = () => (
   <div style={{ marginBottom: 20 }}>
     <Head>
@@ -26,21 +22,23 @@ const Header = () => (
         type="text/javascript"></script>
     </Head>
       <header>
-        <Link prefetch href="/">
-          <a><img src='/static/logo-familias-numerosas.png' alt='Inicio' /></a>
-        </Link>
-        <Link prefetch href="/categorias">
-          <a style={linkStyle}>Categorías</a>
-        </Link>
-        <Link prefetch href="/prestaciones">
-          <a style={linkStyle}>Prestaciones</a>
-        </Link>
-        <Link prefetch href="/la-federacion">
-          <a style={linkStyle}>La Federación</a>
-        </Link>
-        <Link prefetch href="/hazte-socio">
-          <a style={linkStyle}>Hazte socio</a>
-        </Link>
+        <ul className='vertical medium-horizontal menu align-center'>
+          <li><Link prefetch href="/">
+            <a><img src='/static/logo-familias-numerosas.png' alt='Inicio' /></a>
+          </Link></li>
+          <li><Link prefetch href="/categorias">
+            <a>Beneficios</a>
+          </Link></li>
+          <li><Link prefetch href="/prestaciones">
+            <a>Prestaciones</a>
+          </Link></li>
+          <li><Link prefetch href="/la-federacion">
+            <a>La Federación</a>
+          </Link></li>
+          <li><Link prefetch href="/hazte-socio">
+            <a>Hazte socio</a>
+          </Link></li>
+        </ul>
       </header>
 
       
@@ -52,8 +50,14 @@ const Header = () => (
             color:#ffffff;
             text-decoration:underline;
           }
+          ul.vertical.menu.align-center li {
+            text-align:center;
+          }
+          .menu>li {
+            vertical-align:bottom;
+          }
           header {
-            background: url('/static/bg-header-familias-numerosas.jpg');
+            background: url('/static/bg-body-familias-numerosas.jpg');
             background-size: cover;
             background-repeat: no-repeat;
           }

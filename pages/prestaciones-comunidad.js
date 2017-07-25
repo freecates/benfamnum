@@ -8,6 +8,11 @@ const PrestacionesByComunidad = (props) => (
   <Layout>
     <Head>
       <title>Prestaciones - {props.prestaciones[0].comunidad_autonoma.name}</title>
+      <link rel="stylesheet" href="/static/responsive-tables.css" />
+      <script async defer src='/static/jquery.min.js'
+        type="text/javascript"></script>
+      <script async defer src='/static/responsive-tables.js'
+        type="text/javascript"></script>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
@@ -20,25 +25,32 @@ const PrestacionesByComunidad = (props) => (
       </ul>
     </nav>
     <section>
-      <h1>{props.prestaciones[0].comunidad_autonoma.name}</h1>
+      <h1>Prestaciones públicas en {props.prestaciones[0].comunidad_autonoma.name}</h1>
       <IntlProvider defaultLocale='es'>
-          <ul className='gallery'>
-            {props.prestaciones.map((prestacion, index) => (
-              <li className='benefit' key={index}>
-
-                <h2 className='align-center'>{prestacion.logo_de_la_localidad ? <img src={prestacion.logo_de_la_localidad.sizes.thumbnail}/> : ''}<br/><span dangerouslySetInnerHTML={ {__html: prestacion.name} } /></h2>
-
-                {prestacion.nombre_de_la_prestacion ?
-                <h3 className='align-center'>{prestacion.nombre_de_la_prestacion}</h3> : '' }
-
-                {prestacion.enlace_de_interes ? 
-                <p className='align-center'><small>Más info<br/><Link href={prestacion.enlace_de_interes}><a className='button small' target='_blank'>aquí</a></Link></small></p> : '' }
-
-                {prestacion.nombre_de_la_prestacion ? 
-                <p dangerouslySetInnerHTML={ {__html: prestacion.descripcion_de_la_prestacion} }/> : '' } 
-              </li>
-            ))}
-          </ul>
+        <table className='responsive'>          
+          <thead>
+            <tr>
+              <td></td>
+              <td>Tipo de prestación</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </thead>
+          {props.prestaciones.map((prestacion, index) => (
+          <tbody key={index}>
+            <tr>
+              <td width='64'><img src={'/static/32/' + prestacion.categoria_de_la_prestacion_publica.slug +'-prestaciones-familias-numerosas.png'} /></td>
+              <td width='300'>{ prestacion.categoria_de_la_prestacion_publica.name}</td>
+              <td><span dangerouslySetInnerHTML={ {__html: prestacion.name} } />. {prestacion.nombre_de_la_prestacion ?
+                <span>{prestacion.nombre_de_la_prestacion}</span> : '' }</td>
+              <td width='150'>
+                <Link prefetch as={`/pr/${prestacion.ID}/${prestacion.slug}`} href={`/prestacion?id=${prestacion.ID}`}>
+                  <a title={'Acceder a la ficha de ' + prestacion.name} className='button small'>Acceder a la ficha</a>
+                </Link></td>
+            </tr>
+          </tbody>
+          ))}
+        </table>
 
       </IntlProvider>
     </section>
@@ -52,62 +64,26 @@ const PrestacionesByComunidad = (props) => (
           h1, h2, h3 {
             color:#391f92;
           }
-          .gallery {
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-wrap: wrap;
-                flex-wrap: wrap;
-            padding: 5px;
+          table thead {
+            background:none;
           }
-          ul {
-            list-style-type:none;
-            margin-left:0;
-            margin:0 auto!important;
+          table tbody tr td {
+            border-top:1px solid #000000;
+          }
+          table tbody tr td a {
+            margin:0;
+          }
+          table tbody tr td a.button {
+            background:#d86525;
+          }
+          table tbody tr td a.button:hover {
+            background:#aa4e1c;
           }
           nav a {
             color:#3f3fff;
           }
           .benefit {
             width: 95%;
-          }
-          .gallery-label {
-            position:relative;
-            margin-top:-40px;
-            margin-right:5px;
-            float:right;
-            text-align:center;
-            background:#cc0033;
-          }
-          @media screen and (min-width: 320px) {   
-            .gallery {
-              width: 100%;
-            }              
-            .benefit {
-              margin: 5px;
-            }
-          }
-          @media screen and (max-width: 375px) {              
-            .benefit {
-              width: 100%;
-            }
-          }
-          @media screen and (min-width: 360px) {   
-            .gallery {
-              width: 90%;
-            }
-          }
-          @media screen and (min-width: 768px) {   
-            .gallery {
-              width: 90%;
-            }
-          .benefit {
-              margin: 2.5%;
-            }
-          }
-          @media screen and (min-width: 1024px) {   
-            .gallery {
-              width: 84%;
-            }
           }
         `}</style>
   </Layout>

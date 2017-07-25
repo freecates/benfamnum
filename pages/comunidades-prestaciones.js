@@ -9,7 +9,7 @@ const ComunidadesPrestaciones = (props) => (
     <Head>
       <title>Prestaciones - Comunidades</title>
     </Head>
-    <h1>Prestaciones - Comunidades</h1>
+    <h1>Comunidades con Prestaciones</h1>
     <IntlProvider defaultLocale='ca'>
         <ul className='gallery'>
           {props.comunidades.reduce((autonomies, comunidad) => {
@@ -27,13 +27,13 @@ const ComunidadesPrestaciones = (props) => (
             </span>
             )
             return autonomies
-        },[]).sort(function(a,b){
-          if (a.slug < b.slug)
+        },[].sort(function(a,b){
+          if (a.comunidad_autonoma.slug < b.comunidad_autonoma.slug)
             return -1;
-          if (a.slug > b.slug)
+          if (a.comunidad_autonoma.slug > b.comunidad_autonoma.slug)
             return 1;
           return 0;
-          })}
+          }))}
         </ul>
     </IntlProvider>
         <style jsx>{`

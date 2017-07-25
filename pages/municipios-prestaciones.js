@@ -9,10 +9,18 @@ const MunicipiosPrestaciones = (props) => (
     <Head>
       <title>Prestaciones - Municipios</title>
     </Head>
-    <h1>Prestaciones - Municipios</h1>
+    <h1>Municipios con Prestaciones</h1>
     <IntlProvider defaultLocale='ca'>
         <ul className='gallery'>
-          {props.municipios.reduce((ciutats, municipio) => {
+          {props.municipios.sort((a,b) => {
+          if (a.localidad.slug < b.localidad.slug) {
+            return -1
+          }
+          if (a.localidad.slug > b.localidad.slug) {
+            return 1
+          }
+          return 0
+          }).reduce((ciutats, municipio) => {
             if (municipio.localidad == false) {
               return ciutats
             }
@@ -27,13 +35,7 @@ const MunicipiosPrestaciones = (props) => (
             </span>
             )
             return ciutats
-        },[]).sort(function(a,b){
-          if (a.slug < b.slug)
-            return -1;
-          if (a.slug > b.slug)
-            return 1;
-          return 0;
-          })}
+        },[])}
         </ul>
     </IntlProvider>
         <style jsx>{`

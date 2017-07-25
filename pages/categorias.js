@@ -9,7 +9,8 @@ const Categories = (props) => (
     <Head>
       <title>Beneficios - Categorías</title>
     </Head>
-    <h1>Beneficios - Categorías</h1>
+    <h1>Categorías de los Beneficios</h1>
+    <p className='align-center'>Escoje la categoría que más te interese haciendo click</p>
     <IntlProvider defaultLocale='ca'>
         <ul className='gallery'>
           {props.categories.map((category, index) => (
@@ -17,7 +18,7 @@ const Categories = (props) => (
             {category.id <=100 ?
             <li className='item'>
               <Link prefetch as={`/c/${category.id}/${category.slug}`} href={`/category?id=${category.id}`}>
-                <a><img src={'/static/32/' + category.slug +'-familias-numerosas.png'} /> <span dangerouslySetInnerHTML={ {__html: category.name} } /></a>
+                <a title={'Clica aquí para ver todos los beneficios de ' + category.name}><img src={'/static/32/' + category.slug +'-familias-numerosas.png'} /> <span dangerouslySetInnerHTML={ {__html: category.name} } /></a>
               </Link>
             </li>
             : ''}
@@ -28,6 +29,9 @@ const Categories = (props) => (
         <style jsx>{`
           h1 {
             color:#391f92;
+            text-align:center;
+          }
+          .align-center {
             text-align:center;
           }
           .gallery {

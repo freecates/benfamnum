@@ -35,7 +35,15 @@ class SelectCity extends React.Component {
             {renderedElements}
           </select>
         </label>
-        <input className='button' type='submit' value='Ver beneficios' />
+        <input className='button small' type='submit' value='Ver los beneficios' />
+        <style jsx>{`
+          input[type=submit] {
+            background:#d86525;
+          }
+          input[type=submit]:hover {
+            background:#aa4e1c;
+          }
+        `}</style>
       </form>
     );
   }

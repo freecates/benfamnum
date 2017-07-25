@@ -54,7 +54,7 @@ const Post =  (props) => (
 
             {props.post.acf.imagen_destacada_de_la_oferta_general_large ? 
             
-              <p><img className='img-file' width='<1024></1024>' src={props.post.acf.imagen_destacada_de_la_oferta_general_large.sizes.large} alt={props.post.acf.titulo_de_la_oferta_general} /></p> : ''}
+              <p><img className='img-file' width='1024' src={props.post.acf.imagen_destacada_de_la_oferta_general_large.sizes.large} alt={props.post.acf.titulo_de_la_oferta_general} /></p> : ''}
 
             </div>
 
