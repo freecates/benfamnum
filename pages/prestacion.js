@@ -32,7 +32,7 @@ const Prestacion =  (props) => (
            
             {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica == 'Autonómico' ? <p className='location'><small><Link prefetch as={`/p-c/${props.prestacion.acf.comunidad_autonoma.term_id}/${props.prestacion.acf.comunidad_autonoma.slug}`} href={`/prestaciones-comunidad?comunidad=${props.prestacion.acf.comunidad_autonoma.term_id}`}><a title={'Ver todas las prestaciones de ' + props.prestacion.acf.comunidad_autonoma.name}><span dangerouslySetInnerHTML={ {__html: props.prestacion.acf.comunidad_autonoma.name} } /></a></Link></small></p> : ''}
 
-            <p className='category'><small><strong>Categoria</strong>: <Link prefetch as={`/c/${props.prestacion.categoria_de_la_prestacion_publica}/${props.prestacion._embedded['wp:term'][0][0].slug}`} href={`/category?id=${props.prestacion.categoria_de_la_prestacion_publica}`}><a>{props.prestacion._embedded['wp:term'][0][0].name}</a></Link></small></p>
+            <p className='category'><small><strong>Tipo de prestación: </strong>: {props.prestacion._embedded['wp:term'][0][0].name}</small></p>
 
           <div className='file-data'>
 
@@ -51,6 +51,8 @@ const Prestacion =  (props) => (
             </IntlProvider>
               
               {props.prestacion.acf.descripcion_de_la_prestacion ? <p dangerouslySetInnerHTML={ {__html: props.prestacion.acf.descripcion_de_la_prestacion} }/> : '' }
+
+              {props.prestacion.acf.enlace_de_interes ? <p className='callout align-center'>Más info <Link href={props.prestacion.acf.enlace_de_interes}><a target='_blank'>aquí</a></Link></p> : ''}
 
             </div>
           
@@ -76,6 +78,9 @@ const Prestacion =  (props) => (
         }
         a {
           color:#3f3fff;
+        }
+        .align-center {
+          text-align:center;
         }
         .file-label {
           background:#cc0033;

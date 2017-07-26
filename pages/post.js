@@ -76,7 +76,7 @@ const Post =  (props) => (
           
           </div>
 
-          {props.post.acf.como_conseguir_la_oferta_oferta_socios ? <div className="callout large alert"><p dangerouslySetInnerHTML={ {__html: props.post.acf.como_conseguir_la_oferta_oferta_socios} }/></div> : '' }  
+          {props.post.acf.como_conseguir_la_oferta_oferta_socios ? <div className="callout large alert"><p>¡ATENCIÓN!: <span dangerouslySetInnerHTML={ {__html: props.post.acf.como_conseguir_la_oferta_oferta_socios} }/></p></div> : '' }  
 
         </div>
 
@@ -95,6 +95,7 @@ const Post =  (props) => (
         }
         h1 small {
           color:#ffffff;
+          font-weight:bold;
         }
         a {
           color:#3f3fff;

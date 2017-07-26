@@ -93,6 +93,9 @@ const HeaderHome = () => (
             background-size: cover;
             background-repeat: no-repeat;
           }
+          .section-a, .section-b {
+            padding: 1rem;
+          }
           @media screen and (min-width: 320px) {
           header {
               padding:.25em;
@@ -113,24 +116,17 @@ const HeaderHome = () => (
               display: flex;
               -ms-flex-wrap: wrap;
                   flex-wrap: wrap;
-              align-items:center;
-              margin-left:2rem;
+              align-items:start;
             }
             .section-a, .section-b {
-              width: 42%;
+              width: 50%;
               max-width:42rem;
-              margin: 5px 20px;
             }
           }
-          @media screen and (min-width: 1024px) {             
-            .section-data {
-              margin-left:4rem;
-            }
-          }
-          @media screen and (min-width: 1360px) {             
-            .section-data {
-              margin-left:6rem;
-            }
+          @media screen and (min-width: 1360px) {
+            .section-a, .section-b {
+              padding: 2rem 5rem;
+            }  
           }
         `}</style>
 
