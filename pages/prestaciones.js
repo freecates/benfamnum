@@ -15,11 +15,6 @@ export default () => (
             <span className="show-for-sr">Actual: </span> Prestaciones públicas 
             </li>
         </ul>
-        <style jsx>{`
-            a, li {
-                color:#ffffff;
-            }
-        `}</style>
         </nav>
        <section className='call-to-action'>
             <h1>Selecciona la prestación pública por ámbito geográfico</h1>
@@ -27,39 +22,42 @@ export default () => (
                 <Link prefetch href="/municipios-prestaciones"><a><img src='/static/icona-prestacions-municipals-familias-numerosas.png'/></a></Link> 
                 <Link prefetch href="/comunidades-prestaciones"><a><img src='/static/icona-prestacions-autonomiques-familias-numerosas.png'/></a></Link> <img src='/static/icona-prestacions-estatals-familias-numerosas.png'/>
             </p>
-            <style jsx>{`
-                .call-to-action {
-                    text-align:center;
-                    margin:0 auto;
-                    color:#ffffff;
-                }
-                @media screen and (min-width: 320px) {   
-                    .call-to-action {
-                    width: 100%;
-                    }
-                    .icones-prestacions img {
-                        padding:0 0 1em 0;
-                    }
-                }
-                @media screen and (min-width: 360px) {   
-                    .call-to-action {
-                    width: 90%;
-                    }
-                }
-                @media screen and (min-width: 768px) {   
-                    .call-to-action {
-                    width: 70%;
-                    }
-                    .icones-prestacions img {
-                        padding:0 2em 1em 0;
-                    }
-                }
-                @media screen and (min-width: 1366px) {   
-                    .call-to-action {
-                    width: 62%;
-                    }
-                }
-            `}</style>
         </section>
+        <style jsx>{`
+            a, li {
+                color:#ffffff;
+            }
+            .call-to-action {
+                text-align:center;
+                margin:0 auto;
+                color:#ffffff;
+            }
+            @media screen and (min-width: 320px) {   
+                .call-to-action {
+                width: 100%;
+                }
+                .icones-prestacions img {
+                    padding:0 0 1em 0;
+                }
+            }
+            @media screen and (min-width: 360px) {   
+                .call-to-action {
+                width: 90%;
+                }
+            }
+            @media screen and (min-width: 768px) {   
+                .call-to-action {
+                width: 70%;
+                }
+                .icones-prestacions img {
+                    padding:0 2em 1em 0;
+                }
+            }
+            @media screen and (min-width: 1366px) {   
+                .call-to-action {
+                width: 62%;
+                }
+            }
+        `}</style>
     </Layout>
 )

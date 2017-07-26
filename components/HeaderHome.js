@@ -11,7 +11,7 @@ Router.onRouteChangeStart = (url) => {
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
-const Header = () => (
+const HeaderHome = () => (
   <div style={{ marginBottom: 20 }}>
     <Head>
       {/* Import CSS for nprogress */}
@@ -46,6 +46,20 @@ const Header = () => (
             <a>Hazte socio</a>
           </Link></li>
         </ul>
+      <section className='section-data'>
+        <div className='section-a'>
+          <p className='icones-prestacions align-center'>
+              <Link prefetch href="/prestaciones"><a><img src='/static/icona-prestacions-publiques-familias-numerosas.png'/></a></Link>
+          </p>
+          <p>Desde este apartado podrás acceder a toda la información sobre las prestaciones que como familia numerosa te ofrece el gobierno central, autonónico o municipal</p>
+        </div>
+        <div className='section-b'>
+          <p className='icones-prestacions align-center'>
+              <Link prefetch href="/categorias"><a><img src='/static/icona-ofertas-familias-numerosas.png'/></a></Link>
+          </p>
+          <p>Ser familia numerosa te ofrece muchos descuentos y servicios exclusivos, en este apartado podrás seleccionar el tipo de servicio que necesitas y las ventajas que te ofrecen las empresas</p>
+        </div>
+      </section>
       </header>
 
       
@@ -57,7 +71,18 @@ const Header = () => (
             color:#ffffff;
             text-decoration:underline;
           }
+          ul,section {
+            max-width:84rem;
+            margin:0 auto;
+            width:100%;
+          }
           ul.vertical.menu.align-center li {
+            text-align:center;
+          }
+          p {
+            color:#ffffff;
+          }
+          .align-center {
             text-align:center;
           }
           .menu>li {
@@ -72,10 +97,39 @@ const Header = () => (
           header {
               padding:.25em;
             }
+            .icones-prestacions img {
+                padding:0 0 1em 0;
+            }
           }
           @media screen and (min-width: 768px) {
           header {
               padding:.5em;
+            }
+            .icones-prestacions img {
+                padding:4rem 2em 1em 0;
+            }              
+            .section-data {
+              display: -ms-flexbox;
+              display: flex;
+              -ms-flex-wrap: wrap;
+                  flex-wrap: wrap;
+              align-items:center;
+              margin-left:2rem;
+            }
+            .section-a, .section-b {
+              width: 42%;
+              max-width:42rem;
+              margin: 5px 20px;
+            }
+          }
+          @media screen and (min-width: 1024px) {             
+            .section-data {
+              margin-left:4rem;
+            }
+          }
+          @media screen and (min-width: 1360px) {             
+            .section-data {
+              margin-left:6rem;
             }
           }
         `}</style>
@@ -83,4 +137,4 @@ const Header = () => (
     </div>
 )
 
-export default Header
+export default HeaderHome

@@ -11,7 +11,7 @@ const mainStyle = {
 }
 
 const Layout = (props) => (
-  <div style={layoutStyle}>
+  <div style={layoutStyle} className='layout'>
     <Header />
       <main style={mainStyle}>
         {props.children}
