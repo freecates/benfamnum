@@ -23,6 +23,8 @@ const Header = () => (
       <link rel="icon" href="/static/favicon.ico" />
       <link rel="manifest" href="/manifest.json" />
       <link rel="stylesheet" href="/static/foundation.min.css" />
+      <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet" />
+      <link rel="stylesheet" href="/static/global.css" />
       <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90&callback=initMap'
         type="text/javascript"></script>
     </Head>
@@ -31,14 +33,14 @@ const Header = () => (
           <li><Link prefetch href="/">
             <a><img src='/static/logo-familias-numerosas.png' alt='Inicio' /></a>
           </Link></li>
-          <li><Link prefetch href="/categorias">
-            <a>Beneficios</a>
-          </Link></li>
-          <li><Link prefetch href="/prestaciones">
-            <a>Prestaciones</a>
-          </Link></li>
           <li><Link prefetch href="/la-federacion">
             <a>La Federación</a>
+          </Link></li>
+          <li><Link prefetch href="/categorias">
+            <a>Beneficios para familias</a>
+          </Link></li>
+          <li><Link prefetch href="/prestaciones">
+            <a>Prestaciones oficiales</a>
           </Link></li>
           <li><Link prefetch href="/hazte-socio">
             <a>Hazte socio</a>

@@ -9,9 +9,9 @@ const PrestacionesByMunicipio = (props) => (
     <Head>
       <title>Prestaciones - {props.prestaciones[0].localidad.name}</title>
       <link rel="stylesheet" href="/static/responsive-tables.css" />
-      <script src='/static/jquery.min.js'
+      <script async src='/static/jquery.min.js'
         type="text/javascript"></script>
-      <script src='/static/responsive-tables.js'
+      <script async src='/static/responsive-tables.js'
         type="text/javascript"></script>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">

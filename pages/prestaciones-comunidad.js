@@ -9,9 +9,9 @@ const PrestacionesByComunidad = (props) => (
     <Head>
       <title>Prestaciones - {props.prestaciones[0].comunidad_autonoma.name}</title>
       <link rel="stylesheet" href="/static/responsive-tables.css" />
-      <script async defer src='/static/jquery.min.js'
+      <script async src='/static/jquery.min.js'
         type="text/javascript"></script>
-      <script async defer src='/static/responsive-tables.js'
+      <script async src='/static/responsive-tables.js'
         type="text/javascript"></script>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">

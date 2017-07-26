@@ -10,8 +10,9 @@ const Categories = (props) => (
       <title>Beneficios - Categorías</title>
     </Head>
     <h1>Categorías de los Beneficios</h1>
-    <p className='align-center'>Escoje la categoría que más te interese haciendo click</p>
+    <h2 className='align-center'>Escoje la categoría que más te interese haciendo click</h2>
     <IntlProvider defaultLocale='ca'>
+      <section>
         <ul className='gallery'>
           {props.categories.map((category, index) => (
             <span key={index}>
@@ -25,6 +26,8 @@ const Categories = (props) => (
             </span>
           ))}
         </ul>
+        <p className='align-center'>Si lo prefieres, tambíen puedes <Link href='#'><a className='blue'>ver los beneficios de servicios online</a></Link>.</p>
+      </section>
     </IntlProvider>
         <style jsx>{`
           h1 {
@@ -51,6 +54,13 @@ const Categories = (props) => (
           }
           a:hover {
             text-decoration:underline;
+          }
+          a.blue {
+            color:#3f3fff;
+            text-decoration:underline;
+          }
+          p {
+            margin-top:2rem;
           }
           .item {
             width: 150px;

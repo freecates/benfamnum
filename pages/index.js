@@ -11,7 +11,7 @@ export default () => (
             <h1>¿Eres socio? ¿Quieres conseguir estos descuentos?</h1>
             <p>Ser familia numerosa te ofrece la posibilidad de muchas ventajas al asociarte. Participa y disfruta de todas ellas de una manera fácil y rápida.</p>
             <p><img src='/static/carnet-familias-numerosas.jpg'/></p>
-            <p><Link prefetch href="/categorias"><a className='hollow button'>Quiero participar de estas ventajas</a></Link></p>
+            <p><Link href="http://www.familias-numerosas.org/"><a className='hollow button' target='_blank'>Quiero participar de estas ventajas</a></Link></p>
             <style jsx>{`
                 .call-to-action {
                     text-align:center;

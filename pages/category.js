@@ -56,7 +56,7 @@ const PostsByCategory = (props) => (
 
       <IntlProvider defaultLocale='es'>
         <section>
-          <p>... O si lo prefieres accede directamente a cualquiera de la fichas</p>
+          <p>... O si lo prefieres accede directamente a cualquiera de las fichas</p>
           <ul className='gallery'>
             {props.posts.map((post, index) => (
               <li className='benefit' key={index}>
