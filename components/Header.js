@@ -25,7 +25,7 @@ const Header = () => (
       <link rel="stylesheet" href="/static/foundation.min.css" />
       <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet" />
       <link rel="stylesheet" href="/static/global.css" />
-      <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90&callback=initMap'
+      <script async="true" defer="true" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90&callback=initMap"
         type="text/javascript"></script>
     </Head>
       <header>
