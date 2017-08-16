@@ -31,6 +31,8 @@ const PostsByCategory = (props) => (
       <p className='align-center'><small><Link prefetch as={`/m/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`} href={`/mapa?id=${props.posts[0].categoria_de_la_prestacion.term_id}`}><a><img src='/static/icona-mapa-familias-numerosas.png' /> ver en el mapa</a></Link></small></p>
 
       <section id='select-city'>
+
+        <p>¿Dónde quieres disfrutar del beneficio? Selecciona la localidad</p>
         
           <SelectCity
            options={props.posts.reduce((ciutats, post) => {

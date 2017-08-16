@@ -19,7 +19,7 @@ const PostsByLocalidad = (props) => (
       </ul>
     </nav>
     <section>
-      <h1>Beneficios - {props.posts[0].localidad_del_beneficio.name}</h1>
+      <h1>Beneficios en {props.posts[0].localidad_del_beneficio.name}</h1>
       <p className='align-center'><small><Link prefetch as={`/m-l/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`} href={`/mapa-localidad?localidad=${props.posts[0].localidad_del_beneficio.term_id}`}><a><img src='/static/icona-mapa-familias-numerosas.png' /> ver en el mapa</a></Link></small></p>
       <IntlProvider defaultLocale='es'>
           <ul className='gallery'>

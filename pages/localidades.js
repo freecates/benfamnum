@@ -1,33 +1,49 @@
 import Head from 'next/head'
 import Layout from '../components/MyLayout.js'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
 
-const Categories = (props) => (
+const SelectCity = dynamic(
+  import('../components/SelectCity'),
+  {
+    loading: () => (<p>cargando ...</p>)
+  }
+)
+
+const Localidades = (props) => (
   <Layout>
     <Head>
-      <title>Beneficios - Categorías</title>
+      <title>Beneficios - Localidades</title>
     </Head>
-    <h1>Categorías de los Beneficios</h1>
-    <h2 className='align-center'>Escoje la categoría que más te interese haciendo click</h2>
+    <h1>Localidades de los Beneficios</h1>
+    <h2 className='align-center'>¿Dónde quieres disfrutar del beneficio? Selecciona la localidad</h2>
     <IntlProvider defaultLocale='ca'>
       <section>
-        <ul className='gallery'>
-          {props.categories.map((category, index) => (
-            <span key={index}>
-            {category.id <=100 ?
-            <li className='item'>
-              <Link prefetch as={`/c/${category.id}/${category.slug}`} href={`/category?id=${category.id}`}>
-                <a title={'Clica aquí para ver todos los beneficios de ' + category.name}><img src={'/static/32/' + category.slug +'-familias-numerosas.png'} /> <span dangerouslySetInnerHTML={ {__html: category.name} } /></a>
-              </Link>
-            </li>
-            : ''}
-            </span>
-          ))}
-        </ul>
-        <p className='align-center'>Si lo prefieres, tambíen puedes escojer los beneficios por <span className='callout'><Link prefetch href='/localidades'><a className='blue'><strong>localidad</strong></a></Link></span>.</p>
-        <p className='align-center'>O tambíen puedes <Link href='#'><a className='blue'>ver los beneficios de servicios online</a></Link>.</p>
+        
+        <SelectCity
+          options={props.beneficios.reduce((ciutats, beneficio) => {
+          if (beneficio.localidad_del_beneficio == false) {
+            return ciutats
+          }
+            ciutats[beneficio.localidad_del_beneficio.term_id] =
+            {
+              slug: beneficio.localidad_del_beneficio.slug,
+              key: beneficio.localidad_del_beneficio.term_id,
+              value: beneficio.localidad_del_beneficio ? `/localidad?localidad=${beneficio.localidad_del_beneficio.term_id}` : '',
+              label: beneficio.localidad_del_beneficio ? `${beneficio.localidad_del_beneficio.name}` : ''
+            }
+            return ciutats
+      },[]).sort((a,b) => {
+        if (a.slug < b.slug)
+          return -1;
+        if (a.slug > b.slug)
+          return 1;
+        return 0;
+        })} />
+
+        <p className='align-center'>Si lo prefieres, tambíen puedes <Link href='#'><a className='blue'>ver los beneficios de servicios online</a></Link>.</p>
       </section>
     </IntlProvider>
         <style jsx>{`
@@ -59,9 +75,6 @@ const Categories = (props) => (
           a.blue {
             color:#3f3fff;
             text-decoration:underline;
-          }
-          a.blue:hover {
-            text-decoration:none;
           }
           p {
             margin-top:2rem;
@@ -104,13 +117,13 @@ const Categories = (props) => (
   </Layout>
 )
 
-Categories.getInitialProps = async function() {
-  const res = await fetch('https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/categoria_del_beneficio')
-  const categories = await res.json()
+Localidades.getInitialProps = async function() {
+  const res = await fetch('https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios')
+  const beneficios = await res.json()
 
-  console.log(`Categories data fetched. Count: ${categories.length}`)
+  console.log(`Beneficios data fetched. Count: ${beneficios.length}`)
 
-  return { categories }
+  return { beneficios }
 }
 
-export default Categories
+export default Localidades

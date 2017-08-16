@@ -1,8 +1,16 @@
 import Head from 'next/head'
 import Layout from '../components/MyLayout.js'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
+
+const SelectCity = dynamic(
+  import('../components/SelectCity'),
+  {
+    loading: () => (<p>cargando ...</p>)
+  }
+)
 
 const ComunidadesPrestaciones = (props) => (
   <Layout>
@@ -10,31 +18,31 @@ const ComunidadesPrestaciones = (props) => (
       <title>Prestaciones - Comunidades</title>
     </Head>
     <h1>Comunidades con Prestaciones</h1>
+
+    <p>Selecciona la Comunidad Autónoma</p>
+
     <IntlProvider defaultLocale='ca'>
-        <ul className='gallery'>
-          {props.comunidades.reduce((autonomies, comunidad) => {
+
+      <SelectCity
+           options={props.comunidades.reduce((autonomies, comunidad) => {
             if (comunidad.comunidad_autonoma == false) {
               return autonomies
             }
-            autonomies[comunidad.comunidad_autonoma.term_id] =
-            (
-            <span key={comunidad.comunidad_autonoma.term_id}>            
-            <li className='item'>
-              <Link prefetch as={`/p-c/${comunidad.comunidad_autonoma.term_id}/${comunidad.comunidad_autonoma.slug}`} href={`/prestaciones-comunidad?comunidad=${comunidad.comunidad_autonoma.term_id}`}>
-                <a><span dangerouslySetInnerHTML={ {__html: comunidad.comunidad_autonoma.name} } /></a>
-              </Link>
-            </li>
-            </span>
-            )
-            return autonomies
-        },[].sort(function(a,b){
-          if (a.comunidad_autonoma.slug < b.comunidad_autonoma.slug)
+             autonomies[comunidad.comunidad_autonoma.term_id] =
+              {
+                slug: comunidad.comunidad_autonoma.slug,
+                key: comunidad.comunidad_autonoma.term_id,
+                value: comunidad.comunidad_autonoma.term_id ? `/prestaciones-comunidad?comunidad=${comunidad.comunidad_autonoma.term_id}` : '',
+                label: comunidad.comunidad_autonoma.term_id ? `${comunidad.comunidad_autonoma.name}` : ''
+              }
+              return autonomies
+        },[]).sort((a,b) => {
+          if (a.slug < b.slug)
             return -1;
-          if (a.comunidad_autonoma.slug > b.comunidad_autonoma.slug)
+          if (a.slug > b.slug)
             return 1;
           return 0;
-          }))}
-        </ul>
+          })} />
     </IntlProvider>
         <style jsx>{`
           h1 {

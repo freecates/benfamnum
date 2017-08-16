@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import LayoutHome from '../components/LayoutHome.js'
 
+
 export default () => (
     <LayoutHome>
     <Head>

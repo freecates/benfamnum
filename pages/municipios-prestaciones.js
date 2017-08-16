@@ -1,8 +1,16 @@
 import Head from 'next/head'
 import Layout from '../components/MyLayout.js'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
+
+const SelectCity = dynamic(
+  import('../components/SelectCity'),
+  {
+    loading: () => (<p>cargando ...</p>)
+  }
+)
 
 const MunicipiosPrestaciones = (props) => (
   <Layout>
@@ -10,33 +18,31 @@ const MunicipiosPrestaciones = (props) => (
       <title>Prestaciones - Municipios</title>
     </Head>
     <h1>Municipios con Prestaciones</h1>
+
+    <p>Selecciona el municipio</p>
+    
     <IntlProvider defaultLocale='ca'>
-        <ul className='gallery'>
-          {props.municipios.sort((a,b) => {
-          if (a.localidad.slug < b.localidad.slug) {
-            return -1
-          }
-          if (a.localidad.slug > b.localidad.slug) {
-            return 1
-          }
-          return 0
-          }).reduce((ciutats, municipio) => {
+
+      <SelectCity
+           options={props.municipios.reduce((ciutats, municipio) => {
             if (municipio.localidad == false) {
               return ciutats
             }
-            ciutats[municipio.localidad.term_id] =
-            (
-            <span key={municipio.localidad.term_id}>            
-            <li className='item'>
-              <Link prefetch as={`/p-m/${municipio.localidad.term_id}/${municipio.localidad.slug}`} href={`/prestaciones-municipio?localidad=${municipio.localidad.term_id}`}>
-                <a><span dangerouslySetInnerHTML={ {__html: municipio.localidad.name} } /></a>
-              </Link>
-            </li>
-            </span>
-            )
-            return ciutats
-        },[])}
-        </ul>
+             ciutats[municipio.localidad.term_id] =
+              {
+                slug: municipio.localidad.slug,
+                key: municipio.localidad.term_id,
+                value: municipio.localidad.term_id ? `/prestaciones-municipio?localidad=${municipio.localidad.term_id}` : '',
+                label: municipio.localidad.term_id ? `${municipio.localidad.name}` : ''
+              }
+              return ciutats
+        },[]).sort((a,b) => {
+          if (a.slug < b.slug)
+            return -1;
+          if (a.slug > b.slug)
+            return 1;
+          return 0;
+          })} />
     </IntlProvider>
         <style jsx>{`
           h1 {

@@ -30,12 +30,11 @@ class SelectCity extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          ¿Dónde quieres disfrutar del beneficio? Selecciona la localidad
           <select onChange={this.handleChange}>
             {renderedElements}
           </select>
         </label>
-        <input className='button small' type='submit' value='Ver los beneficios' />
+        <input className='button small' type='submit' value='Ir a los resultados' />
         <style jsx>{`
           input[type=submit] {
             background:#d86525;
