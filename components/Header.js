@@ -22,6 +22,12 @@ const Header = () => (
       <meta name="theme-color" content="#64bc58" />
       <link rel="icon" href="/static/favicon.ico" />
       <link rel="manifest" href="/manifest.json" />
+      <meta name="apple-mobile-web-app-capable" content="yes"/>
+      <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+      <meta name="apple-mobile-web-app-title" content="Beneficios Familias Numerosas"/>
+      <link rel="apple-touch-icon" href="/static/icons/android-chrome-192x192.png"/>
+      <meta name="msapplication-TileImage" content="/static/icons/android-chrome-192x192.png"/>
+      <meta name="msapplication-TileColor" content="#64bc58"/>
       <link rel="stylesheet" href="/static/foundation.min.css" />
       <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet" />
       <link rel="stylesheet" href="/static/global.css" />
@@ -39,7 +45,7 @@ const Header = () => (
           <li><Link prefetch href="/prestaciones">
             <a>Prestaciones oficiales</a>
           </Link></li>
-          <li><Link prefetch href="/categorias">
+          <li><Link prefetch href="/beneficios">
             <a>Beneficios para familias</a>
           </Link></li>
           <li><Link prefetch href="/hazte-socio">

@@ -22,7 +22,7 @@ const Post =  (props) => (
       <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-          <li><Link prefetch href="/categorias"><a>Categorías</a></Link></li>
+          <li><Link prefetch href="/beneficios"><a>Beneficios</a></Link></li>
           <li><Link prefetch as={`/c/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}`} href={`/category?id=${props.post.categoria_del_beneficio}`}><a>{props.post._embedded['wp:term'][0][0].name}</a></Link></li>
           <li>
             <span className="show-for-sr">Actual: </span> <span dangerouslySetInnerHTML={ {__html: props.post.acf.nombre_del_establecimiento} } />
@@ -40,7 +40,7 @@ const Post =  (props) => (
             {props.post.acf.telefono ? <span><a href={'tel:' + props.post.acf.telefono}>{props.post.acf.telefono}</a></span> : ''}
             {props.post.acf.correo_electronico_del_establecimiento ?  <span>. <strong>C.E.</strong>: <a href={'mailto:' + props.post.acf.correo_electronico_del_establecimiento}>{props.post.acf.correo_electronico_del_establecimiento}</a></span> : '' }{props.post.acf.twitter_del_establecimiento ? <span><a href={'https://twitter.com/' + props.post.acf.twitter_del_establecimiento}>t</a></span> : '' } {props.post.acf.facebook_del_establecimiento ? <span>| <a href={props.post.acf.facebook_del_establecimiento}>f</a></span> : '' } {props.post.acf.sitio_web_del_establecimiento ? <span>| <Link href={props.post.acf.sitio_web_del_establecimiento}><a>w</a></Link></span> : '' }</small></p>
 
-            <p className='category'><small><strong>Categoria</strong>: <Link prefetch as={`/c/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}`} href={`/category?id=${props.post.categoria_del_beneficio}`}><a>{props.post._embedded['wp:term'][0][0].name}</a></Link></small></p>
+            <p className='category'><small><strong>Categoria</strong>: <Link prefetch as={`/c/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}`} href={`/category?id=${props.post.categoria_del_beneficio}`}><a title={'Ver todos los beneficios de la categoría ' + props.post._embedded['wp:term'][0][0].name}>{props.post._embedded['wp:term'][0][0].name}</a></Link></small></p>
 
             {props.post.acf.lat ? <GMap lat={props.post.acf.lat} lng={props.post.acf.lon} /> : '' }
 

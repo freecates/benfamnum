@@ -15,36 +15,61 @@ const SelectCity = dynamic(
 const Localidades = (props) => (
   <Layout>
     <Head>
-      <title>Beneficios - Localidades</title>
+      <title>Beneficios</title>
     </Head>
-    <h1>Localidades de los Beneficios</h1>
-    <h2 className='align-center'>¿Dónde quieres disfrutar del beneficio? Selecciona la localidad</h2>
     <IntlProvider defaultLocale='ca'>
-      <section>
-        
-        <SelectCity
-          options={props.beneficios.reduce((ciutats, beneficio) => {
-          if (beneficio.localidad_del_beneficio == false) {
-            return ciutats
-          }
-            ciutats[beneficio.localidad_del_beneficio.term_id] =
-            {
-              slug: beneficio.localidad_del_beneficio.slug,
-              key: beneficio.localidad_del_beneficio.term_id,
-              value: beneficio.localidad_del_beneficio ? `/localidad?localidad=${beneficio.localidad_del_beneficio.term_id}` : '',
-              label: beneficio.localidad_del_beneficio ? `${beneficio.localidad_del_beneficio.name}` : ''
+      <main>
+        <h1>Beneficios</h1>
+        <section>
+          <h2>Por localidad</h2>
+          <h3>¿Dónde quieres disfrutar de los beneficios? Selecciona la localidad</h3>          
+          <SelectCity
+            options={props.beneficios.reduce((ciutats, beneficio) => {
+            if (beneficio.localidad_del_beneficio == false) {
+              return ciutats
             }
-            return ciutats
-      },[]).sort((a,b) => {
-        if (a.slug < b.slug)
-          return -1;
-        if (a.slug > b.slug)
-          return 1;
-        return 0;
-        })} />
+              ciutats[beneficio.localidad_del_beneficio.term_id] =
+              {
+                slug: beneficio.localidad_del_beneficio.slug,
+                key: beneficio.localidad_del_beneficio.term_id,
+                value: beneficio.localidad_del_beneficio ? `/localidad?localidad=${beneficio.localidad_del_beneficio.term_id}` : '',
+                label: beneficio.localidad_del_beneficio ? `${beneficio.localidad_del_beneficio.name}` : ''
+              }
+              return ciutats
+        },[]).sort((a,b) => {
+          if (a.slug < b.slug)
+            return -1;
+          if (a.slug > b.slug)
+            return 1;
+          return 0;
+          })} />
+        </section>
+        <section>
+          <h2>Por categoría</h2>
+          <h3>Escoje la categoría que más te interese haciendo click</h3>
+          <ul className='gallery'>
+          {props.beneficios.reduce((categories, beneficio) => {
+            if (beneficio.categoria_de_la_prestacion == false) {
+              return categories
+            }
+            categories[beneficio.categoria_de_la_prestacion.term_id] =
+            (
+            <span key={beneficio.categoria_de_la_prestacion.term_id}>            
+            <li className='item'>
+              <Link prefetch as={`/c/${beneficio.categoria_de_la_prestacion.term_id}/${beneficio.categoria_de_la_prestacion.slug}`} href={`/category?id=${beneficio.categoria_de_la_prestacion.term_id}`}>
+                <a title={'Clica aquí para ver todos los beneficios de ' + beneficio.categoria_de_la_prestacion.name}><img src={'/static/32/' + beneficio.categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /> <span dangerouslySetInnerHTML={ {__html: beneficio.categoria_de_la_prestacion.name} } /></a>
+              </Link>
+            </li>
+            </span>
+            )
+            return categories
+        },[])}
+        </ul>
 
         <p className='align-center'>Si lo prefieres, tambíen puedes <Link href='#'><a className='blue'>ver los beneficios de servicios online</a></Link>.</p>
-      </section>
+
+        </section>
+      </main>
     </IntlProvider>
         <style jsx>{`
           h1 {

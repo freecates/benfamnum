@@ -22,6 +22,12 @@ const HeaderHome = () => (
       <meta name="theme-color" content="#64bc58" />
       <link rel="icon" href="/static/favicon.ico" />
       <link rel="manifest" href="/manifest.json" />
+      <meta name="apple-mobile-web-app-capable" content="yes"/>
+      <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+      <meta name="apple-mobile-web-app-title" content="Beneficios Familias Numerosas"/>
+      <link rel="apple-touch-icon" href="/static/icons/android-chrome-192x192.png"/>
+      <meta name="msapplication-TileImage" content="/static/icons/android-chrome-192x192.png"/>
+      <meta name="msapplication-TileColor" content="#64bc58"/>
       <link rel="stylesheet" href="/static/foundation.min.css" />
       <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet" />
       <link rel="stylesheet" href="/static/global.css" />
@@ -39,7 +45,7 @@ const HeaderHome = () => (
           <li><Link prefetch href="/prestaciones">
             <a>Prestaciones oficiales</a>
           </Link></li>
-          <li><Link prefetch href="/categorias">
+          <li><Link prefetch href="/beneficios">
             <a>Beneficios para familias</a>
           </Link></li>
           <li><Link prefetch href="/hazte-socio">
@@ -55,7 +61,7 @@ const HeaderHome = () => (
         </div>
         <div className='section-b'>
           <p className='icones-prestacions align-center'>
-              <Link prefetch href="/categorias"><a><img src='/static/icona-ofertas-familias-numerosas.png'/></a></Link>
+              <Link prefetch href="/beneficios"><a><img src='/static/icona-ofertas-familias-numerosas.png'/></a></Link>
           </p>
           <p>Ser familia numerosa te ofrece muchos descuentos y servicios exclusivos, en este apartado podrás seleccionar el tipo de servicio que necesitas y las ventajas que te ofrecen las empresas</p>
         </div>
