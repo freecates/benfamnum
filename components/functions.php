@@ -162,6 +162,21 @@ function comunidad_basic($fields){
    return $fields;
 }
 
+function beneficios_localidadCategoria($fields){
+    
+        return array(
+            "localidad_del_beneficio" => $fields["localidad_del_beneficio"],
+            "categoria_de_la_prestacion" => $fields["categoria_de_la_prestacion"]
+        );
+}
+
+function ofertas_online_categoria($fields){
+    
+        return array(
+            "categoria_de_la_oferta" => $fields["categoria_de_la_oferta"]
+        );
+}
+
 
 add_action( 'rest_api_init', function () {
 

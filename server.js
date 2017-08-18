@@ -32,6 +32,13 @@ app.prepare()
     const queryParamsS = { id: req.params.slug }
     app.render(req, res, actualPage, queryParams, queryParamsS)
   })
+  
+  server.get('/oo/:id/:slug', (req, res) => {
+    const actualPage = '/oferta-on-line'
+    const queryParams = { id: req.params.id }
+    const queryParamsS = { id: req.params.slug }
+    app.render(req, res, actualPage, queryParams, queryParamsS)
+  })
 
   server.get('/c/:id/:slug', (req, res) => {
     const actualPage = '/category'
@@ -39,6 +46,13 @@ app.prepare()
     const queryParamsS = { id: req.params.slug }
     app.render(req, res, actualPage, queryParams, queryParamsS)
   })
+  
+    server.get('/c-o-o/:id/:slug', (req, res) => {
+      const actualPage = '/category-ofertas-on-line'
+      const queryParams = { id: req.params.id }
+      const queryParamsS = { id: req.params.slug }
+      app.render(req, res, actualPage, queryParams, queryParamsS)
+    })
 
   server.get('/m/:id/:slug', (req, res) => {
     const actualPage = '/mapa'

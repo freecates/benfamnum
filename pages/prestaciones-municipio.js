@@ -8,11 +8,6 @@ const PrestacionesByMunicipio = (props) => (
   <Layout>
     <Head>
       <title>Prestaciones - {props.prestaciones[0].localidad.name}</title>
-      <link rel="stylesheet" href="/static/responsive-tables.css" />
-      <script async="true" defer="true" src='/static/jquery.min.js'
-        type="text/javascript"></script>
-      <script async="true" defer="true" src='/static/responsive-tables.js'
-        type="text/javascript"></script>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
@@ -27,38 +22,40 @@ const PrestacionesByMunicipio = (props) => (
     <section>
       <h1>{props.prestaciones[0].logo_de_la_localidad ? <img src={props.prestaciones[0].logo_de_la_localidad.sizes.thumbnail}/> : ''}<br/>{props.prestaciones[0].localidad.name}</h1>
       <IntlProvider defaultLocale='es'>
-        <table className='responsive'>          
-          <thead>
-            <tr>
-              <td></td>
-              <td>Tipo de prestación</td>
-              <td></td>
-              <td></td>
-            </tr>
-          </thead>
-          {props.prestaciones.sort((a,b) => {
-          if (a.categoria_de_la_prestacion_publica.slug < b.categoria_de_la_prestacion_publica.slug) {
-            return -1
-          }
-          if (a.categoria_de_la_prestacion_publica.slug > b.categoria_de_la_prestacion_publica.slug) {
-            return 1
-          }
-          return 0
-          }).map((prestacion, index) => (
-          <tbody key={index}>
-            <tr>
-              <td width='64'><img src={'/static/32/' + prestacion.categoria_de_la_prestacion_publica.slug +'-prestaciones-familias-numerosas.png'} /></td>
-              <td width='300'>{ prestacion.categoria_de_la_prestacion_publica.name}</td>
-              <td><span dangerouslySetInnerHTML={ {__html: prestacion.name} } />. {prestacion.nombre_de_la_prestacion ?
-                <span>{prestacion.nombre_de_la_prestacion}</span> : '' }</td>
-              <td width='150'>
-                <Link prefetch as={`/pr/${prestacion.ID}/${prestacion.slug}`} href={`/prestacion?id=${prestacion.ID}`}>
-                  <a title={'Acceder a la ficha de ' + prestacion.name} className='button small'>Acceder a la ficha</a>
-                </Link></td>
-            </tr>
-          </tbody>
-          ))}
-        </table>
+        <div className='table-scroll'>
+          <table>          
+            <thead>
+              <tr>
+                <td></td>
+                <td>Tipo de prestación</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </thead>
+            {props.prestaciones.sort((a,b) => {
+            if (a.categoria_de_la_prestacion_publica.slug < b.categoria_de_la_prestacion_publica.slug) {
+              return -1
+            }
+            if (a.categoria_de_la_prestacion_publica.slug > b.categoria_de_la_prestacion_publica.slug) {
+              return 1
+            }
+            return 0
+            }).map((prestacion, index) => (
+            <tbody key={index}>
+              <tr>
+                <td width='64'><img src={'/static/32/' + prestacion.categoria_de_la_prestacion_publica.slug +'-prestaciones-familias-numerosas.png'} /></td>
+                <td width='200'>{ prestacion.categoria_de_la_prestacion_publica.name}</td>
+                <td><span dangerouslySetInnerHTML={ {__html: prestacion.name} } />. {prestacion.nombre_de_la_prestacion ?
+                  <span>{prestacion.nombre_de_la_prestacion}</span> : '' }</td>
+                <td width='150'>
+                  <Link prefetch as={`/pr/${prestacion.ID}/${prestacion.slug}`} href={`/prestacion?id=${prestacion.ID}`}>
+                    <a title={'Acceder a la ficha de ' + prestacion.name} className='button small'>Acceder a la ficha</a>
+                  </Link></td>
+              </tr>
+            </tbody>
+            ))}
+          </table>
+        </div>
 
       </IntlProvider>
     </section>
@@ -87,11 +84,13 @@ const PrestacionesByMunicipio = (props) => (
           table tbody tr td a.button:hover {
             background:#aa4e1c;
           }
+          @media screen and (max-width: 768px) {
+            table tbody td {
+              padding:.5rem .1rem .5rem .1rem;
+            }
+          }
           nav a {
             color:#3f3fff;
-          }
-          .benefit {
-            width: 95%;
           }
         `}</style>
   </Layout>

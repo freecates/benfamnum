@@ -66,7 +66,7 @@ const Localidades = (props) => (
         },[])}
         </ul>
 
-        <p className='align-center'>Si lo prefieres, tambíen puedes <Link href='#'><a className='blue'>ver los beneficios de servicios online</a></Link>.</p>
+        <p className='align-center'>Si lo prefieres, tambíen puedes <Link prefetch href='ofertas-on-line'><a className='blue'>ver los beneficios de servicios online</a></Link>.</p>
 
         </section>
       </main>
@@ -143,7 +143,7 @@ const Localidades = (props) => (
 )
 
 Localidades.getInitialProps = async function() {
-  const res = await fetch('https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios')
+  const res = await fetch('https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?sim-model=localidad-categoria')
   const beneficios = await res.json()
 
   console.log(`Beneficios data fetched. Count: ${beneficios.length}`)
