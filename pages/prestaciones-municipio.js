@@ -89,6 +89,11 @@ const PrestacionesByMunicipio = (props) => (
               padding:.5rem .1rem .5rem .1rem;
             }
           }
+          @media screen and (min-width: 768px) {
+            .table-scroll table {
+              width:100%;
+            }
+          }
           nav a {
             color:#3f3fff;
           }
