@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node server.js",
-    "build": "next build",
+    "build:next": "chmod -R u+x node_modules/next/dist/bin && next build",
+    "build": "npm run build:next --preact",
+    "build:report": "npm run build:next --report && webpack-bundle-analyzer .next/stats.json",
     "start": "NODE_ENV=production node server.js"
   },
   "keywords": [
@@ -27,9 +29,14 @@
     "isomorphic-unfetch": "^1.0.0",
     "next": "3.0.3",
     "nprogress": "^0.2.0",
+    "preact": "^8.1.0",
+    "preact-compat": "^3.16.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-google-maps": "next",
     "react-intl": "^2.2.3"
+  },
+  "devDependencies": {
+    "webpack-bundle-analyzer": "^2.8.2"
   }
 }
