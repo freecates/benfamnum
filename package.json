@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node server.js",
-    "build": "next build",
+    "build:next": "chmod -R u+x node_modules/next/dist/bin && next build && node generate-sw.js",
+    "build": "npm run build:next",
     "start": "NODE_ENV=production node server.js"
   },
   "keywords": [
@@ -31,5 +32,11 @@
     "react-dom": "^15.4.2",
     "react-google-maps": "next",
     "react-intl": "^2.2.3"
+  },
+  "devDependencies": {
+    "globby": "^6.1.0",
+    "load-json-file": "^2.0.0",
+    "workbox-build": "^1.0.1",
+    "workbox-webpack-plugin": "^1.0.1"
   }
 }

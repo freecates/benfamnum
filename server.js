@@ -17,6 +17,7 @@ app.prepare()
 
   server.use(compression({threshold: 0}))
   server.use('/static', serve('./static', true))
+  server.use('/service-worker.js', serve('./.next/service-worker.js', true))
   server.use('/manifest.json', serve('./static/manifest.json', true))
 
   server.get('/p/:id/:slug', (req, res) => {

@@ -1,5 +1,6 @@
 import Header from './Header'
 import Footer from './Footer'
+import ServiceWorker from '../pages/service-worker'
 
 const layoutStyle = {
   margin: '0 auto',
@@ -17,6 +18,7 @@ const Layout = (props) => (
         {props.children}
       </main>
     <Footer />
+    <ServiceWorker />
   </div>
 )
 
