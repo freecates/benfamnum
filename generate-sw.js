@@ -5,6 +5,7 @@ const loadJsonFile = require('load-json-file');
 
 const dotNext = path.resolve(__dirname, './.next')
 const target = path.resolve(__dirname, './.next/service-worker.js')
+const staticFiles = path.resolve(__dirname, './static')
 
 function bundles(app) {
 	return new Promise((resolve, reject) => {
@@ -77,6 +78,50 @@ workboxSW.precache(${precache})
 workboxSW.router.registerRoute(
 	'/',
 	workboxSW.strategies.staleWhileRevalidate()
+)
+workboxSW.router.registerRoute('https://gestorbeneficios.familiasnumerosas.org/wp-json/(.*)',
+workboxSW.strategies.cacheFirst({
+  cacheName: 'jsonwordpress',
+  cacheExpiration: {
+	maxEntries: 20,
+	maxAgeSeconds: 7 * 24 * 60 * 60
+  },
+  cacheableResponse: {statuses: [0, 200]}
+})
+)
+workboxSW.router.registerRoute('https://fonts.googleapis.com/(.*)',
+workboxSW.strategies.cacheFirst({
+  cacheName: 'fontgoogleapis',
+  cacheExpiration: {
+	maxEntries: 20
+  },
+  cacheableResponse: {statuses: [0, 200]}
+})
+)
+workboxSW.router.registerRoute('https://maps.googleapis.com/(.*)',
+workboxSW.strategies.cacheFirst({
+  cacheName: 'mapsgoogleapis',
+  cacheExpiration: {
+	maxEntries: 20
+  },
+  cacheableResponse: {statuses: [0, 200]}
+})
+)
+workboxSW.router.registerRoute(/\.(?:png|gif|jpg)$/,
+workboxSW.strategies.cacheFirst({
+  cacheName: 'images-cache',
+  cacheExpiration: {
+	maxEntries: 50
+  }
+})
+)
+workboxSW.router.registerRoute(/\.(?:css)$/,
+workboxSW.strategies.cacheFirst({
+  cacheName: 'css-cache',
+  cacheExpiration: {
+	maxEntries: 50
+  }
+})
 )
 `
 
