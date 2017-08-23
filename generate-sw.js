@@ -123,6 +123,14 @@ workboxSW.strategies.cacheFirst({
   }
 })
 )
+workboxSW.router.registerRoute(/\.(?:js)$/,
+workboxSW.strategies.cacheFirst({
+  cacheName: 'js-cache',
+  cacheExpiration: {
+	maxEntries: 50
+  }
+})
+)
 `
 
 app()
