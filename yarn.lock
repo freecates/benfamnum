@@ -3072,6 +3072,10 @@ react-hot-loader@3.0.0-beta.7:
     redbox-react "^1.3.6"
     source-map "^0.4.4"
 
+react-intersection-observer@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-1.0.0.tgz#e5edef3786fb427b3bb48f56c3faf46861e75a85"
+
 react-intl@^2.2.3:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-2.3.0.tgz#e1df6af5667fdf01cbe4aab20e137251e2ae5142"
