@@ -1,6 +1,6 @@
 {
   "name": "beneficios-familias-numerosas",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -25,7 +25,6 @@
     "compression": "^1.7.0",
     "express": "^4.15.2",
     "google-map-react": "^0.24.0",
-    "intersection-observer": "^0.4.0",
     "isomorphic-unfetch": "^1.0.0",
     "next": "3.0.3",
     "nprogress": "^0.2.0",
@@ -39,6 +38,7 @@
     "globby": "^6.1.0",
     "load-json-file": "^2.0.0",
     "workbox-build": "^1.0.1",
-    "workbox-webpack-plugin": "^1.0.1"
+    "workbox-webpack-plugin": "^1.0.1",
+    "intersection-observer": "^0.4.0"
   }
 }

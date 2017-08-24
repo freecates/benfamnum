@@ -33,6 +33,8 @@ const Header = () => (
       <link rel="stylesheet" href="/static/global.css" />
       <script async="true" defer="true" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90&callback=initMap"
         type="text/javascript"></script>
+      <script async="true" defer="true" src="/static/intersection-observer.js"
+        type="text/javascript"></script>
     </Head>
       <header>
         <ul className='vertical medium-horizontal menu align-center'>
