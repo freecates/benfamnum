@@ -69,6 +69,30 @@ const Localidades = (props) => (
         <p className='align-center'>Si lo prefieres, tambíen puedes <Link prefetch href='ofertas-on-line'><a className='blue'>ver los beneficios de servicios online</a></Link>.</p>
 
         </section>
+        <section>
+          <h2>Por localidad sobre el mapa</h2>
+          <h3>¿Dónde quieres disfrutar de los beneficios? Selecciona la localidad</h3>          
+          <SelectCity
+            options={props.beneficios.reduce((ciutats, beneficio) => {
+            if (beneficio.localidad_del_beneficio == false) {
+              return ciutats
+            }
+              ciutats[beneficio.localidad_del_beneficio.term_id] =
+              {
+                slug: beneficio.localidad_del_beneficio.slug,
+                key: beneficio.localidad_del_beneficio.term_id,
+                value: beneficio.localidad_del_beneficio ? `/mapa-localidad?localidad=${beneficio.localidad_del_beneficio.term_id}` : '',
+                label: beneficio.localidad_del_beneficio ? `${beneficio.localidad_del_beneficio.name}` : ''
+              }
+              return ciutats
+        },[]).sort((a,b) => {
+          if (a.slug < b.slug)
+            return -1;
+          if (a.slug > b.slug)
+            return 1;
+          return 0;
+          })} />
+        </section>
       </main>
     </IntlProvider>
         <style jsx>{`

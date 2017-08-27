@@ -44,7 +44,7 @@ const MapByLocalidad = (props) => (
       </ul>
     </nav>
     <section>
-    <h1>Beneficios - {props.markers[0].localidad_del_beneficio.name}</h1>
+    <h1>Beneficios en {props.markers[0].localidad_del_beneficio.name}</h1>
     <p className='align-center'><small><Link prefetch as={`/l/${props.markers[0].localidad_del_beneficio.term_id}/${props.markers[0].localidad_del_beneficio.slug}`} href={`/localidad?localidad=${props.markers[0].localidad_del_beneficio.term_id}`}><a title={'Ver todos los beneficios de ' + props.markers[0].localidad_del_beneficio.name}>ver listado</a></Link></small></p>
     <IntlProvider defaultLocale='es'>
       
