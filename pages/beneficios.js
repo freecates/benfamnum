@@ -69,9 +69,8 @@ const Localidades = (props) => (
         <p className='align-center'>Si lo prefieres, tambíen puedes <Link prefetch href='ofertas-on-line'><a className='blue'>ver los beneficios de servicios online</a></Link>.</p>
 
         </section>
-        <section>
-          <h2>Por localidad sobre el mapa</h2>
-          <h3>¿Dónde quieres disfrutar de los beneficios? Selecciona la localidad</h3>          
+        <section className='bg-mapa'>
+          <h2>Por localidad sobre el mapa</h2>       
           <SelectCity
             options={props.beneficios.reduce((ciutats, beneficio) => {
             if (beneficio.localidad_del_beneficio == false) {
@@ -130,6 +129,11 @@ const Localidades = (props) => (
           }
           .item {
             width: 150px;
+          }
+          .bg-mapa {
+            background: url(/static/bg-mapa.jpg) no-repeat center center;
+            background-size: cover;
+            padding:2em;
           }
           @media screen and (min-width: 320px) {   
             .gallery {
