@@ -27,6 +27,10 @@ const Post =  (props) => (
         <meta property="og:description" content={props.post.acf.descripcion_de_la_oferta_oferta_general} /> : ''}
         {props.post.acf.imagen_destacada_de_la_oferta_socios_large ?
         <meta property="og:image" content={props.post.acf.imagen_destacada_de_la_oferta_socios_large.sizes.large} /> : ''}
+        {props.post.acf.imagen_destacada_de_la_oferta_socios_large ?
+        <meta property="og:image:width" content="1024" /> : ''}
+        {props.post.acf.imagen_destacada_de_la_oferta_socios_large ?
+        <meta property="og:image:height" content="1024" /> : ''}
         {props.post.acf.imagen_destacada_de_la_oferta_general_large ? 
         <meta property="og:image" content={props.post.acf.imagen_destacada_de_la_oferta_general_large.sizes.large} /> : ''}
 
