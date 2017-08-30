@@ -21,32 +21,32 @@ const Localidades = (props) => (
       <main>
         <h1>Beneficios</h1>
         <section>
-          <h2>Por localidad</h2>
-          <h3>¿Dónde quieres disfrutar de los beneficios? Selecciona la localidad</h3>          
-          <SelectCity
-            options={props.beneficios.reduce((ciutats, beneficio) => {
-            if (beneficio.localidad_del_beneficio == false) {
-              return ciutats
-            }
-              ciutats[beneficio.localidad_del_beneficio.term_id] =
-              {
-                slug: beneficio.localidad_del_beneficio.slug,
-                key: beneficio.localidad_del_beneficio.term_id,
-                value: beneficio.localidad_del_beneficio ? `/localidad?localidad=${beneficio.localidad_del_beneficio.term_id}` : '',
-                label: beneficio.localidad_del_beneficio ? `${beneficio.localidad_del_beneficio.name}` : ''
+          <h2 className='align-center'>Por localidad</h2>
+          <div className='form-component'>          
+            <SelectCity
+              options={props.beneficios.reduce((ciutats, beneficio) => {
+              if (beneficio.localidad_del_beneficio == false) {
+                return ciutats
               }
-              return ciutats
-        },[]).sort((a,b) => {
-          if (a.slug < b.slug)
-            return -1;
-          if (a.slug > b.slug)
-            return 1;
-          return 0;
-          })} />
+                ciutats[beneficio.localidad_del_beneficio.term_id] =
+                {
+                  slug: beneficio.localidad_del_beneficio.slug,
+                  key: beneficio.localidad_del_beneficio.term_id,
+                  value: beneficio.localidad_del_beneficio ? `/localidad?localidad=${beneficio.localidad_del_beneficio.term_id}` : '',
+                  label: beneficio.localidad_del_beneficio ? `${beneficio.localidad_del_beneficio.name}` : ''
+                }
+                return ciutats
+          },[]).sort((a,b) => {
+            if (a.slug < b.slug)
+              return -1;
+            if (a.slug > b.slug)
+              return 1;
+            return 0;
+            })} />
+          </div>
         </section>
         <section>
-          <h2>Por categoría</h2>
-          <h3>Escoje la categoría que más te interese haciendo click</h3>
+          <h2 className='align-center'>Por categoría</h2>
           <ul className='gallery'>
           {props.beneficios.reduce((categories, beneficio) => {
             if (beneficio.categoria_de_la_prestacion == false) {
@@ -69,28 +69,30 @@ const Localidades = (props) => (
         <p className='align-center'>Si lo prefieres, tambíen puedes <Link prefetch href='ofertas-on-line'><a className='blue'>ver los beneficios de servicios online</a></Link>.</p>
 
         </section>
-        <section className='bg-mapa'>
-          <h2>Por localidad sobre el mapa</h2>       
-          <SelectCity
-            options={props.beneficios.reduce((ciutats, beneficio) => {
-            if (beneficio.localidad_del_beneficio == false) {
-              return ciutats
-            }
-              ciutats[beneficio.localidad_del_beneficio.term_id] =
-              {
-                slug: beneficio.localidad_del_beneficio.slug,
-                key: beneficio.localidad_del_beneficio.term_id,
-                value: beneficio.localidad_del_beneficio ? `/mapa-localidad?localidad=${beneficio.localidad_del_beneficio.term_id}` : '',
-                label: beneficio.localidad_del_beneficio ? `${beneficio.localidad_del_beneficio.name}` : ''
+        <section>
+          <h2 className='align-center'>Por localidad sobre el mapa</h2>
+          <div className='bg-mapa form-component'>       
+            <SelectCity
+              options={props.beneficios.reduce((ciutats, beneficio) => {
+              if (beneficio.localidad_del_beneficio == false) {
+                return ciutats
               }
-              return ciutats
-        },[]).sort((a,b) => {
-          if (a.slug < b.slug)
-            return -1;
-          if (a.slug > b.slug)
-            return 1;
-          return 0;
-          })} />
+                ciutats[beneficio.localidad_del_beneficio.term_id] =
+                {
+                  slug: beneficio.localidad_del_beneficio.slug,
+                  key: beneficio.localidad_del_beneficio.term_id,
+                  value: beneficio.localidad_del_beneficio ? `/mapa-localidad?localidad=${beneficio.localidad_del_beneficio.term_id}` : '',
+                  label: beneficio.localidad_del_beneficio ? `${beneficio.localidad_del_beneficio.name}` : ''
+                }
+                return ciutats
+          },[]).sort((a,b) => {
+            if (a.slug < b.slug)
+              return -1;
+            if (a.slug > b.slug)
+              return 1;
+            return 0;
+            })} />
+          </div>
         </section>
       </main>
     </IntlProvider>
@@ -135,8 +137,11 @@ const Localidades = (props) => (
             background-size: cover;
             padding:2em;
           }
+          .form-component {
+            margin:0 auto;
+          }
           @media screen and (min-width: 320px) {   
-            .gallery {
+            .gallery, .form-component {
               width: 100%;
             }              
             .item {
@@ -149,12 +154,12 @@ const Localidades = (props) => (
             }
           }
           @media screen and (min-width: 360px) {   
-            .gallery {
+            .gallery, .form-component {
               width: 90%;
             }
           }
           @media screen and (min-width: 768px) {   
-            .gallery {
+            .gallery, .form-component {
               width: 90%;
             }
           .item {
@@ -162,7 +167,7 @@ const Localidades = (props) => (
             }
           }
           @media screen and (min-width: 1366px) {   
-            .gallery {
+            .gallery, .form-component {
               width: 82%;
             }
           }

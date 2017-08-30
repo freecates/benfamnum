@@ -17,7 +17,58 @@ const Post =  (props) => (
       <Head>
         {props.post.acf.nombre_del_establecimiento ? <title dangerouslySetInnerHTML={ {__html: props.post.acf.nombre_del_establecimiento} } /> : ''}
         {props.post.acf.telefono ? <link rel="stylesheet" href="/static/custom.css" /> : '' }
+
+        <meta property="og:url" content={`/p/${props.post.id}/${props.post.slug}`} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={props.post.acf.nombre_del_establecimiento} />
+        {props.post.acf.descripcion_de_la_oferta_oferta_socios ?
+        <meta property="og:description" content={props.post.acf.descripcion_de_la_oferta_oferta_socios} /> : ''}
+        {props.post.acf.descripcion_de_la_oferta_oferta_general ? 
+        <meta property="og:description" content={props.post.acf.descripcion_de_la_oferta_oferta_general} /> : ''}
+        {props.post.acf.imagen_destacada_de_la_oferta_socios_large ?
+        <meta property="og:image" content={props.post.acf.imagen_destacada_de_la_oferta_socios_large.sizes.large} /> : ''}
+        {props.post.acf.imagen_destacada_de_la_oferta_general_large ? 
+        <meta property="og:image" content={props.post.acf.imagen_destacada_de_la_oferta_general_large.sizes.large} /> : ''}
+
+        {props.post.acf.descripcion_de_la_oferta_oferta_socios ?
+
+        <script type="application/ld+json" dangerouslySetInnerHTML={ { __html: `
+        {
+          "@context": "http://schema.org",
+          "@type": "Product",
+          "description": "${props.post.acf.descripcion_de_la_oferta_oferta_socios}",
+          "name": "${props.post.acf.nombre_del_establecimiento}",
+          "image": "${props.post.acf.imagen_destacada_de_la_oferta_socios_large.sizes.large}",
+          "offers": {
+            "@type": "Offer",
+            "availability": "http://schema.org/InStock",
+            "price": "${props.post.acf.titulo_de_la_oferta_oferta_socios}",
+            "priceCurrency": "EUR"
+          }
+        }`}} />
+
+        : ''}
+
+        {props.post.acf.descripcion_de_la_oferta_oferta_general ?
+
+        <script type="application/ld+json" dangerouslySetInnerHTML={ { __html: `
+        {
+          "@context": "http://schema.org",
+          "@type": "Product",
+          "description": "${props.post.acf.descripcion_de_la_oferta_oferta_general}",
+          "name": "${props.post.acf.nombre_del_establecimiento}",
+          "image": "${props.post.acf.imagen_destacada_de_la_oferta_general_large.sizes.large}",
+          "offers": {
+            "@type": "Offer",
+            "availability": "http://schema.org/InStock",
+            "price": "${props.post.acf.titulo_de_la_oferta_oferta_general}",
+            "priceCurrency": "EUR"
+          }
+        }`}} />
+
+        : ''}
         
+
       </Head>
       <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">

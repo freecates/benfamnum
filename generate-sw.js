@@ -80,10 +80,10 @@ workboxSW.router.registerRoute(
 	workboxSW.strategies.staleWhileRevalidate()
 )
 workboxSW.router.registerRoute('https://gestorbeneficios.familiasnumerosas.org/wp-json/(.*)',
-workboxSW.strategies.cacheFirst({
+workboxSW.strategies.staleWhileRevalidate({
   cacheName: 'jsonwordpress',
   cacheExpiration: {
-	maxEntries: 20,
+	maxEntries: 100,
 	maxAgeSeconds: 7 * 24 * 60 * 60
   },
   cacheableResponse: {statuses: [0, 200]}
