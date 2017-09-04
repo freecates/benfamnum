@@ -70,7 +70,7 @@ function app() {
 }
 
 const swSnippet = (precache) =>
-`importScripts('https://unpkg.com/workbox-sw@0.0.2')
+`importScripts('https://unpkg.com/workbox-sw@2.0.0/build/importScripts/workbox-sw.prod.v2.0.0.js')
 const workboxSW = new WorkboxSW({clientsClaim: true})
 // set precahe listed item
 workboxSW.precache(${precache})

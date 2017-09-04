@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Layout from '../components/MyLayout.js'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
+import Observer from 'react-intersection-observer'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
 
@@ -101,15 +102,15 @@ const Post =  (props) => (
 
             <div className='file-img'>
 
-            {props.post.acf.imagen_destacada_de_la_oferta_socios_large ? 
-            
-              <p><img className='img-file' width='1024' src={props.post.acf.imagen_destacada_de_la_oferta_socios_large.sizes.large} alt={props.post.acf.titulo_de_la_oferta_oferta_socios} /></p> : ''}   
+              {props.post.acf.imagen_destacada_de_la_oferta_socios_large ? 
+              
+                <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'><img className='img-file' width='1024' src={props.post.acf.imagen_destacada_de_la_oferta_socios_large.sizes.large} alt={props.post.acf.titulo_de_la_oferta_oferta_socios} /></p>)} /> : ''}   
 
-            {props.post.acf.imagen_destacada_de_la_oferta_general_large ? 
-            
-              <p><img className='img-file' width='1024' src={props.post.acf.imagen_destacada_de_la_oferta_general_large.sizes.large} alt={props.post.acf.titulo_de_la_oferta_general} /></p> : ''}
+              {props.post.acf.imagen_destacada_de_la_oferta_general_large ? 
+              
+                <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'><img className='img-file' width='1024' src={props.post.acf.imagen_destacada_de_la_oferta_general_large.sizes.large} alt={props.post.acf.titulo_de_la_oferta_general} /></p>)} /> : ''}
 
-            </div>
+              </div>
 
             <div className='file-content'>
               
@@ -194,6 +195,20 @@ const Post =  (props) => (
         }
         h1, .category, .location, .file-label {
           text-align:center;
+        }
+        .fade-in {
+          animation-name: fadeIn;
+          animation-duration: 1.3s;
+          animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+          animation-fill-mode: forwards;
+        }
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
       `}</style>
 
