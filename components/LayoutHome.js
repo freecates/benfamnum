@@ -16,6 +16,12 @@ const LayoutHome = (props) => (
       </main>
     <Footer />
     <ServiceWorker />
+    <script src="/static/jquery.min.js" 
+      type="text/javascript"></script>
+    <script src="/static/foundation.min.js" 
+      type="text/javascript"></script>
+    <script src="/static/foundation-init.js" 
+      type="text/javascript"></script>
   </div>
 )
 

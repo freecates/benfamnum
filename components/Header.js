@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import NProgress from 'nprogress'
 import Router from 'next/router'
+import NavBarBenFamNum from './NavBarBenFamNum'
 
 Router.onRouteChangeStart = (url) => {
   console.log(`Loading: ${url}`)
@@ -28,6 +29,7 @@ const Header = () => (
       <link rel="apple-touch-icon" href="/static/icons/android-chrome-192x192.png"/>
       <meta name="msapplication-TileImage" content="/static/icons/android-chrome-192x192.png"/>
       <meta name="msapplication-TileColor" content="#64bc58"/>
+      <link rel="stylesheet" href="/static/bootstrap.min.css" />
       <link rel="stylesheet" href="/static/foundation.min.css" />
       <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet" />
       <link rel="stylesheet" href="/static/global.css" />
@@ -36,8 +38,8 @@ const Header = () => (
       <script async="true" defer="true" src="/static/intersection-observer.js"
         type="text/javascript"></script>
     </Head>
-      <header>
-        <ul className='vertical medium-horizontal menu align-center'>
+    <header>
+        {/* <ul className='vertical medium-horizontal menu align-center'>
           <li><Link prefetch href="/">
             <a><img src='/static/logo-familias-numerosas.png' alt='Inicio' /></a>
           </Link></li>
@@ -53,7 +55,8 @@ const Header = () => (
           <li><Link prefetch href="/hazte-socio">
             <a>Hazte socio</a>
           </Link></li>
-        </ul>
+        </ul> */}
+        <NavBarBenFamNum />
       </header>
 
       
