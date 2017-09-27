@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import NProgress from 'nprogress'
 import Router from 'next/router'
+import NavBarBenFamNum from './NavBarBenFamNum'
 
 Router.onRouteChangeStart = (url) => {
   console.log(`Loading: ${url}`)
@@ -16,8 +17,8 @@ const HeaderHome = () => (
     <Head>
       {/* Import CSS for nprogress */}
       <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />
-      <meta charset="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta charSet="utf-8" />
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
       <meta name="theme-color" content="#64bc58" />
       <link rel="icon" href="/static/favicon.ico" />
@@ -28,6 +29,7 @@ const HeaderHome = () => (
       <link rel="apple-touch-icon" href="/static/icons/android-chrome-192x192.png"/>
       <meta name="msapplication-TileImage" content="/static/icons/android-chrome-192x192.png"/>
       <meta name="msapplication-TileColor" content="#64bc58"/>
+      <link rel="stylesheet" href="/static/bootstrap.min.css" />
       <link rel="stylesheet" href="/static/foundation.min.css" />
       <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet" />
       <link rel="stylesheet" href="/static/global.css" />
@@ -35,37 +37,23 @@ const HeaderHome = () => (
         type="text/javascript"></script>
     </Head>
       <header>
-        <ul className='vertical medium-horizontal menu align-center'>
-          <li><Link prefetch href="/">
-            <a><img src='/static/logo-familias-numerosas.png' alt='Inicio' /></a>
-          </Link></li>
-          <li><Link prefetch href="/la-federacion">
-            <a>La Federación</a>
-          </Link></li>
-          <li><Link prefetch href="/prestaciones">
-            <a>Prestaciones oficiales</a>
-          </Link></li>
-          <li><Link prefetch href="/beneficios">
-            <a>Beneficios para familias</a>
-          </Link></li>
-          <li><Link prefetch href="/hazte-socio">
-            <a>Hazte socio</a>
-          </Link></li>
-        </ul>
-      <section className='section-data'>
-        <div className='section-a'>
-          <p className='icones-prestacions align-center'>
-              <Link prefetch href="/prestaciones"><a><img src='/static/icona-prestacions-publiques-familias-numerosas.png'/></a></Link>
-          </p>
-          <p>Desde este apartado podrás acceder a toda la información sobre las prestaciones que como familia numerosa te ofrece el gobierno central, autonónico o municipal</p>
-        </div>
-        <div className='section-b'>
-          <p className='icones-prestacions align-center'>
-              <Link prefetch href="/beneficios"><a><img src='/static/icona-ofertas-familias-numerosas.png'/></a></Link>
-          </p>
-          <p>Ser familia numerosa te ofrece muchos descuentos y servicios exclusivos, en este apartado podrás seleccionar el tipo de servicio que necesitas y las ventajas que te ofrecen las empresas</p>
-        </div>
-      </section>
+        <section>
+          <NavBarBenFamNum />
+        </section>
+        <section className='section-data'>
+          <div className='section-a'>
+            <p className='icones-prestacions align-center'>
+                <Link prefetch href="/prestaciones"><a><img src='/static/icona-prestacions-publiques-familias-numerosas.png'/></a></Link>
+            </p>
+            <p>Desde este apartado podrás acceder a toda la información sobre las prestaciones que como familia numerosa te ofrece el gobierno central, autonónico o municipal</p>
+          </div>
+          <div className='section-b'>
+            <p className='icones-prestacions align-center'>
+                <Link prefetch href="/beneficios"><a><img src='/static/icona-ofertas-familias-numerosas.png'/></a></Link>
+            </p>
+            <p>Ser familia numerosa te ofrece muchos descuentos y servicios exclusivos, en este apartado podrás seleccionar el tipo de servicio que necesitas y las ventajas que te ofrecen las empresas</p>
+          </div>
+        </section>
       </header>
 
       

@@ -19,22 +19,43 @@ export default class NavBarBenFamNum extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light toggleable>
+        <Navbar inverse toggleable>
           <NavbarToggler left onClick={this.toggle} />
-          <NavbarBrand><Link prefetch href="/">
-            <a><img src='/static/logo-familias-numerosas.png' alt='Inicio' /></a>
-          </Link></NavbarBrand>
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">Github</NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
+          <Link prefetch href="/"><NavbarBrand>
+            <img src='/static/logo-familias-numerosas.png' alt='Inicio' />
+          </NavbarBrand></Link>
+          <span className='align-nav'>
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>
+                <NavItem><Link prefetch href="/la-federacion">
+                  <a>La Federación</a>
+                </Link></NavItem>
+                <NavItem><Link prefetch href="/prestaciones">
+                  <a>Prestaciones oficiales</a>
+                </Link></NavItem>
+                <NavItem><Link prefetch href="/beneficios">
+                  <a>Beneficios para familias</a>
+                </Link></NavItem>
+                <NavItem><Link prefetch href="/hazte-socio">
+                  <a>Hazte socio</a>
+                </Link></NavItem>
+              </Nav>
+            </Collapse>
+          </span>
         </Navbar>
+        <style jsx>{`
+          .align-nav {
+            text-align:center;
+          }
+          a {
+            color:#ffffff;
+            margin:0 1em;
+          }
+          a:hover {
+            color:#ffffff;
+            text-decoration:underline;
+          }
+        `}</style>
       </div>
     );
   }

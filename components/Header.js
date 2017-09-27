@@ -17,8 +17,8 @@ const Header = () => (
     <Head>
       {/* Import CSS for nprogress */}
       <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />
-      <meta charset="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta charSet="utf-8" />
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
       <meta name="theme-color" content="#64bc58" />
       <link rel="icon" href="/static/favicon.ico" />
@@ -39,41 +39,9 @@ const Header = () => (
         type="text/javascript"></script>
     </Head>
     <header>
-        {/* <ul className='vertical medium-horizontal menu align-center'>
-          <li><Link prefetch href="/">
-            <a><img src='/static/logo-familias-numerosas.png' alt='Inicio' /></a>
-          </Link></li>
-          <li><Link prefetch href="/la-federacion">
-            <a>La Federación</a>
-          </Link></li>
-          <li><Link prefetch href="/prestaciones">
-            <a>Prestaciones oficiales</a>
-          </Link></li>
-          <li><Link prefetch href="/beneficios">
-            <a>Beneficios para familias</a>
-          </Link></li>
-          <li><Link prefetch href="/hazte-socio">
-            <a>Hazte socio</a>
-          </Link></li>
-        </ul> */}
-        <NavBarBenFamNum />
-      </header>
-
-      
+      <NavBarBenFamNum />
+    </header>
         <style jsx>{`
-          a {
-            color:#ffffff;
-          }
-          a:hover {
-            color:#ffffff;
-            text-decoration:underline;
-          }
-          ul.vertical.menu.align-center li {
-            text-align:center;
-          }
-          .menu>li {
-            vertical-align:bottom;
-          }
           header {
             background: url('/static/bg-body-familias-numerosas.jpg');
             background-size: cover;
