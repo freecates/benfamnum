@@ -28,15 +28,15 @@ const markerStyle = {
 
 const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 
-const GeolocationValue = <Geolocation />
-
-const CENTER = []
-const ZOOM = 8
+const CENTER = [41.413808599999996,2.1926845999999998]
+const ZOOM = 12
 
 const MapByCategory = (props) => (
   <Layout>
     <Head>
       <title>Beneficios cerca de tí</title>
+	    <script src="/static/navigator.js"
+        type="text/javascript"></script>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
