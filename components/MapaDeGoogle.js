@@ -19,7 +19,7 @@ const SimpleMapExampleGoogleMap = withGoogleMap( props => {
  }
 );
 
-class GMap extends React.Component{
+class MapaDeGoogle extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -43,4 +43,4 @@ class GMap extends React.Component{
             />
     }
 }
-export default GMap
+export default MapaDeGoogle

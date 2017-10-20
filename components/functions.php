@@ -162,6 +162,18 @@ function comunidad_basic($fields){
    return $fields;
 }
 
+function beneficios_nameIdSlugLatLonCategoria($fields){
+    
+        return array(
+            "name" => $fields["name"],
+            "ID" => $fields["ID"],
+            "slug" => $fields['slug'],
+            "lat" => $fields['lat'],
+            "lon" => $fields['lon'],
+            "categoria_de_la_prestacion" => $fields["categoria_de_la_prestacion"]
+        );
+}
+
 function beneficios_localidadCategoria($fields){
     
         return array(

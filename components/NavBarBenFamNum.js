@@ -1,6 +1,6 @@
 import React from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap'
-import Link from 'next/link'
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import Link from 'next/link';
 
 export default class NavBarBenFamNum extends React.Component {
   constructor(props) {

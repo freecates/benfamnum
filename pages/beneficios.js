@@ -19,11 +19,11 @@ const Localidades = (props) => (
     </Head>
     <IntlProvider defaultLocale='ca'>
       <main>
-        <h1>Selecciona donde o que tipo de beneficio quieres disfrutar</h1>
+        <h2>Selecciona donde o que tipo de beneficio quieres disfrutar</h2>
         <div className='wrapper'>
           <div className='left'>
             <section className='beneficio-localidad-blue'>
-              <h2 className='align-center'>Escribe donde desas el beneficio</h2>
+              <h3 className='align-center'>Escribe donde deseas el beneficio</h3>
               <div className='form-component'>          
                 <SelectCity
                   options={props.beneficios.reduce((ciutats, beneficio) => {
@@ -49,7 +49,7 @@ const Localidades = (props) => (
               </div>
             </section>
             <section className='beneficio-online-yellow'>
-              <h2 className='align-center'>Beneficios de servicios online</h2>
+              <h3 className='align-center'>Beneficios de servicios online</h3>
               <p className='align-center no-margin-bottom'><Link prefetch href='ofertas-on-line'><a className='button'>Buscar el mejor descuento</a></Link></p>
             </section>
           </div>
@@ -104,7 +104,7 @@ const Localidades = (props) => (
       </main>
     </IntlProvider>
         <style jsx>{`
-          h1 {
+          h2 {
             color:#391f92;
             text-align:center;
           }
@@ -182,7 +182,7 @@ const Localidades = (props) => (
             .beneficio-online-yellow , 
             .beneficio-categoria-grey,
             .bg-mapa {
-              margin:0 -20px;
+              margin:0;
             }
           }
           @media screen and (max-width: 375px) {              
@@ -200,7 +200,7 @@ const Localidades = (props) => (
           }
           @media screen and (min-width: 768px) {   
             .gallery, .form-component {
-              width: 90%;
+              width: 94%;
             }
             .form-component-full {
               width:100%;
@@ -215,33 +215,33 @@ const Localidades = (props) => (
               display: flex;
               -ms-flex-wrap: wrap;
                   flex-wrap: wrap;
-              align-items:top;
+              align-items:center;
 
               width: 100%;
             }
             .left {
               width: 50%;
-              padding:0 5px 0 0;
+              padding:0 0 0 0;
             }
             .right {
               width: 50%;
-              padding:0 0 0 5px;
+              padding:0 0 0 0;
             }
             .beneficio-localidad-blue, 
             .beneficio-online-yellow {
-              margin:0 0 0 -20px;
+              margin:0 0 0 0;
             } 
             .beneficio-categoria-grey {
-              margin:0 -20px 0 0;
+              margin:0 0 0 0;
             }
             .item {
-                width: 150px;
+                width: 140px;
               }
             }
           }
           @media screen and (min-width: 1366px) {   
             .gallery, .form-component {
-              width: 82%;
+              width: 86%;
             }
             .form-component-full {
               width:100%;

@@ -1,6 +1,6 @@
 {
   "name": "beneficios-familias-numerosas",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -21,28 +21,29 @@
   "author": "Ramon Gil",
   "license": "ISC",
   "dependencies": {
-    "async-reactor": "^1.2.0",
+    "async-reactor": "1.2.0",
     "bootstrap": "4.0.0-alpha.6",
-    "compression": "^1.7.0",
-    "express": "^4.15.2",
-    "google-map-react": "^0.24.0",
-    "isomorphic-unfetch": "^1.0.0",
-    "next": "^3.2.0",
-    "nprogress": "^0.2.0",
-    "react": "^15.6.1",
-    "react-addons-css-transition-group": "^15.6.0",
-    "react-addons-transition-group": "^15.6.0",
-    "react-dom": "^15.6.1",
+    "compression": "1.7.0",
+    "express": "4.15.2",
+    "google-map-react": "0.24.0",
+    "isomorphic-unfetch": "1.0.0",
+    "next": "^4.0.1",
+    "nprogress": "0.2.0",
+    "react": "^16.0.0",
+    "react-addons-css-transition-group": "15.6.0",
+    "react-addons-transition-group": "15.6.0",
+    "react-dom": "^16.0.0",
+    "react-geolocated": "^2.1.0",
     "react-google-maps": "next",
-    "react-intersection-observer": "^1.0.0",
-    "react-intl": "^2.2.3",
-    "reactstrap": "^4.8.0"
+    "react-intersection-observer": "1.0.0",
+    "react-intl": "^2.4.0",
+    "reactstrap": "4.8.0"
   },
   "devDependencies": {
-    "globby": "^6.1.0",
-    "intersection-observer": "^0.4.0",
-    "load-json-file": "^2.0.0",
-    "workbox-build": "^1.0.1",
-    "workbox-webpack-plugin": "^1.0.1"
+    "globby": "6.1.0",
+    "intersection-observer": "^0.4.2",
+    "load-json-file": "2.0.0",
+    "workbox-build": "1.0.1",
+    "workbox-webpack-plugin": "1.0.1"
   }
 }

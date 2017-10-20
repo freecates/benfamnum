@@ -124,11 +124,16 @@ const PostsByCategoryLocalidad = (props) => (
           }
           @media screen and (min-width: 1024px) {   
             .gallery {
-              width: 84%;
+              width: 100%;
             }
           .benefit {
-              width: 250px;
-              margin:10px;
+              width: 220px;
+              margin:0 10px;
+            }
+          }
+          @media screen and (min-width: 1160px) {
+          .benefit {
+              width: 245px;
             }
           }
           .fade-in {

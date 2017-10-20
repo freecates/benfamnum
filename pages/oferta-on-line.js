@@ -28,7 +28,7 @@ const OfertaOnLine =  (props) => (
             
             <h1><img src={'/static/' + props.ofertaonline._embedded['wp:term'][0][0].slug +'-familias-numerosas.png'} /><br/><span dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.nombre_del_establecimiento} } /> {props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios ? <span className='label alert file-label'><small>EXCLUSIVO<br /> SOCIOS</small></span> : '' }</h1>
            
-            <h2 className='location'><small>
+            <h2 className='location dont-break-out'><small>
             {props.ofertaonline.acf.url_de_la_oferta_online ? <span><Link href={props.ofertaonline.acf.url_de_la_oferta_online}><a>{props.ofertaonline.acf.url_de_la_oferta_online}</a></Link></span> : '' } {props.ofertaonline.acf.correo_electronico_del_establecimiento ?  <span>. <strong>C.E.</strong>: <a href={'mailto:' + props.ofertaonline.acf.correo_electronico_del_establecimiento}>{props.ofertaonline.acf.correo_electronico_del_establecimiento}</a></span> : '' }</small></h2>
 
             <p className='category'><small><strong>Categoria</strong>: <Link prefetch as={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`} href={`/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}><a title={'Ver todas las ofertas de la categoría ' + props.ofertaonline._embedded['wp:term'][0][0].name}>{props.ofertaonline._embedded['wp:term'][0][0].name}</a></Link></small></p>
@@ -55,11 +55,11 @@ const OfertaOnLine =  (props) => (
               <p><small><FormattedDate value={props.ofertaonline.date} day='numeric' month='long' year='numeric' /></small></p>
             </IntlProvider>
               
-              {props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios ? <p dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios} }/> : '' }
+              {props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios} }/> : '' }
              
               {props.ofertaonline.acf.titulo_de_la_oferta_oferta_general ? <h4>{props.ofertaonline.acf.titulo_de_la_oferta_oferta_general}</h4> : '' }
               
-              {props.ofertaonline.acf.descripcion_de_la_oferta_oferta_general ? <p dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.descripcion_de_la_oferta_oferta_general} }/> : '' }
+              {props.ofertaonline.acf.descripcion_de_la_oferta_oferta_general ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.descripcion_de_la_oferta_oferta_general} }/> : '' }
 
             </div>
           
@@ -91,6 +91,14 @@ const OfertaOnLine =  (props) => (
         }
         .file-label {
           background:#cc0033;
+        }
+        .dont-break-out {          
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          -ms-hyphens: auto;
+          -moz-hyphens: auto;
+          -webkit-hyphens: auto;
+          hyphens: auto;
         }
         @media screen and (min-width: 768px) {              
           .file-data {

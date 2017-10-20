@@ -6,8 +6,8 @@ import Observer from 'react-intersection-observer'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
 
-const GMap = dynamic(
-  import('../components/GMap'),
+const MapaDeGoogle = dynamic(
+  import('../components/MapaDeGoogle'),
   {
     loading: () => (<p>cargando ...</p>)
   }
@@ -90,13 +90,13 @@ const Post =  (props) => (
             
             <h1><img src={'/static/' + props.post._embedded['wp:term'][0][0].slug +'-familias-numerosas.png'} /><br/><span dangerouslySetInnerHTML={ {__html: props.post.acf.nombre_del_establecimiento} } /> {props.post.acf.descripcion_de_la_oferta_oferta_socios ? <span className='label alert file-label'><small>EXCLUSIVO<br /> SOCIOS</small></span> : '' }</h1>
            
-            <p className='location'><small><span dangerouslySetInnerHTML={ {__html:props.post.acf.direccion} }/>. <span>{props.post.acf.codigo_postal}</span>, <Link prefetch as={`/l/${props.post.acf.localidad_del_beneficio.term_id}/${props.post.acf.localidad_del_beneficio.slug}`} href={`/localidad?localidad=${props.post.acf.localidad_del_beneficio.term_id}`}><a title={'Ver todos los beneficios de ' + props.post.acf.localidad_del_beneficio.name}><span dangerouslySetInnerHTML={ {__html: props.post.acf.localidad_del_beneficio.name} } /></a></Link> - 
+            <p className='location dont-break-out'><small><span dangerouslySetInnerHTML={ {__html:props.post.acf.direccion} }/>. <span>{props.post.acf.codigo_postal}</span>, <Link prefetch as={`/l/${props.post.acf.localidad_del_beneficio.term_id}/${props.post.acf.localidad_del_beneficio.slug}`} href={`/localidad?localidad=${props.post.acf.localidad_del_beneficio.term_id}`}><a title={'Ver todos los beneficios de ' + props.post.acf.localidad_del_beneficio.name}><span dangerouslySetInnerHTML={ {__html: props.post.acf.localidad_del_beneficio.name} } /></a></Link> - 
             {props.post.acf.telefono ? <span><a href={'tel:' + props.post.acf.telefono}>{props.post.acf.telefono}</a></span> : ''}
             {props.post.acf.correo_electronico_del_establecimiento ?  <span>. <strong>C.E.</strong>: <a href={'mailto:' + props.post.acf.correo_electronico_del_establecimiento}>{props.post.acf.correo_electronico_del_establecimiento}</a></span> : '' }{props.post.acf.twitter_del_establecimiento ? <span><a href={'https://twitter.com/' + props.post.acf.twitter_del_establecimiento}>t</a></span> : '' } {props.post.acf.facebook_del_establecimiento ? <span>| <a href={props.post.acf.facebook_del_establecimiento}>f</a></span> : '' } {props.post.acf.sitio_web_del_establecimiento ? <span>| <Link href={props.post.acf.sitio_web_del_establecimiento}><a>w</a></Link></span> : '' }</small></p>
 
             <p className='category'><small><strong>Categoria</strong>: <Link prefetch as={`/c/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}`} href={`/category?id=${props.post.categoria_del_beneficio}`}><a title={'Ver todos los beneficios de la categoría ' + props.post._embedded['wp:term'][0][0].name}>{props.post._embedded['wp:term'][0][0].name}</a></Link></small></p>
 
-            {props.post.acf.lat ? <GMap lat={props.post.acf.lat} lng={props.post.acf.lon} /> : '' }
+            {props.post.acf.lat ? <MapaDeGoogle lat={props.post.acf.lat} lng={props.post.acf.lon} /> : '' }
 
           <div className='file-data'>
 
@@ -120,11 +120,11 @@ const Post =  (props) => (
               <p><small><FormattedDate value={props.post.date} day='numeric' month='long' year='numeric' /></small></p>
             </IntlProvider>
               
-              {props.post.acf.descripcion_de_la_oferta_oferta_socios ? <p dangerouslySetInnerHTML={ {__html: props.post.acf.descripcion_de_la_oferta_oferta_socios} }/> : '' }
+              {props.post.acf.descripcion_de_la_oferta_oferta_socios ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.post.acf.descripcion_de_la_oferta_oferta_socios} }/> : '' }
              
               {props.post.acf.titulo_de_la_oferta_oferta_general ? <h4>{props.post.acf.titulo_de_la_oferta_oferta_general}</h4> : '' }
               
-              {props.post.acf.descripcion_de_la_oferta_oferta_general ? <p dangerouslySetInnerHTML={ {__html: props.post.acf.descripcion_de_la_oferta_oferta_general} }/> : '' }
+              {props.post.acf.descripcion_de_la_oferta_oferta_general ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.post.acf.descripcion_de_la_oferta_oferta_general} }/> : '' }
 
             </div>
           
@@ -156,6 +156,14 @@ const Post =  (props) => (
         }
         .file-label {
           background:#cc0033;
+        }
+        .dont-break-out {          
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          -ms-hyphens: auto;
+          -moz-hyphens: auto;
+          -webkit-hyphens: auto;
+          hyphens: auto;
         }
         @media screen and (min-width: 768px) {              
           .file-data {
