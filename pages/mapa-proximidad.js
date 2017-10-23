@@ -161,9 +161,42 @@ const MapByCategory = (props) => (
 
 MapByCategory.getInitialProps = async function() {
   const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?sim-model=name-id-slug-lat-lon-categoria`)
+  const centerLatLng = new Promise(function(fulfill, reject){
+    if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') 
+        {    
+          if(!window.navigator.geolocation){
+            console.log(`Not: ${window.navigator.geolocation}`)
+            reject()
+          }
+
+          var options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+          };
+          
+          function success(pos) {
+            var crd = pos.coords;
+          
+            console.log('Your current position is:');
+            console.log(`Latitude : ${crd.latitude}`);
+            console.log(`Longitude: ${crd.longitude}`);
+            console.log(`More or less ${crd.accuracy} meters.`);
+            fulfill(`${crd.latitude}`)
+          };
+          
+          function error(err) {
+            console.warn(`ERROR(${err.code}): ${err.message}`);
+            reject()
+          };
+          
+          window.navigator.geolocation.getCurrentPosition(success, error, options);
+        }
+          reject()
+          })
   const markers = await res.json()
 
-  console.log(`Markers data fetched. Count: ${markers.length}`)
+  console.log(`Markers data fetched. Count: ${markers.length} ${centerLatLng}`)
 
   return { markers }
 }
