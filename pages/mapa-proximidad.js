@@ -1,10 +1,9 @@
 import Head from 'next/head'
 import Layout from '../components/MyLayout.js'
-import {geolocated} from 'react-geolocated'
-import Geolocation from '../components/Geolocation.js'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
+import Async from 'react-promise'
 import {IntlProvider, FormattedDate} from 'react-intl'
 
 const GoogleMapReact = dynamic(
@@ -26,9 +25,40 @@ const markerStyle = {
 
 }
 
+let centerLatLng = new Promise(function(resolve, reject){
+  
+  if(!window.navigator.geolocation){
+    console.log(`Not: ${window.navigator.geolocation}`)
+    reject('pastanaga')
+  }
+
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+  
+  function success(pos) {
+    var crd = pos.coords;
+  
+    console.log('Your current position is:');
+    console.log(`Latitude : ${crd.latitude}`);
+    console.log(`Longitude: ${crd.longitude}`);
+    console.log(`More or less ${crd.accuracy} meters.`);
+    resolve(crd.latitude + ',' + crd.longitude)
+  };
+  
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+    reject('pera')
+  };
+  
+  window.navigator.geolocation.getCurrentPosition(success, error, options);
+  })
+
 const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 
-const CENTER = [41.413808599999996,2.1926845999999998]
+const CENTER = () => <Async promise={centerLatLng} then={(val) => `[${val}`}/>
 const ZOOM = 12
 
 const MapByCategory = (props) => (
@@ -49,8 +79,6 @@ const MapByCategory = (props) => (
     </nav>
     <section>
     <h1>Beneficios cerca de tí</h1>
-    
-    <Geolocation />
     
     <IntlProvider defaultLocale='es'>
       
@@ -161,42 +189,9 @@ const MapByCategory = (props) => (
 
 MapByCategory.getInitialProps = async function() {
   const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?sim-model=name-id-slug-lat-lon-categoria`)
-  const centerLatLng = new Promise(function(fulfill, reject){
-    if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') 
-        {    
-          if(!window.navigator.geolocation){
-            console.log(`Not: ${window.navigator.geolocation}`)
-            reject()
-          }
-
-          var options = {
-            enableHighAccuracy: true,
-            timeout: 5000,
-            maximumAge: 0
-          };
-          
-          function success(pos) {
-            var crd = pos.coords;
-          
-            console.log('Your current position is:');
-            console.log(`Latitude : ${crd.latitude}`);
-            console.log(`Longitude: ${crd.longitude}`);
-            console.log(`More or less ${crd.accuracy} meters.`);
-            fulfill(`${crd.latitude}`)
-          };
-          
-          function error(err) {
-            console.warn(`ERROR(${err.code}): ${err.message}`);
-            reject()
-          };
-          
-          window.navigator.geolocation.getCurrentPosition(success, error, options);
-        }
-          reject()
-          })
   const markers = await res.json()
 
-  console.log(`Markers data fetched. Count: ${markers.length} ${centerLatLng}`)
+  console.log(`Markers data fetched. Count: ${markers.length}`, centerLatLng)
 
   return { markers }
 }
