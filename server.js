@@ -76,6 +76,11 @@ app.prepare()
     app.render(req, res, actualPage, queryParams, queryParamsS)
   })
 
+  server.get('/m-p', (req, res) => {
+    const actualPage = '/mapa-proximidad'
+    app.render(req, res, actualPage)
+  })
+
   server.get('/p-c/:comunidad/:slug', (req, res) => {
     const actualPage = '/prestaciones-comunidad'
     const queryParams = { comunidad: req.params.comunidad }

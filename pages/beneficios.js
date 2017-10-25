@@ -80,7 +80,7 @@ const Localidades = (props) => (
           <h4 className='align-center'>También puedes buscar servicios cerca de tí</h4>
           <div className='wrapper wrapper-top'>
             <div className='left'>
-              <p className='align-center no-margin-bottom'><Link prefetch href='/mapa-proximidad'><a className='button button-blue'>Buscar cerca de tí</a></Link></p>
+              <p className='align-center no-margin-bottom'><Link prefetch as='/m-p' href='/mapa-proximidad'><a className='button button-blue'>Buscar cerca de tí</a></Link></p>
             </div>
             <div className='right'>
               <div className='form-component form-component-full'>       

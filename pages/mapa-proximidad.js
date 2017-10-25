@@ -25,35 +25,42 @@ const markerStyle = {
 }
 
 let centerLatLng = new Promise(function(resolve, reject){
-  
-  if(!window.navigator.geolocation){
-    console.log(`Not: ${window.navigator.geolocation}`)
-    reject([40.1301508,-1.8518527])
-  }
 
-  var options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
-  };
+  if (typeof window === 'undefined') {
+    console.log('pastanaga')
+    resolve([40.4381311,-3.8196197])
+  } else {
+
+    if(!window.navigator.geolocation){
+      console.log(`Not: ${window.navigator.geolocation}`)
+      resolve([40.4381311,-3.8196197])
+    }
+
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+    
+    function success(pos) {
+      var crd = pos.coords;
+    
+      console.log('Your current position is:');
+      console.log(`Latitude : ${crd.latitude}`);
+      console.log(`Longitude: ${crd.longitude}`);
+      console.log(`More or less ${crd.accuracy} meters.`);
+      resolve([crd.latitude,crd.longitude])
+    };
+    
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+      resolve([40.4381311,-3.8196197])
+    };
+    
+    window.navigator.geolocation.getCurrentPosition(success, error, options);
+  }
   
-  function success(pos) {
-    var crd = pos.coords;
-  
-    console.log('Your current position is:');
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
-    resolve([crd.latitude,crd.longitude])
-  };
-  
-  function error(err) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
-    reject([40.1301508,-1.8518527])
-  };
-  
-  window.navigator.geolocation.getCurrentPosition(success, error, options);
-  })
+})
 
 const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
 const ZOOM = 14
@@ -98,7 +105,7 @@ const MapByCategory = (props) => (
           </GoogleMapReact>
 
             </div>
-            <p className='text-center'>Si no tienes Beneficios cerca de tí,<strong>prueba de hacer menos zoom en el mapa</strong> hasta encontarlos.</p>
+            <p className='text-center'>Si no tienes Beneficios cerca de tí,<strong>prueba de hacer menos zoom en el mapa</strong> hasta encontarlos. O vuelve a probar haciendo clic <Link prefetch as='/m-p' href='/mapa-proximidad'><a className='blue-underline'><strong>aquí</strong></a></Link></p>
 
           </section>
         
@@ -131,6 +138,13 @@ const MapByCategory = (props) => (
         }
         a:hover {
           text-decoration:underline;
+        }
+        a.blue-underline {
+          color:blue;
+          text-decoration:underline;
+        }
+        a.blue-underline:hover {
+          text-decoration:none;
         }
         nav a {
           color:#3f3fff;
