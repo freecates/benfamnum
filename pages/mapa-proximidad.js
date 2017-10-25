@@ -3,7 +3,6 @@ import Layout from '../components/MyLayout.js'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
-import Async from 'react-promise'
 import {IntlProvider, FormattedDate} from 'react-intl'
 
 const GoogleMapReact = dynamic(
@@ -45,7 +44,7 @@ let centerLatLng = new Promise(function(resolve, reject){
     console.log(`Latitude : ${crd.latitude}`);
     console.log(`Longitude: ${crd.longitude}`);
     console.log(`More or less ${crd.accuracy} meters.`);
-    resolve(crd.latitude + ',' + crd.longitude)
+    resolve([crd.latitude,crd.longitude])
   };
   
   function error(err) {
@@ -57,8 +56,6 @@ let centerLatLng = new Promise(function(resolve, reject){
   })
 
 const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
-
-const CENTER = () => <Async promise={centerLatLng} then={(val) => `[${val}`}/>
 const ZOOM = 12
 
 const MapByCategory = (props) => (
@@ -84,7 +81,7 @@ const MapByCategory = (props) => (
       
       <div style={{width: '100%', height: '500px'}}>     
        <GoogleMapReact
-          center={CENTER}
+          center={props.CENTER}
           zoom={ZOOM}
         >
         {props.markers.map((marker, index) => (
@@ -190,10 +187,11 @@ const MapByCategory = (props) => (
 MapByCategory.getInitialProps = async function() {
   const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?sim-model=name-id-slug-lat-lon-categoria`)
   const markers = await res.json()
+  const CENTER = await centerLatLng
 
-  console.log(`Markers data fetched. Count: ${markers.length}`, centerLatLng)
+  console.log(`Markers data fetched. Count: ${markers.length}`, `${CENTER}`)
 
-  return { markers }
+  return { markers, CENTER}
 }
 
 export default MapByCategory
