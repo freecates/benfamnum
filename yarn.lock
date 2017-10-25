@@ -3846,12 +3846,6 @@ react-dom@^16.0.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-geolocated@^2.1.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/react-geolocated/-/react-geolocated-2.2.0.tgz#0b1deefa8bebe46b95f5464770400ada7c212708"
-  dependencies:
-    prop-types "^15.5.8"
-
 react-google-maps@next:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/react-google-maps/-/react-google-maps-7.1.0.tgz#4bd06efc869cbcb6a978c6dbf04daf725e1afd68"
@@ -3891,12 +3885,6 @@ react-intl@^2.4.0:
     intl-messageformat "^2.1.0"
     intl-relativeformat "^2.0.0"
     invariant "^2.1.1"
-
-react-promise@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/react-promise/-/react-promise-2.0.0.tgz#089769abf2178c96b8932c7aae9b3ac878dd8c7c"
-  dependencies:
-    prop-types "^15.6.0"
 
 react-prop-types-element-of-type@^2.2.0:
   version "2.2.0"

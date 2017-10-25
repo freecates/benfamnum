@@ -50,7 +50,7 @@ const Localidades = (props) => (
             </section>
             <section className='beneficio-online-yellow'>
               <h3 className='align-center'>Beneficios de servicios online</h3>
-              <p className='align-center no-margin-bottom'><Link prefetch href='ofertas-on-line'><a className='button'>Buscar el mejor descuento</a></Link></p>
+              <p className='align-center no-margin-bottom'><Link prefetch href='/ofertas-on-line'><a className='button'>Buscar el mejor descuento</a></Link></p>
             </section>
           </div>
           <div className='right'>
@@ -77,28 +77,35 @@ const Localidades = (props) => (
           </div>
         </div>
         <section className='bg-mapa'>
-          <div className='form-component form-component-full'>
-            <h4 className='align-center'>También puedes buscar servicios cerca de tí</h4>       
-            <SelectCity
-              options={props.beneficios.reduce((ciutats, beneficio) => {
-              if (beneficio.localidad_del_beneficio == false) {
-                return ciutats
-              }
-                ciutats[beneficio.localidad_del_beneficio.term_id] =
-                {
-                  slug: beneficio.localidad_del_beneficio.slug,
-                  key: beneficio.localidad_del_beneficio.term_id,
-                  value: beneficio.localidad_del_beneficio ? `/mapa-localidad?localidad=${beneficio.localidad_del_beneficio.term_id}` : '',
-                  label: beneficio.localidad_del_beneficio ? `${beneficio.localidad_del_beneficio.name}` : ''
-                }
-                return ciutats
-          },[]).sort((a,b) => {
-            if (a.slug < b.slug)
-              return -1;
-            if (a.slug > b.slug)
-              return 1;
-            return 0;
-            })} />
+          <h4 className='align-center'>También puedes buscar servicios cerca de tí</h4>
+          <div className='wrapper wrapper-top'>
+            <div className='left'>
+              <p className='align-center no-margin-bottom'><Link prefetch href='/mapa-proximidad'><a className='button button-blue'>Buscar cerca de tí</a></Link></p>
+            </div>
+            <div className='right'>
+              <div className='form-component form-component-full'>       
+                <SelectCity
+                  options={props.beneficios.reduce((ciutats, beneficio) => {
+                  if (beneficio.localidad_del_beneficio == false) {
+                    return ciutats
+                  }
+                    ciutats[beneficio.localidad_del_beneficio.term_id] =
+                    {
+                      slug: beneficio.localidad_del_beneficio.slug,
+                      key: beneficio.localidad_del_beneficio.term_id,
+                      value: beneficio.localidad_del_beneficio ? `/mapa-localidad?localidad=${beneficio.localidad_del_beneficio.term_id}` : '',
+                      label: beneficio.localidad_del_beneficio ? `${beneficio.localidad_del_beneficio.name}` : ''
+                    }
+                    return ciutats
+              },[]).sort((a,b) => {
+                if (a.slug < b.slug)
+                  return -1;
+                if (a.slug > b.slug)
+                  return 1;
+                return 0;
+                })} />
+              </div>
+            </div>
           </div>
         </section>
       </main>
@@ -134,14 +141,21 @@ const Localidades = (props) => (
           }
           .button:hover {
             background:#aa4e1c;
-            text-deocration:none;
+            text-decoration:none;
+          }
+          .button-blue {
+            background:#0066ff;
+          }
+          .button-blue:hover {
+            background:#0051cb;
+            text-decoration:none;
           }
           .no-margin-bottom {
             margin-bottom:0;
           }
           ul {
             list-style-type:none;
-            margin-left:0;
+            margin-lefuft:0;
             margin:0 auto!important;
           }
           a {
@@ -218,6 +232,9 @@ const Localidades = (props) => (
               align-items:center;
 
               width: 100%;
+            }
+            .wrapper-top {
+              align-items:baseline;
             }
             .left {
               width: 50%;

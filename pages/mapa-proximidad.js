@@ -28,7 +28,7 @@ let centerLatLng = new Promise(function(resolve, reject){
   
   if(!window.navigator.geolocation){
     console.log(`Not: ${window.navigator.geolocation}`)
-    reject('pastanaga')
+    reject([40.1301508,-1.8518527])
   }
 
   var options = {
@@ -49,14 +49,14 @@ let centerLatLng = new Promise(function(resolve, reject){
   
   function error(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
-    reject('pera')
+    reject([40.1301508,-1.8518527])
   };
   
   window.navigator.geolocation.getCurrentPosition(success, error, options);
   })
 
 const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
-const ZOOM = 12
+const ZOOM = 14
 
 const MapByCategory = (props) => (
   <Layout>
@@ -78,24 +78,29 @@ const MapByCategory = (props) => (
     <h1>Beneficios cerca de tí</h1>
     
     <IntlProvider defaultLocale='es'>
-      
-      <div style={{width: '100%', height: '500px'}}>     
-       <GoogleMapReact
-          center={props.CENTER}
-          zoom={ZOOM}
-        >
-        {props.markers.map((marker, index) => (
-          
-          <MarkerComponent
-            key={index}
-            lat={marker.lat.includes(',') || marker.lat.includes('!')? '' : marker.lat}
-            lng={marker.lon.includes(',') || marker.lon.includes('!') ? '' : marker.lon}
-            text={<Link prefetch as={`/p/${marker.ID}/${marker.slug}`} href={`/post?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + marker.categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /></span></a></Link>}
-          />
-              ))}
-        </GoogleMapReact>
 
-          </div>
+      <section>
+      
+        <div style={{width: '100%', height: '500px'}}>     
+        <GoogleMapReact
+            center={props.CENTER}
+            zoom={ZOOM}
+          >
+          {props.markers.map((marker, index) => (
+            
+            <MarkerComponent
+              key={index}
+              lat={marker.lat.includes(',') || marker.lat.includes('!')? '' : marker.lat}
+              lng={marker.lon.includes(',') || marker.lon.includes('!') ? '' : marker.lon}
+              text={<Link prefetch as={`/p/${marker.ID}/${marker.slug}`} href={`/post?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + marker.categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /></span></a></Link>}
+            />
+                ))}
+          </GoogleMapReact>
+
+            </div>
+            <p className='text-center'>Si no tienes Beneficios cerca de tí,<strong>prueba de hacer menos zoom en el mapa</strong> hasta encontarlos.</p>
+
+          </section>
         
       </IntlProvider>
     </section>
