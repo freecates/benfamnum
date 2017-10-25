@@ -86,6 +86,8 @@ const MapByCategory = (props) => (
     
     <IntlProvider defaultLocale='es'>
 
+    {props.CENTER != '40.4381311,-3.8196197' ?
+      
       <section>
       
         <div style={{width: '100%', height: '500px'}}>     
@@ -108,6 +110,11 @@ const MapByCategory = (props) => (
             <p className='text-center'>Si no tienes Beneficios cerca de tí,<strong>prueba de hacer menos zoom en el mapa</strong> hasta encontarlos. O vuelve a probar haciendo clic <Link prefetch as='/m-p' href='/mapa-proximidad'><a className='blue-underline'><strong>aquí</strong></a></Link></p>
 
           </section>
+       :
+       <section>
+       <p className='text-center'><Link prefetch as='/m-p' href='/mapa-proximidad'><a className='button'>Localízate</a></Link></p>
+
+       </section>}
         
       </IntlProvider>
     </section>
@@ -144,6 +151,15 @@ const MapByCategory = (props) => (
           text-decoration:underline;
         }
         a.blue-underline:hover {
+          text-decoration:none;
+        }
+        .button {
+          background:#0066ff;
+          color:#ffffff;
+          text-deocration:none;
+        }
+        .button:hover {
+          background:#0051cb;
           text-decoration:none;
         }
         nav a {
