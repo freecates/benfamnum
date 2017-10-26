@@ -15,7 +15,7 @@ export default () => (
       <section className='call-to-action'>
         <h1>Prestaciones estatales</h1>
 
-        <figure><img src='http://www.familiasnumerosas.org/fileadmin/user_upload/girl-516341_1920.jpg' width='100%' height='324' alt='Imagen prestaciones estatales Familias Numerosas' title='Imagen prestaciones estatales Familias Numerosas'/></figure>
+        <figure><img src='/static/girl-516341_1920.jpg' width='100%' height='324' alt='Imagen prestaciones estatales Familias Numerosas' title='Imagen prestaciones estatales Familias Numerosas'/></figure>
 
         <h2>Título de Familia Numerosa</h2>
         

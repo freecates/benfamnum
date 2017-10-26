@@ -15,13 +15,13 @@ export default () => (
       <section className='call-to-action'>
         <h1>Hazte socio</h1>
 
-        <figure><img src='http://www.familiasnumerosas.org/fileadmin/user_upload/Destacados/Imagenhome2016familiasnumerosas.jpg' width='100%' height='324' alt='Imagen hazte socio Familias Numerosas' title='Imagen hazte socio Familias Numerosas'/></figure>
+        <figure><img src='/static/Imagenhome2016familiasnumerosas.jpg' width='100%' height='324' alt='Imagen hazte socio Familias Numerosas' title='Imagen hazte socio Familias Numerosas'/></figure>
 
         <p>Hazte socio y podrás acceder a múltiples ventajas y descuentos. Además, nos ayudarás a conseguir más y mejores beneficios para las familias numerosas, porque cuantos más seamos, más fuerza tendremos ante instituciones y empresas.</p>
 
         <h2>¡Si te asocias, ser más te costará menos!</h2>
 
-        <figure><img src='http://www.familiasnumerosas.org/fileadmin/user_upload/Iconos/a.png' width='111' height='111' alt=''/></figure>
+        <figure><img src='/static/a.png' width='111' height='111' alt=''/></figure>
 
         <h2>Cómo asociarte</h2>
 
@@ -39,7 +39,7 @@ export default () => (
 
         <p className='text-left'>Si simplemente quieres pedir información, busca los datos de la Asociación que te interese y ponte en contacto con ella, a través de correo electrónico o teléfono.</p>
 
-        <figure><img src='http://www.familiasnumerosas.org/fileadmin/user_upload/Iconos/c.png' width='111' height='111' alt=''/></figure>
+        <figure><img src='/static/c.png' width='111' height='111' alt=''/></figure>
 
         <p>Aqui encontrarás los datos de todas las Asociaciones.</p>
 
