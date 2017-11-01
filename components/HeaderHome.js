@@ -66,7 +66,7 @@ const HeaderHome = () => (
             text-decoration:underline;
           }
           ul,section {
-            max-width:84rem;
+            max-width:70rem;
             margin:0 auto;
             width:100%;
           }
