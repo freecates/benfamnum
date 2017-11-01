@@ -7,7 +7,8 @@ const linkStyle = {
 
 const footerStyle = {
   margin: '20px auto',
-  textAlign: 'center'
+  textAlign: 'center',
+  maxWidth: '70rem'
 }
 
 const Footer = () => (

@@ -250,6 +250,7 @@ const Localidades = (props) => (
             } 
             .beneficio-categoria-grey {
               margin:0 0 0 0;
+              padding:2.8em 0;
             }
             .item {
                 width: 140px;

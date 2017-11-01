@@ -55,6 +55,16 @@ export default class NavBarBenFamNum extends React.Component {
             color:#ffffff;
             text-decoration:underline;
           }
+          @media screen and (min-width: 768px) {
+            .align-nav {
+              margin-top:2em;
+            }
+          }
+          @media screen and (min-width: 1024px) {
+            .align-nav {
+              margin-top:5em;
+            }
+          }
         `}</style>
       </div>
     );

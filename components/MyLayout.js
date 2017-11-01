@@ -5,10 +5,12 @@ import ServiceWorker from '../pages/service-worker'
 const layoutStyle = {
   margin: '0 auto',
   padding: 0,
-  'max-width': '70rem'
+  maxWidth: '100%'
 }
 const mainStyle = {
-  padding: 20
+  padding: 20,
+  maxWidth: '70rem',
+  margin: '0 auto'
 }
 
 const Layout = (props) => (

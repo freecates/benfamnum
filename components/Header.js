@@ -39,9 +39,16 @@ const Header = () => (
         type="text/javascript"></script>
     </Head>
     <header>
-      <NavBarBenFamNum />
+      <section>
+        <NavBarBenFamNum />
+      </section>
     </header>
         <style jsx>{`
+          ul,section {
+            max-width:70rem;
+            margin:0 auto;
+            width:100%;
+          }
           header {
             background: url('/static/bg-body-familias-numerosas.jpg');
             background-size: cover;
