@@ -3,6 +3,7 @@ import Layout from '../components/MyLayout.js'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import Observer from 'react-intersection-observer'
+import btoa from 'btoa'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
 
@@ -130,7 +131,7 @@ const Post =  (props) => (
           
           </div>
 
-          {props.post.acf.como_conseguir_la_oferta_oferta_socios ? <div className="callout large alert"><p>¡ATENCIÓN!: <span dangerouslySetInnerHTML={ {__html: props.post.acf.como_conseguir_la_oferta_oferta_socios} }/></p></div> : '' }  
+          {props.isRegistered.Response == true ? props.post.acf.como_conseguir_la_oferta_oferta_socios ? <div className="callout large alert"><p>¡ATENCIÓN!: <span dangerouslySetInnerHTML={ {__html: props.post.acf.como_conseguir_la_oferta_oferta_socios} }/></p></div> : '' : ''}
 
         </div>
 
@@ -153,7 +154,7 @@ const Post =  (props) => (
         }
         a {
           color:#3f3fff;
-        }
+        }jsonDataEncode
         .file-label {
           background:#cc0033;
         }
@@ -225,12 +226,27 @@ const Post =  (props) => (
 
 Post.getInitialProps = async function (context) {
   const { id } = context.query
+  const user = 'beneficios'
+  const method = 'isAssociated'
+  const params = {
+    user:'matias.danil123456@hotmail.com',
+    pass:'prueba2015'
+  }
+  const jsonData = JSON.stringify(params)
+  const jsonDataEncode = btoa(jsonData)
+  const data = {
+    method: method,
+    params: jsonDataEncode
+  }
+  const dataEncode = JSON.stringify(data)
   const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/beneficios/${id}?_embed`)
+  const res2 = await fetch(`http://www.familias-numerosas.org/v2/ws/endpoint.php?user=${user}&data=${dataEncode}`)
   const post = await res.json()
+  const isRegistered = await res2.json()
 
-  console.log(`Fetched post: ${post.title.rendered}`)
+  console.log(`Fetched post: ${post.title.rendered}, ${isRegistered.Response}`)
 
-  return { post }
+  return { post, isRegistered }
 }
 
 export default Post
