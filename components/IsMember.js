@@ -4,7 +4,6 @@ import fetch from 'isomorphic-unfetch'
 class IsMember extends React.Component {
     constructor(props) {
       super(props);
-      console.log(this.props.dataOK);
       this.state = {
           isEmail: '',
           isPassword:'',
@@ -43,7 +42,7 @@ class IsMember extends React.Component {
         }
         const dataEncode = JSON.stringify(data)
 
-        const res = await fetch(`http://www.familias-numerosas.org/v2/ws/endpoint.php?user=${user}&data=${dataEncode}`)
+        const res = await fetch(`https://www.familias-numerosas.org/v2/ws/endpoint.php?user=${user}&data=${dataEncode}`)
         const isRegistered = await res.json()
         this.setState({
             isRegistered: isRegistered.Response
