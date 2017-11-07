@@ -97,10 +97,15 @@ class IsMember extends React.Component {
                         </form>
                     </div>
                     <style jsx>{`
+                        @media screen and (min-width: 768px) {
+                            .wrapper {
+                            width: 80%;
+                            margin: 0 auto;
+                            }
+                        }
                         @media screen and (min-width: 1024px) {
                             .wrapper {
                             width: 50%;
-                            margin: 0 auto;
                             }
                         }
                         form {
