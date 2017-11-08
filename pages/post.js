@@ -157,10 +157,10 @@ const Post =  (props) => (
           font-weight:bold;
         }
         a {
-          color:#3f3fff;
+          color:#3f3fff!important;
         }
         .file-label {
-          background:#cc0033;
+          background:#cc0033!important;
           color:#ffffff;
           font-weight:bold;
         }

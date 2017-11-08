@@ -150,7 +150,7 @@ class IsMember extends React.Component {
                             margin-bottom:0;
                         }
                         .file-label {
-                            background:#cc0033;
+                            background:#cc0033!important;
                             color:#ffffff;
                             font-weight:bold;
                             padding:1em;

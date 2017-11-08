@@ -109,7 +109,7 @@ const MapByCategoryLocalidad = (props) => (
           margin-right:10px;
           float:right;
           text-align:center;
-          background:#cc0033;
+          background:#cc0033!important;
         }
         .titulo-oferta {
           color:#ff0000;

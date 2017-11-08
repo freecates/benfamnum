@@ -90,7 +90,7 @@ const OfertaOnLine =  (props) => (
           color:#3f3fff;
         }
         .file-label {
-          background:#cc0033;
+          background:#cc0033!important;
         }
         .dont-break-out {          
           overflow-wrap: break-word;

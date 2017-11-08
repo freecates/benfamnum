@@ -36,5 +36,14 @@ export default () => (
         Tel.: +34 902 94 54 01<br/>
         Fax.: +34 91 501 48 09<br/>
         N.I.F. G28728962</p>
+
+      <style jsx>{`
+        .breadcrumbs {
+          margin-bottom:1em;
+        }
+        a {
+          color:#3f3fff!important;
+        }
+      `}</style>
     </Layout>
 )

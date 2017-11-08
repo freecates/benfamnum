@@ -44,15 +44,20 @@ export default () => (
         <p>Aqui encontrarás los datos de todas las Asociaciones.</p>
 
         <p><a href='http://www.familiasnumerosas.org/conocenos/nuestras-asociaciones/' title="Acceder" target='_blank'>Elige tu asociación</a></p>
-
-
+      </section>
         <style jsx>{`
+            .breadcrumbs {
+                margin-bottom:1em;
+            }
+            a {
+                color:#3f3fff!important;
+            }
             .call-to-action {
                 text-align:center;
                 margin:0 auto;
             }
             .text-left {
-              text-align:left;
+                text-align:left;
             }
             h1, h2 {
                 color:#391f92;
@@ -78,9 +83,5 @@ export default () => (
                 }
             }
         `}</style>
-
-      </section>
-
-
     </Layout>
 )

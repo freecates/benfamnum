@@ -125,7 +125,7 @@ const PostsByCategory = (props) => (
             margin-right:5px;
             float:right;
             text-align:center;
-            background:#cc0033;
+            background:#cc0033!important;
           }
           .titulo-oferta {
             color:#ff0000;

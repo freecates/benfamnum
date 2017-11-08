@@ -83,7 +83,7 @@ const Prestacion =  (props) => (
           text-align:center;
         }
         .file-label {
-          background:#cc0033;
+          background:#cc0033!important;
         }
         @media screen and (min-width: 768px) {              
           .file-data {

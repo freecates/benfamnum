@@ -29,5 +29,14 @@ export default () => (
         <p>Por ello, al acceder a nuestra web, en cumplimiento del artículo 22 de la Ley de Servicios de la Sociedad de la Información, al tratar cookies de análisis, le hemos solicitado su consentimiento para su uso, que en todo caso se instalarán pasado un plazo de tiempo prudencial para que el usuario tenga tiempo de decidir prestar su consentimiento o no.</p>
 
         <p>De todas formas, le informamos que puede activar o desactivar estas cookies siguiendo las instrucciones de su navegador de Internet.</p>
+
+      <style jsx>{`
+        .breadcrumbs {
+          margin-bottom:1em;
+        }
+        a {
+          color:#3f3fff!important;
+        }
+      `}</style>
     </Layout>
 )
