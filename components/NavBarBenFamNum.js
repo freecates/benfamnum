@@ -19,12 +19,11 @@ export default class NavBarBenFamNum extends React.Component {
   render() {
     return (
       <div>
-        <Navbar inverse toggleable>
-          <NavbarToggler left onClick={this.toggle} />
-          <Link prefetch href="/"><NavbarBrand>
+        <Navbar inverse toggleable expand='lg'>
+          <NavbarToggler className='ml-2' onClick={this.toggle} />
+          <Link prefetch href="/"><NavbarBrand className='ml-auto'>
             <img src='/static/logo-familias-numerosas.png' alt='Inicio' />
           </NavbarBrand></Link>
-          <span className='align-nav'>
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem><Link prefetch href="/la-federacion">
@@ -39,14 +38,13 @@ export default class NavBarBenFamNum extends React.Component {
                 <NavItem><Link prefetch href="/hazte-socio">
                   <a>Hazte socio</a>
                 </Link></NavItem>
+                <NavItem><Link prefetch href="/contacto">
+                  <a>Contacto</a>
+                </Link></NavItem>
               </Nav>
             </Collapse>
-          </span>
         </Navbar>
         <style jsx>{`
-          .align-nav {
-            text-align:center;
-          }
           a {
             color:#ffffff;
             margin:0 1em;
@@ -57,7 +55,6 @@ export default class NavBarBenFamNum extends React.Component {
           }
           @media screen and (min-width: 768px) {
             .align-nav {
-              margin-top:2em;
             }
           }
           @media screen and (min-width: 1024px) {
