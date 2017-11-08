@@ -18,5 +18,14 @@ export default () => (
         <p>Declarada Entidad De Utilidad Pública desde el año 2003, su objetivo es conseguir para estas familias el reconocimiento social y económico que les corresponde por su especial contribución a la sociedad y, en consecuencia, otorgarles facilidades en el acceso a bienes y servicios, tanto públicos como privados.</p>
 
         <p>La <Link href='http://www.familiasnumerosas.org/conocenos/quienes-somos/'><a>FEFN</a></Link> está integrada por más de 80 Asociaciones locales, provinciales y autonómicas, que trabajan en cada Comunidad Autónoma, con el objetivo común de hacer valer y defender los derechos de las familias numerosas.</p>
+
+      <style jsx>{`
+        .breadcrumbs {
+          margin-bottom:1em;
+        }
+        a {
+          color:#3f3fff!important;
+        }
+      `}</style>
     </Layout>
 )

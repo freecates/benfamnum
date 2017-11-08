@@ -1,6 +1,5 @@
 import HeaderHome from './HeaderHome'
 import Footer from './Footer'
-import Styles from './Styles'
 import ServiceWorker from '../pages/service-worker'
 
 const layoutStyle = {
@@ -17,7 +16,6 @@ const LayoutHome = (props) => (
       </main>
     <Footer />
     <ServiceWorker />
-    <Styles />
   </div>
 )
 

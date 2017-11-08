@@ -77,7 +77,7 @@ const Prestacion =  (props) => (
           color:#ffffff;
         }
         a {
-          color:#3f3fff;
+          color:#3f3fff!important;
         }
         .align-center {
           text-align:center;

@@ -26,7 +26,7 @@ export default () => (
         </section>
         <style jsx>{`
             a, li {
-                color:#ffffff;
+                color:#ffffff!important;
             }
             .call-to-action {
                 text-align:center;

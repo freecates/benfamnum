@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import Styles from './Styles'
 
 const GlobalHead = () => (
       <Head>
@@ -19,6 +20,7 @@ const GlobalHead = () => (
           type="text/javascript"></script>
         <script async="true" defer="true" src="/static/intersection-observer.js"
           type="text/javascript"></script>
+        <Styles />
       </Head>
   )
   
