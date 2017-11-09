@@ -87,7 +87,7 @@ const OfertaOnLine =  (props) => (
           font-weight:bold;
         }
         a {
-          color:#3f3fff;
+          color:#3f3fff!important;
         }
         .file-label {
           background:#cc0033!important;
