@@ -19,32 +19,46 @@ const ComunidadesPrestaciones = (props) => (
     </Head>
     <h1>Comunidades con Prestaciones</h1>
 
-    <p>Selecciona la Comunidad Autónoma</p>
+    <div className='wrapper'>
 
-    <IntlProvider defaultLocale='ca'>
+      <IntlProvider defaultLocale='ca'>
 
-      <SelectCity
-           options={props.comunidades.reduce((autonomies, comunidad) => {
-            if (comunidad.comunidad_autonoma == false) {
-              return autonomies
-            }
-             autonomies[comunidad.comunidad_autonoma.term_id] =
-              {
-                slug: comunidad.comunidad_autonoma.slug,
-                key: comunidad.comunidad_autonoma.term_id,
-                value: comunidad.comunidad_autonoma.term_id ? `/prestaciones-comunidad?comunidad=${comunidad.comunidad_autonoma.term_id}` : '',
-                label: comunidad.comunidad_autonoma.term_id ? `${comunidad.comunidad_autonoma.name}` : ''
+        <SelectCity
+            inputClass= 'benefit'
+            options={props.comunidades.reduce((autonomies, comunidad) => {
+              if (comunidad.comunidad_autonoma == false) {
+                return autonomies
               }
-              return autonomies
-        },[]).sort((a,b) => {
-          if (a.slug < b.slug)
-            return -1;
-          if (a.slug > b.slug)
-            return 1;
-          return 0;
-          })} />
-    </IntlProvider>
+              autonomies[comunidad.comunidad_autonoma.term_id] =
+                {
+                  slug: comunidad.comunidad_autonoma.slug,
+                  key: comunidad.comunidad_autonoma.term_id,
+                  value: comunidad.comunidad_autonoma.term_id ? `/prestaciones-comunidad?comunidad=${comunidad.comunidad_autonoma.term_id}` : '',
+                  label: comunidad.comunidad_autonoma.term_id ? `${comunidad.comunidad_autonoma.name}` : ''
+                }
+                return autonomies
+          },[]).sort((a,b) => {
+            if (a.slug < b.slug)
+              return -1;
+            if (a.slug > b.slug)
+              return 1;
+            return 0;
+            })} />
+      </IntlProvider>
+      
+    </div>
         <style jsx>{`
+        @media screen and (min-width: 768px) {
+            .wrapper {
+            width: 80%;
+            margin: 0 auto;
+            }
+        }
+        @media screen and (min-width: 1024px) {
+            .wrapper {
+            width: 50%;
+            }
+        }
           h1 {
             color:#391f92;
             text-align:center;

@@ -19,90 +19,104 @@ const MunicipiosPrestaciones = (props) => (
     </Head>
     <h1>Municipios con Prestaciones</h1>
 
-    <p>Selecciona el municipio</p>
-    
-    <IntlProvider defaultLocale='ca'>
+    <div className='wrapper'>
+      
+      <IntlProvider defaultLocale='ca'>
 
-      <SelectCity
-           options={props.municipios.reduce((ciutats, municipio) => {
-            if (municipio.localidad == false) {
-              return ciutats
-            }
-             ciutats[municipio.localidad.term_id] =
-              {
-                slug: municipio.localidad.slug,
-                key: municipio.localidad.term_id,
-                value: municipio.localidad.term_id ? `/prestaciones-municipio?localidad=${municipio.localidad.term_id}` : '',
-                label: municipio.localidad.term_id ? `${municipio.localidad.name}` : ''
+        <SelectCity
+            inputClass= 'benefit'
+            localBenefit={true}
+            options={props.municipios.reduce((ciutats, municipio) => {
+              if (municipio.localidad == false) {
+                return ciutats
               }
-              return ciutats
-        },[]).sort((a,b) => {
-          if (a.slug < b.slug)
-            return -1;
-          if (a.slug > b.slug)
-            return 1;
-          return 0;
-          })} />
-    </IntlProvider>
-        <style jsx>{`
-          h1 {
-            color:#391f92;
-            text-align:center;
-          }
+              ciutats[municipio.localidad.term_id] =
+                {
+                  slug: municipio.localidad.slug,
+                  key: municipio.localidad.term_id,
+                  value: municipio.localidad.term_id ? `/prestaciones-municipio?localidad=${municipio.localidad.term_id}` : '',
+                  label: municipio.localidad.term_id ? `${municipio.localidad.name}` : ''
+                }
+                return ciutats
+          },[]).sort((a,b) => {
+            if (a.slug < b.slug)
+              return -1;
+            if (a.slug > b.slug)
+              return 1;
+            return 0;
+            })} />
+      </IntlProvider>
+    </div>
+      <style jsx>{`
+        @media screen and (min-width: 768px) {
+            .wrapper {
+            width: 80%;
+            margin: 0 auto;
+            }
+        }
+        @media screen and (min-width: 1024px) {
+            .wrapper {
+            width: 50%;
+            }
+        }
+        h1 {
+          color:#391f92;
+          text-align:center;
+        }
+        .gallery {
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap;
+          padding: 5px;
+        }
+        ul {
+          list-style-type:none;
+          margin-left:0;
+          margin:0 auto!important;
+        }
+        a {
+          color:inherit;
+        }
+        a:hover {
+          text-decoration:underline;
+        }
+        .item {
+          width: 150px;
+        }
+        @media screen and (min-width: 320px) {   
           .gallery {
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-wrap: wrap;
-                flex-wrap: wrap;
-            padding: 5px;
-          }
-          ul {
-            list-style-type:none;
-            margin-left:0;
-            margin:0 auto!important;
-          }
-          a {
-            color:inherit;
-          }
-          a:hover {
-            text-decoration:underline;
-          }
+            width: 100%;
+          }              
           .item {
-            width: 150px;
+            margin: 5px;
           }
-          @media screen and (min-width: 320px) {   
-            .gallery {
-              width: 100%;
-            }              
-            .item {
-              margin: 5px;
-            }
-          }
-          @media screen and (max-width: 375px) {              
-            .item {
-              width: 124px;
-            }
-          }
-          @media screen and (min-width: 360px) {   
-            .gallery {
-              width: 90%;
-            }
-          }
-          @media screen and (min-width: 768px) {   
-            .gallery {
-              width: 90%;
-            }
+        }
+        @media screen and (max-width: 375px) {              
           .item {
-              width: 200px;
-            }
+            width: 124px;
           }
-          @media screen and (min-width: 1366px) {   
-            .gallery {
-              width: 82%;
-            }
+        }
+        @media screen and (min-width: 360px) {   
+          .gallery {
+            width: 90%;
           }
-        `}</style>
-  </Layout>
+        }
+        @media screen and (min-width: 768px) {   
+          .gallery {
+            width: 90%;
+          }
+        .item {
+            width: 200px;
+          }
+        }
+        @media screen and (min-width: 1366px) {   
+          .gallery {
+            width: 82%;
+          }
+        }
+      `}</style>
+    </Layout>
 )
 
 MunicipiosPrestaciones.getInitialProps = async function() {

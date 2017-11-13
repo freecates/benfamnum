@@ -26,6 +26,7 @@ const Localidades = (props) => (
               <h3 className='align-center'>Escribe donde deseas el beneficio</h3>
               <div className='form-component'>          
                 <SelectCity
+                  inputClass= 'city'
                   options={props.beneficios.reduce((ciutats, beneficio) => {
                   if (beneficio.localidad_del_beneficio == false) {
                     return ciutats
@@ -80,11 +81,12 @@ const Localidades = (props) => (
           <h4 className='align-center'>También puedes buscar servicios cerca de tí</h4>
           <div className='wrapper wrapper-top'>
             <div className='left'>
-              <p className='align-center no-margin-bottom'><Link prefetch as='/m-p' href='/mapa-proximidad'><a className='button button-blue'>Buscar cerca de tí</a></Link></p>
+              <p className='align-center no-margin-bottom padding'><Link prefetch as='/m-p' href='/mapa-proximidad'><a className='button button-blue'>Buscar cerca de tí</a></Link></p>
             </div>
             <div className='right'>
               <div className='form-component form-component-full'>       
                 <SelectCity
+                  inputClass= 'map'
                   options={props.beneficios.reduce((ciutats, beneficio) => {
                   if (beneficio.localidad_del_beneficio == false) {
                     return ciutats
@@ -145,6 +147,7 @@ const Localidades = (props) => (
           }
           .button-blue {
             background:#0066ff;
+            width:55%;
           }
           .button-blue:hover {
             background:#0051cb;
@@ -152,6 +155,9 @@ const Localidades = (props) => (
           }
           .no-margin-bottom {
             margin-bottom:0;
+          }
+          .padding {
+            padding:1em;
           }
           ul {
             list-style-type:none;

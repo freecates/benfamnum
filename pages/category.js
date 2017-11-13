@@ -36,6 +36,7 @@ const PostsByCategory = (props) => (
         <p>¿Dónde quieres disfrutar del beneficio? Selecciona la localidad</p>
         
           <SelectCity
+           inputClass= 'city'
            options={props.posts.reduce((ciutats, post) => {
             if (post.localidad_del_beneficio == false) {
               return ciutats
