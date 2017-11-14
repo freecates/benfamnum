@@ -26,8 +26,11 @@ export default class NavBarBenFamNum extends React.Component {
           </NavbarBrand></Link>
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
-                <NavItem><Link prefetch href="/la-federacion">
-                  <a>La Federación</a>
+                <NavItem><Link href="http://www.familiasnumerosas.org/conocenos/quienes-somos/">
+                  <a target='_blank'>La Federación</a>
+                </Link></NavItem>
+                <NavItem><Link href="http://www.familiasnumerosas.org/conocenos/nuestras-asociaciones/">
+                  <a target='_blank'>Las Asociaciones</a>
                 </Link></NavItem>
                 <NavItem><Link prefetch href="/prestaciones">
                   <a>Prestaciones oficiales</a>
@@ -35,8 +38,8 @@ export default class NavBarBenFamNum extends React.Component {
                 <NavItem><Link prefetch href="/beneficios">
                   <a>Beneficios para familias</a>
                 </Link></NavItem>
-                <NavItem><Link prefetch href="/hazte-socio">
-                  <a>Hazte socio</a>
+                <NavItem><Link href="http://www.familiasnumerosas.org/hazte-socio/">
+                  <a target='_blank'>Hazte socio</a>
                 </Link></NavItem>
                 <NavItem><Link prefetch href="/contacto">
                   <a>Contacto</a>

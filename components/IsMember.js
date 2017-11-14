@@ -81,31 +81,28 @@ class IsMember extends React.Component {
             return (
                 <section>
                     <div className='wrapper'>
-                        <h1><span className='label alert file-label'>EXCLUSIVO SOCIOS.<br/>PARA SABER CÓMO CONSEGUIR LA OFERTA DEBES IDENFICARTE</span></h1>
                         <form>
                         <label>
-                            Correo electrónico:
-                            <input type="email" name='isEmail' value={this.state.isEmail} onChange={this.handleChange} required />
+                            <input placeholder='Usuario' type="email" name='isEmail' value={this.state.isEmail} onChange={this.handleChange} required />
                         </label>
                         <label>
-                            Contrasenya:
-                            <input type="password" name='isPassword' value={this.state.isPassword} onChange={this.handleChange}required />
+                            <input placeholder='Contrasenya' type="password" name='isPassword' value={this.state.isPassword} onChange={this.handleChange}required />
                         </label>
                         <div className='wrapper-input'><input type="button" className='button' onClick={this.handleSubmit} value="Enviar" /></div>
                         <p className='yellow margin-inverse'>¿Quieres participar de estos beneficios? Ahora te puedes hacer socio. ¡Fácil y rápido!</p>
-                        <div className='wrapper-input'><Link href='/hazte-socio' prefetch><a className='button button-pink' >Sí, quiero hacerme socio</a></Link></div>
+                        <div className='wrapper-input'><Link href='http://www.familiasnumerosas.org/hazte-socio/' ><a target='_blank'className='button button-pink' >Sí, quiero hacerme socio</a></Link></div>
                         </form>
                     </div>
                     <style jsx>{`
                         @media screen and (min-width: 768px) {
                             .wrapper {
-                            width: 80%;
+                            width: 70%;
                             margin: 0 auto;
                             }
                         }
                         @media screen and (min-width: 1024px) {
                             .wrapper {
-                            width: 50%;
+                            width: 40%;
                             }
                         }
                         form {
@@ -124,7 +121,7 @@ class IsMember extends React.Component {
                         background:#009933;
                         margin:0 auto;
                         display:block;
-                        width:50%;
+                        width:100%;
                         }
                         input[type=button]:hover {
                         background:#007e2a;
@@ -133,7 +130,7 @@ class IsMember extends React.Component {
                         background:#cc3366;
                         margin:0 auto;
                         display:block;
-                        width:50%;
+                        width:100%;
                         color:#ffffff!important;
                         }
                         .button-pink:hover {
