@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Layout from '../components/MyLayout.js'
-import IsMember from '../components/IsMember.js'
+import Comments from '../components/Comments.js'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
@@ -67,16 +67,14 @@ const OfertaOnLine =  (props) => (
             </div>
           
           </div>
-          
-          {props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios ?
-            <div id='how-to-get-it'>
-            <IsMember 
-              dataOK={<div dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios} } />}
+
+          <div id='how-to-get-it'>
+            <Comments 
               ID={props.ofertaonline.slug + '-' + props.ofertaonline.id}
               Title={props.ofertaonline.title.rendered}
               URL={'oo/' + props.ofertaonline.id + '/' + props.ofertaonline.slug}
                />
-            </div> : ''} 
+            </div> 
 
         </div>
 
