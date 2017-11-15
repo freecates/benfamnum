@@ -136,7 +136,11 @@ const Post =  (props) => (
 
           {props.post.acf.como_conseguir_la_oferta_oferta_socios ?
             <div id='how-to-get-it'>
-            <IsMember dataOK={props.post.acf.como_conseguir_la_oferta_oferta_socios} />
+            <IsMember 
+              dataOK={<div dangerouslySetInnerHTML={ {__html: props.post.acf.como_conseguir_la_oferta_oferta_socios} } />}
+              ID={props.post.acf.id}
+              Title={props.post.acf.nombre_del_establecimiento}
+              URL={'p/' + props.post.acf.id}   />
             </div> : ''}
 
         </div>

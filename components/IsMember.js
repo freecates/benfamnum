@@ -1,6 +1,7 @@
 import btoa from 'btoa'
 import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
+import Disqus from 'disqus-react';
 
 class IsMember extends React.Component {
     constructor(props) {
@@ -9,14 +10,17 @@ class IsMember extends React.Component {
           isEmail: '',
           isPassword:'',
           isRegistered: false,
-          HowTo: this.props.dataOK
+          HowTo: this.props.dataOK,
+          Identifier: this.props.ID,
+          Title: this.props.Title,
+          URL: this.props.URL
 
     };
   
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
-  
+
     handleChange(event) {
         const target = event.target;
         const value = target.value;
@@ -52,6 +56,12 @@ class IsMember extends React.Component {
     }
   
     render() {
+        const disqusShortname = 'beneficios-familias-numerosas'
+        const disqusConfig = {
+            url: this.state.URL,
+            identifier: this.state.Identifier,
+            title: this.state.Title
+        }
         console.log(`Hola: ${this.state.isRegistered}`)
         if (this.state.isRegistered == true) { 
             return (
@@ -59,6 +69,7 @@ class IsMember extends React.Component {
                     <div className='callout large alert fade-in'>
                         <p>¡ATENCIÓN!: <span>{this.state.HowTo}</span></p>
                     </div>
+                    <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
                         <style jsx>{`
                             .fade-in {
                             animation-name: fadeIn;

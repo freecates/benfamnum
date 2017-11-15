@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Layout from '../components/MyLayout.js'
+import IsMember from '../components/IsMember.js'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
@@ -14,7 +15,7 @@ const OfertaOnLine =  (props) => (
       <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-          <li><Link prefetch href="/ofertas-on-line"><a>Ofertas On Line</a></Link></li>
+          <li><Link prefetch href="/ofertas-on-line"><a>Beneficios On Line</a></Link></li>
           <li><Link prefetch as={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`} href={`/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}><a>{props.ofertaonline._embedded['wp:term'][0][0].name}</a></Link></li>
           <li>
             <span className="show-for-sr">Actual: </span> <span dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.nombre_del_establecimiento} } />
@@ -28,9 +29,8 @@ const OfertaOnLine =  (props) => (
             
             <h1><img src={'/static/' + props.ofertaonline._embedded['wp:term'][0][0].slug +'-familias-numerosas.png'} /><br/><span dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.nombre_del_establecimiento} } /> {props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios ? <span className='label alert file-label'><small>EXCLUSIVO<br /> SOCIOS</small></span> : '' }</h1>
            
-            <h2 className='location dont-break-out'><small>
-            {props.ofertaonline.acf.url_de_la_oferta_online ? <span><Link href={props.ofertaonline.acf.url_de_la_oferta_online}><a>Accede a la web</a></Link></span> : '' }</small></h2>
-            <p>{props.ofertaonline.acf.correo_electronico_del_establecimiento ?  <span>. <strong>C.E.</strong>: <a href={'mailto:' + props.ofertaonline.acf.correo_electronico_del_establecimiento}>{props.ofertaonline.acf.correo_electronico_del_establecimiento}</a></span> : '' }</p>
+            <h4 className='location dont-break-out'><span>
+            {props.ofertaonline.acf.url_de_la_oferta_online ? <span><Link href={props.ofertaonline.acf.url_de_la_oferta_online}><a>Accede a la web</a></Link></span> : '' }</span></h4>
 
             <p className='category'><small><strong>Categoria</strong>: <Link prefetch as={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`} href={`/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}><a title={'Ver todas las ofertas de la categoría ' + props.ofertaonline._embedded['wp:term'][0][0].name}>{props.ofertaonline._embedded['wp:term'][0][0].name}</a></Link></small></p>
 
@@ -49,6 +49,8 @@ const OfertaOnLine =  (props) => (
             </div>
 
             <div className='file-content'>
+
+              {props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios ?<h1><span className='label alert file-label'><Link href="#how-to-get-it"><a>EXCLUSIVO SOCIOS.<br/>MIRA COMO CONSEGUIR ESTA OFERTA</a></Link></span></h1> : ''}
               
               {props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios ? <h4>{props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios}</h4> : '' }
 
@@ -65,8 +67,11 @@ const OfertaOnLine =  (props) => (
             </div>
           
           </div>
-
-          {props.ofertaonline.acf.como_conseguir_la_oferta_oferta_socios ? <div className="callout large alert"><p>¡ATENCIÓN!: <span dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.como_conseguir_la_oferta_oferta_socios} }/></p></div> : '' }  
+          
+          {props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios ?
+            <div id='how-to-get-it'>
+            <IsMember dataOK={<div dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios} } />} />
+            </div> : ''} 
 
         </div>
 
@@ -92,6 +97,15 @@ const OfertaOnLine =  (props) => (
         }
         .file-label {
           background:#cc0033!important;
+          color:#ffffff;
+          font-weight:bold;
+          font-size:1rem;
+        }
+        .file-label a {
+          color:#ffffff!important;
+        }
+        .file-label a:hover {
+          text-decoration:none;
         }
         .dont-break-out {          
           overflow-wrap: break-word;

@@ -14,13 +14,15 @@ const mainStyle = {
 }
 
 const Layout = (props) => (
-  <div style={layoutStyle} className='layout'>
-    <Header />
-      <main style={mainStyle}>
-        {props.children}
-      </main>
-    <Footer />
-    <ServiceWorker />
+  <div>
+    <div style={layoutStyle} className='layout'>
+      <Header />
+        <main style={mainStyle}>
+          {props.children}
+        </main>
+    </div>
+      <Footer />
+      <ServiceWorker />
   </div>
 )
 

@@ -8,7 +8,7 @@ const linkStyle = {
 const footerStyle = {
   margin: '20px auto',
   textAlign: 'center',
-  maxWidth: '70rem'
+  maxWidth: '100%'
 }
 
 const Footer = () => (
@@ -65,7 +65,8 @@ const Footer = () => (
                   flex-wrap: wrap;
               align-items:center;
 
-              width: 100%;
+              width: 70rem;
+              margin:0 auto;
             }
             .wrapper-top {
               align-items:baseline;

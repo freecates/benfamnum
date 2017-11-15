@@ -7,13 +7,13 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 const OfertasOnLine = (props) => (
   <Layout>
     <Head>
-      <title>Ofertas On Line</title>
+      <title>Beneficios On Line</title>
     </Head>
     <IntlProvider defaultLocale='ca'>
       <main>
-        <h1>Ofertas On Line</h1>
+        <h1>Beneficios On Line</h1>
         <section>
-          <h2>Escoje la categoría que más te interese haciendo click</h2>
+          <h2 className='align-center'>Selecciona la categoría de tu interés</h2>
           <ul className='gallery'>
           {props.ofertasonlines.reduce((categories, ofertasonline) => {
             if (ofertasonline.categoria_de_la_oferta == false) {
@@ -92,15 +92,11 @@ const OfertasOnLine = (props) => (
           }
           @media screen and (min-width: 768px) {   
             .gallery {
-              width: 90%;
+              max-width: 70%;
+              width:500px;
             }
           .item {
-              width: 200px;
-            }
-          }
-          @media screen and (min-width: 1366px) {   
-            .gallery {
-              width: 82%;
+              width: 150px;
             }
           }
         `}</style>
