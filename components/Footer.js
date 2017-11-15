@@ -65,7 +65,7 @@ const Footer = () => (
                   flex-wrap: wrap;
               align-items:center;
 
-              width: 70rem;
+              max-width: 70rem;
               margin:0 auto;
             }
             .wrapper-top {

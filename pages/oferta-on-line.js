@@ -70,7 +70,12 @@ const OfertaOnLine =  (props) => (
           
           {props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios ?
             <div id='how-to-get-it'>
-            <IsMember dataOK={<div dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios} } />} />
+            <IsMember 
+              dataOK={<div dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios} } />}
+              ID={props.ofertaonline.slug + '-' + props.ofertaonline.id}
+              Title={props.ofertaonline.title.rendered}
+              URL={'oo/' + props.ofertaonline.id + '/' + props.ofertaonline.slug}
+               />
             </div> : ''} 
 
         </div>
