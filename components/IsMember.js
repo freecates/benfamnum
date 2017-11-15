@@ -1,7 +1,7 @@
 import btoa from 'btoa'
 import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
-import Disqus from 'disqus-react';
+import ReactDisqusComments from 'react-disqus-comments'
 
 class IsMember extends React.Component {
     constructor(props) {
@@ -19,6 +19,11 @@ class IsMember extends React.Component {
   
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+
+    handleNewComment(comment) {
+        console.log(comment.text);
     }
 
     handleChange(event) {
@@ -56,12 +61,6 @@ class IsMember extends React.Component {
     }
   
     render() {
-        const disqusShortname = 'beneficios-familias-numerosas'
-        const disqusConfig = {
-            url: this.state.URL,
-            identifier: this.state.Identifier,
-            title: this.state.Title
-        }
         console.log(`Hola: ${this.state.isRegistered}`)
         if (this.state.isRegistered == true) { 
             return (
@@ -69,7 +68,13 @@ class IsMember extends React.Component {
                     <div className='callout large alert fade-in'>
                         <p>¡ATENCIÓN!: <span>{this.state.HowTo}</span></p>
                     </div>
-                    <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+                    <ReactDisqusComments
+                        shortname="beneficios-familias-numerosas"
+                        identifier={this.state.Identifier}
+                        title={this.state.Title}
+                        url={'https://beneficios.now.sh/' + this.state.URL}
+                        category_id="123456"
+                        onNewComment={this.handleNewComment}/>
                         <style jsx>{`
                             .fade-in {
                             animation-name: fadeIn;
