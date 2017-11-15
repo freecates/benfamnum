@@ -138,7 +138,7 @@ const Post =  (props) => (
             <div id='how-to-get-it'>
             <IsMember 
               dataOK={<div dangerouslySetInnerHTML={ {__html: props.post.acf.como_conseguir_la_oferta_oferta_socios} } />}
-              ID={props.post.id}
+              ID={props.post.slug + '-' + props.post.id}
               Title={props.post.title.rendered}
               URL={'p/' + props.post.id + '/' + props.post.slug}
             />
