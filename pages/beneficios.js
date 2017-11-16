@@ -77,8 +77,8 @@ const Localidades = (props) => (
             </section>
           </div>
         </div>
+          <h4 className='align-center margin-top'>También puedes buscar servicios cerca de tí</h4>
         <section className='bg-mapa'>
-          <h4 className='align-center'>También puedes buscar servicios cerca de tí</h4>
           <div className='wrapper wrapper-top'>
             <div className='left'>
               <p className='align-center no-margin-bottom padding'><Link prefetch as='/m-p' href='/mapa-proximidad'><a className='button button-blue'>Buscar cerca de tí</a></Link></p>
@@ -155,6 +155,9 @@ const Localidades = (props) => (
           }
           .no-margin-bottom {
             margin-bottom:0;
+          }
+          .margin-top {
+            margin-top:1rem;
           }
           .padding {
             padding:1em;

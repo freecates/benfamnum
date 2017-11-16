@@ -1,6 +1,6 @@
 {
   "name": "beneficios-familias-numerosas",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -25,6 +25,7 @@
     "bootstrap": "4.0.0-alpha.6",
     "btoa": "^1.1.2",
     "compression": "1.7.0",
+    "create-react-class": "^15.6.2",
     "express": "4.15.2",
     "google-map-react": "0.24.0",
     "google-maps-react": "^1.1.0",
@@ -37,6 +38,7 @@
     "react-disqus-comments": "^1.1.1",
     "react-disqus-thread": "^0.4.0",
     "react-dom": "^16.0.0",
+    "react-fontawesome": "^1.6.1",
     "react-google-maps": "next",
     "react-intersection-observer": "1.0.0",
     "react-intl": "^2.4.0",

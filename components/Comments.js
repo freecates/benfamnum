@@ -11,7 +11,7 @@ class Comments extends React.Component {
 
     };  
     }
-
+        
     handleNewComment(comment) {
         console.log(comment.text);
     }

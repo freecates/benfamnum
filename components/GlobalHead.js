@@ -16,6 +16,7 @@ const GlobalHead = () => (
         <link rel="apple-touch-icon" href="/static/icons/android-chrome-192x192.png"/>
         <meta name="msapplication-TileImage" content="/static/icons/android-chrome-192x192.png"/>
         <meta name="msapplication-TileColor" content="#64bc58"/>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossOrigin="anonymous" />
         <script async="true" defer="true" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90&callback=initMap"
           type="text/javascript"></script>
         <script async="true" defer="true" src="/static/intersection-observer.js"

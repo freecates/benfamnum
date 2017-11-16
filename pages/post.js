@@ -5,6 +5,7 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import Observer from 'react-intersection-observer'
 import fetch from 'isomorphic-unfetch'
+import FontAwesome from 'react-fontawesome'
 import {IntlProvider, FormattedDate} from 'react-intl'
 
 const MapaDeGoogle = dynamic(
@@ -116,7 +117,13 @@ const Post =  (props) => (
             <div className='file-content'>
 
               
-              {props.post.acf.como_conseguir_la_oferta_oferta_socios ?<h1><span className='label alert file-label'><Link href="#how-to-get-it"><a>EXCLUSIVO SOCIOS.<br/>MIRA COMO CONSEGUIR ESTA OFERTA</a></Link></span></h1> : ''}
+              {props.post.acf.como_conseguir_la_oferta_oferta_socios ?
+                  
+                <h1><span className='label alert file-label'><Link href="#how-to-get-it"><a>EXCLUSIVO SOCIOS.<br/>MIRA COMO CONSEGUIR ESTA OFERTA</a></Link><br/><FontAwesome
+                name='check-circle-o'
+                size='2x'
+                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+              /></span></h1> : ''}
               
               {props.post.acf.titulo_de_la_oferta_oferta_socios ? <h4>{props.post.acf.titulo_de_la_oferta_oferta_socios}</h4> : '' }
 

@@ -33,7 +33,9 @@ const PostsByCategory = (props) => (
 
       <section id='select-city'>
 
-        <p>¿Dónde quieres disfrutar del beneficio? Selecciona la localidad</p>
+        <div className='wrapper'>
+
+          <p className='align-center'>¿Dónde quieres disfrutar del beneficio? Selecciona la localidad</p>
         
           <SelectCity
            inputClass= 'city'
@@ -56,11 +58,12 @@ const PostsByCategory = (props) => (
             return 1;
           return 0;
           })} />
+        </div>
       </section>
 
       <IntlProvider defaultLocale='es'>
         <section>
-          <p>... O si lo prefieres accede directamente a cualquiera de las fichas</p>
+          <p className='align-center'>... O si lo prefieres accede directamente a cualquiera de las fichas</p>
           <ul className='gallery'>
             {props.posts.map((post, index) => (
               <li className='benefit' key={index}>
@@ -87,6 +90,17 @@ const PostsByCategory = (props) => (
       </IntlProvider>
     </section>
         <style jsx>{`
+          @media screen and (min-width: 768px) {
+              .wrapper {
+              width: 80%;
+              margin: 0 auto;
+              }
+          }
+          @media screen and (min-width: 1024px) {
+              .wrapper {
+              width: 50%;
+              }
+          }
           .breadcrumbs {
             margin-bottom:1em;
           }
