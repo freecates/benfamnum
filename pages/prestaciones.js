@@ -28,6 +28,9 @@ export default () => (
             a, li {
                 color:#ffffff!important;
             }
+            .breadcrumbs {
+                margin:-2rem 0 1rem 0;
+            }
             .call-to-action {
                 text-align:center;
                 margin:0 auto;
@@ -48,7 +51,7 @@ export default () => (
             }
             @media screen and (min-width: 768px) {   
                 .call-to-action {
-                width: 70%;
+                width: 93%;
                 }
                 .icones-prestacions img {
                     padding:0 2em 1em 0;
@@ -56,7 +59,7 @@ export default () => (
             }
             @media screen and (min-width: 1366px) {   
                 .call-to-action {
-                width: 62%;
+                width: 70%;
                 }
             }
         `}</style>

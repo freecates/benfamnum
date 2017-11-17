@@ -1,5 +1,6 @@
 body {font-family: 'Lato', sans-serif;color: #6a6a6a;}
 h1, h2, h3, h4, h5, h6 {font-family: 'Lato', sans-serif; font-weight: 100;}
+h1 {font-size: 2.5rem;}
 
 .navbar-toggler {
     background:#64bc58;
@@ -13,4 +14,9 @@ li.nav-item,
 }
 .breadcrumbs li {
   text-transform: none!important;
+}
+@media screen and (min-width: 1024px) {
+  .navbar-nav {
+    margin-bottom: -5em;
+  }
 }

@@ -50,13 +50,14 @@ const ComunidadesPrestaciones = (props) => (
         <style jsx>{`
         @media screen and (min-width: 768px) {
             .wrapper {
-            width: 80%;
+            max-width: 80%;
+            width:390px;
             margin: 0 auto;
             }
         }
         @media screen and (min-width: 1024px) {
             .wrapper {
-            width: 50%;
+            max-width: 50%;
             }
         }
           h1 {

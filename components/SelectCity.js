@@ -46,7 +46,7 @@ class SelectCity extends React.Component {
            </label>
            : ''}
            {this.state.inputClass == 'benefit' ?
-           <label className='benefit'>{this.state.localBenefit == true ? <h3>Selecciona el municipio</h3> : <h3>Selecciona la comunidad</h3>}           
+           <label className='benefit'>{this.state.localBenefit == true ? <h4>Selecciona el municipio</h4> : <h4>Selecciona la comunidad</h4>}           
              <select className='benefit' onChange={this.handleChange}>
                {renderedElements}
              </select>
@@ -57,6 +57,9 @@ class SelectCity extends React.Component {
              .wrapper, label.map {
                width:100%;
                padding:1em;
+             }
+             label.city {
+               width:100%;
              }
              form.benefit {
              padding: 2em;
@@ -71,9 +74,16 @@ class SelectCity extends React.Component {
                margin:0 auto;
                display:block;
              }
+             select.city {
+              margin:.7em auto;
+              display:block;
+             }
              @media screen and (min-width: 768px) {
                 input[type=submit].map, input[type=submit].benefit, select.map {
                   width:55%;
+                }
+                select.city {
+                  width:43%;
                 }
              }
              input[type=submit].city {

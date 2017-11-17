@@ -24,7 +24,7 @@ class Comments extends React.Component {
                     identifier={this.state.Identifier}
                     title={this.state.Title}
                     url={'https://beneficios.now.sh/' + this.state.URL}
-                    category_id="123456"
+                    category_id={null}
                     onNewComment={this.handleNewComment}/>
                     <style jsx>{`
                         .fade-in {

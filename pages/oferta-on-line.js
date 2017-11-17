@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import Layout from '../components/MyLayout.js'
-import Comments from '../components/Comments.js'
+import IsMember from '../components/IsMember.js'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
+import FontAwesome from 'react-fontawesome'
 import {IntlProvider, FormattedDate} from 'react-intl'
 
 const OfertaOnLine =  (props) => (
@@ -48,9 +49,15 @@ const OfertaOnLine =  (props) => (
 
             </div>
 
-            <div className='file-content'>
+            <div className='file-content'>              
 
-              {props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios ?<h1><span className='label alert file-label'><Link href="#how-to-get-it"><a>EXCLUSIVO SOCIOS.<br/>MIRA COMO CONSEGUIR ESTA OFERTA</a></Link></span></h1> : ''}
+            {props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios ?
+                  
+                <h1><span className='label alert file-label'><Link href="#how-to-get-it"><a>EXCLUSIVO SOCIOS.<br/>MIRA COMO CONSEGUIR ESTA OFERTA</a></Link><br/><FontAwesome
+                name='check-circle-o'
+                size='2x'
+                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+              /></span></h1> : ''}
               
               {props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios ? <h4>{props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios}</h4> : '' }
 
@@ -67,14 +74,15 @@ const OfertaOnLine =  (props) => (
             </div>
           
           </div>
-
-          <div id='how-to-get-it'>
-            <Comments 
+          {props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios ?
+            <div id='how-to-get-it'>
+            <IsMember 
+              dataOK={<div dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios} } />} 
               ID={props.ofertaonline.slug + '-' + props.ofertaonline.id}
               Title={props.ofertaonline.title.rendered}
               URL={'oo/' + props.ofertaonline.id + '/' + props.ofertaonline.slug}
-               />
-            </div> 
+            />
+            </div> : ''}
 
         </div>
 

@@ -34,10 +34,7 @@ const Footer = () => (
           </Link>
           <Link prefetch href="/politica-de-cookies">
             <a style={linkStyle}>Política de Cookies</a>
-          </Link>
-          <Link prefetch href="/creditos">
-            <a style={linkStyle}>Creditos</a>
-          </Link>         
+          </Link>        
           </p>
           
           <style jsx>{`
