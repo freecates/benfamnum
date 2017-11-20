@@ -12,7 +12,7 @@ export default () => (
         <ul className="breadcrumbs">
             <li><Link prefetch href="/"><a>Inicio</a></Link></li>
             <li>
-            <span className="show-for-sr">Actual: </span> Prestaciones públicas 
+            <span className="show-for-sr">Actual: </span> Prestaciones oficiales 
             </li>
         </ul>
         </nav>

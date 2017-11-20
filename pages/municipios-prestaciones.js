@@ -16,8 +16,17 @@ const MunicipiosPrestaciones = (props) => (
   <Layout>
     <Head>
       <title>Prestaciones - Municipios</title>
+      <link rel="stylesheet" href="/static/prestaciones.css" />
     </Head>
-    <h1>Municipios con Prestaciones</h1>
+      <nav aria-label="Estás aquí:" role="navigation">
+      <ul className="breadcrumbs">
+          <li><Link prefetch href="/"><a>Inicio</a></Link></li>
+          <li><Link prefetch href="/prestaciones"><a>Prestaciones ofciales</a></Link></li>
+          <li>
+          <span className="show-for-sr">Actual: </span> Municipios con prestaciones 
+          </li>
+      </ul>
+      </nav>
 
     <div className='wrapper'>
       
@@ -48,6 +57,12 @@ const MunicipiosPrestaciones = (props) => (
       </IntlProvider>
     </div>
       <style jsx>{`
+        a, li {
+            color:#ffffff!important;
+        }
+        .breadcrumbs {
+            margin:-2rem 0 1rem 0!important;
+        }
         @media screen and (min-width: 768px) {
             .wrapper {
             max-width: 80%;
