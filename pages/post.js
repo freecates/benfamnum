@@ -7,6 +7,7 @@ import Observer from 'react-intersection-observer'
 import fetch from 'isomorphic-unfetch'
 import FontAwesome from 'react-fontawesome'
 import {IntlProvider, FormattedDate} from 'react-intl'
+import {ShareButtons, ShareCounts, generateShareIcon} from 'react-share'
 
 const MapaDeGoogle = dynamic(
   import('../components/MapaDeGoogle'),
@@ -14,6 +15,18 @@ const MapaDeGoogle = dynamic(
     loading: () => (<p>cargando ...</p>)
   }
 )
+
+const {
+  FacebookShareButton,
+  LinkedinShareButton,
+  TwitterShareButton,
+  EmailShareButton,
+} = ShareButtons
+
+const FacebookIcon = generateShareIcon('facebook')
+const TwitterIcon = generateShareIcon('twitter')
+const LinkedinIcon = generateShareIcon('linkedin')
+const EmailIcon = generateShareIcon('email')
 
 const Post =  (props) => (
     <Layout>
@@ -133,6 +146,28 @@ const Post =  (props) => (
 
             <div className='file-content'>
 
+              <div className='social-share-icons'>
+
+                <p><small>Comparte:</small></p>
+
+                <div className="Post__some-network">
+                  <FacebookShareButton url={'https://beneficios.now.sh/p/' + props.post.id + '/' + props.post.slug} className="Post__some-network__share-button"><FacebookIcon size={32} round/></FacebookShareButton>
+                </div>
+
+                <div className="Post__some-network">
+                  <TwitterShareButton url={'https://beneficios.now.sh/p/' + props.post.id + '/' + props.post.slug} title={props.post.acf.nombre_del_establecimiento + ':' + ' ' + props.post.acf.titulo_de_la_oferta_oferta_socios} hashtags={['beneficiosfamiliasnumerosas']} className="Post__some-network__share-button"><TwitterIcon size={32} round/></TwitterShareButton>
+                </div>
+
+                <div className="Post__some-network">
+                  <LinkedinShareButton url={'https://beneficios.now.sh/p/' + props.post.id + '/' + props.post.slug} title={props.post.acf.nombre_del_establecimiento + ':' + ' ' + props.post.acf.titulo_de_la_oferta_oferta_socios} className="Post__some-network__share-button"><LinkedinIcon size={32} round/></LinkedinShareButton>
+                </div>
+
+                <div className="Post__some-network">
+                  <EmailShareButton url={'https://beneficios.now.sh/p/' + props.post.id + '/' + props.post.slug} subject={props.post.acf.nombre_del_establecimiento + ':' + ' ' + props.post.acf.titulo_de_la_oferta_oferta_socios} body={'Échale un vistazo a esta oferta: ' + props.post.acf.nombre_del_establecimiento + ':' + ' ' + props.post.acf.titulo_de_la_oferta_oferta_socios + ' ' + 'https://beneficios.now.sh/p/' + props.post.id + '/' + props.post.slug} className="Post__some-network__share-button"><EmailIcon size={32} round/></EmailShareButton>
+                </div>
+
+              </div>
+
               
               {props.post.acf.como_conseguir_la_oferta_oferta_socios ?
                   
@@ -172,7 +207,16 @@ const Post =  (props) => (
 
       </section>
         
-      <style jsx>{`
+      <style jsx>{`      
+        .Post__some-network {
+          vertical-align: top;
+          display: inline-block;
+          margin-right: 20px;
+          text-align: center;
+        }
+        .social-share-icons {
+          margin-bottom:1.5rem;
+        }
         .breadcrumbs {
           margin-bottom:1em;
         }

@@ -20,3 +20,9 @@ li.nav-item,
     margin-bottom: -5em;
   }
 }
+.Post__some-network__share-button {
+  cursor: pointer;
+}
+.Post__some-network__share-button:hover:not(:active) {
+  opacity: 0.75;
+}
