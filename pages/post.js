@@ -146,6 +146,15 @@ const Post =  (props) => (
 
             <div className='file-content'>
 
+              
+              {props.post.acf.como_conseguir_la_oferta_oferta_socios ?
+                  
+                <h1 className='align-none'><span className='label alert file-label'><Link href="#how-to-get-it"><a>EXCLUSIVO SOCIOS.<br/>MIRA COMO CONSEGUIR ESTA OFERTA</a></Link><br/><FontAwesome
+                name='check-circle-o'
+                size='2x'
+                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+              /></span></h1> : ''}
+
               <div className='social-share-icons'>
 
                 <p><small>Comparte:</small></p>
@@ -167,15 +176,6 @@ const Post =  (props) => (
                 </div>
 
               </div>
-
-              
-              {props.post.acf.como_conseguir_la_oferta_oferta_socios ?
-                  
-                <h1><span className='label alert file-label'><Link href="#how-to-get-it"><a>EXCLUSIVO SOCIOS.<br/>MIRA COMO CONSEGUIR ESTA OFERTA</a></Link><br/><FontAwesome
-                name='check-circle-o'
-                size='2x'
-                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
-              /></span></h1> : ''}
               
               {props.post.acf.titulo_de_la_oferta_oferta_socios ? <h4>{props.post.acf.titulo_de_la_oferta_oferta_socios}</h4> : '' }
 
@@ -261,7 +261,7 @@ const Post =  (props) => (
             display: flex;
             -ms-flex-wrap: wrap;
                 flex-wrap: wrap;
-            align-items:center;
+            align-items:stretch;
 
             width: 100%;
           }
@@ -293,6 +293,9 @@ const Post =  (props) => (
         }
         h1, .category, .location, .file-label {
           text-align:center;
+        }
+        .align-none {
+          text-align:unset;
         }
         .fade-in {
           animation-name: fadeIn;
