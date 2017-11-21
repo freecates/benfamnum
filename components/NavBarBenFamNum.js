@@ -26,23 +26,23 @@ export default class NavBarBenFamNum extends React.Component {
           </NavbarBrand></Link>
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
-                <NavItem><Link href="http://www.familiasnumerosas.org/conocenos/quienes-somos/">
-                  <a target='_blank'>La Federación</a>
-                </Link></NavItem>
-                <NavItem><Link href="http://www.familiasnumerosas.org/conocenos/nuestras-asociaciones/">
-                  <a target='_blank'>Las Asociaciones</a>
-                </Link></NavItem>
                 <NavItem><Link prefetch href="/prestaciones">
                   <a>Prestaciones oficiales</a>
                 </Link></NavItem>
                 <NavItem><Link prefetch href="/beneficios">
                   <a>Beneficios para familias</a>
                 </Link></NavItem>
-                <NavItem><Link href="http://www.familiasnumerosas.org/hazte-socio/">
-                  <a target='_blank'>Hazte socio</a>
-                </Link></NavItem>
                 <NavItem><Link prefetch href="/contacto">
                   <a>Contacto</a>
+                </Link></NavItem>
+                <NavItem><Link href="http://www.familiasnumerosas.org/conocenos/quienes-somos/">
+                  <a target='_blank' title='enlace externo'>La Federación</a>
+                </Link></NavItem>
+                <NavItem><Link href="http://www.familiasnumerosas.org/conocenos/nuestras-asociaciones/">
+                  <a target='_blank' title='enlace externo'>Las Asociaciones</a>
+                </Link></NavItem>
+                <NavItem><Link href="http://www.familiasnumerosas.org/hazte-socio/">
+                  <a target='_blank' title='enlace externo'>Hazte socio</a>
                 </Link></NavItem>
               </Nav>
             </Collapse>

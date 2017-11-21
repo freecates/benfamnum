@@ -15,7 +15,9 @@ const Prestacion =  (props) => (
       <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-          <li><Link prefetch href="/prestaciones"><a>Prestaciones</a></Link></li>
+          <li><Link prefetch href="/prestaciones"><a>Prestaciones</a></Link></li>{props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica == 'Municipal' ? <li><Link prefetch href="/municipios-prestaciones"><a>Municipios</a></Link></li> : ''}
+          {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica == 'Autonómico' ? <li><Link prefetch href="/comunidades-prestaciones"><a>Comunidades</a></Link></li> : ''}{props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica == 'Municipal' ? <li><Link prefetch as={`/p-m/${props.prestacion.acf.localidad.term_id}/${props.prestacion.acf.localidad.slug}`} href={`/prestaciones-municipio?localidad=${props.prestacion.acf.localidad.term_id}`}><a><span dangerouslySetInnerHTML={ {__html: props.prestacion.acf.localidad.name} } /></a></Link></li> : ''}
+          {props.prestacion.acf.nivel_administrativo_de_la_prestacion_publica == 'Autonómico' ? <li><Link prefetch as={`/p-c/${props.prestacion.acf.comunidad_autonoma.term_id}/${props.prestacion.acf.comunidad_autonoma.slug}`} href={`/prestaciones-comunidad?comunidad=${props.prestacion.acf.comunidad_autonoma.term_id}`}><a><span dangerouslySetInnerHTML={ {__html: props.prestacion.acf.comunidad_autonoma.name} } /></a></Link></li> : ''}
           <li>
             <span className="show-for-sr">Actual: </span> <span dangerouslySetInnerHTML={ {__html: props.prestacion.acf.nombre_de_la_prestacion} } />
           </li>
@@ -91,7 +93,7 @@ const Prestacion =  (props) => (
             display: flex;
             -ms-flex-wrap: wrap;
                 flex-wrap: wrap;
-            align-items:center;
+            align-items:strech;
 
             width: 100%;
           }
