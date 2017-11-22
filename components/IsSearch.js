@@ -103,7 +103,6 @@ class IsSearch extends React.Component {
                             </li>
                             ))}
                         </ul>
-                    <p>Si lo prefieres, realiza una <Link prefetch as={`/s/${this.state.PostResults[0].ID}`} href={`/buscador?id=${this.state.PostResults[0].ID}`}><a>nueva búsqueda</a></Link></p>
                     </div>
                 </section>
                 : ''}
