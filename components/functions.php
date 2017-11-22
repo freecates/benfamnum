@@ -42,6 +42,38 @@ function beneficios_constructMetaQuery($params){
             );
 }
 
+function ofertas_online_constructMetaQuery($params){
+
+   $meta_query = array(
+        'relation' => 'AND'    
+    );
+
+	if(isset($params["title"])){
+    	   $meta_query["nombre_del_establecimiento_clause"] = array(
+        	            'key'        => 'nombre_del_establecimiento',
+            	        'value'        => $params["title"],
+                	    'compare'    => 'LIKE'
+                	);
+   }
+   
+    $tax_query  = array(
+        'relation' => 'AND'    
+    );
+   
+    if(isset($params["categoria_de_la_oferta"])){
+        $tax_query[] = array(
+                        'taxonomy' => 'categoria_del_beneficio',
+                        'field' => 'ID',
+                        'terms' => $params["categoria_de_la_oferta"],
+                    );
+    }
+    
+    return array(
+               'meta_query' => $meta_query,
+                'tax_query' => $tax_query,
+            );
+}
+
 function prestaciones_constructMetaQuery($params){
 
    $meta_query = array(
@@ -116,6 +148,14 @@ function getCategoriasDeLaPrestacion(WP_REST_Request $request){
     return new WP_REST_Response( $categoriasdelaprestacion_filtered );
 }
 
+function getCategoriasDeLaOfertaOnline(WP_REST_Request $request){
+	$categoriasdelaofertaonline = get_terms( 'categoria_del_beneficio', array(
+		'hide_empty' => true,
+	) );
+	$categoriasdelaofertaonline_filtered = array_map('categoria_de_la_oferta_basic',$categoriasdelaofertaonline);
+    return new WP_REST_Response( $categoriasdelaofertaonline_filtered );
+}
+
 function getLocalidades(WP_REST_Request $request){
 	$localidades = get_terms( 'localidad', array(
 		'hide_empty' => true,
@@ -142,6 +182,14 @@ function categoria_del_beneficio_basic($fields){
 
 
 function categorias_de_la_prestacion_basic($fields){
+
+   $fields->id = $fields->term_id;
+   
+   return $fields;
+}
+
+
+function categoria_de_la_oferta_basic($fields){
 
    $fields->id = $fields->term_id;
    
@@ -179,13 +227,6 @@ function beneficios_localidadCategoria($fields){
         return array(
             "localidad_del_beneficio" => $fields["localidad_del_beneficio"],
             "categoria_de_la_prestacion" => $fields["categoria_de_la_prestacion"]
-        );
-}
-
-function ofertas_online_categoria($fields){
-    
-        return array(
-            "categoria_de_la_oferta" => $fields["categoria_de_la_oferta"]
         );
 }
 
@@ -227,6 +268,15 @@ add_action( 'rest_api_init', function () {
 				'callback' => 'getCategoriasDeLaPrestacion',
 			)
 		);
+        
+    register_rest_route(
+            'lanauva/v1', 
+            '/categoria_de_la_oferta', 
+            array(
+                'methods' => 'GET',
+                'callback' => 'getCategoriasDeLaOfertaOnline',
+            )
+        );
 
 } );
 

@@ -19,6 +19,12 @@ app.prepare()
   server.use('/static', serve('./static', true))
   server.use('/service-worker.js', serve('./.next/service-worker.js', true))
   server.use('/manifest.json', serve('./static/manifest.json', true))
+  
+  server.get('/s/:id', (req, res) => {
+    const actualPage = '/buscador'
+    const queryParams = { id: req.params.id }
+    app.render(req, res, actualPage, queryParams)
+  })
 
   server.get('/p/:id/:slug', (req, res) => {
     const actualPage = '/post'

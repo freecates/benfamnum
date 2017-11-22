@@ -1,5 +1,6 @@
 import React from 'react';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import FontAwesome from 'react-fontawesome';
 import Link from 'next/link';
 
 export default class NavBarBenFamNum extends React.Component {
@@ -43,6 +44,13 @@ export default class NavBarBenFamNum extends React.Component {
                 </Link></NavItem>
                 <NavItem><Link href="http://www.familiasnumerosas.org/hazte-socio/">
                   <a target='_blank' title='enlace externo'>Hazte socio</a>
+                </Link></NavItem>
+                <NavItem><Link prefetch href="/buscador">
+                  <a><FontAwesome
+                name='search'
+                size='2x'
+                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+              /></a>
                 </Link></NavItem>
               </Nav>
             </Collapse>
