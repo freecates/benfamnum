@@ -214,9 +214,9 @@ class IsSearch extends React.Component {
                             <form>
                             <label>
                                 <h4>Introduce una búsqueda</h4>
-                                <input placeholder='Busqueda' type="search" name='Title' value={this.state.Title} onChange={this.handleChange} required />
+                                <input placeholder='Mi Busqueda' type="search" name='Title' value={this.state.Title} onChange={this.handleChange} required />
                             </label>
-                            <div className='wrapper-input'><input type="button" className='button' onClick={this.handleSubmit} value="Enviar" /></div>
+                            <div className='wrapper-input'><input type="button" className='button' onClick={this.handleSubmit} value="Buscar" /></div>
                             </form>
                         </div>
                         <style jsx>{`
@@ -305,9 +305,9 @@ class IsSearch extends React.Component {
                                 <form>
                                 <label>
                                     <h4>Introduce una búsqueda</h4>
-                                    <input placeholder='Busqueda' type="search" name='Title' value={this.state.Title} onChange={this.handleChange} required />
+                                    <input placeholder='Mi Busqueda' type="search" name='Title' value={this.state.Title} onChange={this.handleChange} required />
                                 </label>
-                                <div className='wrapper-input'><input type="button" className='button' onClick={this.handleSubmit} value="Enviar" /></div>
+                                <div className='wrapper-input'><input type="button" className='button' onClick={this.handleSubmit} value="Buscar" /></div>
                                 </form>
                             </div>
                             <style jsx>{`

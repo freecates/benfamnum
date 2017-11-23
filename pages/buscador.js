@@ -1,7 +1,14 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import Layout from '../components/MyLayout.js'
-import IsSearch from '../components/IsSearch.js'
+
+const IsSearch = dynamic(
+  import('../components/IsSearch'),
+  {
+    loading: () => (<p>cargando ...</p>)
+  }
+)
 
 export default () => (
     <Layout>
@@ -13,10 +20,6 @@ export default () => (
           </li>
         </ul>
       </nav>
-        <h1>Buscador</h1>
         <IsSearch/>
-
-      <style jsx>{`
-      `}</style>
     </Layout>
 )
