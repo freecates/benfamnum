@@ -149,11 +149,13 @@ const Post =  (props) => (
               
               {props.post.acf.como_conseguir_la_oferta_oferta_socios ?
                   
-                <h1 className='align-none'><span className='label alert file-label'><Link href="#how-to-get-it"><a>EXCLUSIVO SOCIOS.<br/>MIRA COMO CONSEGUIR ESTA OFERTA</a></Link><br/><FontAwesome
+                <h1 className='align-none'><Link href="#how-to-get-it"><a><span className='label alert file-label'>EXCLUSIVO SOCIOS.<br/> INTRODUCE TU USUARIO Y CONTRASEÑA DE ASOCIADO PARA SABER CÓMO OBTENER ESTA OFERTA<br/><FontAwesome
                 name='check-circle-o'
                 size='2x'
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
-              /></span></h1> : ''}
+              /></span></a></Link></h1> : ''}
+
+              <p className='margin-invert'><small>(¿No recuerdas tu contraseña? Entra <Link href='https://www.familias-numerosas.org/ingreso.php'><a target='_blank'>aquí</a></Link> y clica en Recuperar contraseña)</small></p>
 
               <div className='social-share-icons'>
 
@@ -240,12 +242,18 @@ const Post =  (props) => (
           color:#ffffff;
           font-weight:bold;
           font-size:1rem;
+          white-space:normal;
         }
-        .file-label a {
+        a .file-label  {
           color:#ffffff!important;
+          cursor:pointer;
         }
-        .file-label a:hover {
+        a:hover .file-label {
           text-decoration:none;
+        }
+        .margin-invert {
+          margin-bottom:2rem;
+          margin-top:-1rem;
         }
         .dont-break-out {          
           overflow-wrap: break-word;

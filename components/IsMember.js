@@ -102,12 +102,13 @@ class IsMember extends React.Component {
                             <input placeholder='Usuario' type="email" name='isEmail' value={this.state.isEmail} onChange={this.handleChange} required />
                         </label>
                         <label>
-                            <input placeholder='Contrasenya' type="password" name='isPassword' value={this.state.isPassword} onChange={this.handleChange}required />
+                            <input placeholder='Contraseña' type="password" name='isPassword' value={this.state.isPassword} onChange={this.handleChange}required />
                         </label>
                         <div className='wrapper-input'><input type="button" className='button' onClick={this.handleSubmit} value="Enviar" /></div>
                         <p className='yellow margin-inverse'>¿Quieres participar de estos beneficios? Ahora te puedes hacer socio. ¡Fácil y rápido!</p>
                         <div className='wrapper-input'><Link href='http://www.familiasnumerosas.org/hazte-socio/' ><a target='_blank'className='button button-pink' >Sí, quiero hacerme socio</a></Link></div>
                         </form>
+                        <p className='align-left'><small><strong>COMENTARIOS</strong>: Para poder leer o escribir opiniones sobre esta oferta, debes introducir tu usuario y contraseña de asociado</small></p>
                     </div>
                     <style jsx>{`
                         @media screen and (min-width: 768px) {
@@ -154,6 +155,9 @@ class IsMember extends React.Component {
                         }
                         h1, label, p {
                             text-align:center;
+                        }
+                        .align-left {
+                            text-align:left;
                         }
                         .yellow {
                             color:#f3f303;

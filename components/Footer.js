@@ -18,7 +18,7 @@ const Footer = () => (
         <section>
           <div className='wrapper'>
               <div className='first'>
-                <p className='purple'>Mienbross de:<br/><Link href="http://www.elfac.org/"><a target="_blank"><img src='/static/logo-european-large-families-confederation-familias-numerosas.jpg' /></a></Link></p>
+                <p className='purple'>Miembros de:<br/><Link href="http://www.elfac.org/"><a target="_blank"><img src='/static/logo-european-large-families-confederation-familias-numerosas.jpg' /></a></Link></p>
               </div>
               <div className='second'>
                  <p className='purple'>Con el apoyo de:<br/><Link href="https://www.msssi.gob.es/"><a target="_blank"><img src='/static/logo-ministerio-familias-numerosas.png' /></a></Link></p>
