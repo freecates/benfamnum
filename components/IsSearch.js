@@ -106,6 +106,19 @@ class IsSearch extends React.Component {
                     </div>
                 </section>
                 : ''}
+
+                <section>
+                    <p>¿No es lo que estabas buscando? Prueba con una búsqueda diferente</p>
+                    <div className='wrapper'>
+                        <form>
+                        <label>
+                            <h4>Introduce una nueva búsqueda</h4>
+                            <input placeholder='Mi Busqueda' type="search" name='Title' value={this.state.Title} onChange={this.handleChange} required />
+                        </label>
+                        <div className='wrapper-input'><input type="button" className='button' onClick={this.handleSubmit} value="Buscar" /></div>
+                        </form>
+                    </div>
+                </section>
                 <style jsx>{`
                     .section-padding {
                         margin-bottom:1em;
@@ -188,6 +201,67 @@ class IsSearch extends React.Component {
                     .benefit {
                         width: 245px;
                         }
+                    }
+
+                    @media screen and (min-width: 768px) {
+                        .wrapper {
+                        max-width: 80%;
+                        width:390px;
+                        margin: 0 auto;
+                        }
+                    }
+                    @media screen and (min-width: 1024px) {
+                        .wrapper {
+                        max-width: 50%;
+                        }
+                    }
+                    form {
+                    padding: 2em;
+                    background: #333333;
+                    border-radius:6.5%;
+                    }
+                    label {
+                    color:#ffffff;
+                    }
+                    .wrapper-input {
+                    width:100%;
+                    padding:1em;
+                    }
+                    input[type=button] {
+                    background:#009933;
+                    margin:0 auto;
+                    display:block;
+                    width:100%;
+                    }
+                    input[type=button]:hover {
+                    background:#007e2a;
+                    }
+                    .button-pink {
+                    background:#cc3366;
+                    margin:0 auto;
+                    display:block;
+                    width:100%;
+                    color:#ffffff!important;
+                    }
+                    .button-pink:hover {
+                    background:#a62953;
+                    }
+                    h1, label, p {
+                        text-align:center;
+                    }
+                    .yellow {
+                        color:#f3f303;
+                    }
+                    .margin-inverse {
+                        margin-top:1em;
+                        margin-bottom:0;
+                    }
+                    .file-label {
+                        background:#cc0033!important;
+                        color:#ffffff;
+                        font-weight:bold;
+                        padding:1em;
+                        white-space:normal;
                     }
                     .fade-in {
                     animation-name: fadeIn;
