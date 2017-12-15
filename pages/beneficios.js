@@ -15,15 +15,15 @@ const SelectCity = dynamic(
 const Localidades = (props) => (
   <Layout>
     <Head>
-      <title>Beneficios</title>
+      <title>Ofertas</title>
     </Head>
     <IntlProvider defaultLocale='ca'>
       <main>
-        <h2>Selecciona donde o que tipo de beneficio quieres disfrutar</h2>
+        <h2>Selecciona donde o que tipo de oferta quieres disfrutar</h2>
         <div className='wrapper'>
           <div className='left'>
             <section className='beneficio-localidad-blue'>
-              <h3 className='align-center'>Escribe donde deseas el beneficio</h3>
+              <h3 className='align-center'>Escribe donde deseas la oferta</h3>
               <div className='form-component'>          
                 <SelectCity
                   inputClass= 'city'
@@ -50,7 +50,7 @@ const Localidades = (props) => (
               </div>
             </section>
             <section className='beneficio-online-yellow'>
-              <h3 className='align-center'>Beneficios de servicios online</h3>
+              <h3 className='align-center'>Ofertas de servicios online</h3>
               <p className='align-center no-margin-bottom'><Link prefetch href='/ofertas-on-line'><a className='button'>Buscar el mejor descuento</a></Link></p>
             </section>
           </div>
@@ -77,7 +77,7 @@ const Localidades = (props) => (
             </section>
           </div>
         </div>
-          <h4 className='align-center margin-top'>También puedes buscar servicios cerca de tí</h4>
+          <h4 className='align-center margin-top'>También puedes buscar ofertas cerca de tí</h4>
         <section className='bg-mapa'>
           <div className='wrapper wrapper-top'>
             <div className='left'>
@@ -282,7 +282,7 @@ Localidades.getInitialProps = async function() {
   const res = await fetch('https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?sim-model=localidad-categoria')
   const beneficios = await res.json()
 
-  console.log(`Beneficios data fetched. Count: ${beneficios.length}`)
+  console.log(`Ofertas data fetched. Count: ${beneficios.length}`)
 
   return { beneficios }
 }
