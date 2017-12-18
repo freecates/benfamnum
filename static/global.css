@@ -15,6 +15,9 @@ li.nav-item,
 .breadcrumbs li {
   text-transform: none!important;
 }
+.breadcrumbs li:not(:last-child)::after {
+  margin:0 .25rem;
+}
 @media screen and (min-width: 1024px) {
   .navbar-nav {
     margin-bottom: -6em;

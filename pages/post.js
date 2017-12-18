@@ -111,22 +111,22 @@ const Post =  (props) => (
             {props.post.acf.correo_electronico_del_establecimiento ?  <span>. <a href={'mailto:' + props.post.acf.correo_electronico_del_establecimiento}><FontAwesome
                 name='envelope'
                 size='1x'
-                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#666666' }}
               /></a> </span> : '' }{props.post.acf.twitter_del_establecimiento ? <span>| <a href={'https://twitter.com/' + props.post.acf.twitter_del_establecimiento}><FontAwesome
                 name='twitter-square'
                 size='1x'
-                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+                style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#666666' }}
               /></a></span> : '' } {props.post.acf.facebook_del_establecimiento ? <span>| <a href={props.post.acf.facebook_del_establecimiento}><FontAwesome
               name='facebook-square'
               size='1x'
-              style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+              style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#666666' }}
             /></a></span> : '' } {props.post.acf.sitio_web_del_establecimiento ? <span>| <Link href={props.post.acf.sitio_web_del_establecimiento}><a><FontAwesome
             name='external-link-square'
             size='1x'
-            style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+            style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#666666' }}
           /></a></Link></span> : '' }</span></h4>
 
-            <p className='category'><small><strong>Categoria</strong>: <Link prefetch as={`/c/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}`} href={`/category?id=${props.post.categoria_del_beneficio}`}><a title={'Ver todos los beneficios de la categoría ' + props.post._embedded['wp:term'][0][0].name}>{props.post._embedded['wp:term'][0][0].name}</a></Link></small></p>
+            <p className='category'><strong>Categoria</strong>: <Link prefetch as={`/c/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}`} href={`/category?id=${props.post.categoria_del_beneficio}`}><a title={'Ver todos los beneficios de la categoría ' + props.post._embedded['wp:term'][0][0].name}>{props.post._embedded['wp:term'][0][0].name}</a></Link></p>
 
             {props.post.acf.lat ? <MapaDeGoogle lat={props.post.acf.lat} lng={props.post.acf.lon} /> : '' }
 
@@ -149,17 +149,29 @@ const Post =  (props) => (
               
               {props.post.acf.como_conseguir_la_oferta_oferta_socios ?
                   
-                <h1 className='align-none'><Link href="#how-to-get-it"><a><span className='label alert file-label'>EXCLUSIVO SOCIOS.<br/> INTRODUCE TU USUARIO Y CONTRASEÑA DE ASOCIADO PARA SABER CÓMO OBTENER ESTA OFERTA<br/><FontAwesome
+                <h1 className='align-none'><Link href="#how-to-get-it"><a><span className='label alert file-label'>EXCLUSIVO SOCIOS.<br/> Introduce tu usuario y contrasenya de asociado para saber como obterner esta oferta<br/><FontAwesome
                 name='check-circle-o'
                 size='2x'
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
               /></span></a></Link></h1> : ''}
 
               <p className='margin-invert'><small>(¿No recuerdas tu contraseña? Entra <Link href='https://www.familias-numerosas.org/ingreso.php'><a target='_blank'>aquí</a></Link> y clica en Recuperar contraseña)</small></p>
+              
+              {props.post.acf.titulo_de_la_oferta_oferta_socios ? <h4>{props.post.acf.titulo_de_la_oferta_oferta_socios}</h4> : '' }
+
+            <IntlProvider defaultLocale='es'>
+              <p><small><FormattedDate value={props.post.date} day='numeric' month='long' year='numeric' /></small></p>
+            </IntlProvider>
+              
+              {props.post.acf.descripcion_de_la_oferta_oferta_socios ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.post.acf.descripcion_de_la_oferta_oferta_socios} }/> : '' }
+             
+              {props.post.acf.titulo_de_la_oferta_oferta_general ? <h4>{props.post.acf.titulo_de_la_oferta_oferta_general}</h4> : '' }
+              
+              {props.post.acf.descripcion_de_la_oferta_oferta_general ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.post.acf.descripcion_de_la_oferta_oferta_general} }/> : '' }
 
               <div className='social-share-icons'>
 
-                <p><small>Comparte:</small></p>
+                <div className="Post__some-network"><p><small>Comparte:</small></p></div>
 
                 <div className="Post__some-network">
                   <FacebookShareButton url={'https://beneficios.now.sh/p/' + props.post.id + '/' + props.post.slug} className="Post__some-network__share-button"><FacebookIcon size={32} round/></FacebookShareButton>
@@ -178,22 +190,6 @@ const Post =  (props) => (
                 </div>
 
               </div>
-              
-              {props.post.acf.titulo_de_la_oferta_oferta_socios ? <h4>{props.post.acf.titulo_de_la_oferta_oferta_socios}</h4> : '' }
-
-            <IntlProvider defaultLocale='es'>
-              <p><small><FormattedDate value={props.post.date} day='numeric' month='long' year='numeric' /></small></p>
-            </IntlProvider>
-              
-              {props.post.acf.descripcion_de_la_oferta_oferta_socios ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.post.acf.descripcion_de_la_oferta_oferta_socios} }/> : '' }
-             
-              {props.post.acf.titulo_de_la_oferta_oferta_general ? <h4>{props.post.acf.titulo_de_la_oferta_oferta_general}</h4> : '' }
-              
-              {props.post.acf.descripcion_de_la_oferta_oferta_general ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.post.acf.descripcion_de_la_oferta_oferta_general} }/> : '' }
-
-            </div>
-          
-          </div>
 
           {props.post.acf.como_conseguir_la_oferta_oferta_socios ?
             <div id='how-to-get-it'>
@@ -204,6 +200,10 @@ const Post =  (props) => (
               URL={'p/' + props.post.id + '/' + props.post.slug}
             />
             </div> : ''}
+
+            </div>
+          
+          </div>
 
         </div>
 
@@ -285,6 +285,9 @@ const Post =  (props) => (
         @media screen and (min-width: 1024px) {
           .file-content {
             width: 55%;
+          }
+          #how-to-get-it, .file-label {
+          max-width: 70%;
           }
         }
         @media screen and (max-width: 480px) {              

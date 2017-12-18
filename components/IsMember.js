@@ -111,17 +111,6 @@ class IsMember extends React.Component {
                         <p className='align-left'><small><strong>COMENTARIOS</strong>: Para poder leer o escribir opiniones sobre esta oferta, debes introducir tu usuario y contraseña de asociado</small></p>
                     </div>
                     <style jsx>{`
-                        @media screen and (min-width: 768px) {
-                            .wrapper {
-                            width: 70%;
-                            margin: 0 auto;
-                            }
-                        }
-                        @media screen and (min-width: 1024px) {
-                            .wrapper {
-                            width: 40%;
-                            }
-                        }
                         form {
                         padding: 2em;
                         background: #333333;
