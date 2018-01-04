@@ -49,38 +49,33 @@ const Footer = () => (
             }
             .grey {
               background-color:#e0e4e8;
-            }
-            section {
-              background:#ffffff;
+            }           
+            @media screen and (min-width: 768px) {                          
+              .wrapper {
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-wrap: wrap;
+                    flex-wrap: wrap;
+                align-items:center;
+                max-width: 70rem;
+                margin:0 auto;
               }
-            
-          @media screen and (min-width: 768px) {                          
-            .wrapper {
-              display: -ms-flexbox;
-              display: flex;
-              -ms-flex-wrap: wrap;
-                  flex-wrap: wrap;
-              align-items:center;
-
-              max-width: 70rem;
-              margin:0 auto;
+              .wrapper-top {
+                align-items:baseline;
+              }
+              .first {
+                width: 33%;
+                padding:0 0 0 0;
+              }
+              .second {
+                width: 33%;
+                padding:0 0 0 0;
+              }
+              .third {
+                width: 33%;
+                padding:0 0 0 0;
+              }
             }
-            .wrapper-top {
-              align-items:baseline;
-            }
-            .first {
-              width: 33%;
-              padding:0 0 0 0;
-            }
-            .second {
-              width: 33%;
-              padding:0 0 0 0;
-            }
-            .third {
-              width: 33%;
-              padding:0 0 0 0;
-            }
-          }
           `}</style>
 
         </section>
