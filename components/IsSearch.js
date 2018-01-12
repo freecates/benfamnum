@@ -33,18 +33,20 @@ class IsSearch extends React.Component {
 
         const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?title=${title}`)
         const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_online?title=${title}`)
+        const res3 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?title=${title}`)
         const PostResults = await res.json()
         const OfertasResults = await res2.json()
-        console.log(PostResults, OfertasResults)
+        const OfertasGrandeMarcasResults = await res3.json()
+        console.log(PostResults, OfertasResults, OfertasGrandeMarcasResults)
         this.setState({
-            PostResults, OfertasResults
+            PostResults, OfertasResults, OfertasGrandeMarcasResults
         })       
       event.preventDefault();
     }
   
     render() {
-        console.log(`Post count: ${this.state.PostResults.length}, ${this.state.OfertasResults.length}`)
-        if (this.state.PostResults.length >= 1 | this.state.OfertasResults.length >= 1) { 
+        console.log(`Post count: ${this.state.PostResults.length}, ${this.state.OfertasResults.length}, ${this.state.OfertasGrandeMarcasResults.length}`)
+        if (this.state.PostResults.length >= 1 | this.state.OfertasResults.length >= 1 | this.state.OfertasGrandeMarcasResults.length >= 1) { 
             return (
                 <main>
                     {this.state.PostResults.length >= 1 ?
@@ -98,6 +100,36 @@ class IsSearch extends React.Component {
 
                                 {OfertasResult.titulo_de_la_oferta_online_exclusiva_socios ?
                                 <span className='titulo-oferta'>{OfertasResult.titulo_de_la_oferta_online_exclusiva_socios}</span> : '' }
+
+                                </p>
+                            </li>
+                            ))}
+                        </ul>
+                    </div>
+                </section>
+                : ''}
+                
+                {this.state.OfertasGrandeMarcasResults.length >= 1 ?
+                <section className='section-padding'>
+                    <div className='fade-in'>
+                        <p>Resultados de <strong>Beneficios</strong> con la búsqueda <strong>"{this.state.Title}"</strong></p>
+                        <ul className='gallery results'>
+                        {this.state.OfertasGrandeMarcasResults.map((OfertasGrandeMarcasResult, index) => (
+                            <li className='benefit' key={index}>
+                                {OfertasGrandeMarcasResult.imagen_destacada_de_la_oferta_general_thumb ? <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'><Link prefetch as={`/p/${OfertasGrandeMarcasResult.ID}/${OfertasGrandeMarcasResult.slug}`} href={`/post?id=${OfertasGrandeMarcasResult.ID}`}><a title={'Ver la ficha de ' + OfertasGrandeMarcasResult.name}><img className='fade-in' width='250' src={OfertasGrandeMarcasResult.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail} alt={OfertasGrandeMarcasResult.titulo_de_la_oferta_oferta_general} /></a></Link></p>)} /> : ''}
+
+                                {OfertasGrandeMarcasResult.imagen_destacada_de_la_oferta_socios_thumb ? <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'><Link prefetch as={`/p/${OfertasGrandeMarcasResult.ID}/${OfertasGrandeMarcasResult.slug}`} href={`/post?id=${OfertasGrandeMarcasResult.ID}`}><a title={'Ver la ficha de ' + OfertasGrandeMarcasResult.name}><img className='fade-in' width='250' src={OfertasGrandeMarcasResult.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail} alt={OfertasGrandeMarcasResult.titulo_de_la_oferta_oferta_socios} /><span className='label alert gallery-label'><small>EXCLUSIVO<br/> SOCIOS</small></span></a></Link></p>)} /> : ''}
+
+                                <p><Link prefetch as={`/p/${OfertasGrandeMarcasResult.ID}/${OfertasGrandeMarcasResult.slug}`} href={`/post?id=${OfertasGrandeMarcasResult.ID}`}>
+                                <a title={'Ver la ficha de ' + OfertasGrandeMarcasResult.name} dangerouslySetInnerHTML={ {__html: OfertasGrandeMarcasResult.name} } />
+                                </Link><br/>
+                                {OfertasGrandeMarcasResult.categoria_de_la_prestacion ?<small><Link prefetch as={`/c-l/${OfertasGrandeMarcasResult.categoria_de_la_prestacion.term_id}/${OfertasGrandeMarcasResult.categoria_de_la_prestacion.slug}/${OfertasGrandeMarcasResult.localidad_del_beneficio.term_id}/${OfertasGrandeMarcasResult.localidad_del_beneficio.slug}`} href={`/category-localidad?id=${OfertasGrandeMarcasResult.categoria_de_la_prestacion.term_id}&localidad=${OfertasGrandeMarcasResult.localidad_del_beneficio.term_id}`}><a title={'Ver todos los beneficios de ' + OfertasGrandeMarcasResult.categoria_de_la_prestacion.name + ' en ' + OfertasGrandeMarcasResult.localidad_del_beneficio.name}><span dangerouslySetInnerHTML={ {__html: OfertasGrandeMarcasResult.localidad_del_beneficio.name} } /></a></Link></small> : <small>{OfertasGrandeMarcasResult.localidad_del_beneficio.name}</small>} <br/>
+
+                                {OfertasGrandeMarcasResult.titulo_de_la_oferta_oferta_general ?
+                                <span className='titulo-oferta'>{OfertasGrandeMarcasResult.titulo_de_la_oferta_oferta_general}</span> : '' }
+
+                                {OfertasGrandeMarcasResult.titulo_de_la_oferta_oferta_socios ?
+                                <span className='titulo-oferta'>{OfertasGrandeMarcasResult.titulo_de_la_oferta_oferta_socios}</span> : '' }
 
                                 </p>
                             </li>
