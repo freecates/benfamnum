@@ -16,6 +16,14 @@ function beneficios_constructMetaQuery($params){
                 	);
    }
 
+	if(isset($params["comunidad"])){
+    	   $meta_query["comunidad_autonoma"] = array(
+        	            'key'        => 'comunidad_autonoma',
+            	        'value'        => $params["comunidad"],
+                	    'compare'    => 'LIKE'
+                	);
+   }
+
    $tax_query  = array(
        'relation' => 'AND'    
    );
@@ -67,6 +75,62 @@ function ofertas_online_constructMetaQuery($params){
                         'terms' => $params["categoria_de_la_oferta"],
                     );
     }
+    
+    return array(
+               'meta_query' => $meta_query,
+                'tax_query' => $tax_query,
+            );
+}
+
+function ofertas_grandes_marc_constructMetaQuery($params){
+
+   $meta_query = array(
+        'relation' => 'AND'    
+    );
+
+	if(isset($params["title"])){
+    	   $meta_query["nombre_del_establecimiento_clause"] = array(
+        	            'key'        => 'nombre_del_establecimiento',
+            	        'value'        => $params["title"],
+                	    'compare'    => 'LIKE'
+                	);
+   }
+
+	if(isset($params["comunidad"])){
+    	   $meta_query["comunidad_autonoma"] = array(
+        	            'key'        => 'comunidad_autonoma',
+            	        'value'        => $params["comunidad"],
+                	    'compare'    => 'LIKE'
+                	);
+   }
+
+   $tax_query  = array(
+       'relation' => 'AND'    
+   );
+
+   if(isset($params["categoria_de_la_oferta_grande_marc"])){
+       $tax_query[] = array(
+                       'taxonomy' => 'categoria_del_beneficio',
+                       'field' => 'ID',
+                       'terms' => $params["categoria_de_la_oferta_grande_marc"],
+                   );
+   }
+   
+   if(isset($params["localidad"])){
+       $tax_query[] = array(
+                       'taxonomy' => 'localidad',
+                       'field' => 'ID',
+                       'terms' => $params["localidad"],
+               );
+   }
+   
+   if(isset($params["marca"])){
+       $tax_query[] = array(
+                       'taxonomy' => 'marca',
+                       'field' => 'ID',
+                       'terms' => $params["marca"],
+               );
+   }
     
     return array(
                'meta_query' => $meta_query,
@@ -156,6 +220,14 @@ function getCategoriasDeLaOfertaOnline(WP_REST_Request $request){
     return new WP_REST_Response( $categoriasdelaofertaonline_filtered );
 }
 
+function getCategoriasDeLaGrandeMarc(WP_REST_Request $request){
+	$categoriasdelagrandemarc = get_terms( 'categoria_del_beneficio', array(
+		'hide_empty' => true,
+	) );
+	$categoriasdelagrandemarc_filtered = array_map('categoria_de_la_oferta_grande_marc_basic',$categoriasdelagrandemarc);
+    return new WP_REST_Response( $categoriasdelagrandemarc_filtered );
+}
+
 function getLocalidades(WP_REST_Request $request){
 	$localidades = get_terms( 'localidad', array(
 		'hide_empty' => true,
@@ -170,6 +242,15 @@ function getComunidades(WP_REST_Request $request){
 	) );
 	$comunidades_filtered = array_map('comunidad_basic',$comunidades);
     return new WP_REST_Response( $comunidades_filtered );
+}
+
+
+function getMarcas(WP_REST_Request $request){
+	$marcas = get_terms( 'marca', array(
+		'hide_empty' => true,
+	) );
+	$marcas_filtered = array_map('marca_basic',$marcas);
+    return new WP_REST_Response( $marcas_filtered );
 }
 
 
@@ -190,6 +271,22 @@ function categorias_de_la_prestacion_basic($fields){
 
 
 function categoria_de_la_oferta_basic($fields){
+
+   $fields->id = $fields->term_id;
+   
+   return $fields;
+}
+
+
+function categoria_de_la_oferta_grande_marc_basic($fields){
+
+   $fields->id = $fields->term_id;
+   
+   return $fields;
+}
+
+
+function marca_basic($fields){
 
    $fields->id = $fields->term_id;
    
@@ -270,11 +367,29 @@ add_action( 'rest_api_init', function () {
 		);
         
     register_rest_route(
-            'lanauva/v1', 
+            'lanauva/v1',
             '/categoria_de_la_oferta', 
             array(
                 'methods' => 'GET',
                 'callback' => 'getCategoriasDeLaOfertaOnline',
+            )
+        );
+        
+    register_rest_route(
+            'lanauva/v1', 
+            '/categoria_de_la_oferta_grande_marc', 
+            array(
+                'methods' => 'GET',
+                'callback' => 'getCategoriasDeLaGrandeMarc',
+            )
+        );
+        
+    register_rest_route(
+            'lanauva/v1', 
+            '/marca', 
+            array(
+                'methods' => 'GET',
+                'callback' => 'getMarcas',
             )
         );
 

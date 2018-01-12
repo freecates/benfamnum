@@ -110,6 +110,8 @@ const Localidades = (props) => (
             </div>
           </div>
         </section>
+        <h4 className='align-center margin-top'>O entre las ofertas de las grandes marcas</h4>
+        <p className='align-center no-margin-bottom'><Link prefetch href='/grandes-marcas'><a className='button'>Buscar el mejor descuento</a></Link></p>
       </main>
     </IntlProvider>
         <style jsx>{`

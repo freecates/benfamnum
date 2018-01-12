@@ -46,6 +46,13 @@ app.prepare()
     const queryParamsS = { id: req.params.slug }
     app.render(req, res, actualPage, queryParams, queryParamsS)
   })
+  
+  server.get('/ogm/:id/:slug', (req, res) => {
+    const actualPage = '/oferta-gran-marca'
+    const queryParams = { id: req.params.id }
+    const queryParamsS = { id: req.params.slug }
+    app.render(req, res, actualPage, queryParams, queryParamsS)
+  })
 
   server.get('/c/:id/:slug', (req, res) => {
     const actualPage = '/category'
@@ -54,15 +61,29 @@ app.prepare()
     app.render(req, res, actualPage, queryParams, queryParamsS)
   })
   
-    server.get('/c-o-o/:id/:slug', (req, res) => {
-      const actualPage = '/category-ofertas-on-line'
-      const queryParams = { id: req.params.id }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
-    })
+  server.get('/c-o-o/:id/:slug', (req, res) => {
+    const actualPage = '/category-ofertas-on-line'
+    const queryParams = { id: req.params.id }
+    const queryParamsS = { id: req.params.slug }
+    app.render(req, res, actualPage, queryParams, queryParamsS)
+  })
+  
+  server.get('/m-o-g-m/:id/:slug', (req, res) => {
+    const actualPage = '/ofertas-de-la-marca'
+    const queryParams = { id: req.params.id }
+    const queryParamsS = { id: req.params.slug }
+    app.render(req, res, actualPage, queryParams, queryParamsS)
+  })
 
   server.get('/m/:id/:slug', (req, res) => {
     const actualPage = '/mapa'
+    const queryParams = { id: req.params.id }
+    const queryParamsS = { id: req.params.slug }
+    app.render(req, res, actualPage, queryParams, queryParamsS)
+  })
+
+  server.get('/mm/:id/:slug', (req, res) => {
+    const actualPage = '/mapa-de-la-marca'
     const queryParams = { id: req.params.id }
     const queryParamsS = { id: req.params.slug }
     app.render(req, res, actualPage, queryParams, queryParamsS)
