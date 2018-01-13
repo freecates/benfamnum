@@ -99,7 +99,7 @@ const MapByCategory = (props) => (
             
             <MarkerComponent
               key={index}
-              lat={marker.lat.includes(',') || marker.lat.includes('!')? '' : marker.lat}
+              lat={marker.lat.includes(',') || marker.lat.includes('!') ? '' : marker.lat}
               lng={marker.lon.includes(',') || marker.lon.includes('!') ? '' : marker.lon}
               text={<Link prefetch as={`/p/${marker.ID}/${marker.slug}`} href={`/post?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + marker.categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /></span></a></Link>}
             />
