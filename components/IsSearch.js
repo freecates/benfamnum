@@ -116,14 +116,11 @@ class IsSearch extends React.Component {
                         <p>Resultados de <strong>Ofertas Grandes Marcas</strong> con la búsqueda <strong>"{this.state.Title}"</strong></p>
                         <ul className='gallery results'>
                         {this.state.OfertasGrandeMarcasResults.map((OfertasGrandeMarcasResult, index) => (
-                            <li className='benefit' key={index}>
+                            <li className='benefit-simple' key={index}>
 
-                                <p><Link prefetch as={`/p/${OfertasGrandeMarcasResult.ID}/${OfertasGrandeMarcasResult.slug}`} href={`/post?id=${OfertasGrandeMarcasResult.ID}`}>
+                                <p className='align-left'><Link prefetch as={`/ogm/${OfertasGrandeMarcasResult.ID}/${OfertasGrandeMarcasResult.slug}`} href={`/oferta-gran-marca?id=${OfertasGrandeMarcasResult.ID}`}>
                                 <a title={'Ver la ficha de ' + OfertasGrandeMarcasResult.name} dangerouslySetInnerHTML={ {__html: OfertasGrandeMarcasResult.name} } />
-                                </Link><br/>
-                                {OfertasGrandeMarcasResult.categoria_del_beneficio ?<small><Link prefetch as={`/c-l/${OfertasGrandeMarcasResult.categoria_del_beneficio.term_id}/${OfertasGrandeMarcasResult.categoria_del_beneficio.slug}/${OfertasGrandeMarcasResult.localidad_del_beneficio.term_id}/${OfertasGrandeMarcasResult.localidad_del_beneficio.slug}`} href={`/category-localidad?id=${OfertasGrandeMarcasResult.categoria_del_beneficio.term_id}&localidad=${OfertasGrandeMarcasResult.localidad_del_beneficio.term_id}`}><a title={'Ver todos los beneficios de ' + OfertasGrandeMarcasResult.categoria_del_beneficio.name + ' en ' + OfertasGrandeMarcasResult.localidad_del_beneficio.name}><span dangerouslySetInnerHTML={ {__html: OfertasGrandeMarcasResult.localidad_del_beneficio.name} } /></a></Link></small> : <small>{OfertasGrandeMarcasResult.localidad_del_beneficio.name}</small>} <br/>
-
-                                {OfertasGrandeMarcasResult.titulo_de_la_oferta ?
+                                </Link>. <small>{OfertasGrandeMarcasResult.localidad_del_beneficio.name}</small>. {OfertasGrandeMarcasResult.titulo_de_la_oferta ?
                                 <span className='titulo-oferta'>{OfertasGrandeMarcasResult.titulo_de_la_oferta}</span> : '' }
                                 </p>
                             </li>
@@ -176,6 +173,9 @@ class IsSearch extends React.Component {
                     .benefit {
                         width: 150px;
                     }
+                    .benefit-simple {
+                        width:100%;
+                    }
                     .gallery-label {
                         position:relative;
                         margin-top:-40px;
@@ -191,7 +191,7 @@ class IsSearch extends React.Component {
                         .gallery {
                         width: 100%;
                         }              
-                        .benefit {
+                        .benefit, .benefit-simple {
                         margin: 5px;
                         }
                     }
@@ -209,18 +209,22 @@ class IsSearch extends React.Component {
                         .gallery {
                         width: 90%;
                         }
-                    .benefit {
-                        width: 200px;
-                        margin:7.5px;
+                        .benefit {
+                            width: 200px;
+                        }
+                        .benefit, .benefit-simple {
+                            margin:7.5px;
                         }
                     }
                     @media screen and (min-width: 1024px) {   
                         .gallery {
                         width: 100%;
                         }
-                    .benefit {
-                        width: 220px;
-                        margin:0 10px;
+                        .benefit {
+                            width: 220px;
+                        }
+                        .benefit, .benefit-simple {                            
+                            margin:0 10px;
                         }
                     }
                     @media screen and (min-width: 1160px) {
@@ -274,6 +278,9 @@ class IsSearch extends React.Component {
                     }
                     h1, label, p {
                         text-align:center;
+                    }
+                    .align-left {
+                        text-align:left;
                     }
                     .yellow {
                         color:#f3f303;
