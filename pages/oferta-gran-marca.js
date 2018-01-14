@@ -1,9 +1,7 @@
 import Head from 'next/head'
 import Layout from '../components/MyLayout.js'
-import IsMember from '../components/IsMember.js'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-import Observer from 'react-intersection-observer'
 import fetch from 'isomorphic-unfetch'
 import FontAwesome from 'react-fontawesome'
 import {IntlProvider, FormattedDate} from 'react-intl'
@@ -34,52 +32,28 @@ const OfertaGranMarca =  (props) => (
         {props.ofertagranmarca.acf.nombre_del_establecimiento ? <title dangerouslySetInnerHTML={ {__html: props.ofertagranmarca.acf.nombre_del_establecimiento} } /> : ''}
         {props.ofertagranmarca.acf.telefono ? <link rel="stylesheet" href="/static/custom.css" /> : '' }
 
-        <meta property="og:url" content={`/p/${props.ofertagranmarca.id}/${props.ofertagranmarca.slug}`} />
+        <meta property="og:url" content={`/ogm/${props.ofertagranmarca.id}/${props.ofertagranmarca.slug}`} />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={props.ofertagranmarca.acf.nombre_del_establecimiento} />
-        {props.ofertagranmarca.acf.descripcion_de_la_oferta_oferta_socios ?
-        <meta property="og:description" content={props.ofertagranmarca.acf.descripcion_de_la_oferta_oferta_socios} /> : ''}
-        {props.ofertagranmarca.acf.descripcion_de_la_oferta_oferta_general ? 
-        <meta property="og:description" content={props.ofertagranmarca.acf.descripcion_de_la_oferta_oferta_general} /> : ''}
-        {props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_socios_large ?
-        <meta property="og:image" content={props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_socios_large.sizes.large} /> : ''}
-        {props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_general_large ? 
-        <meta property="og:image" content={props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_general_large.sizes.large} /> : ''}
+        {props.ofertagranmarca.acf.descripcion_de_la_oferta ?
+        <meta property="og:description" content={props.ofertagranmarca.acf.descripcion_de_la_oferta} /> : ''}
+        <meta property="og:image" content='/static/logo-familias-numerosas-og.png' />
         <meta property="og:image:width" content="1024" />
         <meta property="og:image:height" content="1024" />
 
-        {props.ofertagranmarca.acf.descripcion_de_la_oferta_oferta_socios ?
+        {props.ofertagranmarca.acf.descripcion_de_la_oferta ?
 
         <script type="application/ld+json" dangerouslySetInnerHTML={ { __html: `
         {
           "@context": "http://schema.org",
           "@type": "Product",
-          "description": "${props.ofertagranmarca.acf.descripcion_de_la_oferta_oferta_socios}",
+          "description": "${props.ofertagranmarca.acf.descripcion_de_la_oferta}",
           "name": "${props.ofertagranmarca.acf.nombre_del_establecimiento}",
-          "image": "${props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_socios_large.sizes.large}",
+          "image": "/static/logo-familias-numerosas-og.png",
           "offers": {
             "@type": "Offer",
             "availability": "http://schema.org/InStock",
-            "price": "${props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_socios}",
-            "priceCurrency": "EUR"
-          }
-        }`}} />
-
-        : ''}
-
-        {props.ofertagranmarca.acf.descripcion_de_la_oferta_oferta_general ?
-
-        <script type="application/ld+json" dangerouslySetInnerHTML={ { __html: `
-        {
-          "@context": "http://schema.org",
-          "@type": "Product",
-          "description": "${props.ofertagranmarca.acf.descripcion_de_la_oferta_oferta_general}",
-          "name": "${props.ofertagranmarca.acf.nombre_del_establecimiento}",
-          "image": "${props.ofertagranmarca.acf.imagen_destacada_de_la_oferta_general_large.sizes.large}",
-          "offers": {
-            "@type": "Offer",
-            "availability": "http://schema.org/InStock",
-            "price": "${props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_general}",
+            "price": "${props.ofertagranmarca.acf.titulo_de_la_oferta}",
             "priceCurrency": "EUR"
           }
         }`}} />
