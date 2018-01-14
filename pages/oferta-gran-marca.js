@@ -36,7 +36,7 @@ const OfertaGranMarca =  (props) => (
         <meta property="og:type" content="article" />
         <meta property="og:title" content={props.ofertagranmarca.acf.nombre_del_establecimiento} />
         {props.ofertagranmarca.acf.descripcion_de_la_oferta ?
-        <meta property="og:description" content={ {__html: props.ofertagranmarca.acf.descripcion_de_la_oferta} } /> : ''}
+        <meta content="og:description" content={props.ofertagranmarca.acf.descripcion_de_la_oferta} /> : ''}
         <meta property="og:image" content='/static/logo-familias-numerosas-og.png' />
         <meta property="og:image:width" content="1024" />
         <meta property="og:image:height" content="1024" />
