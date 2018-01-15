@@ -7,11 +7,11 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 const OfertasOnLine = (props) => (
   <Layout>
     <Head>
-      <title>Beneficios On Line</title>
+      <title>Ofertas On Line</title>
     </Head>
     <IntlProvider defaultLocale='ca'>
       <main>
-        <h1>Beneficios On Line</h1>
+        <h1>Ofertas On Line</h1>
         <section>
           <h2 className='align-center'>Selecciona la categoría de tu interés</h2>
           <ul className='gallery'>
@@ -22,9 +22,9 @@ const OfertasOnLine = (props) => (
             categories[ofertasonline.categoria_de_la_oferta.term_id] =
             (
             <span key={ofertasonline.categoria_de_la_oferta.term_id}>            
-            <li className='item'>
+            <li className='item align-center'>
               <Link prefetch as={`/c-o-o/${ofertasonline.categoria_de_la_oferta.term_id}/${ofertasonline.categoria_de_la_oferta.slug}`} href={`/category-ofertas-on-line?id=${ofertasonline.categoria_de_la_oferta.term_id}`}>
-                <a title={'Clica aquí para ver todas las ofertas online de ' + ofertasonline.categoria_de_la_oferta.name}><img src={'/static/32/' + ofertasonline.categoria_de_la_oferta.slug +'-familias-numerosas.png'} /> <span dangerouslySetInnerHTML={ {__html: ofertasonline.categoria_de_la_oferta.name} } /></a>
+                <a title={'Clica aquí para ver todas las ofertas online de ' + ofertasonline.categoria_de_la_oferta.name}><img src={'/static/' + ofertasonline.categoria_de_la_oferta.slug +'-familias-numerosas.png'} /><br/><span dangerouslySetInnerHTML={ {__html: ofertasonline.categoria_de_la_oferta.name} } /></a>
               </Link>
             </li>
             </span>

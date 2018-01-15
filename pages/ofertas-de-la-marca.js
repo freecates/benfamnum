@@ -12,14 +12,14 @@ const OfertasGrandesMarcasByMarca = (props) => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-        <li><Link prefetch href="/grandes-marcas"><a>Grandes Marcas</a></Link></li>
+        <li><Link prefetch href="/grandes-marcas"><a>Ofertas nacionales</a></Link></li>
         <li>
-          <span className="show-for-sr">Actual: </span> Marca: {props.granmarcaofertas[0].marca.name} 
+          <span className="show-for-sr">Actual: </span> {props.granmarcaofertas[0].marca.name} 
         </li>
       </ul>
     </nav>
     <section>
-      <h1>Ofertas de la Marca {props.granmarcaofertas[0].marca.name}</h1>
+      <h1>Ofertas de {props.granmarcaofertas[0].marca.name}</h1>
       <IntlProvider defaultLocale='es'>
         <div className='table-scroll'>
           <table>          

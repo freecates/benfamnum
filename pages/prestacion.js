@@ -3,7 +3,6 @@ import Layout from '../components/MyLayout.js'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
-import {IntlProvider, FormattedDate} from 'react-intl'
 
 const Prestacion =  (props) => (
     <Layout>
@@ -47,14 +46,10 @@ const Prestacion =  (props) => (
             </div>
 
             <div className='file-content'>
-
-            <IntlProvider defaultLocale='es'>
-              <p><small><FormattedDate value={props.prestacion.date} day='numeric' month='long' year='numeric' /></small></p>
-            </IntlProvider>
               
               {props.prestacion.acf.descripcion_de_la_prestacion ? <p dangerouslySetInnerHTML={ {__html: props.prestacion.acf.descripcion_de_la_prestacion} }/> : '' }
 
-              {props.prestacion.acf.enlace_de_interes ? <p className='callout align-center'>Más info <Link href={props.prestacion.acf.enlace_de_interes}><a target='_blank'>aquí</a></Link></p> : ''}
+              {props.prestacion.acf.enlace_de_interes ? <p className='callout align-center'><Link href={props.prestacion.acf.enlace_de_interes}><a target='_blank'>Más información</a></Link></p> : ''}
 
             </div>
           

@@ -7,18 +7,18 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 const GRandesMarcas = (props) => (
   <Layout>
     <Head>
-      <title>Grandes Marcas</title>
+      <title>Ofertas nacionales</title>
     </Head>
     <IntlProvider defaultLocale='ca'>
       <main>
-        <h1>Grandes Marcas</h1>
+        <h1>Ofertas nacionales</h1>
         <section>
           <h2 className='align-center'>Selecciona la marca de tu interés</h2>
           <ul className='gallery'>
           {props.grandesmarcas.map((grandesmarca, index) => (
-            <li className='item' key={index}>
+            <li className='item align-center' key={index}>
               <Link prefetch as={`/m-o-g-m/${grandesmarca.id}/${grandesmarca.slug}`} href={`/ofertas-de-la-marca?id=${grandesmarca.id}`}>
-                <a title={'Clica aquí para ver las ofertas de ' + grandesmarca.name}><img src={'/static/32/' + grandesmarca.slug +'-familias-numerosas.png'} /> <span dangerouslySetInnerHTML={ {__html: grandesmarca.name} } /></a>
+                <a title={'Clica aquí para ver las ofertas de ' + grandesmarca.name}><img src={'/static/' + grandesmarca.slug +'-familias-numerosas.png'} /><br/><span dangerouslySetInnerHTML={ {__html: grandesmarca.name} } /></a>
               </Link>
             </li>
             ))}

@@ -16,7 +16,7 @@ const OfertaOnLine =  (props) => (
       <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-          <li><Link prefetch href="/ofertas-on-line"><a>Beneficios On Line</a></Link></li>
+          <li><Link prefetch href="/ofertas-on-line"><a>Ofertas On Line</a></Link></li>
           <li><Link prefetch as={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`} href={`/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}><a>{props.ofertaonline._embedded['wp:term'][0][0].name}</a></Link></li>
           <li>
             <span className="show-for-sr">Actual: </span> <span dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.nombre_del_establecimiento} } />
@@ -70,19 +70,19 @@ const OfertaOnLine =  (props) => (
               {props.ofertaonline.acf.titulo_de_la_oferta_oferta_general ? <h4>{props.ofertaonline.acf.titulo_de_la_oferta_oferta_general}</h4> : '' }
               
               {props.ofertaonline.acf.descripcion_de_la_oferta_oferta_general ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.descripcion_de_la_oferta_oferta_general} }/> : '' }
+              {props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios ?
+                <div id='how-to-get-it'>
+                <IsMember 
+                  dataOK={<div dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios} } />} 
+                  ID={props.ofertaonline.slug + '-' + props.ofertaonline.id}
+                  Title={props.ofertaonline.title.rendered}
+                  URL={'oo/' + props.ofertaonline.id + '/' + props.ofertaonline.slug}
+                />
+                </div> : ''}
 
             </div>
           
           </div>
-          {props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios ?
-            <div id='how-to-get-it'>
-            <IsMember 
-              dataOK={<div dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios} } />} 
-              ID={props.ofertaonline.slug + '-' + props.ofertaonline.id}
-              Title={props.ofertaonline.title.rendered}
-              URL={'oo/' + props.ofertaonline.id + '/' + props.ofertaonline.slug}
-            />
-            </div> : ''}
 
         </div>
 
@@ -148,6 +148,9 @@ const OfertaOnLine =  (props) => (
         @media screen and (min-width: 1024px) {
           .file-content {
             width: 55%;
+          }
+          #how-to-get-it, .file-label {
+          max-width: 70%;
           }
         }
         @media screen and (max-width: 480px) {              

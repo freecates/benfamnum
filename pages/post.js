@@ -6,7 +6,6 @@ import dynamic from 'next/dynamic'
 import Observer from 'react-intersection-observer'
 import fetch from 'isomorphic-unfetch'
 import FontAwesome from 'react-fontawesome'
-import {IntlProvider, FormattedDate} from 'react-intl'
 import {ShareButtons, ShareCounts, generateShareIcon} from 'react-share'
 
 const MapaDeGoogle = dynamic(
@@ -149,19 +148,15 @@ const Post =  (props) => (
               
               {props.post.acf.como_conseguir_la_oferta_oferta_socios ?
                   
-                <h1 className='align-none'><Link href="#how-to-get-it"><a><span className='label alert file-label'>EXCLUSIVO SOCIOS.<br/> Introduce tu usuario y contrasenya de asociado para saber como obterner esta oferta<br/><FontAwesome
+                <h1 className='align-none'><Link href="#how-to-get-it"><a><span className='label alert file-label'>EXCLUSIVO SOCIOS.<br/> Introduce tu usuario y contraseña de asociado para saber como obterner esta oferta<br/><FontAwesome
                 name='check-circle-o'
                 size='2x'
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
               /></span></a></Link></h1> : ''}
 
-              <p className='margin-invert'><small>(¿No recuerdas tu contraseña? Entra <Link href='https://www.familias-numerosas.org/ingreso.php'><a target='_blank'>aquí</a></Link> y clica en Recuperar contraseña)</small></p>
+              <p className='margin-invert'><small><Link href='https://www.familias-numerosas.org/ingreso.php'><a className='button button-green' target='_blank'>Recuperar contrasenya</a></Link></small></p>
               
               {props.post.acf.titulo_de_la_oferta_oferta_socios ? <h4>{props.post.acf.titulo_de_la_oferta_oferta_socios}</h4> : '' }
-
-            <IntlProvider defaultLocale='es'>
-              <p><small><FormattedDate value={props.post.date} day='numeric' month='long' year='numeric' /></small></p>
-            </IntlProvider>
               
               {props.post.acf.descripcion_de_la_oferta_oferta_socios ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.post.acf.descripcion_de_la_oferta_oferta_socios} }/> : '' }
              
@@ -221,6 +216,16 @@ const Post =  (props) => (
         }
         .breadcrumbs {
           margin-bottom:1em;
+        }
+        .align-center {
+          text-align:center;
+        }
+        .button.button-green {
+          color:#ffffff!important;
+          background:#009933;
+        }
+        .button.button-green:hover {
+          background:#007e2a;
         }
         .file {
           max-width:1024px;
