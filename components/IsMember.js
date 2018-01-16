@@ -16,9 +16,14 @@ class IsMember extends React.Component {
           URL: this.props.URL
 
     };
-  
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      var isMember = false
+      if (isMember != undefined) {
+        this.setState({
+            isRegistered: isMember
+        })
+      }
     }
 
 
@@ -54,15 +59,17 @@ class IsMember extends React.Component {
 
         const res = await fetch(`https://www.familias-numerosas.org/v2/ws/endpoint.php?user=${user}&data=${dataEncode}`)
         const isRegistered = await res.json()
+        sessionStorage.setItem('isMember', isRegistered.Response)
         this.setState({
             isRegistered: isRegistered.Response
-        })       
+        })
+        
       event.preventDefault();
     }
   
     render() {
         console.log(`Hola: ${this.state.isRegistered}`)
-        if (this.state.isRegistered == true) { 
+        if (this.state.isRegistered == true || sessionStorage.getItem('isMember')) { 
             return (
                 <section>
                     <div className='callout large alert fade-in'>
