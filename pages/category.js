@@ -63,7 +63,6 @@ const PostsByCategory = (props) => (
 
       <IntlProvider defaultLocale='es'>
         <section>
-          <p className='align-center'>... O si lo prefieres accede directamente a cualquiera de las fichas</p>
           {props.marcasofertas.length >= 1 ?
           <ul className='gallery national-gallery'>
               {props.marcasofertas.reduce((marcas, marcasoferta) => {
@@ -75,7 +74,7 @@ const PostsByCategory = (props) => (
                 <span key={marcasoferta.marca.term_id}>            
                 <li className='benefit align-center'>
                   <Link prefetch as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`} href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}>
-                    <a title={'Clica aquí para ver todos los marcasofertas de ' + marcasoferta.marca.name}><img src={'/static/' + marcasoferta.marca.slug +'-familias-numerosas.png'} /><br/> <span dangerouslySetInnerHTML={ {__html: marcasoferta.marca.name} } /></a>
+                    <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}><img src={'/static/' + marcasoferta.marca.slug +'-familias-numerosas.png'} /><br/> <span dangerouslySetInnerHTML={ {__html: marcasoferta.marca.name} } /></a>
                   </Link>
                 </li>
                 </span>
@@ -83,6 +82,9 @@ const PostsByCategory = (props) => (
                 return marcas
             },[])}
             </ul> :'' }
+
+          <p className='align-center'>... O si lo prefieres accede directamente a cualquiera de las fichas</p>
+
           <ul className='gallery'>
             {props.posts.map((post, index) => (
               <li className='benefit' key={index}>
@@ -112,6 +114,7 @@ const PostsByCategory = (props) => (
           .national-gallery {
             background:#eeeeee;
             margin-bottom:1em!important;
+            padding-top:.75em!important;
           }
           @media screen and (min-width: 768px) {
               .wrapper {

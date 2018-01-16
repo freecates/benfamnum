@@ -30,7 +30,7 @@
     "google-map-react": "0.24.0",
     "google-maps-react": "^1.1.0",
     "isomorphic-unfetch": "1.0.0",
-    "next": "^4.0.1",
+    "next": "^4.2.3",
     "nprogress": "0.2.0",
     "react": "^16.0.0",
     "react-addons-css-transition-group": "15.6.0",
