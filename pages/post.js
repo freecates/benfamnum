@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Layout from '../components/MyLayout.js'
-import IsMember from '../components/IsMember.js'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import Observer from 'react-intersection-observer'
@@ -10,6 +9,13 @@ import {ShareButtons, ShareCounts, generateShareIcon} from 'react-share'
 
 const MapaDeGoogle = dynamic(
   import('../components/MapaDeGoogle'),
+  {
+    loading: () => (<p>cargando ...</p>)
+  }
+)
+
+const IsMember = dynamic(
+  import('../components/IsMember'),
   {
     loading: () => (<p>cargando ...</p>)
   }

@@ -59,7 +59,9 @@ class IsMember extends React.Component {
 
         const res = await fetch(`https://www.familias-numerosas.org/v2/ws/endpoint.php?user=${user}&data=${dataEncode}`)
         const isRegistered = await res.json()
-        sessionStorage.setItem('isMember', isRegistered.Response)
+        if (typeof window != 'undefined') {
+            sessionStorage.setItem('isMember', isRegistered.Response)
+        }
         this.setState({
             isRegistered: isRegistered.Response
         })
@@ -69,20 +71,107 @@ class IsMember extends React.Component {
   
     render() {
         console.log(`Hola: ${this.state.isRegistered}`)
-        if (this.state.isRegistered == true || sessionStorage.getItem('isMember')) { 
-            return (
-                <section>
-                    <div className='callout large alert fade-in'>
-                        <p>¡ATENCIÓN!: <span>{this.state.HowTo}</span></p>
-                    </div>
-                    <ReactDisqusComments
-                        shortname="beneficios-familias-numerosas"
-                        identifier={this.state.Identifier}
-                        title={this.state.Title}
-                        url={'https://beneficios.now.sh/' + this.state.URL}
-                        category_id={null}
-                        onNewComment={this.handleNewComment}/>
+        if (typeof window != 'undefined') {
+            if (this.state.isRegistered == true || sessionStorage.getItem('isMember')) { 
+                return (
+                    <section>
+                        <div className='callout large alert fade-in'>
+                            <p>¡ATENCIÓN!: <span>{this.state.HowTo}</span></p>
+                        </div>
+                        <ReactDisqusComments
+                            shortname="beneficios-familias-numerosas"
+                            identifier={this.state.Identifier}
+                            title={this.state.Title}
+                            url={'https://beneficios.now.sh/' + this.state.URL}
+                            category_id={null}
+                            onNewComment={this.handleNewComment}/>
+                            <style jsx>{`
+                                .fade-in {
+                                animation-name: fadeIn;
+                                animation-duration: 1.3s;
+                                animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+                                animation-fill-mode: forwards;
+                                }
+                                @keyframes fadeIn {
+                                from {
+                                    opacity: 0;
+                                }
+                                to {
+                                    opacity: 1;
+                                }
+                                }
+                            `}</style>
+                    </section>
+                );
+            } else 
+                return (
+                    <section>
+                        <div className='wrapper'>
+                            <form>
+                            <label>
+                                <input placeholder='Usuario' type="email" name='isEmail' value={this.state.isEmail} onChange={this.handleChange} required />
+                            </label>
+                            <label>
+                                <input placeholder='Contraseña' type="password" name='isPassword' value={this.state.isPassword} onChange={this.handleChange}required />
+                            </label>
+                            <div className='wrapper-input'><input type="button" className='button' onClick={this.handleSubmit} value="Enviar" /></div>
+                            <p className='yellow margin-inverse'>¿Quieres participar de estos beneficios? Ahora te puedes hacer socio. ¡Fácil y rápido!</p>
+                            <div className='wrapper-input'><Link href='http://www.familiasnumerosas.org/hazte-socio/' ><a target='_blank'className='button button-pink' >Sí, quiero hacerme socio</a></Link></div>
+                            </form>
+                            <p className='align-left'><small><strong>COMENTARIOS</strong>: Para poder leer o escribir opiniones sobre esta oferta, debes introducir tu usuario y contraseña de asociado</small></p>
+                        </div>
                         <style jsx>{`
+                            form {
+                            padding: 2em;
+                            background: #333333;
+                            border-radius:6.5%;
+                            }
+                            label {
+                            color:#ffffff;
+                            }
+                            .wrapper-input {
+                            width:100%;
+                            padding:1em;
+                            }
+                            input[type=button] {
+                            background:#009933;
+                            margin:0 auto;
+                            display:block;
+                            width:100%;
+                            }
+                            input[type=button]:hover {
+                            background:#007e2a;
+                            }
+                            .button-pink {
+                            background:#cc3366;
+                            margin:0 auto;
+                            display:block;
+                            width:100%;
+                            color:#ffffff!important;
+                            }
+                            .button-pink:hover {
+                            background:#a62953;
+                            }
+                            h1, label, p {
+                                text-align:center;
+                            }
+                            .align-left {
+                                text-align:left;
+                            }
+                            .yellow {
+                                color:#f3f303;
+                            }
+                            .margin-inverse {
+                                margin-top:1em;
+                                margin-bottom:0;
+                            }
+                            .file-label {
+                                background:#cc0033!important;
+                                color:#ffffff;
+                                font-weight:bold;
+                                padding:1em;
+                                white-space:normal;
+                            }
                             .fade-in {
                             animation-name: fadeIn;
                             animation-duration: 1.3s;
@@ -98,94 +187,11 @@ class IsMember extends React.Component {
                             }
                             }
                         `}</style>
-                </section>
-            );
-        } else 
-            return (
-                <section>
-                    <div className='wrapper'>
-                        <form>
-                        <label>
-                            <input placeholder='Usuario' type="email" name='isEmail' value={this.state.isEmail} onChange={this.handleChange} required />
-                        </label>
-                        <label>
-                            <input placeholder='Contraseña' type="password" name='isPassword' value={this.state.isPassword} onChange={this.handleChange}required />
-                        </label>
-                        <div className='wrapper-input'><input type="button" className='button' onClick={this.handleSubmit} value="Enviar" /></div>
-                        <p className='yellow margin-inverse'>¿Quieres participar de estos beneficios? Ahora te puedes hacer socio. ¡Fácil y rápido!</p>
-                        <div className='wrapper-input'><Link href='http://www.familiasnumerosas.org/hazte-socio/' ><a target='_blank'className='button button-pink' >Sí, quiero hacerme socio</a></Link></div>
-                        </form>
-                        <p className='align-left'><small><strong>COMENTARIOS</strong>: Para poder leer o escribir opiniones sobre esta oferta, debes introducir tu usuario y contraseña de asociado</small></p>
-                    </div>
-                    <style jsx>{`
-                        form {
-                        padding: 2em;
-                        background: #333333;
-                        border-radius:6.5%;
-                        }
-                        label {
-                        color:#ffffff;
-                        }
-                        .wrapper-input {
-                        width:100%;
-                        padding:1em;
-                        }
-                        input[type=button] {
-                        background:#009933;
-                        margin:0 auto;
-                        display:block;
-                        width:100%;
-                        }
-                        input[type=button]:hover {
-                        background:#007e2a;
-                        }
-                        .button-pink {
-                        background:#cc3366;
-                        margin:0 auto;
-                        display:block;
-                        width:100%;
-                        color:#ffffff!important;
-                        }
-                        .button-pink:hover {
-                        background:#a62953;
-                        }
-                        h1, label, p {
-                            text-align:center;
-                        }
-                        .align-left {
-                            text-align:left;
-                        }
-                        .yellow {
-                            color:#f3f303;
-                        }
-                        .margin-inverse {
-                            margin-top:1em;
-                            margin-bottom:0;
-                        }
-                        .file-label {
-                            background:#cc0033!important;
-                            color:#ffffff;
-                            font-weight:bold;
-                            padding:1em;
-                            white-space:normal;
-                        }
-                        .fade-in {
-                          animation-name: fadeIn;
-                          animation-duration: 1.3s;
-                          animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
-                          animation-fill-mode: forwards;
-                        }
-                        @keyframes fadeIn {
-                          from {
-                            opacity: 0;
-                          }
-                          to {
-                            opacity: 1;
-                          }
-                        }
-                    `}</style>
-                </section>
-            ); 
+                    </section>
+                );
+            } else {
+                return null
+            }
     }
   }
   export default IsMember
