@@ -18,12 +18,6 @@ class IsMember extends React.Component {
     };
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
-      var isMember = false
-      if (isMember != undefined) {
-        this.setState({
-            isRegistered: isMember
-        })
-      }
     }
 
 
@@ -72,7 +66,7 @@ class IsMember extends React.Component {
     render() {
         console.log(`Hola: ${this.state.isRegistered}`)
         if (typeof window != 'undefined') {
-            if (this.state.isRegistered == true || sessionStorage.getItem('isMember')) { 
+            if (this.state.isRegistered == true || sessionStorage.getItem('isMember') == "true") { 
                 return (
                     <section>
                         <div className='callout large alert fade-in'>

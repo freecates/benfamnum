@@ -9,7 +9,7 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 const SelectCity = dynamic(
   import('../components/SelectCity'),
   {
-    loading: () => (<p>cargando ...</p>)
+    loading: () => (<div><p style={{textAlign: 'center'}}><img src='/static/spinner.gif'/></p></div>)
   }
 )
 
