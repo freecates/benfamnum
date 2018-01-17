@@ -8,7 +8,7 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 const GoogleMapReact = dynamic(
   import('google-map-react'),
   {
-    loading: () => (<p>cargando ...</p>)
+    loading: () => (<div><p style={{textAlign: 'center'}}><img src='/static/rolling.gif'/></p></div>)
   }
 )
 
@@ -57,7 +57,7 @@ const MapByMarca = (props) => (
           
           <MarkerComponent
             key={index}
-            lat={marker.lat.includes(',') || marker.lat.includes('!')? marker.lat.replace(',', '.') : marker.lat}
+            lat={marker.lat.includes(',') || marker.lat.includes('!') ? marker.lat.replace(',', '.') : marker.lat}
             lng={marker.lon.includes(',') || marker.lon.includes('!') ? marker.lon.replace(',', '.') : marker.lon}
             text={<Link prefetch as={`/ogm/${marker.ID}/${marker.slug}`} href={`/oferta-gran-marca?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + props.markers[0].marca.slug +'-familias-numerosas.png'} /></span></a></Link>}
           />

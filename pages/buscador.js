@@ -6,7 +6,7 @@ import Layout from '../components/MyLayout.js'
 const IsSearch = dynamic(
   import('../components/IsSearch'),
   {
-    loading: () => (<div><p style={{textAlign: 'center'}}><img src='/static/spinner.gif'/></p></div>)
+    loading: () => (<div><p style={{textAlign: 'center'}}><img src='/static/rolling.gif'/></p></div>)
   }
 )
 

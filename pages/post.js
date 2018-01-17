@@ -10,14 +10,14 @@ import {ShareButtons, ShareCounts, generateShareIcon} from 'react-share'
 const MapaDeGoogle = dynamic(
   import('../components/MapaDeGoogle'),
   {
-    loading: () => (<div><p style={{textAlign: 'center'}}><img src='/static/spinner.gif'/></p></div>)
+    loading: () => (<div><p style={{textAlign: 'center'}}><img src='/static/rolling.gif'/></p></div>)
   }
 )
 
 const IsMember = dynamic(
   import('../components/IsMember'),
   {
-    loading: () => (<div><p style={{textAlign: 'center'}}><img src='/static/spinner.gif'/></p></div>)
+    loading: () => (<div><p style={{textAlign: 'center'}}><img src='/static/rolling.gif'/></p></div>)
   }
 )
 
