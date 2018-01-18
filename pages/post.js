@@ -160,7 +160,7 @@ const Post =  (props) => (
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
               /></span></a></Link></h1> : ''}
 
-              <p className='margin-invert'><small><Link href='https://www.familias-numerosas.org/ingreso.php'><a className='button button-green' target='_blank'>Recuperar contrasenya</a></Link></small></p>
+              <p className='margin-invert'><small><Link href='https://www.familias-numerosas.org/ingreso.php'><a className='button button-green' target='_blank'>Recuperar contraseña</a></Link></small></p>
               
               {props.post.acf.titulo_de_la_oferta_oferta_socios ? <h4>{props.post.acf.titulo_de_la_oferta_oferta_socios}</h4> : '' }
               
