@@ -53,8 +53,10 @@ class IsMember extends React.Component {
 
         const res = await fetch(`https://www.familias-numerosas.org/v2/ws/endpoint.php?user=${user}&data=${dataEncode}`)
         const isRegistered = await res.json()
+        const isMemberString = btoa("15" + isRegistered.Response + "45")
+        console.log(`${isMemberString}`)
         if (typeof window != 'undefined') {
-            sessionStorage.setItem('isMember', isRegistered.Response)
+            sessionStorage.setItem('isMember', isMemberString)
         }
         if (typeof window != 'undefined' && isRegistered.Response === true) {
             sessionStorage.setItem('email', this.state.isEmail)
@@ -69,7 +71,7 @@ class IsMember extends React.Component {
     render() {
         console.log(`Hola: ${this.state.isRegistered}`)
         if (typeof window != 'undefined') {
-            if (this.state.isRegistered == true || sessionStorage.getItem('isMember') == "true") { 
+            if (this.state.isRegistered == true || sessionStorage.getItem('isMember') == "MTV0cnVlNDU=") { 
                 return (
                     <section>
                     <p>Hola {sessionStorage.getItem('email')}</p>

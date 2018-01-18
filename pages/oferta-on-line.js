@@ -132,7 +132,7 @@ const OfertaOnLine =  (props) => (
             display: flex;
             -ms-flex-wrap: wrap;
                 flex-wrap: wrap;
-            align-items:center;
+            align-items:stretch;
 
             width: 100%;
           }
