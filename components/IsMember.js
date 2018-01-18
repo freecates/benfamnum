@@ -55,10 +55,8 @@ class IsMember extends React.Component {
         const isRegistered = await res.json()
         const isMemberString = btoa("15" + isRegistered.Response + "45")
         console.log(`${isMemberString}`)
-        if (typeof window != 'undefined') {
-            sessionStorage.setItem('isMember', isMemberString)
-        }
         if (typeof window != 'undefined' && isRegistered.Response === true) {
+            sessionStorage.setItem('isMember', isMemberString)
             sessionStorage.setItem('email', this.state.isEmail)
         }
         this.setState({
