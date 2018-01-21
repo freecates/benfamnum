@@ -10,7 +10,14 @@ import {ShareButtons, ShareCounts, generateShareIcon} from 'react-share'
 const MapaDeGoogle = dynamic(
   import('../components/MapaDeGoogle'),
   {
-    loading: () => (<p>cargando ...</p>)
+    loading: () => (<div><p style={{textAlign: 'center'}}><img src='/static/rolling.gif'/></p></div>)
+  }
+)
+
+const IsMember = dynamic(
+  import('../components/IsMember'),
+  {
+    loading: () => (<div><p style={{textAlign: 'center'}}><img src='/static/rolling.gif'/></p></div>)
   }
 )
 
@@ -158,6 +165,16 @@ const OfertaGranMarca =  (props) => (
 
               </div>
 
+              {props.ofertagranmarca.acf.oferta_exclusiva_socios == true ?
+                <div id='how-to-get-it'>
+                <IsMember 
+                  dataOK={<div dangerouslySetInnerHTML={ {__html: props.ofertagranmarca.acf.como_conseguir_la_oferta_exclusica_socios} } />}
+                  ID={props.ofertagranmarca.slug + '-' + props.ofertagranmarca.id}
+                  Title={props.ofertagranmarca.title.rendered}
+                  URL={'ogm/' + props.ofertagranmarca.id + '/' + props.ofertagranmarca.slug}
+                />
+                </div> : ''}
+
             </div>
           
           </div>
@@ -238,13 +255,17 @@ const OfertaGranMarca =  (props) => (
             width: 85%;
             margin: 5px 20px;
           }
+          #how-to-get-it, .file-label {
+          max-width: 60%;
+          margin:0 auto;
+          }
         }
         @media screen and (min-width: 1024px) {
           .file-content {
             width: 95%;
           }
           #how-to-get-it, .file-label {
-          max-width: 70%;
+          max-width: 40%;
           }
         }
         @media screen and (max-width: 480px) {              
