@@ -77,7 +77,7 @@ const OfertaGranMarca =  (props) => (
 
         <div className='file'>
             
-            <h1><img src={'/static/' + props.ofertagranmarca._embedded['wp:term'][3][0].slug +'-familias-numerosas.png'} /><br/><span dangerouslySetInnerHTML={ {__html: props.ofertagranmarca.acf.nombre_del_establecimiento} } /></h1>
+            <h1><img src={'/static/' + props.ofertagranmarca._embedded['wp:term'][3][0].slug +'-familias-numerosas.png'} /><br/><span dangerouslySetInnerHTML={ {__html: props.ofertagranmarca.acf.nombre_del_establecimiento} } /> {props.ofertagranmarca.acf.oferta_exclusiva_socios == true ? <span className='label alert file-label'><small>EXCLUSIVO<br /> SOCIOS</small></span> : '' }</h1>
            
             <h4 className='location dont-break-out'><span><span dangerouslySetInnerHTML={ {__html:props.ofertagranmarca.acf.direccion} }/>. <span>{props.ofertagranmarca.acf.codigo_postal}</span>, <span dangerouslySetInnerHTML={ {__html: props.ofertagranmarca.acf.localidad_del_beneficio.name} } /></span></h4>
             <h4 className='location dont-break-out'><span> 
@@ -119,6 +119,14 @@ const OfertaGranMarca =  (props) => (
               </div>
 
             <div className='file-content'>
+
+            {props.ofertagranmarca.acf.oferta_exclusiva_socios == true ?
+                  
+                  <h1 className='align-none'><Link href="#how-to-get-it"><a><span className='label alert file-label'>EXCLUSIVO SOCIOS.<br/> Introduce tu usuario y contraseña de asociado para saber como obterner esta oferta<br/><FontAwesome
+                  name='check-circle-o'
+                  size='2x'
+                  style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
+                /></span></a></Link></h1> : ''}
               
               {props.ofertagranmarca.acf.titulo_de_la_oferta ? <h4>{props.ofertagranmarca.acf.titulo_de_la_oferta}</h4> : '' }
 
