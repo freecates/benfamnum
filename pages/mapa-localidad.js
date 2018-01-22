@@ -13,14 +13,14 @@ const GoogleMapReact = dynamic(
 )
 
 const markerStyle = {
-  'background-color': '#ffffff',
+  backgroundColor: '#ffffff',
   width: '50px',
-  'text-align': 'center',
+  textAlign: 'center',
   padding: '.5em',
   'position': 'relative',
   right: 25,
   bottom: 25,
-  'border-radius': '50%'
+  borderRadius: '50%'
 
 }
 
@@ -53,6 +53,15 @@ const MapByLocalidad = (props) => (
           center={[props.markers[0].lat.includes(',') || props.markers[0].lat.includes('!') ? 40.1301508 : Number(props.markers[0].lat), props.markers[0].lon.includes(',') || props.markers[0].lon.includes('!') ? -1.8518527 : Number(props.markers[0].lon)]}
           zoom={ZOOM}
         >
+          {props.nationalmarkers.map((nationalmarker, index) => (
+            
+            <MarkerComponent
+              key={index}
+              lat={nationalmarker.lat.includes(',') || nationalmarker.lat.includes('!') ? nationalmarker.lat.replace(',', '.') : nationalmarker.lat}
+              lng={nationalmarker.lon.includes(',') || nationalmarker.lon.includes('!') ? nationalmarker.lon.replace(',', '.') : nationalmarker.lon}
+              text={<Link prefetch as={`/ogm/${nationalmarker.ID}/${nationalmarker.slug}`} href={`/oferta-gran-marca?id=${nationalmarker.ID}`}><a title={nationalmarker.name}><span><img src={'/static/32/' + nationalmarker.marca.slug +'-familias-numerosas.png'} /></span></a></Link>}
+            />
+                ))}
         {props.markers.map((marker, index) => (
           
           <MarkerComponent
@@ -157,10 +166,12 @@ MapByLocalidad.getInitialProps = async function(context) {
   const { localidad } = context.query
   const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&localidad=${localidad}`)
   const markers = await res.json()
+  const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&localidad=${localidad}`)
+  const nationalmarkers = await res2.json()
 
-  console.log(`Markers data fetched. Count: ${markers.length}`)
+  console.log(`Markers data fetched. Count: ${markers.length}, ${nationalmarkers.length}`)
 
-  return { markers }
+  return { markers, nationalmarkers }
 }
 
 export default MapByLocalidad

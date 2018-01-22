@@ -23,6 +23,24 @@ const PostsByLocalidad = (props) => (
       <h1>Beneficios en {props.posts[0].localidad_del_beneficio.name}</h1>
       <p className='align-center'><small><Link prefetch as={`/m-l/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`} href={`/mapa-localidad?localidad=${props.posts[0].localidad_del_beneficio.term_id}`}><a><img src='/static/icona-mapa-familias-numerosas.png' /> ver en el mapa</a></Link></small></p>
       <IntlProvider defaultLocale='es'>
+        <section>
+          <ul className='gallery national-gallery'>
+            {props.marcasofertas.map((marcasoferta, index) => (
+              <li className='benefit align-center' key={index}>
+                <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'><Link prefetch as={`/ogm/${marcasoferta.ID}/${marcasoferta.slug}`} href={`/oferta-gran-marca?id=${marcasoferta.ID}`}><a><img width='96' src={'/static/' + marcasoferta.marca.slug +'-familias-numerosas.png'} alt={marcasoferta.titulo_de_la_oferta} /></a></Link></p>)} />
+
+                <p><Link prefetch as={`/ogm/${marcasoferta.ID}/${marcasoferta.slug}`} href={`/oferta-gran-marca??id=${marcasoferta.ID}`}>
+                  <a dangerouslySetInnerHTML={ {__html: marcasoferta.name} } />
+                </Link><br/>
+                <small>{marcasoferta.localidad_del_beneficio.name}</small><br />
+
+                {marcasoferta.titulo_de_la_oferta ?
+                <span className='titulo-oferta'>{marcasoferta.titulo_de_la_oferta}</span> : '' }
+
+                </p>
+              </li>
+            ))}
+          </ul>
           <ul className='gallery'>
             {props.posts.map((post, index) => (
               <li className='benefit' key={index}>
@@ -45,10 +63,16 @@ const PostsByLocalidad = (props) => (
               </li>
             ))}
           </ul>
+        </section>
 
       </IntlProvider>
     </section>
         <style jsx>{`
+          .national-gallery {
+            background:#eeeeee;
+            margin-bottom:1em!important;
+            padding-top:.75em!important;
+          }
           .breadcrumbs {
             margin-bottom:1em;
           }
@@ -156,10 +180,12 @@ PostsByLocalidad.getInitialProps = async function(context) {
   const { localidad } = context.query
   const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&localidad=${localidad}`)
   const posts = await res.json()
+  const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&localidad=${localidad}`)
+  const marcasofertas = await res2.json()
 
-  console.log(`Posts data fetched. Count: ${posts.length}`)
+  console.log(`Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}`)
 
-  return { posts }
+  return { posts, marcasofertas }
 }
 
 export default PostsByLocalidad
