@@ -24,23 +24,26 @@ const PostsByLocalidad = (props) => (
       <p className='align-center'><small><Link prefetch as={`/m-l/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`} href={`/mapa-localidad?localidad=${props.posts[0].localidad_del_beneficio.term_id}`}><a><img src='/static/icona-mapa-familias-numerosas.png' /> ver en el mapa</a></Link></small></p>
       <IntlProvider defaultLocale='es'>
         <section>
+          {props.marcasofertas.length >= 1 ?
           <ul className='gallery national-gallery'>
-            {props.marcasofertas.map((marcasoferta, index) => (
-              <li className='benefit align-center' key={index}>
-                <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'><Link prefetch as={`/ogm/${marcasoferta.ID}/${marcasoferta.slug}`} href={`/oferta-gran-marca?id=${marcasoferta.ID}`}><a><img width='96' src={'/static/' + marcasoferta.marca.slug +'-familias-numerosas.png'} alt={marcasoferta.titulo_de_la_oferta} /></a></Link></p>)} />
-
-                <p><Link prefetch as={`/ogm/${marcasoferta.ID}/${marcasoferta.slug}`} href={`/oferta-gran-marca??id=${marcasoferta.ID}`}>
-                  <a dangerouslySetInnerHTML={ {__html: marcasoferta.name} } />
-                </Link><br/>
-                <small>{marcasoferta.localidad_del_beneficio.name}</small><br />
-
-                {marcasoferta.titulo_de_la_oferta ?
-                <span className='titulo-oferta'>{marcasoferta.titulo_de_la_oferta}</span> : '' }
-
-                </p>
-              </li>
-            ))}
-          </ul>
+              {props.marcasofertas.reduce((marcas, marcasoferta) => {
+                if (marcasoferta.marca == false) {
+                  return marcas
+                }
+                marcas[marcasoferta.marca.term_id] =
+                (
+                <span key={marcasoferta.marca.term_id}>            
+                <li className='benefit align-center'>
+                <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'>
+                  <Link prefetch as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`} href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}>
+                    <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}><img src={'/static/' + marcasoferta.marca.slug +'-familias-numerosas.png'} /><br/> <span dangerouslySetInnerHTML={ {__html: marcasoferta.marca.name} } /></a>
+                  </Link></p>)} />
+                </li>
+                </span>
+                )
+                return marcas
+            },[])}
+            </ul> :'' }
           <ul className='gallery'>
             {props.posts.map((post, index) => (
               <li className='benefit' key={index}>
