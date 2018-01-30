@@ -17,7 +17,6 @@ export default () => (
         </ul>
         </nav>
        <section className='call-to-action'>
-            <h1>Selecciona la prestación pública por ámbito geográfico</h1>
             <p className='icones-prestacions'>
                 <Link prefetch href="/municipios-prestaciones"><a><img src='/static/icona-prestacions-municipals-familias-numerosas.png'/></a></Link> 
                 <Link prefetch href="/comunidades-prestaciones"><a><img src='/static/icona-prestacions-autonomiques-familias-numerosas.png'/></a></Link> 

@@ -25,7 +25,7 @@ const HeaderHome = () => (
             <p className='icones-prestacions align-center'>
                 <Link prefetch href="/prestaciones"><a><img src='/static/icona-prestacions-publiques-familias-numerosas.png'/></a></Link>
             </p>
-            <p>Desde este apartado podrás acceder a toda la información sobre las prestaciones que como familia numerosa te ofrece el gobierno central, autonónico o municipal</p>
+            <p>Desde este apartado podrás acceder a toda la información sobre las prestaciones que como familia numerosa te ofrece el gobierno central, autonómico o municipal</p>
           </div>
           <div className='section-b'>
             <p className='icones-prestacions align-center'>

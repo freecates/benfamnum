@@ -154,7 +154,7 @@ const Post =  (props) => (
               
               {props.post.acf.como_conseguir_la_oferta_oferta_socios ?
                   
-                <h1 className='align-none'><Link href="#how-to-get-it"><a><span className='label alert file-label'>EXCLUSIVO SOCIOS.<br/> Introduce tu usuario y contraseña de asociado para saber como obterner esta oferta<br/><FontAwesome
+                <h1 className='align-none'><Link href="#how-to-get-it"><a><span className='label alert file-label'>EXCLUSIVO SOCIOS.<br/> Introduce tu usuario y contraseña de asociado para saber como obtener esta oferta<br/><FontAwesome
                 name='check-circle-o'
                 size='2x'
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}

@@ -36,7 +36,7 @@ const OfertasGrandesMarcasByMarca = (props) => (
               <tr>
                 <td width='64'><img src={'/static/32/' + granmarcaoferta.marca.slug +'-familias-numerosas.png'} /></td>
                 <td width='200'>{ granmarcaoferta.marca.name}</td>
-                <td><span dangerouslySetInnerHTML={ {__html: granmarcaoferta.descripcion_de_la_oferta} } /></td>
+                <td className='description'><span dangerouslySetInnerHTML={ {__html: granmarcaoferta.descripcion_de_la_oferta} } /></td>
                 <td width='150'>
                   <Link prefetch as={`/mm/${granmarcaoferta.marca.term_id}/${granmarcaoferta.marca.slug}`} href={`/mapa-de-la-marca?id=${granmarcaoferta.marca.term_id}`}>
                     <a title={'Ver ' + granmarcaoferta.marca.name + ' en el mapa'} className='button small'>{'Ver ' + granmarcaoferta.marca.name + ' en el mapa'}</a>
@@ -74,6 +74,9 @@ const OfertasGrandesMarcasByMarca = (props) => (
           table tbody tr td a.button:hover {
             background:#aa4e1c;
           }
+          .description {
+            width:75%;
+          }
           @media screen and (max-width: 768px) {
             table tbody td {
               padding:.5rem .1rem .5rem .1rem;
@@ -82,6 +85,11 @@ const OfertasGrandesMarcasByMarca = (props) => (
           @media screen and (min-width: 768px) {
             .table-scroll table {
               width:100%;
+            }
+          }
+          @media screen and (min-width: 1024px) {
+            .description {
+              width:65%;
             }
           }
           nav a {
