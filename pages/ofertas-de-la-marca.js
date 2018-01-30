@@ -34,13 +34,16 @@ const OfertasGrandesMarcasByMarca = (props) => (
             {props.granmarcaofertas.slice(0, 1).map((granmarcaoferta, index) => (
             <tbody key={index}>
               <tr>
-                <td width='64'><img src={'/static/32/' + granmarcaoferta.marca.slug +'-familias-numerosas.png'} /></td>
-                <td width='200'>{ granmarcaoferta.marca.name}</td>
-                <td className='description'><span dangerouslySetInnerHTML={ {__html: granmarcaoferta.descripcion_de_la_oferta} } /></td>
-                <td width='150'>
-                  <Link prefetch as={`/mm/${granmarcaoferta.marca.term_id}/${granmarcaoferta.marca.slug}`} href={`/mapa-de-la-marca?id=${granmarcaoferta.marca.term_id}`}>
-                    <a title={'Ver ' + granmarcaoferta.marca.name + ' en el mapa'} className='button small'>{'Ver ' + granmarcaoferta.marca.name + ' en el mapa'}</a>
-                  </Link></td>
+                <td><p className='align-center'><img src={'/static/32/' + granmarcaoferta.marca.slug +'-familias-numerosas.png'} /></p></td>
+                <td><p className='align-center'>{ granmarcaoferta.marca.name}</p></td>
+                <td><div dangerouslySetInnerHTML={ {__html: granmarcaoferta.descripcion_de_la_oferta} } /></td>
+                <td>
+                  <p className='align-center'>
+                    <Link prefetch as={`/mm/${granmarcaoferta.marca.term_id}/${granmarcaoferta.marca.slug}`} href={`/mapa-de-la-marca?id=${granmarcaoferta.marca.term_id}`}>
+                      <a title={'Ver ' + granmarcaoferta.marca.name + ' en el mapa'} className='button small'>{'Ver ' + granmarcaoferta.marca.name + ' en el mapa'}</a>
+                    </Link>
+                  </p>
+                </td>
               </tr>
             </tbody>
             ))}
@@ -62,9 +65,6 @@ const OfertasGrandesMarcasByMarca = (props) => (
           table thead {
             background:none;
           }
-          table tbody tr td {
-            border-top:1px solid #000000;
-          }
           table tbody tr td a {
             margin:0;
           }
@@ -74,23 +74,49 @@ const OfertasGrandesMarcasByMarca = (props) => (
           table tbody tr td a.button:hover {
             background:#aa4e1c;
           }
-          .description {
-            width:75%;
-          }
           @media screen and (max-width: 768px) {
             table tbody td {
               padding:.5rem .1rem .5rem .1rem;
             }
           }
-          @media screen and (min-width: 768px) {
+          @media 
+          only screen and (max-width: 760px),
+          (min-device-width: 768px) and (max-device-width: 1023px)  {
+            table, thead, tbody, th, td, tr { 
+              display: block; 
+            }
+            thead tr { 
+              position: absolute;
+              top: -9999px;
+              left: -9999px;
+            }
+            td {
+              border: none;
+              border-bottom: 1px solid #eee; 
+              position: relative;
+              padding-left: 50%; 
+            }
+            td:before {
+              position: absolute;
+              top: 6px;
+              left: 6px;
+              width: 45%; 
+              padding-right: 10px; 
+              white-space: nowrap;
+            }
+            td:nth-of-type(3):before { content:"Oferta";}
+            td:nth-of-type(3) div { margin-top:2em; }
+          }
+          @media screen and (min-width: 1024px) {
             .table-scroll table {
               width:100%;
             }
-          }
-          @media screen and (min-width: 1024px) {
-            .description {
-              width:65%;
+            table tbody tr td {
+              border-top:1px solid #000000;
             }
+            tbody tr td:nth-of-type(1) { width:64px;}
+            tbody tr td:nth-of-type(2) { width:200px;}
+            tbody tr td:nth-of-type(4) { width:150px;}
           }
           nav a {
             color:#3f3fff;
