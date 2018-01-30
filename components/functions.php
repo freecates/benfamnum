@@ -319,6 +319,30 @@ function beneficios_nameIdSlugLatLonCategoria($fields){
         );
 }
 
+function ofertas_grandes_marc_nameIdSlugLatLonMarca($fields){
+    
+        return array(
+            "name" => $fields["name"],
+            "ID" => $fields["ID"],
+            "slug" => $fields['slug'],
+            "lat" => $fields['lat'],
+            "lon" => $fields['lon'],
+            "marca" => $fields["marca"]
+        );
+}
+
+function ofertas_grandes_marc_nameIdSlugDescripcion_de_la_ofertaMarca($fields){
+    
+        return array(
+            "name" => $fields["name"],
+            "ID" => $fields["ID"],
+            "slug" => $fields['slug'],
+            "descripcion_de_la_oferta" => $fields
+            ['descripcion_de_la_oferta'],
+            "marca" => $fields["marca"]
+        );
+}
+
 function beneficios_localidadCategoria($fields){
     
         return array(

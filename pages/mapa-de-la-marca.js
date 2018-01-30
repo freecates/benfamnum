@@ -155,7 +155,7 @@ const MapByMarca = (props) => (
 
 MapByMarca.getInitialProps = async function(context) {
   const { id } = context.query
-  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?marca=${id}`)
+  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?marca=${id}&sim-model=name-id-slug-lat-lon-marca`)
   const markers = await res.json()
 
   console.log(`Markers data fetched. Count: ${markers.length}`)
