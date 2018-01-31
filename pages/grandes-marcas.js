@@ -13,7 +13,6 @@ const GRandesMarcas = (props) => (
       <main>
         <h1>Ofertas nacionales</h1>
         <section>
-          <h2 className='align-center'>Selecciona la marca de tu interés</h2>
           <ul className='gallery'>
           {props.grandesmarcas.map((grandesmarca, index) => (
             <li className='item align-center' key={index}>
@@ -88,6 +87,17 @@ const GRandesMarcas = (props) => (
             }
           .item {
               width: 150px;
+            }
+          }
+          @media screen and (min-width: 1024px) {   
+            .gallery {
+              max-width: 83%;
+              width:1024px;
+            }
+          }
+          @media screen and (min-width: 1360px) {   
+            .gallery {
+              max-width: 90%;
             }
           }
         `}</style>

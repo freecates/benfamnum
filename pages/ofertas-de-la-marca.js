@@ -34,7 +34,7 @@ const OfertasGrandesMarcasByMarca = (props) => (
             {props.granmarcaofertas.slice(0, 1).map((granmarcaoferta, index) => (
             <tbody key={index}>
               <tr>
-                <td><p className='align-center'><img src={'/static/32/' + granmarcaoferta.marca.slug +'-familias-numerosas.png'} /></p></td>
+                <td><p className='align-center'><img src={'/static/' + granmarcaoferta.marca.slug +'-familias-numerosas.png'} /></p></td>
                 <td><p className='align-center'>{ granmarcaoferta.marca.name}</p></td>
                 <td><div dangerouslySetInnerHTML={ {__html: granmarcaoferta.descripcion_de_la_oferta} } /></td>
                 <td>
@@ -114,7 +114,7 @@ const OfertasGrandesMarcasByMarca = (props) => (
             table tbody tr td {
               border-top:1px solid #000000;
             }
-            tbody tr td:nth-of-type(1) { width:64px;}
+            tbody tr td:nth-of-type(1) { width:96px;}
             tbody tr td:nth-of-type(2) { width:200px;}
             tbody tr td:nth-of-type(4) { width:150px;}
           }
