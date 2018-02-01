@@ -234,7 +234,7 @@ PostsByCategory.getInitialProps = async function(context) {
   const { id } = context.query
   const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}`)
   const posts = await res.json()
-  const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${id}`)
+  const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${id}&sim-model=id-marca`)
   const marcasofertas = await res2.json()
 
   console.log(`Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}`)

@@ -13,14 +13,14 @@ const GoogleMapReact = dynamic(
 )
 
 const markerStyle = {
-  'background-color': '#ffffff',
+  backgroundColor: '#ffffff',
   width: '50px',
-  'text-align': 'center',
+  textAlign: 'center',
   padding: '.5em',
   'position': 'relative',
   right: 25,
   bottom: 25,
-  'border-radius': '50%'
+  borderRadius: '50%'
 
 }
 

@@ -331,6 +331,14 @@ function ofertas_grandes_marc_nameIdSlugLatLonMarca($fields){
         );
 }
 
+function ofertas_grandes_marc_idMarca($fields){
+    
+        return array(
+            "ID" => $fields["ID"],
+            "marca" => $fields["marca"]
+        );
+}
+
 function ofertas_grandes_marc_nameIdSlugDescripcion_de_la_ofertaMarca($fields){
     
         return array(
