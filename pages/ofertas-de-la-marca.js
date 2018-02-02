@@ -80,8 +80,7 @@ const OfertasGrandesMarcasByMarca = (props) => (
             }
           }
           @media 
-          only screen and (max-width: 760px),
-          (min-device-width: 768px) and (max-device-width: 1023px)  {
+          only screen and (max-width: 760px)  {
             table, thead, tbody, th, td, tr { 
               display: block; 
             }
