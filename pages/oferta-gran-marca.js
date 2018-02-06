@@ -4,7 +4,6 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
 import FontAwesome from 'react-fontawesome'
-import {IntlProvider, FormattedDate} from 'react-intl'
 import {ShareButtons, ShareCounts, generateShareIcon} from 'react-share'
 
 const MapaDeGoogle = dynamic(
@@ -136,10 +135,6 @@ const OfertaGranMarca =  (props) => (
                 /></span></a></Link></h1> : ''}
               
               {props.ofertagranmarca.acf.titulo_de_la_oferta ? <h4>{props.ofertagranmarca.acf.titulo_de_la_oferta}</h4> : '' }
-
-            <IntlProvider defaultLocale='es'>
-              <p><small><FormattedDate value={props.ofertagranmarca.date} day='numeric' month='long' year='numeric' /></small></p>
-            </IntlProvider>
               
               {props.ofertagranmarca.acf.descripcion_de_la_oferta ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.ofertagranmarca.acf.descripcion_de_la_oferta} }/> : '' }
 

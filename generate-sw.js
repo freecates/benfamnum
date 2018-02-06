@@ -20,7 +20,7 @@ function bundles(app) {
 					.filter(file => file !== 'index.js')
 					.map(file => {
 						// req /_next/22321e97-8895-48db-b915-82e255f3faa8/new
-						return path.join(root, file.replace(/.js$/, ''))
+						return path.join(root, file)
 					})
 				)
 			}
@@ -42,7 +42,7 @@ function bundles(app) {
 // 				app.precaches = app.precaches.concat(files
 // 					.filter(file => /\.js$/.test(file))
 // 					.map(file => {
-// 						req /_next/webpack/chunks/22321e97-8895-48db-b915-82e255f3faa8.js
+// 						// req /_next/webpack/chunks/22321e97-8895-48db-b915-82e255f3faa8.js
 // 						return path.join(root, file)
 // 					})
 // 				)
