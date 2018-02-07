@@ -13,10 +13,9 @@ const SelectCity = dynamic(
 )
 
 const MunicipiosPrestaciones = (props) => (
-  <Layout>
+  <Layout layout>
     <Head>
       <title>Prestaciones - Municipios</title>
-      <link rel="stylesheet" href="/static/prestaciones.css" />
     </Head>
       <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">

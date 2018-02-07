@@ -15,11 +15,23 @@ const mainStyle = {
 
 const Layout = (props) => (
   <div>
-    <div style={layoutStyle} className='layout'>
-      <Header />
+    <div style={layoutStyle} className={ 'layout' in props && 'layout'} className={ 'bg-mapa' in props && 'bg-mapa'}>
+      {props.layout ? <Header/> : <Header withbg />}
         <main style={mainStyle}>
           {props.children}
         </main>
+        <style jsx>{`
+          .layout {
+            background: url('/static/bg-body-familias-numerosas.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+          }
+          .bg-mapa {
+            background: url(/static/bg-mapa.jpg) no-repeat center center;
+            background-size: cover;
+            padding:2em;
+          }
+          `}</style>
     </div>
       <Footer />
       <ServiceWorker />

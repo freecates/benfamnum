@@ -13,10 +13,10 @@ Router.onRouteChangeStart = (url) => {
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
 
-const Header = () => (
+const Header = (props) => (
   <div style={{ marginBottom: 20 }}>
     <GlobalHead />
-    <header className='fade-in'>
+    <header className='fade-in' className={ 'withbg' in props && 'withbg'}>
       <section>
         <NavBarBenFamNum />
       </section>
@@ -27,7 +27,7 @@ const Header = () => (
             margin:0 auto;
             width:100%;
           }
-          header {
+          header.withbg {
             background: url('/static/bg-body-familias-numerosas.jpg');
             background-size: cover;
             background-repeat: no-repeat;

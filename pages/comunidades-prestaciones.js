@@ -13,10 +13,9 @@ const SelectCity = dynamic(
 )
 
 const ComunidadesPrestaciones = (props) => (
-  <Layout>
+  <Layout layout>
     <Head>
       <title>Prestaciones - Comunidades</title>
-      <link rel="stylesheet" href="/static/prestaciones.css" />
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
     <ul className="breadcrumbs">

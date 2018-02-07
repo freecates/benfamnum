@@ -3,10 +3,9 @@ import Link from 'next/link'
 import Layout from '../components/MyLayout.js'
 
 export default () => (
-    <Layout>
+    <Layout layout>
     <Head>
       <title>Prestaciones Familias Numerosas</title>
-      <link rel="stylesheet" href="/static/prestaciones.css" />
     </Head>
         <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
