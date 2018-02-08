@@ -13,7 +13,7 @@ const SelectCity = dynamic(
 )
 
 const Localidades = (props) => (
-  <Layout bg-mapa>
+  <Layout bgmapa>
     <Head>
       <title>Ofertas</title>
     </Head>
