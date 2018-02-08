@@ -16,11 +16,27 @@ const mainStyle = {
 const Layout = (props) => (
   <div>
     {props.layout || props.bgmapa !== true &&  
-      <div style={layoutStyle}>
+      <div style={layoutStyle} className='fade-in'>
         <Header withbg />
           <main style={mainStyle}>
             {props.children}
           </main>
+          <style jsx>{`
+            .fade-in {
+              animation-name: fadeIn;
+              animation-duration: 1.3s;
+              animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+              animation-fill-mode: forwards;
+            }
+            @keyframes fadeIn {
+              from {
+                opacity: 0;
+              }
+              to {
+                opacity: 1;
+              }
+            }
+          `}</style>
       </div>}
     {props.layout && 
       <div style={layoutStyle} className={ 'layout' in props && 'layout'} >
@@ -33,6 +49,18 @@ const Layout = (props) => (
               background: url('/static/bg-body-familias-numerosas.jpg');
               background-size: cover;
               background-repeat: no-repeat;
+              animation-name: fadeIn;
+              animation-duration: 1.3s;
+              animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+              animation-fill-mode: forwards;
+            }
+            @keyframes fadeIn {
+              from {
+                opacity: 0;
+              }
+              to {
+                opacity: 1;
+              }
             }
             `}</style>
     </div>}
@@ -47,6 +75,18 @@ const Layout = (props) => (
             background: url(/static/bg-mapa.jpg) no-repeat center center;
             background-size: cover;
             padding:2em;
+            animation-name: fadeIn;
+            animation-duration: 1.3s;
+            animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+            animation-fill-mode: forwards;
+          }
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
           }
           `}</style>
       </div>}

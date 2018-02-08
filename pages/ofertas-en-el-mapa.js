@@ -199,7 +199,7 @@ const Localidades = (props) => (
 )
 
 Localidades.getInitialProps = async function() {
-  const res = await fetch('https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?sim-model=localidad-categoria')
+  const res = await fetch('https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?sim-model=localidad')
   const beneficios = await res.json()
 
   console.log(`Ofertas data fetched. Count: ${beneficios.length}`)

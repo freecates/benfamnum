@@ -359,6 +359,13 @@ function beneficios_localidadCategoria($fields){
         );
 }
 
+function beneficios_localidad($fields){
+    
+        return array(
+            "localidad_del_beneficio" => $fields["localidad_del_beneficio"]
+        );
+}
+
 
 add_action( 'rest_api_init', function () {
 

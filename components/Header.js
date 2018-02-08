@@ -16,7 +16,7 @@ Router.onRouteChangeError = () => NProgress.done()
 const Header = (props) => (
   <div style={{ marginBottom: 20 }}>
     <GlobalHead />
-    <header className='fade-in' className={ 'withbg' in props && 'withbg'}>
+    <header className={ 'withbg' in props && 'withbg'}>
       <section>
         <NavBarBenFamNum />
       </section>
@@ -31,20 +31,6 @@ const Header = (props) => (
             background: url('/static/bg-body-familias-numerosas.jpg');
             background-size: cover;
             background-repeat: no-repeat;
-          }
-          .fade-in {
-            animation-name: fadeIn;
-            animation-duration: 1.3s;
-            animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
-            animation-fill-mode: forwards;
-          }
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
           }
           @media screen and (min-width: 320px) {
           header {
