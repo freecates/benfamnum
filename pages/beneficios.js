@@ -13,20 +13,29 @@ const SelectCity = dynamic(
 )
 
 const Localidades = (props) => (
-  <Layout>
+  <Layout layout>
     <Head>
       <title>Ofertas</title>
     </Head>
-    <IntlProvider defaultLocale='ca'>
-      <main>
-        <h2>Selecciona donde o que tipo de oferta quieres disfrutar</h2>
-        <div className='wrapper'>
-          <div className='left'>
-            <section className='beneficio-localidad-blue'>
-              <h3 className='align-center'>Escribe donde deseas la oferta</h3>
-              <div className='form-component'>          
+    <div>
+    <nav aria-label="Estás aquí:" role="navigation">
+    <ul className="breadcrumbs">
+        <li><Link prefetch href="/"><a>Inicio</a></Link></li>
+        <li>
+        <span className="show-for-sr">Actual: </span> Ofertas para familias numerosas 
+        </li>
+    </ul>
+    </nav>
+    <section className='call-to-action'>
+        <div className='icones-prestacions'>
+            <div className='icona'>
+              <Link prefetch href="/ofertas-por-sectores"><a><img src='/static/icona-ofertas-por-sectores-familias-numerosas.png'/><div className='text-icona'>Ofertas por sectores</div></a></Link>
+            </div>
+            <div className='icona'> 
+              <img src='/static/icona-ofertas-por-poblacion-familias-numerosas.png'/><div className='text-icona city-text'>Ofertas por población<br/>          
                 <SelectCity
                   inputClass= 'city'
+                  inputValue= 'Ver'
                   options={props.beneficios.reduce((ciutats, beneficio) => {
                   if (beneficio.localidad_del_beneficio == false) {
                     return ciutats
@@ -36,66 +45,6 @@ const Localidades = (props) => (
                       slug: beneficio.localidad_del_beneficio.slug,
                       key: beneficio.localidad_del_beneficio.term_id,
                       value: beneficio.localidad_del_beneficio ? `/localidad?localidad=${beneficio.localidad_del_beneficio.term_id}` : '',
-                      label: beneficio.localidad_del_beneficio ? `${beneficio.localidad_del_beneficio.name}` : '',
-                      submit: `Buscar el mejor descuento`
-                    }
-                    return ciutats
-              },[]).sort((a,b) => {
-                if (a.slug < b.slug)
-                  return -1;
-                if (a.slug > b.slug)
-                  return 1;
-                return 0;
-                })} />
-              </div>
-            </section>
-            <section className='beneficio-online-yellow'>
-              <h3 className='align-center'>Ofertas de servicios online</h3>
-              <p className='align-center no-margin-bottom'><Link prefetch href='/ofertas-on-line'><a className='button'>Buscar el mejor descuento</a></Link></p>
-            </section>
-          </div>
-          <div className='right'>
-            <section className='beneficio-categoria-grey'>
-              <ul className='gallery'>
-              {props.beneficios.reduce((categories, beneficio) => {
-                if (beneficio.categoria_de_la_prestacion == false) {
-                  return categories
-                }
-                categories[beneficio.categoria_de_la_prestacion.term_id] =
-                (
-                <span key={beneficio.categoria_de_la_prestacion.term_id}>            
-                <li className='item'>
-                  <Link prefetch as={`/c/${beneficio.categoria_de_la_prestacion.term_id}/${beneficio.categoria_de_la_prestacion.slug}`} href={`/category?id=${beneficio.categoria_de_la_prestacion.term_id}`}>
-                    <a title={'Clica aquí para ver todos los beneficios de ' + beneficio.categoria_de_la_prestacion.name}><img src={'/static/32/' + beneficio.categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /> <span dangerouslySetInnerHTML={ {__html: beneficio.categoria_de_la_prestacion.name} } /></a>
-                  </Link>
-                </li>
-                </span>
-                )
-                return categories
-            },[])}
-            </ul>
-            </section>
-          </div>
-        </div>
-          <h4 className='align-center margin-top'>También puedes buscar ofertas cerca de tí</h4>
-        <section className='bg-mapa'>
-          <div className='wrapper wrapper-top'>
-            <div className='left'>
-              <p className='align-center no-margin-bottom padding'><Link prefetch as='/m-p' href='/mapa-proximidad'><a className='button button-blue'>Buscar cerca de tí</a></Link></p>
-            </div>
-            <div className='right'>
-              <div className='form-component form-component-full'>       
-                <SelectCity
-                  inputClass= 'map'
-                  options={props.beneficios.reduce((ciutats, beneficio) => {
-                  if (beneficio.localidad_del_beneficio == false) {
-                    return ciutats
-                  }
-                    ciutats[beneficio.localidad_del_beneficio.term_id] =
-                    {
-                      slug: beneficio.localidad_del_beneficio.slug,
-                      key: beneficio.localidad_del_beneficio.term_id,
-                      value: beneficio.localidad_del_beneficio ? `/mapa-localidad?localidad=${beneficio.localidad_del_beneficio.term_id}` : '',
                       label: beneficio.localidad_del_beneficio ? `${beneficio.localidad_del_beneficio.name}` : ''
                     }
                     return ciutats
@@ -105,15 +54,18 @@ const Localidades = (props) => (
                 if (a.slug > b.slug)
                   return 1;
                 return 0;
-                })} />
-              </div>
+                })} /></div>
             </div>
-          </div>
-        </section>
-        <h4 className='align-center margin-top'>O entre las ofertas de las nacionales</h4>
-        <p className='align-center no-margin-bottom'><Link prefetch href='/grandes-marcas'><a className='button'>Buscar el mejor descuento</a></Link></p>
-      </main>
-    </IntlProvider>
+            <div className='icona'> 
+              <Link prefetch href="/ofertas-on-line"><a><img src='/static/icona-ofertas-online-familias-numerosas.png'/><div className='text-icona'>Ofertas online</div></a></Link>
+            </div>
+            <div className='icona'> 
+              <Link prefetch href="/ofertas-en-el-mapa"><a><img src='/static/icona-ofertas-en-el-mapa-familias-numerosas.png'/><div className='text-icona'>Ofertas en el mapa</div></a></Link>
+            </div>
+            <br className='clear' />
+        </div>
+    </section>
+    </div>
         <style jsx>{`
           h2 {
             color:#391f92;
@@ -276,6 +228,71 @@ const Localidades = (props) => (
               width:100%;
             }
           }
+          a, li {
+              color:#ffffff!important;
+          }
+          .breadcrumbs {
+              margin:-2rem 0 1rem 0;
+          }
+          .call-to-action {
+              text-align:center;
+              margin:1em auto;
+              color:#ffffff;
+          }
+          .call-to-action .icona {
+            position:relative;
+            float:left;
+          }
+          .clear {
+            clear:both;
+          }        
+          .call-to-action .text-icona {
+              left: 0;
+              position:absolute;
+              text-align:center;
+              top: 65px;
+              width: 100%
+              font-size:1em;
+          }        
+          .call-to-action .text-icona.city-text {
+              top: 35px;
+              font-size:.9em;
+          }
+          @media screen and (min-width: 320px) {   
+              .call-to-action {
+              width: 50%;
+              }
+              .icones-prestacions img {
+                  margin:0 0 1em 0;
+              }
+          }
+          @media screen and (min-width: 768px) {   
+              .call-to-action {
+              width: 70%;
+              }        
+              .call-to-action .text-icona {
+                  left: -1em;
+                  font-size:1.15em;
+                  top: 75px;
+              }
+              .call-to-action .text-icona.city-text {
+                font-size:1.1em;
+                top: 55px;
+              }
+              .icones-prestacions img {
+                  margin:0 2em 1em 0;
+              }
+            }
+            @media screen and (min-width: 1024px) {   
+                .call-to-action {
+                width: 50%;
+                }
+              }
+            @media screen and (min-width: 1360px) {   
+                .call-to-action {
+                width: 90%;
+                }
+              }
         `}</style>
   </Layout>
 )

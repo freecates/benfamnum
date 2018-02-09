@@ -6,7 +6,8 @@ class SelectCity extends React.Component {
             elements: this.props.options,
             selectedValue: this.props.options[Object.keys(this.props.options)[0]].value,
             inputClass: this.props.inputClass,
-            localBenefit: this.props.localBenefit
+            localBenefit: this.props.localBenefit,
+            inputValue: this.props.inputValue
             //label: this.props.label
         };
    
@@ -52,11 +53,10 @@ class SelectCity extends React.Component {
              </select>
            </label>
            : ''}
-       <div className='wrapper'>{this.state.inputClass == 'city' ? <input className='button city' type='submit' value='Buscar el mejor descuento' />: ''}{this.state.inputClass == 'map' ? <input className='button map' type='submit' value='Buscar por localidad' />: ''}{this.state.inputClass == 'benefit' ? <input className='button benefit' type='submit' value='Buscar la prestación' />: ''}</div>
+       <div className='wrapper'>{this.state.inputClass == 'city' ? <input className='button city' type='submit' value={this.state.inputValue} />: ''}{this.state.inputClass == 'map' ? <input className='button map' type='submit' value='Buscar por localidad' />: ''}{this.state.inputClass == 'benefit' ? <input className='button benefit' type='submit' value='Buscar la prestación' />: ''}</div>
            <style jsx>{`
              .wrapper, label.map {
                width:100%;
-               padding:1em;
              }
              label.city {
                width:100%;

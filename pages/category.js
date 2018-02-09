@@ -39,6 +39,7 @@ const PostsByCategory = (props) => (
         
           <SelectCity
            inputClass= 'city'
+           inputValue= 'Buscar el mejor descuento'
            options={props.posts.reduce((ciutats, post) => {
             if (post.localidad_del_beneficio == false) {
               return ciutats
