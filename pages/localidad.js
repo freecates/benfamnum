@@ -73,6 +73,7 @@ const PostsByLocalidad = (props) => (
         <style jsx>{`
           .national-gallery {
             background:#eeeeee;
+            margin-top:1em!important;
             margin-bottom:1em!important;
             padding-top:.75em!important;
           }
