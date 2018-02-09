@@ -268,29 +268,28 @@ const Localidades = (props) => (
           }
           @media screen and (min-width: 768px) {   
               .call-to-action {
-              width: 70%;
+              width: 71%;
               }        
               .call-to-action .text-icona {
-                  left: -1em;
                   font-size:1.15em;
-                  top: 75px;
+                  top: 100px;
               }
               .call-to-action .text-icona.city-text {
                 font-size:1.1em;
-                top: 55px;
+                top: 85px;
               }
               .icones-prestacions img {
-                  margin:0 2em 1em 0;
+                  margin:2em;
               }
             }
             @media screen and (min-width: 1024px) {   
                 .call-to-action {
-                width: 50%;
+                width: 53%;
                 }
               }
             @media screen and (min-width: 1360px) {   
                 .call-to-action {
-                width: 90%;
+                width: 95%;
                 }
               }
         `}</style>
