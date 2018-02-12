@@ -7,19 +7,19 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 const OfertasGrandesMarcasByMarca = (props) => (
   <Layout>
     <Head>
-      <title>Ofertas de la Marca - {props.granmarcaofertas[0].marca.name}</title>
+      <title>Ofertas de la Marca - {props.granmarcaofertas.name}</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li><Link prefetch href="/"><a>Inicio</a></Link></li>
         <li><Link prefetch href="/grandes-marcas"><a>Ofertas nacionales</a></Link></li>
         <li>
-          <span className="show-for-sr">Actual: </span> {props.granmarcaofertas[0].marca.name} 
+          <span className="show-for-sr">Actual: </span> {props.granmarcaofertas.name} 
         </li>
       </ul>
     </nav>
     <section>
-      <h1>Ofertas de {props.granmarcaofertas[0].marca.name}</h1>
+      <h1>Ofertas de {props.granmarcaofertas.name}</h1>
       <IntlProvider defaultLocale='es'>
         <div className='table-scroll'>
           <table>          
@@ -30,23 +30,27 @@ const OfertasGrandesMarcasByMarca = (props) => (
                 <td>Oferta</td>
                 <td></td>
               </tr>
-            </thead>
-            {props.granmarcaofertas.slice(0, 1).map((granmarcaoferta, index) => (
-            <tbody key={index}>
+            </thead>            
+            <tbody>
               <tr>
-                <td><p className='align-center'><img src={'/static/' + granmarcaoferta.marca.slug +'-familias-numerosas.png'} /></p></td>
-                <td><p className='align-center'>{ granmarcaoferta.marca.name}</p></td>
-                <td><div dangerouslySetInnerHTML={ {__html: granmarcaoferta.descripcion_de_la_oferta} } /></td>
+                <td><p className='align-center'><img src={'/static/' + props.granmarcaofertas.slug +'-familias-numerosas.png'} /></p></td>
+                <td><p className='align-center'>{ props.granmarcaofertas.name}</p></td>
+                <td>
+                    <div>
+                    {props.granmarcaofertas.description.split('\n').map((item, key) => {
+                      return <span key={key}>{item}<br/></span>
+                    })}
+                  </div>
+                </td>
                 <td>
                   <p className='align-center'>
-                    <Link prefetch as={`/mm/${granmarcaoferta.marca.term_id}/${granmarcaoferta.marca.slug}`} href={`/mapa-de-la-marca?id=${granmarcaoferta.marca.term_id}`}>
-                      <a title={'Ver ' + granmarcaoferta.marca.name + ' en el mapa'} className='button small'>{'Ver ' + granmarcaoferta.marca.name + ' en el mapa'}</a>
+                    <Link prefetch as={`/mm/${props.granmarcaofertas.term_id}/${props.granmarcaofertas.slug}`} href={`/mapa-de-la-marca?id=${props.granmarcaofertas.term_id}`}>
+                      <a title={'Ver ' + props.granmarcaofertas.name + ' en el mapa'} className='button small'>{'Ver ' + props.granmarcaofertas.name + ' en el mapa'}</a>
                     </Link>
                   </p>
                 </td>
               </tr>
             </tbody>
-            ))}
           </table>
         </div>
 
@@ -127,7 +131,7 @@ const OfertasGrandesMarcasByMarca = (props) => (
 
 OfertasGrandesMarcasByMarca.getInitialProps = async function(context) {
   const { id } = context.query
-  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?marca=${id}&sim-model=name-id-slug-descripcion_de_la_oferta-marca`)
+  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/marca/${id}`)
   const granmarcaofertas = await res.json()
 
   console.log(`Ofertas de la Marca data fetched. Count: ${granmarcaofertas.length}`)

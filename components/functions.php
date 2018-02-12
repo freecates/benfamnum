@@ -254,6 +254,20 @@ function getMarcas(WP_REST_Request $request){
 }
 
 
+function getMarca(WP_REST_Request $request){
+    $route = $request->get_route();
+	$route_parts = explode("/",$route);
+    $id = intval(array_pop($route_parts));
+    return new WP_REST_Response( $id );
+	$marcas = get_terms( 'marca', array(
+        'hide_empty' => true,
+        'object_ids' => ''.$id
+	) );
+	$marcas_filtered = array_map('marca_basic',$marcas);
+    return new WP_REST_Response( $marcas_filtered );
+}
+
+
 function categoria_del_beneficio_basic($fields){
 
    $fields->id = $fields->term_id;
@@ -429,6 +443,15 @@ add_action( 'rest_api_init', function () {
             array(
                 'methods' => 'GET',
                 'callback' => 'getMarcas',
+            )
+        );
+        
+    register_rest_route(
+            'lanauva/v1', 
+            '/marca/(?P<id>\d+)', 
+            array(
+                'methods' => 'GET',
+                'callback' => 'getMarca',
             )
         );
 
