@@ -136,7 +136,12 @@ const OfertaGranMarca =  (props) => (
               
               {props.ofertagranmarca.acf.titulo_de_la_oferta ? <h4>{props.ofertagranmarca.acf.titulo_de_la_oferta}</h4> : '' }
               
-              {props.ofertagranmarca.acf.descripcion_de_la_oferta ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.ofertagranmarca.acf.descripcion_de_la_oferta} }/> : '' }
+              {props.ofertagranmarca.acf.marca.description ?  
+                <p>
+                {props.ofertagranmarca.acf.marca.description.split('\n').map((item, key) => {
+                  return <span key={key}>{item}<br/></span>
+                })}
+                </p>: '' }
 
               <div className='social-share-icons'>
 
