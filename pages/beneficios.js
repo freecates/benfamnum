@@ -35,6 +35,7 @@ const Localidades = (props) => (
               <img src='/static/icona-ofertas-por-poblacion-familias-numerosas.png'/><div className='text-icona city-text'>Ofertas por población<br/>          
                 <SelectCity
                   inputClass= 'city'
+                  inputClass2= 'green'
                   inputValue= 'Ver'
                   options={props.beneficios.reduce((ciutats, beneficio) => {
                   if (beneficio.localidad_del_beneficio == false) {
@@ -74,160 +75,6 @@ const Localidades = (props) => (
           .align-center {
             text-align:center;
           }
-          .gallery {
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-wrap: wrap;
-                flex-wrap: wrap;
-            padding: 5px;
-          }
-          .beneficio-localidad-blue {
-            background:#99ffff;
-          }
-          .beneficio-online-yellow {
-            background:#ffff00;
-          }
-          .beneficio-categoria-grey {
-            background:#e6e6e6;
-          }
-          .button {
-            background:#d86525;
-            color:#ffffff;
-            text-deocration:none;
-          }
-          .button:hover {
-            background:#aa4e1c;
-            text-decoration:none;
-          }
-          .button-blue {
-            background:#0066ff;
-            width:55%;
-          }
-          .button-blue:hover {
-            background:#0051cb;
-            text-decoration:none;
-          }
-          .no-margin-bottom {
-            margin-bottom:0;
-          }
-          .margin-top {
-            margin-top:1rem;
-          }
-          .padding {
-            padding:1em;
-          }
-          ul {
-            list-style-type:none;
-            margin-lefuft:0;
-            margin:0 auto!important;
-          }
-          a {
-            color:inherit;
-          }
-          a:hover {
-            text-decoration:underline;
-          }
-          a.blue {
-            color:#3f3fff;
-            text-decoration:underline;
-          }
-          p {
-            margin-top:2rem;
-          }
-          .item {
-            width: 150px;
-          }
-          .bg-mapa {
-            background: url(/static/bg-mapa.jpg) no-repeat center center;
-            background-size: cover;
-            padding:2em;
-          }
-          .form-component {
-            margin:0 auto;
-          }
-          @media screen and (min-width: 320px) {   
-            .gallery, .form-component {
-              width: 100%;
-            }
-            .form-component-full {
-              width:100%;
-            }              
-            .item {
-              margin: 5px;
-            }
-            .beneficio-localidad-blue, 
-            .beneficio-online-yellow , 
-            .beneficio-categoria-grey,
-            .bg-mapa {
-              margin:0;
-            }
-          }
-          @media screen and (max-width: 375px) {              
-            .item {
-              width: 124px;
-            }
-          }
-          @media screen and (min-width: 360px) {   
-            .gallery, .form-component {
-              width: 90%;
-            }
-            .form-component-full {
-              width:100%;
-            }
-          }
-          @media screen and (min-width: 768px) {   
-            .gallery, .form-component {
-              width: 94%;
-            }
-            .form-component-full {
-              width:100%;
-            }
-          .item {
-              width: 200px;
-            }
-          }
-          @media screen and (min-width: 1024px) {                          
-            .wrapper {
-              display: -ms-flexbox;
-              display: flex;
-              -ms-flex-wrap: wrap;
-                  flex-wrap: wrap;
-              align-items:center;
-
-              width: 100%;
-            }
-            .wrapper-top {
-              align-items:baseline;
-            }
-            .left {
-              width: 50%;
-              padding:0 0 0 0;
-            }
-            .right {
-              width: 50%;
-              padding:0 0 0 0;
-            }
-            .beneficio-localidad-blue, 
-            .beneficio-online-yellow {
-              margin:0 0 0 0;
-            } 
-            .beneficio-categoria-grey {
-              margin:0 0 0 0;
-              padding:2.8em 0;
-            }
-            .item {
-                width: 140px;
-              }
-            }
-          }
-          @media screen and (min-width: 1366px) {   
-            .gallery, .form-component {
-              width: 86%;
-            }
-            .form-component-full {
-              width:100%;
-            }
-          }
           a, li {
               color:#ffffff!important;
           }
@@ -260,10 +107,20 @@ const Localidades = (props) => (
           }
           @media screen and (min-width: 320px) {   
               .call-to-action {
-              width: 50%;
+              width: 69%;
               }
               .icones-prestacions img {
                   margin:0 0 1em 0;
+              }
+          }
+          @media screen and (min-width: 360px) {   
+              .call-to-action {
+              width: 60%;
+              }
+          }
+          @media screen and (min-width: 411px) {   
+              .call-to-action {
+              width: 52%;
               }
           }
           @media screen and (min-width: 768px) {   

@@ -6,6 +6,7 @@ class SelectCity extends React.Component {
             elements: this.props.options,
             selectedValue: this.props.options[Object.keys(this.props.options)[0]].value,
             inputClass: this.props.inputClass,
+            inputClass2: this.props.inputClass2,
             localBenefit: this.props.localBenefit,
             inputValue: this.props.inputValue
             //label: this.props.label
@@ -53,7 +54,7 @@ class SelectCity extends React.Component {
              </select>
            </label>
            : ''}
-       <div className='wrapper'>{this.state.inputClass == 'city' ? <input className='button city' type='submit' value={this.state.inputValue} />: ''}{this.state.inputClass == 'map' ? <input className='button map' type='submit' value='Buscar por localidad' />: ''}{this.state.inputClass == 'benefit' ? <input className='button benefit' type='submit' value='Buscar la prestación' />: ''}</div>
+       <div className='wrapper'>{this.state.inputClass == 'city' && this.state.inputClass2 == null ? <input className='button city' type='submit' value={this.state.inputValue} />: ''}{this.state.inputClass == 'city' && this.state.inputClass2 == 'green' ? <input className='button city green' type='submit' value={this.state.inputValue} />: ''}{this.state.inputClass == 'map' ? <input className='button map' type='submit' value='Buscar por localidad' />: ''}{this.state.inputClass == 'benefit' ? <input className='button benefit' type='submit' value='Buscar la prestación' />: ''}</div>
            <style jsx>{`
              .wrapper, label.map {
                width:100%;
@@ -91,6 +92,12 @@ class SelectCity extends React.Component {
              }
              input[type=submit].city:hover {
                background:#aa4e1c;
+             }
+             input[type=submit].city.green {
+               background:#007950;
+             }
+             input[type=submit].city.green:hover {
+               background:#009966;
              }
              input[type=submit].map {
                background:#009933;
