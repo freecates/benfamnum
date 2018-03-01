@@ -13,18 +13,18 @@ const footerStyle = {
 
 const Footer = () => (
   <footer style={footerStyle}>
-        <p><Link href="https://www.facebook.com/Federaci%C3%B3n-Espa%C3%B1ola-de-Familias-Numerosas-FEFN-114691451934890/"><a title='Enlace externo' target="_blank" rel='noopener'><img src='/static/logo-facebook-familias-numerosas.png' /></a></Link> <Link href="https://twitter.com/famnumerosas?lang=es"><a title='Enlace externo' target="_blank" rel='noopener'><img src='/static/logo-twitter-familias-numerosas.png' /></a></Link></p>
+        <p><Link href="https://www.facebook.com/Federaci%C3%B3n-Espa%C3%B1ola-de-Familias-Numerosas-FEFN-114691451934890/"><a title='Enlace externo' target="_blank" rel='noopener'><img alt='Logo de Facebook' src='/static/logo-facebook-familias-numerosas.png' /></a></Link> <Link href="https://twitter.com/famnumerosas?lang=es"><a title='Enlace externo' target="_blank" rel='noopener'><img alt='Logo de Twiter' src='/static/logo-twitter-familias-numerosas.png' /></a></Link></p>
 
         <section>
           <div className='wrapper'>
               <div className='first'>
-                <p className='purple'>Miembros de:<br/><Link href="http://www.elfac.org/"><a title='Enlace externo' target="_blank" rel='noopener'><img src='/static/logo-european-large-families-confederation-familias-numerosas.jpg' /></a></Link></p>
+                <p className='purple'>Miembros de:<br/><Link href="http://www.elfac.org/"><a title='Enlace externo' target="_blank" rel='noopener'><img alt='Logo European Large Families Confederation' src='/static/logo-european-large-families-confederation-familias-numerosas.jpg' /></a></Link></p>
               </div>
               <div className='second'>
-                 <p className='purple'>Con el apoyo de:<br/><Link href="https://www.msssi.gob.es/"><a title='Enlace externo' target="_blank" rel='noopener'><img src='/static/logo-ministerio-familias-numerosas.png' /></a></Link></p>
+                 <p className='purple'>Con el apoyo de:<br/><Link href="https://www.msssi.gob.es/"><a title='Enlace externo' target="_blank" rel='noopener'><img alt='Loog Ministerio de Sanidad, Servicios Sociales e Igualdad' src='/static/logo-ministerio-familias-numerosas.png' /></a></Link></p>
               </div>
               <div className='third'>
-                 <p className='purple'>Certificación<br/><Link href="http://www.masfamilia.org/que-es-2"><a title='Enlace externo' target="_blank" rel='noopener'><img src='/static/logo-familiarmente-responsable-familias-numerosas.png' /></a></Link>
+                 <p className='purple'>Certificación<br/><Link href="http://www.masfamilia.org/que-es-2"><a title='Enlace externo' target="_blank" rel='noopener'><img alt='Logo familiarmente responsable' src='/static/logo-familiarmente-responsable-familias-numerosas.png' /></a></Link>
                 </p>
               </div>
           </div>
