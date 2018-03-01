@@ -69,8 +69,6 @@ const MapByCategory = (props) => (
   <Layout>
     <Head>
       <title>Beneficios cerca de tí</title>
-	    <script src="/static/navigator.js"
-        type="text/javascript"></script>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">

@@ -30,28 +30,28 @@ function bundles(app) {
 	})
 }
 
-// function chunks(app) {
-// 	return new Promise((resolve, reject) => {
-// 		fs.readdir(`${dotNext}/chunks`, (err, files) => {
-// 			if (err) {
-// 				resolve(app)
-// 			}
+function chunks(app) {
+	return new Promise((resolve, reject) => {
+		fs.readdir(`${dotNext}/chunks`, (err, files) => {
+			if (err) {
+				resolve(app)
+			}
 
-// 			if (files) {
-// 				const root = `/_next/webpack/chunks`
-// 				app.precaches = app.precaches.concat(files
-// 					.filter(file => /\.js$/.test(file))
-// 					.map(file => {
-// 						// req /_next/webpack/chunks/22321e97-8895-48db-b915-82e255f3faa8.js
-// 						return path.join(root, file)
-// 					})
-// 				)
-// 			}
+			if (files) {
+				const root = `/_next/webpack/chunks`
+				app.precaches = app.precaches.concat(files
+					.filter(file => /\.js$/.test(file))
+					.map(file => {
+						// req /_next/webpack/chunks/22321e97-8895-48db-b915-82e255f3faa8.js
+						return path.join(root, file)
+					})
+				)
+			}
 
-// 			resolve(app)
-// 		})
-// 	})
-// }
+			resolve(app)
+		})
+	})
+}
 
 function app() {
 	const app = {
@@ -134,7 +134,7 @@ workboxSW.strategies.cacheFirst({
 `
 
 app()
-	//.then(chunks)
+	.then(chunks)
 	.then(bundles)
 	.then(app => {
 		fs.writeFileSync(target,
