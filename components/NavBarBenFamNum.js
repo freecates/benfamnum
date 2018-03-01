@@ -21,8 +21,8 @@ export default class NavBarBenFamNum extends React.Component {
     return (
       <div>
         <Navbar inverse toggleable expand='lg'>
-          <NavbarToggler className='ml-2' onClick={this.toggle} />
-          <Link prefetch href="/" title='Inicio'><NavbarBrand className='ml-auto'>
+          <NavbarToggler title='Commutador' className='ml-2' onClick={this.toggle} />
+          <Link prefetch href="/"><NavbarBrand title='Inicio' className='ml-auto'>
             <img src='/static/logo-familias-numerosas.png' alt='Inicio' />
           </NavbarBrand></Link>
             <Collapse isOpen={this.state.isOpen} navbar>
