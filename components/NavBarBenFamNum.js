@@ -22,31 +22,31 @@ export default class NavBarBenFamNum extends React.Component {
       <div>
         <Navbar inverse toggleable expand='lg'>
           <NavbarToggler className='ml-2' onClick={this.toggle} />
-          <Link prefetch href="/"><NavbarBrand className='ml-auto'>
+          <Link prefetch href="/" title='Inicio'><NavbarBrand className='ml-auto'>
             <img src='/static/logo-familias-numerosas.png' alt='Inicio' />
           </NavbarBrand></Link>
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem><Link prefetch href="/prestaciones">
-                  <a>Prestaciones oficiales</a>
+                  <a title='Prestaciones para familias numerosas'>Prestaciones oficiales</a>
                 </Link></NavItem>
                 <NavItem><Link prefetch href="/beneficios">
-                  <a>Ofertas para familias</a>
+                  <a title='Ofertas comerciales para familias numerosas'>Ofertas para familias</a>
                 </Link></NavItem>
                 <NavItem><Link prefetch href="/contacto">
-                  <a>Contacto</a>
+                  <a title='Contacta con nosotros'>Contacto</a>
                 </Link></NavItem>
                 <NavItem><Link href="http://www.familiasnumerosas.org/conocenos/quienes-somos/">
-                  <a target='_blank' title='enlace externo'>La Federación</a>
+                  <a target='_blank' title='enlace externo' rel='noopener'>La Federación</a>
                 </Link></NavItem>
                 <NavItem><Link href="http://www.familiasnumerosas.org/conocenos/nuestras-asociaciones/">
-                  <a target='_blank' title='enlace externo'>Las Asociaciones</a>
+                  <a target='_blank' title='enlace externo' rel='noopener'>Las Asociaciones</a>
                 </Link></NavItem>
                 <NavItem><Link href="http://www.familiasnumerosas.org/hazte-socio/">
-                  <a target='_blank' title='enlace externo'>Hazte socio</a>
+                  <a target='_blank' title='enlace externo' rel='noopener'>Hazte socio</a>
                 </Link></NavItem>
                 <NavItem><Link prefetch href="/buscador">
-                  <a><FontAwesome
+                  <a title='Buscador'><FontAwesome
                 name='search'
                 size='2x'
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}

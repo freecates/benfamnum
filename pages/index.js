@@ -9,10 +9,10 @@ export default () => (
       <title>Beneficios Familias Numerosas</title>
     </Head>
         <section className='call-to-action'>
-                <h1><img src='/static/icona-conseguir-beneficios-familias-numerosas.png'/><br/>¿Eres socio? ¿Quieres conseguir estos descuentos?</h1>
+                <h1><img alt='Icono conseguir beneficios familias numerosas' src='/static/icona-conseguir-beneficios-familias-numerosas.png'/><br/>¿Eres socio? ¿Quieres conseguir estos descuentos?</h1>
                 <p>Ser familia numerosa te ofrece la posibilidad de muchas ventajas al asociarte. Participa y disfruta de todas ellas de una manera fácil y rápida.</p>
-                <p><img src='/static/carnet-familias-numerosas.jpg'/></p>
-                <p><Link href="http://www.familias-numerosas.org/"><a className='hollow button' target='_blank'>Quiero participar de estas ventajas</a></Link></p>
+                <p><img alt='Carnet de socio familias numerosas' src='/static/carnet-familias-numerosas.jpg'/></p>
+                <p><Link href="http://www.familias-numerosas.org/"><a className='hollow button' target='_blank' title='Enlace externo' rel='noopener'>Quiero participar de estas ventajas</a></Link></p>
                 <style jsx>{`
                     .call-to-action {
                         text-align:center;

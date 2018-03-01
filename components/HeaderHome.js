@@ -23,13 +23,13 @@ const HeaderHome = () => (
         <section className='section-data'>
           <div className='section-a'>
             <p className='icones-prestacions align-center'>
-                <Link prefetch href="/prestaciones"><a><img src='/static/icona-prestacions-publiques-familias-numerosas.png'/></a></Link>
+                <Link prefetch href="/prestaciones"><a title='Prestaciones para familias numerosas'><img alt='Icono prestaciones públicas para familias numerosas' src='/static/icona-prestacions-publiques-familias-numerosas.png'/></a></Link>
             </p>
             <p>Desde este apartado podrás acceder a toda la información sobre las prestaciones que como familia numerosa te ofrece el gobierno central, autonómico o municipal</p>
           </div>
           <div className='section-b'>
             <p className='icones-prestacions align-center'>
-                <Link prefetch href="/beneficios"><a><img src='/static/icona-ofertas-familias-numerosas.png'/></a></Link>
+                <Link prefetch href="/beneficios"><a title='Ofertas comerciales para familias numerosas'><img alt='Icono ofertas comerciales para familias numerosas' src='/static/icona-ofertas-familias-numerosas.png'/></a></Link>
             </p>
             <p>Ser familia numerosa te ofrece muchos descuentos y servicios exclusivos, en este apartado podrás seleccionar el tipo de servicio que necesitas y las ventajas que te ofrecen las empresas</p>
           </div>
