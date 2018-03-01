@@ -13,27 +13,27 @@ const footerStyle = {
 
 const Footer = () => (
   <footer style={footerStyle}>
-        <p><Link href="https://www.facebook.com/Federaci%C3%B3n-Espa%C3%B1ola-de-Familias-Numerosas-FEFN-114691451934890/"><a target="_blank"><img src='/static/logo-facebook-familias-numerosas.png' /></a></Link> <Link href="https://twitter.com/famnumerosas?lang=es"><a target="_blank"><img src='/static/logo-twitter-familias-numerosas.png' /></a></Link></p>
+        <p><Link href="https://www.facebook.com/Federaci%C3%B3n-Espa%C3%B1ola-de-Familias-Numerosas-FEFN-114691451934890/"><a title='Enlace externo' target="_blank" rel='noopener'><img src='/static/logo-facebook-familias-numerosas.png' /></a></Link> <Link href="https://twitter.com/famnumerosas?lang=es"><a title='Enlace externo' target="_blank" rel='noopener'><img src='/static/logo-twitter-familias-numerosas.png' /></a></Link></p>
 
         <section>
           <div className='wrapper'>
               <div className='first'>
-                <p className='purple'>Miembros de:<br/><Link href="http://www.elfac.org/"><a target="_blank"><img src='/static/logo-european-large-families-confederation-familias-numerosas.jpg' /></a></Link></p>
+                <p className='purple'>Miembros de:<br/><Link href="http://www.elfac.org/"><a title='Enlace externo' target="_blank" rel='noopener'><img src='/static/logo-european-large-families-confederation-familias-numerosas.jpg' /></a></Link></p>
               </div>
               <div className='second'>
-                 <p className='purple'>Con el apoyo de:<br/><Link href="https://www.msssi.gob.es/"><a target="_blank"><img src='/static/logo-ministerio-familias-numerosas.png' /></a></Link></p>
+                 <p className='purple'>Con el apoyo de:<br/><Link href="https://www.msssi.gob.es/"><a title='Enlace externo' target="_blank" rel='noopener'><img src='/static/logo-ministerio-familias-numerosas.png' /></a></Link></p>
               </div>
               <div className='third'>
-                 <p className='purple'>Certificación<br/><Link href="http://www.masfamilia.org/que-es-2"><a target="_blank"><img src='/static/logo-familiarmente-responsable-familias-numerosas.png' /></a></Link>
+                 <p className='purple'>Certificación<br/><Link href="http://www.masfamilia.org/que-es-2"><a title='Enlace externo' target="_blank" rel='noopener'><img src='/static/logo-familiarmente-responsable-familias-numerosas.png' /></a></Link>
                 </p>
               </div>
           </div>
           <p className='grey'>Federación Española de Familias Numerosas &#169; 2017
           <Link prefetch href="/aviso-legal">
-            <a style={linkStyle}>Aviso Legal</a>
+            <a title='Aviso legal' style={linkStyle}>Aviso Legal</a>
           </Link>
           <Link prefetch href="/politica-de-cookies">
-            <a style={linkStyle}>Política de Cookies</a>
+            <a title='Enlace externo' style={linkStyle}>Política de Cookies</a>
           </Link>        
           </p>
           
