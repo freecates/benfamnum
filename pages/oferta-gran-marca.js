@@ -148,19 +148,19 @@ const OfertaGranMarca =  (props) => (
                 <div className="Post__some-network"><p><small>Comparte:</small></p></div>
 
                 <div className="Post__some-network">
-                  <FacebookShareButton url={'https://beneficios.now.sh/ogm/' + props.ofertagranmarca.id + '/' + props.ofertagranmarca.slug} className="Post__some-network__share-button"><FacebookIcon size={32} round/></FacebookShareButton>
+                  <FacebookShareButton url={'https://famnum.now.sh/ogm/' + props.ofertagranmarca.id + '/' + props.ofertagranmarca.slug} className="Post__some-network__share-button"><FacebookIcon size={32} round/></FacebookShareButton>
                 </div>
 
                 <div className="Post__some-network">
-                  <TwitterShareButton url={'https://beneficios.now.sh/ogm/' + props.ofertagranmarca.id + '/' + props.ofertagranmarca.slug} title={props.ofertagranmarca.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_socios} hashtags={['beneficiosfamiliasnumerosas']} className="Post__some-network__share-button"><TwitterIcon size={32} round/></TwitterShareButton>
+                  <TwitterShareButton url={'https://famnum.now.sh/ogm/' + props.ofertagranmarca.id + '/' + props.ofertagranmarca.slug} title={props.ofertagranmarca.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_socios} hashtags={['beneficiosfamiliasnumerosas']} className="Post__some-network__share-button"><TwitterIcon size={32} round/></TwitterShareButton>
                 </div>
 
                 <div className="Post__some-network">
-                  <LinkedinShareButton url={'https://beneficios.now.sh/pgm/' + props.ofertagranmarca.id + '/' + props.ofertagranmarca.slug} title={props.ofertagranmarca.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_socios} className="Post__some-network__share-button"><LinkedinIcon size={32} round/></LinkedinShareButton>
+                  <LinkedinShareButton url={'https://famnum.now.sh/pgm/' + props.ofertagranmarca.id + '/' + props.ofertagranmarca.slug} title={props.ofertagranmarca.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_socios} className="Post__some-network__share-button"><LinkedinIcon size={32} round/></LinkedinShareButton>
                 </div>
 
                 <div className="Post__some-network">
-                  <EmailShareButton url={'https://beneficios.now.sh/ogm/' + props.ofertagranmarca.id + '/' + props.ofertagranmarca.slug} subject={props.ofertagranmarca.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_socios} body={'Échale un vistazo a esta oferta: ' + props.ofertagranmarca.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_socios + ' ' + 'https://beneficios.now.sh/ogm/' + props.ofertagranmarca.id + '/' + props.ofertagranmarca.slug} className="Post__some-network__share-button"><EmailIcon size={32} round/></EmailShareButton>
+                  <EmailShareButton url={'https://famnum.now.sh/ogm/' + props.ofertagranmarca.id + '/' + props.ofertagranmarca.slug} subject={props.ofertagranmarca.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_socios} body={'Échale un vistazo a esta oferta: ' + props.ofertagranmarca.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertagranmarca.acf.titulo_de_la_oferta_oferta_socios + ' ' + 'https://famnum.now.sh/ogm/' + props.ofertagranmarca.id + '/' + props.ofertagranmarca.slug} className="Post__some-network__share-button"><EmailIcon size={32} round/></EmailShareButton>
                 </div>
 
               </div>
