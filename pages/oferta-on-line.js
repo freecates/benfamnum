@@ -4,13 +4,40 @@ import IsMember from '../components/IsMember.js'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import FontAwesome from 'react-fontawesome'
+import {ShareButtons, ShareCounts, generateShareIcon} from 'react-share'
 import {IntlProvider, FormattedDate} from 'react-intl'
+
+const {
+  FacebookShareButton,
+  LinkedinShareButton,
+  TwitterShareButton,
+  EmailShareButton,
+} = ShareButtons
+
+const FacebookIcon = generateShareIcon('facebook')
+const TwitterIcon = generateShareIcon('twitter')
+const LinkedinIcon = generateShareIcon('linkedin')
+const EmailIcon = generateShareIcon('email')
 
 const OfertaOnLine =  (props) => (
     <Layout>
       <Head>
         {props.ofertaonline.acf.nombre_del_establecimiento ? <title dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.nombre_del_establecimiento} } /> : ''}
         {props.ofertaonline.acf.telefono ? <link rel="stylesheet" href="/static/custom.css" /> : '' }
+
+        <meta property="og:url" content={`/oo/${props.ofertaonline.id}/${props.ofertaonline.slug}`} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={props.ofertaonline.acf.nombre_del_establecimiento} />
+        {props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios ?
+        <meta property="og:description" content={props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios} /> : ''}
+        {props.ofertaonline.acf.descripcion_de_la_oferta_oferta_general ? 
+        <meta property="og:description" content={props.ofertaonline.acf.descripcion_de_la_oferta_oferta_general} /> : ''}
+        {props.ofertaonline.acf.imagen_destacada_de_la_oferta_socios_large ?
+        <meta property="og:image" content={props.ofertaonline.acf.imagen_destacada_de_la_oferta_socios_large.sizes.large} /> : ''}
+        {props.ofertaonline.acf.imagen_destacada_de_la_oferta_general_large ? 
+        <meta property="og:image" content={props.ofertaonline.acf.imagen_destacada_de_la_oferta_general_large.sizes.large} /> : ''}
+        <meta property="og:image:width" content="1024" />
+        <meta property="og:image:height" content="1024" />
         
       </Head>
       <nav aria-label="Estás aquí:" role="navigation">
@@ -72,6 +99,28 @@ const OfertaOnLine =  (props) => (
               {props.ofertaonline.acf.titulo_de_la_oferta_oferta_general ? <h4>{props.ofertaonline.acf.titulo_de_la_oferta_oferta_general}</h4> : '' }
               
               {props.ofertaonline.acf.descripcion_de_la_oferta_oferta_general ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.descripcion_de_la_oferta_oferta_general} }/> : '' }
+
+              <div className='social-share-icons'>
+
+                <div className="Post__some-network"><p><small>Comparte:</small></p></div>
+
+                <div className="Post__some-network">
+                  <FacebookShareButton url={'https://famnum.now.sh/p/' + props.ofertaonline.id + '/' + props.ofertaonline.slug} className="Post__some-network__share-button"><FacebookIcon size={32} round/></FacebookShareButton>
+                </div>
+
+                <div className="Post__some-network">
+                  <TwitterShareButton url={'https://famnum.now.sh/p/' + props.ofertaonline.id + '/' + props.ofertaonline.slug} title={props.ofertaonline.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios} hashtags={['beneficiosfamiliasnumerosas']} className="Post__some-network__share-button"><TwitterIcon size={32} round/></TwitterShareButton>
+                </div>
+
+                <div className="Post__some-network">
+                  <LinkedinShareButton url={'https://famnum.now.sh/p/' + props.ofertaonline.id + '/' + props.ofertaonline.slug} title={props.ofertaonline.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios} className="Post__some-network__share-button"><LinkedinIcon size={32} round/></LinkedinShareButton>
+                </div>
+
+                <div className="Post__some-network">
+                  <EmailShareButton url={'https://famnum.now.sh/p/' + props.ofertaonline.id + '/' + props.ofertaonline.slug} subject={props.ofertaonline.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios} body={'Échale un vistazo a esta oferta: ' + props.ofertaonline.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios + ' ' + 'https://famnum.now.sh/p/' + props.ofertaonline.id + '/' + props.ofertaonline.slug} className="Post__some-network__share-button"><EmailIcon size={32} round/></EmailShareButton>
+                </div>
+
+              </div>
               {props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios ?
                 <div id='how-to-get-it'>
                 <IsMember 
@@ -90,7 +139,16 @@ const OfertaOnLine =  (props) => (
 
       </section>
         
-      <style jsx>{`
+      <style jsx>{`     
+        .Post__some-network {
+          vertical-align: top;
+          display: inline-block;
+          margin-right: 20px;
+          text-align: center;
+        }
+        .social-share-icons {
+          margin-bottom:1.5rem;
+        }
         .breadcrumbs {
           margin-bottom:1em;
         }
