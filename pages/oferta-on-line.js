@@ -105,19 +105,19 @@ const OfertaOnLine =  (props) => (
                 <div className="Post__some-network"><p><small>Comparte:</small></p></div>
 
                 <div className="Post__some-network">
-                  <FacebookShareButton url={'https://famnum.now.sh/p/' + props.ofertaonline.id + '/' + props.ofertaonline.slug} className="Post__some-network__share-button"><FacebookIcon size={32} round/></FacebookShareButton>
+                  <FacebookShareButton url={'https://beneficiosfamiliasnumerosas.org/p/' + props.ofertaonline.id + '/' + props.ofertaonline.slug} className="Post__some-network__share-button"><FacebookIcon size={32} round/></FacebookShareButton>
                 </div>
 
                 <div className="Post__some-network">
-                  <TwitterShareButton url={'https://famnum.now.sh/p/' + props.ofertaonline.id + '/' + props.ofertaonline.slug} title={props.ofertaonline.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios} hashtags={['beneficiosfamiliasnumerosas']} className="Post__some-network__share-button"><TwitterIcon size={32} round/></TwitterShareButton>
+                  <TwitterShareButton url={'https://beneficiosfamiliasnumerosas.org/p/' + props.ofertaonline.id + '/' + props.ofertaonline.slug} title={props.ofertaonline.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios} hashtags={['beneficiosfamiliasnumerosas']} via='famnumerosas' className="Post__some-network__share-button"><TwitterIcon size={32} round/></TwitterShareButton>
                 </div>
 
                 <div className="Post__some-network">
-                  <LinkedinShareButton url={'https://famnum.now.sh/p/' + props.ofertaonline.id + '/' + props.ofertaonline.slug} title={props.ofertaonline.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios} className="Post__some-network__share-button"><LinkedinIcon size={32} round/></LinkedinShareButton>
+                  <LinkedinShareButton url={'https://beneficiosfamiliasnumerosas.org/p/' + props.ofertaonline.id + '/' + props.ofertaonline.slug} title={props.ofertaonline.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios} className="Post__some-network__share-button"><LinkedinIcon size={32} round/></LinkedinShareButton>
                 </div>
 
                 <div className="Post__some-network">
-                  <EmailShareButton url={'https://famnum.now.sh/p/' + props.ofertaonline.id + '/' + props.ofertaonline.slug} subject={props.ofertaonline.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios} body={'Échale un vistazo a esta oferta: ' + props.ofertaonline.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios + ' ' + 'https://famnum.now.sh/p/' + props.ofertaonline.id + '/' + props.ofertaonline.slug} className="Post__some-network__share-button"><EmailIcon size={32} round/></EmailShareButton>
+                  <EmailShareButton url={'https://beneficiosfamiliasnumerosas.org/p/' + props.ofertaonline.id + '/' + props.ofertaonline.slug} subject={props.ofertaonline.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios} body={'Échale un vistazo a esta oferta: ' + props.ofertaonline.acf.nombre_del_establecimiento + ':' + ' ' + props.ofertaonline.acf.titulo_de_la_oferta_oferta_socios + ' ' + 'https://beneficiosfamiliasnumerosas.org/p/' + props.ofertaonline.id + '/' + props.ofertaonline.slug} className="Post__some-network__share-button"><EmailIcon size={32} round/></EmailShareButton>
                 </div>
 
               </div>
