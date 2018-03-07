@@ -37,10 +37,10 @@ const OfertasGrandesMarcasByMarca = (props) => (
                 <td><p className='align-center'>{ props.granmarcaofertas.name}</p></td>
                 <td>
                     <div>
-                    {props.granmarcaofertas.description.split('\n').map((item, key) => {
-                      return <span key={key}>{item}<br/></span>
-                    })}
-                  </div>
+                      {props.granmarcaofertas.description.split('\n').map((item, key) => {
+                        return <p key={key}><span dangerouslySetInnerHTML={ {__html: item} } /></p>
+                      })}
+                    </div>
                 </td>
                 <td>
                   <p className='align-center'>
