@@ -81,11 +81,8 @@ class SelectCity extends React.Component {
               display:block;
              }
              @media screen and (min-width: 768px) {
-                input[type=submit].map, input[type=submit].benefit, select.map {
+                input[type=submit].map, input[type=submit].benefit, select.map, select.city {
                   width:55%;
-                }
-                select.city {
-                  width:43%;
                 }
              }
              input[type=submit].city {
