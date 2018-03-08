@@ -1,6 +1,7 @@
 import Header from './Header'
 import Footer from './Footer'
 import ServiceWorker from '../pages/service-worker'
+import { initGA, logPageView } from '../utils/analytics'
 
 const layoutStyle = {
   margin: '0 auto',
@@ -13,13 +14,23 @@ const mainStyle = {
   margin: '0 auto'
 }
 
-const Layout = (props) => (
-  <div>
-    {props.layout || props.bgmapa !== true &&  
+
+export default class Layout extends React.Component {
+  componentDidMount () {
+    if (!window.GA_INITIALIZED) {
+      initGA()
+      window.GA_INITIALIZED = true
+    }
+    logPageView()
+  }
+  render () {
+    return (
+      <div>
+    {this.props.layout || this.props.bgmapa !== true &&  
       <div style={layoutStyle} className='fade-in'>
         <Header withbg />
           <main style={mainStyle}>
-            {props.children}
+            {this.props.children}
           </main>
           <style jsx>{`
             .fade-in {
@@ -38,11 +49,11 @@ const Layout = (props) => (
             }
           `}</style>
       </div>}
-    {props.layout && 
+    {this.props.layout && 
       <div style={layoutStyle} className={ 'layout' in props && 'layout'} >
         <Header/>
           <main style={mainStyle}>
-            {props.children}
+            {this.props.children}
           </main>
           <style jsx>{`
             .layout {
@@ -64,11 +75,11 @@ const Layout = (props) => (
             }
             `}</style>
     </div>}
-    {props.bgmapa &&
+    {this.props.bgmapa &&
        <div style={layoutStyle} className={ 'bgmapa' in props && 'bgmapa'} >
       <Header withbg />
         <main style={mainStyle}>
-          {props.children}
+          {this.props.children}
         </main>
         <style jsx>{`
           .bgmapa {
@@ -93,6 +104,6 @@ const Layout = (props) => (
       <Footer />
       <ServiceWorker />
   </div>
-)
-
-export default Layout
+    )
+  }
+}

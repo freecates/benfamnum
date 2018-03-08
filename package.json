@@ -39,6 +39,7 @@
     "react-disqus-thread": "^0.4.0",
     "react-dom": "16.2.0",
     "react-fontawesome": "^1.6.1",
+    "react-ga": "^2.4.1",
     "react-google-maps": "next",
     "react-intersection-observer": "1.0.0",
     "react-intl": "^2.4.0",
