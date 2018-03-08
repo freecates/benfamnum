@@ -20,6 +20,7 @@ app.prepare()
   server.use('/service-worker.js', serve('./.next/service-worker.js', true))
   server.use('/manifest.json', serve('./static/manifest.json', true))
   server.use('/google614be494af9bad15.html', serve('./static/google614be494af9bad15.html', true))
+  server.use('/robots.txt', serve('./static/robots.txt', true))
   
   server.get('/s/:id', (req, res) => {
     const actualPage = '/buscador'
