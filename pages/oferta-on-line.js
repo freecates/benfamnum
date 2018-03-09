@@ -86,7 +86,7 @@ const OfertaOnLine =  (props) => (
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
               /></span></h1> : ''}
 
-              <p className='margin-invert'><small><Link href='https://www.familias-numerosas.org/ingreso.php'><a className='button button-green' target='_blank'>Recuperar contraseña</a></Link></small></p>
+              <p className='margin-invert align-center'><small><Link href='https://www.familias-numerosas.org/ingreso.php'><a className='button button-green' target='_blank'>Recuperar contraseña</a></Link></small></p>
               
               {props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios ? <h4>{props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios}</h4> : '' }
 
@@ -232,7 +232,7 @@ const OfertaOnLine =  (props) => (
             max-width:114%;
           }
         }
-        h1, .category, .location, .file-label {
+        h1, .category, .location, .file-label, .align-center {
           text-align:center;
         }
       `}</style>
