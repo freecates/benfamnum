@@ -85,8 +85,6 @@ const OfertaOnLine =  (props) => (
                 size='2x'
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
               /></span></h1> : ''}
-
-              <p className='margin-invert align-center'><small><Link href='https://www.familias-numerosas.org/ingreso.php'><a className='button button-green' target='_blank'>Recuperar contraseña</a></Link></small></p>
               
               {props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios ? <h4>{props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios}</h4> : '' }
 
@@ -129,6 +127,7 @@ const OfertaOnLine =  (props) => (
                   Title={props.ofertaonline.title.rendered}
                   URL={'oo/' + props.ofertaonline.id + '/' + props.ofertaonline.slug}
                 />
+                  <p className='margin-invert align-center'><small><Link href='https://www.familias-numerosas.org/ingreso.php'><a className='button button-green' target='_blank'>Recuperar contraseña</a></Link></small></p>
                 </div> : ''}
 
             </div>
