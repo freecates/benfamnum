@@ -50,7 +50,7 @@ export default class Layout extends React.Component {
           `}</style>
       </div>}
     {this.props.layout && 
-      <div style={layoutStyle} className={ 'layout' in props && 'layout'} >
+      <div style={layoutStyle} className={ 'layout' in this.props && 'layout'} >
         <Header/>
           <main style={mainStyle}>
             {this.props.children}
@@ -76,7 +76,7 @@ export default class Layout extends React.Component {
             `}</style>
     </div>}
     {this.props.bgmapa &&
-       <div style={layoutStyle} className={ 'bgmapa' in props && 'bgmapa'} >
+       <div style={layoutStyle} className={ 'bgmapa' in this.props && 'bgmapa'} >
       <Header withbg />
         <main style={mainStyle}>
           {this.props.children}
