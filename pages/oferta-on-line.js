@@ -127,7 +127,6 @@ const OfertaOnLine =  (props) => (
                   Title={props.ofertaonline.title.rendered}
                   URL={'oo/' + props.ofertaonline.id + '/' + props.ofertaonline.slug}
                 />
-                  <p className='margin-invert align-center'><small><Link href='https://www.familias-numerosas.org/ingreso.php'><a className='button button-green' target='_blank'>Recuperar contraseña</a></Link></small></p>
                 </div> : ''}
 
             </div>

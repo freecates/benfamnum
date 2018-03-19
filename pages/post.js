@@ -198,7 +198,6 @@ const Post =  (props) => (
               Title={props.post.title.rendered}
               URL={'p/' + props.post.id + '/' + props.post.slug}
             />
-            <p className='margin-invert'><small><Link href='https://www.familias-numerosas.org/ingreso.php'><a className='button button-green' target='_blank'>Recuperar contraseña</a></Link></small></p>
             </div> : ''}
 
             </div>
@@ -224,13 +223,6 @@ const Post =  (props) => (
         }
         .align-center {
           text-align:center;
-        }
-        .button.button-green {
-          color:#ffffff!important;
-          background:#009933;
-        }
-        .button.button-green:hover {
-          background:#007e2a;
         }
         .file {
           max-width:1024px;

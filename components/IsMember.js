@@ -117,6 +117,7 @@ class IsMember extends React.Component {
                             <div className='wrapper-input'><Link href='http://www.familiasnumerosas.org/hazte-socio/' ><a target='_blank'className='button button-pink' >Sí, quiero hacerme socio</a></Link></div>
                             </form>
                             <p className='align-left'><small><strong>COMENTARIOS</strong>: Para poder leer o escribir opiniones sobre esta oferta, debes introducir tu usuario y contraseña de asociado</small></p>
+                            <p className='margin-invert align-center'><small><Link href='https://www.familias-numerosas.org/ingreso.php'><a className='button button-green' target='_blank'>Recuperar contraseña</a></Link></small></p>
                         </div>
                         <style jsx>{`
                             form {
@@ -150,7 +151,14 @@ class IsMember extends React.Component {
                             .button-pink:hover {
                             background:#a62953;
                             }
-                            h1, label, p {
+                            .button.button-green {
+                              color:#ffffff!important;
+                              background:#009933;
+                            }
+                            .button.button-green:hover {
+                              background:#007e2a;
+                            }
+                            h1, label, p, .align-center {
                                 text-align:center;
                             }
                             .align-left {
@@ -162,6 +170,10 @@ class IsMember extends React.Component {
                             .margin-inverse {
                                 margin-top:1em;
                                 margin-bottom:0;
+                            }
+                            .margin-invert {
+                              margin-bottom:2rem;
+                              margin-top:-1rem;
                             }
                             .file-label {
                                 background:#cc0033!important;
@@ -206,6 +218,7 @@ class IsMember extends React.Component {
                                 <div className='wrapper-input'><Link href='http://www.familiasnumerosas.org/hazte-socio/' ><a target='_blank'className='button button-pink' >Sí, quiero hacerme socio</a></Link></div>
                                 </form>
                                 <p className='align-left'><small><strong>COMENTARIOS</strong>: Para poder leer o escribir opiniones sobre esta oferta, debes introducir tu usuario y contraseña de asociado</small></p>
+                                <p className='margin-invert align-center'><small><Link href='https://www.familias-numerosas.org/ingreso.php'><a className='button button-green' target='_blank'>Recuperar contraseña</a></Link></small></p>
                             </div>
                             <style jsx>{`
                                 form {
@@ -239,7 +252,14 @@ class IsMember extends React.Component {
                                 .button-pink:hover {
                                 background:#a62953;
                                 }
-                                h1, label, p {
+                                .button.button-green {
+                                  color:#ffffff!important;
+                                  background:#009933;
+                                }
+                                .button.button-green:hover {
+                                  background:#007e2a;
+                                }
+                                h1, label, p, .align-center {
                                     text-align:center;
                                 }
                                 .align-left {
@@ -251,6 +271,10 @@ class IsMember extends React.Component {
                                 .margin-inverse {
                                     margin-top:1em;
                                     margin-bottom:0;
+                                }
+                                .margin-invert {
+                                  margin-bottom:2rem;
+                                  margin-top:-1rem;
                                 }
                                 .file-label {
                                     background:#cc0033!important;
