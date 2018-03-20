@@ -96,11 +96,15 @@ const OfertaGranMarca =  (props) => (
                 name='twitter-square'
                 size='1x'
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#666666' }}
-              /></a></span> : '' } {props.ofertagranmarca.acf.facebook_del_establecimiento ? <span>| <a href={props.ofertagranmarca.acf.facebook_del_establecimiento}><FontAwesome
+              /></a></span> : '' } {props.ofertagranmarca.acf.facebook_del_establecimiento ? props.ofertagranmarca.acf.facebook_del_establecimiento.includes('facebook.com') ? <span>| <a href={props.ofertagranmarca.acf.facebook_del_establecimiento}><FontAwesome
               name='facebook-square'
               size='1x'
               style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#666666' }}
-            /></a></span> : '' } {props.ofertagranmarca.acf.sitio_web_del_establecimiento ? <span>| <Link href={props.ofertagranmarca.acf.sitio_web_del_establecimiento}><a><FontAwesome
+            /></a></span> : <span>| <a href={'https://www.facebook.com/' + props.ofertagranmarca.acf.facebook_del_establecimiento}><FontAwesome
+            name='facebook-square'
+            size='1x'
+            style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#666666' }}
+          /></a></span> : '' } {props.ofertagranmarca.acf.sitio_web_del_establecimiento ? <span>| <Link href={props.ofertagranmarca.acf.sitio_web_del_establecimiento}><a><FontAwesome
             name='external-link-square'
             size='1x'
             style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#666666' }}
