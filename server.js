@@ -41,6 +41,13 @@ app.prepare()
     const queryParamsS = { id: req.params.slug }
     app.render(req, res, actualPage, queryParams, queryParamsS)
   })
+
+  server.get('/pro/:id/:slug', (req, res) => {
+    const actualPage = '/promocion'
+    const queryParams = { id: req.params.id }
+    const queryParamsS = { id: req.params.slug }
+    app.render(req, res, actualPage, queryParams, queryParamsS)
+  })
   
   server.get('/oo/:id/:slug', (req, res) => {
     const actualPage = '/oferta-on-line'
