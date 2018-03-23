@@ -4,6 +4,9 @@ import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
 
+const today = Date.now();
+const todayISO = new Date(today).toISOString();
+
 const Promociones = (props) => (
   <Layout>
     <Head>
@@ -21,6 +24,7 @@ const Promociones = (props) => (
     <section>
       <h1>Promociones</h1>
       <IntlProvider defaultLocale='es'>
+      {props.promociones[0].acf.fecha_de_finalizaciion_de_la_promocion > todayISO ?
         <div className='table-scroll'>
           <table>          
             <thead>
@@ -55,7 +59,8 @@ const Promociones = (props) => (
             </tbody>
             ))}
           </table>
-        </div>
+        </div> : 
+        <h2 className='align-center'>Lo sentimos. No hay promociones en curso en estos momentos.</h2>}
 
       </IntlProvider>
     </section>
@@ -107,6 +112,7 @@ Promociones.getInitialProps = async function(context) {
   const promociones = await res.json()
 
   console.log(`Promociones data fetched. Count: ${promociones.length}`)
+  console.log(`La data de la promoció és ${promociones[0].acf.fecha_de_finalizaciion_de_la_promocion} i la data d'avui és ${todayISO}`)
 
   return { promociones }
 }
