@@ -12,6 +12,9 @@ const SelectCity = dynamic(
   }
 )
 
+const today = Date.now();
+const todayISO = new Date(today).toISOString();
+
 const Localidades = (props) => (
   <Layout layout>
     <Head>
@@ -64,6 +67,11 @@ const Localidades = (props) => (
               <Link prefetch href="/ofertas-en-el-mapa"><a><img src='/static/icona-ofertas-en-el-mapa-familias-numerosas.png'/><div className='text-icona'>Ofertas en el mapa</div></a></Link>
             </div>
             <br className='clear' />
+            {props.promociones[0].acf.fecha_de_finalizaciion_de_la_promocion > todayISO ?
+              <div className='promo'>
+                <h4 className='align-center'><span className='label alert file-label'><Link prefetch href='/promociones'><a>Mira aquí promociones que te<br/>pueden interesar</a></Link></span></h4>
+              </div>
+              : ''}
         </div>
     </section>
     </div>
@@ -77,6 +85,21 @@ const Localidades = (props) => (
           }
           a, li {
               color:#ffffff!important;
+          }
+          .promo {
+            margin-top:2em;
+          }
+          .file-label {
+            background:#cc0033!important;
+            color:#ffffff;
+            font-weight:400;
+            font-size:1.25rem;
+          }
+          .file-label a {
+            color:#ffffff!important;
+          }
+          .file-label a:hover {
+            text-decoration:none;
           }
           .breadcrumbs {
               margin:-2rem 0 1rem 0;
@@ -155,11 +178,13 @@ const Localidades = (props) => (
 
 Localidades.getInitialProps = async function() {
   const res = await fetch('https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?sim-model=localidad-categoria')
+  const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/promociones`)
   const beneficios = await res.json()
+  const promociones = await res2.json()
 
-  console.log(`Ofertas data fetched. Count: ${beneficios.length}`)
+  console.log(`Ofertas data fetched. Count: ${beneficios.length}, ${promociones.length}`)
 
-  return { beneficios }
+  return { beneficios, promociones }
 }
 
 export default Localidades

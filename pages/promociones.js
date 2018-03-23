@@ -107,7 +107,6 @@ const Promociones = (props) => (
 )
 
 Promociones.getInitialProps = async function(context) {
-  const { id } = context.query
   const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/promociones`)
   const promociones = await res.json()
 
