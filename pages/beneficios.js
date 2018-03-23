@@ -94,6 +94,7 @@ const Localidades = (props) => (
             color:#ffffff;
             font-weight:400;
             font-size:1.25rem;
+            white-space:normal;
           }
           .file-label a {
             color:#ffffff!important;
