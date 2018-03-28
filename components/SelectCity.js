@@ -44,7 +44,7 @@ class SelectCity extends React.Component {
            {this.state.inputClass == 'comunidad' ?
            <label className='city'>           
              <select className='city' onChange={this.handleChange}>
-                <option>Elige comunidad</option>
+                <option>Elige CA</option>
                {renderedElements}
              </select>
            </label>
