@@ -49,7 +49,7 @@ const Promociones = (props) => (
                 <td width='64'><img src={'/static/32/' + promocione.acf.categoria_de_la_promocion.slug +'-familias-numerosas.png'} /></td>
                 <td width='200'>{ promocione.acf.categoria_de_la_promocion.name}</td>
                 <td><span dangerouslySetInnerHTML={ {__html: promocione.acf.nombre_de_la_empresa} } /> | <span>Válida hasta el 
-                <strong><FormattedDate value={promocione.acf.fecha_de_finalizaciion_de_la_promocion} day='numeric' month='long' year='numeric' /></strong></span>
+                <strong> <FormattedDate value={promocione.acf.fecha_de_finalizaciion_de_la_promocion} day='numeric' month='long' year='numeric' /></strong></span>
                 </td>
                 <td width='150'>
                   <Link prefetch as={`/pro/${promocione.id}/${promocione.slug}`} href={`/promocion?id=${promocione.id}`}>

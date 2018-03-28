@@ -73,7 +73,7 @@ const MapByCategory = (props) => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-        <li><Link prefetch href="/beneficios"><a>Beneficios</a></Link></li>
+        <li><Link prefetch href="/beneficios"><a>Ofertas para familias</a></Link></li>
         <li>
           <span className="show-for-sr">Actual: </span> Beneficios cerca de tí 
         </li>

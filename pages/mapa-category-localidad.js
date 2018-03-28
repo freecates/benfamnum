@@ -37,7 +37,7 @@ const MapByCategoryLocalidad = (props) => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-        <li><Link prefetch href="/beneficios"><a>Beneficios</a></Link></li>
+        <li><Link prefetch href="/beneficios"><a>Ofertas para familias</a></Link></li>
         <li><Link prefetch as={`/m/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}`} href={`/mapa?id=${props.markers[0].categoria_de_la_prestacion.term_id}`}><a>{props.markers[0].categoria_de_la_prestacion.name}</a></Link></li>
         <li>
           <span className="show-for-sr">Actual: </span> {props.markers[0].localidad_del_beneficio.name} 

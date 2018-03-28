@@ -37,29 +37,28 @@ const Localidades = (props) => (
             <div className='icona'> 
               <img src='/static/icona-ofertas-por-poblacion-familias-numerosas.png'/><div className='text-icona city-text'>Ofertas por población<br/>          
                 <SelectCity
-                  inputClass= 'comunidad'
+                  inputClass= 'city'
                   inputClass2= 'green'
                   inputValue= 'Ver'
-                  options={[
-                    {slug:'andalucia', key:0, value:'/comunidad?comunidad=Andaluc', label:'Andalucía'},
-                    {slug:'aragon', key:1, value:'/comunidad?comunidad=Aragon', label:'Aragon'},
-                    {slug:'asturias', key:2, value:'/comunidad?comunidad=Asturias', label:'Principado de Asturias'},
-                    {slug:'balears', key:3, value:'/comunidad?comunidad=Baleares', label:'Islas Baleares'},
-                    {slug:'canarias', key:4, value:'/comunidad?comunidad=canarias', label:'Canarias'},
-                    {slug:'cantabria', key:5, value:'/comunidad?comunidad=Cantabria', label:'Cantabria'},
-                    {slug:'castilla-la-mancha', key:6, value:'/comunidad?comunidad=Mancha', label:'Castilla la Mancha'},
-                    {slug:'castylla-y-leon', key:7, value:'/comunidad?comunidad=Leon', label:'Castylla y Leon'},
-                    {slug:'catalunya', key:7, value:'/comunidad?comunidad=Catalu', label:'Cataluña'},
-                    {slug:'comunidad-valenciana', key:8, value:'/comunidad?comunidad=Valenciana', label:'Comunidad Valenciana'},
-                    {slug:'extremadura', key:9, value:'/comunidad?comunidad=Extremadura', label:'Extremadura'},
-                    {slug:'galicia', key:10, value:'/comunidad?comunidad=Galicia', label:'Galicia'},
-                    {slug:'la-rioja', key:11, value:'/comunidad?comunidad=Rioja', label:'La Rioja'},
-                    {slug:'madrid', key:12, value:'/comunidad?comunidad=Madrid', label:'Comunidad de Madrid'},
-                    {slug:'region-de-murcia', key:13, value:'/comunidad?comunidad=Murcia', label:'Región de Murcia'},
-                    {slug:'navarra', key:14, value:'/comunidad?comunidad=Navarra', label:'Comunidad Foral de Navarra'},
-                    {slug:'pais-vasco', key:15, value:'/comunidad?comunidad=Vasco', label:'País Vasco'},
-                    {slug:'ceuta', key:16, value:'/comunidad?comunidad=Ceuta', label:'Ceuta'},
-                    {slug:'melilla', key:17, value:'/comunidad?comunidad=Melilla', label:'Melilla'}]} /></div>
+                  options={props.beneficios.reduce((ciutats, beneficio) => {
+                  if (beneficio.localidad_del_beneficio == false) {
+                    return ciutats
+                  }
+                    ciutats[beneficio.localidad_del_beneficio.term_id] =
+                    {
+                      slug: beneficio.localidad_del_beneficio.slug,
+                      key: beneficio.localidad_del_beneficio.term_id,
+                      value: beneficio.localidad_del_beneficio ? `/localidad?localidad=${beneficio.localidad_del_beneficio.term_id}` : '',
+                      label: beneficio.localidad_del_beneficio ? `${beneficio.localidad_del_beneficio.name}` : ''
+                    }
+                    return ciutats
+              },[]).sort((a,b) => {
+                if (a.slug < b.slug)
+                  return -1;
+                if (a.slug > b.slug)
+                  return 1;
+                return 0;
+                })} /></div>
             </div>
             <div className='icona'> 
               <Link prefetch href="/ofertas-on-line"><a><img src='/static/icona-ofertas-online-familias-numerosas.png'/><div className='text-icona'>Ofertas online</div></a></Link>
@@ -179,12 +178,14 @@ const Localidades = (props) => (
 )
 
 Localidades.getInitialProps = async function() {
+  const res = await fetch('https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?sim-model=localidad-categoria')
   const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/promociones`)
+  const beneficios = await res.json()
   const promociones = await res2.json()
 
-  console.log(`Ofertas data fetched. Count: ${promociones.length}`)
+  console.log(`Ofertas data fetched. Count: ${beneficios.length}, ${promociones.length}`)
 
-  return { promociones }
+  return { beneficios, promociones }
 }
 
 export default Localidades

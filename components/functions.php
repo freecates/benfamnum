@@ -380,6 +380,13 @@ function beneficios_localidad($fields){
         );
 }
 
+function beneficios_comunidad($fields){
+    
+        return array(
+            "comunidad_autonoma" => $fields["comunidad_autonoma"]
+        );
+}
+
 
 add_action( 'rest_api_init', function () {
 

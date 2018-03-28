@@ -41,6 +41,14 @@ class SelectCity extends React.Component {
              </select>
            </label>
            : ''}
+           {this.state.inputClass == 'comunidad' ?
+           <label className='city'>           
+             <select className='city' onChange={this.handleChange}>
+                <option>Elige comunidad</option>
+               {renderedElements}
+             </select>
+           </label>
+           : ''}
            {this.state.inputClass == 'map' ?
            <label className='map'>           
              <select className='map' onChange={this.handleChange}>
@@ -55,7 +63,7 @@ class SelectCity extends React.Component {
              </select>
            </label>
            : ''}
-       <div className='wrapper'>{this.state.inputClass == 'city' && this.state.inputClass2 == null ? <input className='button city' type='submit' value={this.state.inputValue} />: ''}{this.state.inputClass == 'city' && this.state.inputClass2 == 'green' ? <input className='button city green' type='submit' value={this.state.inputValue} />: ''}{this.state.inputClass == 'map' ? <input className='button map' type='submit' value='Buscar por localidad' />: ''}{this.state.inputClass == 'benefit' ? <input className='button benefit' type='submit' value='Buscar la prestación' />: ''}</div>
+       <div className='wrapper'>{this.state.inputClass == 'city' && this.state.inputClass2 == null ? <input className='button city' type='submit' value={this.state.inputValue} />: ''}{this.state.inputClass == 'city' && this.state.inputClass2 == 'green' ? <input className='button city green' type='submit' value={this.state.inputValue} />: ''}{this.state.inputClass == 'comunidad' && this.state.inputClass2 == 'green' ? <input className='button city green' type='submit' value={this.state.inputValue} />: ''}{this.state.inputClass == 'map' ? <input className='button map' type='submit' value='Buscar por localidad' />: ''}{this.state.inputClass == 'benefit' ? <input className='button benefit' type='submit' value='Buscar la prestación' />: ''}</div>
            <style jsx>{`
              .wrapper, label.map {
                width:100%;
