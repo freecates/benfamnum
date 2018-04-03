@@ -32,7 +32,7 @@ const ZOOM = 12
 const MapByLocalidad = (props) => (
   <Layout>
     <Head>
-      <title>Beneficios - {props.markers[0].localidad_del_beneficio.name}</title>
+      <title>Beneficios Familias Numerosas - {props.markers[0].localidad_del_beneficio.name}</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">

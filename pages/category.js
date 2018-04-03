@@ -16,7 +16,7 @@ const SelectCity = dynamic(
 const PostsByCategory = (props) => (
   <Layout>
     <Head>
-      <title>Beneficios - {props.posts[0].categoria_de_la_prestacion.name}</title>
+      <title>Beneficios Familias Numerosas - {props.posts[0].categoria_de_la_prestacion.name}</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">

@@ -35,7 +35,7 @@ const EmailIcon = generateShareIcon('email')
 const OfertaGranMarca =  (props) => (
     <Layout>
       <Head>
-        {props.ofertagranmarca.acf.nombre_del_establecimiento ? <title dangerouslySetInnerHTML={ {__html: props.ofertagranmarca.acf.nombre_del_establecimiento} } /> : ''}
+        {props.ofertagranmarca.acf.nombre_del_establecimiento ? <title dangerouslySetInnerHTML={ {__html: props.ofertagranmarca.acf.nombre_del_establecimiento} + " - Familias Numerosas"} /> : ''}
         {props.ofertagranmarca.acf.telefono ? <link rel="stylesheet" href="/static/custom.css" /> : '' }
 
         <meta property="og:url" content={`/ogm/${props.ofertagranmarca.id}/${props.ofertagranmarca.slug}`} />

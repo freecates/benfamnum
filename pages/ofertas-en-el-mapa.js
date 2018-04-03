@@ -15,7 +15,7 @@ const SelectCity = dynamic(
 const Localidades = (props) => (
   <Layout bgmapa>
     <Head>
-      <title>Ofertas</title>
+      <title>Ofertas geolocalizadas para familias numerosas</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
     <ul className="breadcrumbs">

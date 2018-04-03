@@ -7,7 +7,7 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 const GRandesMarcas = (props) => (
   <Layout>
     <Head>
-      <title>Ofertas nacionales</title>
+      <title>Ofertas nacionales - Familias Numerosas</title>
     </Head>
     <IntlProvider defaultLocale='ca'>
       <main>

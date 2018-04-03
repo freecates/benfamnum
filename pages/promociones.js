@@ -10,7 +10,7 @@ const todayISO = new Date(today).toISOString();
 const Promociones = (props) => (
   <Layout>
     <Head>
-      <title>Promociones</title>
+      <title>Promociones para familias numerosas</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">

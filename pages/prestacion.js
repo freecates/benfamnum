@@ -7,7 +7,7 @@ import fetch from 'isomorphic-unfetch'
 const Prestacion =  (props) => (
     <Layout>
       <Head>
-        {props.prestacion.acf.nombre_de_la_prestacion ? <title dangerouslySetInnerHTML={ {__html: props.prestacion.acf.nombre_de_la_prestacion} } /> : ''}
+        {props.prestacion.acf.nombre_de_la_prestacion ? <title dangerouslySetInnerHTML={ {__html: props.prestacion.acf.nombre_de_la_prestacion} + " - Familias Numerosas"} /> : ''}
         {props.prestacion.acf.telefono ? <link rel="stylesheet" href="/static/custom.css" /> : '' }
         
       </Head>

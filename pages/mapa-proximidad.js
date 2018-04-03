@@ -68,7 +68,7 @@ const ZOOM = 14
 const MapByCategory = (props) => (
   <Layout>
     <Head>
-      <title>Beneficios cerca de tí</title>
+      <title>Beneficios para familias numerosas cerca de tí</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">

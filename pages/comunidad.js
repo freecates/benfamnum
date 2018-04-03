@@ -54,7 +54,7 @@ const PostByComunidad = (props) => (
     </Layout> :
   <Layout>
     <Head>
-      <title>Beneficios - {props.posts[0].comunidad_autonoma}</title>
+      <title>Beneficios Familias Numerosas - {props.posts[0].comunidad_autonoma}</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">

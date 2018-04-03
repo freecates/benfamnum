@@ -7,7 +7,7 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 const OfertasOnLine = (props) => (
   <Layout>
     <Head>
-      <title>Ofertas On Line</title>
+      <title>Ofertas On Line para familias numerosas</title>
     </Head>
     <IntlProvider defaultLocale='ca'>
       <main>

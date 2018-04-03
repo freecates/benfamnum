@@ -8,7 +8,7 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 const PostsByLocalidad = (props) => (
   <Layout>
     <Head>
-      <title>Beneficios - {props.posts[0].localidad_del_beneficio.name}</title>
+      <title>Beneficios Familias Numerosas - {props.posts[0].localidad_del_beneficio.name}</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">

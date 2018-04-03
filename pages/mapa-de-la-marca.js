@@ -32,7 +32,7 @@ const ZOOM = 6
 const MapByMarca = (props) => (
   <Layout>
     <Head>
-      <title>Ofertas de la Marca - {props.markers[0].marca.name}</title>
+      <title>Ofertas de la Marca {props.markers[0].marca.name} para familias numerosas</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">

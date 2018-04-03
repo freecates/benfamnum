@@ -18,7 +18,7 @@ const todayISO = new Date(today).toISOString();
 const Localidades = (props) => (
   <Layout layout>
     <Head>
-      <title>Ofertas</title>
+      <title>Ofertas para familias numerosas</title>
     </Head>
     <div>
     <nav aria-label="Estás aquí:" role="navigation">

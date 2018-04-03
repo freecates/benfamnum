@@ -7,7 +7,7 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 const PrestacionesByComunidad = (props) => (
   <Layout>
     <Head>
-      <title>Prestaciones - {props.prestaciones[0].comunidad_autonoma.name}</title>
+      <title>Prestaciones Familias Numerosas - {props.prestaciones[0].comunidad_autonoma.name}</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">

@@ -7,7 +7,7 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 const OfertasGrandesMarcasByMarca = (props) => (
   <Layout>
     <Head>
-      <title>Ofertas de la Marca - {props.granmarcaofertas.name}</title>
+      <title>Ofertas de la Marca {props.granmarcaofertas.name} para familias numerosas</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">

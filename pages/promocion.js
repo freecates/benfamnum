@@ -21,7 +21,7 @@ const EmailIcon = generateShareIcon('email')
 const Promocion =  (props) => (
     <Layout>
       <Head>
-        {props.promocion.acf.nombre_de_la_empresa ? <title dangerouslySetInnerHTML={ {__html: props.promocion.acf.nombre_de_la_empresa} } /> : ''}
+        {props.promocion.acf.nombre_de_la_empresa ? <title dangerouslySetInnerHTML={ {__html: props.promocion.acf.nombre_de_la_empresa} + " - Familias Numerosas"} /> : ''}
 
         <meta property="og:url" content={`/oo/${props.promocion.id}/${props.promocion.slug}`} />
         <meta property="og:type" content="article" />

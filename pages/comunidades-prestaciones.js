@@ -15,7 +15,7 @@ const SelectCity = dynamic(
 const ComunidadesPrestaciones = (props) => (
   <Layout layout>
     <Head>
-      <title>Prestaciones - Comunidades</title>
+      <title>Prestaciones Familias Numerosas - Comunidades</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
     <ul className="breadcrumbs">

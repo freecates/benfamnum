@@ -8,7 +8,7 @@ import {IntlProvider, FormattedDate} from 'react-intl'
 const PrestacionesEstatales = (props) => (
   <Layout>
     <Head>
-      <title>Prestaciones - Estatales</title>
+      <title>Prestaciones Familias Numerosas - Estatales</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
