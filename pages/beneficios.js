@@ -48,7 +48,7 @@ const Localidades = (props) => (
                     {slug:'canarias', key:4, value:'/comunidad?comunidad=canarias', label:'Canarias'},
                     {slug:'cantabria', key:5, value:'/comunidad?comunidad=Cantabria', label:'Cantabria'},
                     {slug:'castilla-la-mancha', key:6, value:'/comunidad?comunidad=Mancha', label:'Castilla la Mancha'},
-                    {slug:'castylla-y-leon', key:7, value:'/comunidad?comunidad=Leon', label:'Castylla y Leon'},
+                    {slug:'castilla-y-leon', key:7, value:'/comunidad?comunidad=Leon', label:'Castilla y Leon'},
                     {slug:'catalunya', key:7, value:'/comunidad?comunidad=Catalu', label:'Cataluña'},
                     {slug:'comunidad-valenciana', key:8, value:'/comunidad?comunidad=Valenciana', label:'Comunidad Valenciana'},
                     {slug:'extremadura', key:9, value:'/comunidad?comunidad=Extremadura', label:'Extremadura'},
