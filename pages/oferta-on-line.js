@@ -22,7 +22,7 @@ const EmailIcon = generateShareIcon('email')
 const OfertaOnLine =  (props) => (
     <Layout>
       <Head>
-        {props.ofertaonline.acf.nombre_del_establecimiento ? <title dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.nombre_del_establecimiento} + " - Familias Numerosas"} /> : ''}
+        {props.ofertaonline.acf.nombre_del_establecimiento ? <title dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.nombre_del_establecimiento + " - Familias Numerosas"} }/> : ''}
         {props.ofertaonline.acf.telefono ? <link rel="stylesheet" href="/static/custom.css" /> : '' }
 
         <meta property="og:url" content={`/oo/${props.ofertaonline.id}/${props.ofertaonline.slug}`} />
