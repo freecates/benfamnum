@@ -82,6 +82,14 @@ app.prepare()
     const queryParams = { id: req.params.comunidad }
     app.render(req, res, actualPage, queryParams )
   })
+
+  server.get('/c-ca/:id/:slug/:comunidad', (req, res) => {
+    const actualPage = '/category-comunidad'
+    const queryParams = { id: req.params.id }
+    const queryParamsS = { id: req.params.slug }
+    const queryParamsSS = { id: req.params.comunidad }
+    app.render(req, res, actualPage, queryParams, queryParamsS, queryParamsSS )
+  })
   
   server.get('/m-o-g-m/:id/:slug', (req, res) => {
     const actualPage = '/ofertas-de-la-marca'

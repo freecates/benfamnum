@@ -35,30 +35,31 @@ const PostsByCategory = (props) => (
 
         <div className='wrapper'>
 
-          <p className='align-center'>¿Dónde quieres disfrutar del beneficio? Selecciona la localidad</p>
+          <p className='align-center'>¿Dónde quieres disfrutar del beneficio? Selecciona la CA</p>
         
           <SelectCity
-           inputClass= 'city'
+           inputClass= 'comunidad'
            inputValue= 'Buscar el mejor descuento'
-           options={props.posts.reduce((ciutats, post) => {
-            if (post.localidad_del_beneficio == false) {
-              return ciutats
-            }
-             ciutats[post.localidad_del_beneficio.term_id] =
-              {
-                slug: post.localidad_del_beneficio.slug,
-                key: post.localidad_del_beneficio.term_id,
-                value: post.categoria_de_la_prestacion ? `/category-localidad?id=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad_del_beneficio.term_id}` : '',
-                label: post.categoria_de_la_prestacion ?  `${post.localidad_del_beneficio.name}` : ''
-              }
-              return ciutats
-        },[]).sort((a,b) => {
-          if (a.slug < b.slug)
-            return -1;
-          if (a.slug > b.slug)
-            return 1;
-          return 0;
-          })} />
+           options={[
+             {slug:'andalucia', key:0, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Andaluc`, label:'Andalucía'},
+             {slug:'aragon', key:1, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Aragon`, label:'Aragon'},
+             {slug:'asturias', key:2, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Asturias`, label:'Principado de Asturias'},
+             {slug:'balears', key:3, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Baleares`, label:'Islas Baleares'},
+             {slug:'canarias', key:4, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=canarias`, label:'Canarias'},
+             {slug:'cantabria', key:5, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Cantabria`, label:'Cantabria'},
+             {slug:'castilla-la-mancha', key:6, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Mancha`, label:'Castilla la Mancha'},
+             {slug:'castilla-y-leon', key:7, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Leon`, label:'Castilla y Leon'},
+             {slug:'catalunya', key:7, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Catalu`, label:'Cataluña'},
+             {slug:'comunidad-valenciana', key:8, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Valenciana`, label:'Comunidad Valenciana'},
+             {slug:'extremadura', key:9, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Extremadura`, label:'Extremadura'},
+             {slug:'galicia', key:10, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Galicia`, label:'Galicia'},
+             {slug:'la-rioja', key:11, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Rioja`, label:'La Rioja'},
+             {slug:'madrid', key:12, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Madrid`, label:'Comunidad de Madrid'},
+             {slug:'region-de-murcia', key:13, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Murcia`, label:'Región de Murcia'},
+             {slug:'navarra', key:14, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Navarra`, label:'Comunidad Foral de Navarra'},
+             {slug:'pais-vasco', key:15, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Vasco`, label:'País Vasco'},
+             {slug:'ceuta', key:16, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Ceuta`, label:'Ceuta'},
+             {slug:'melilla', key:17, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Melilla`, label:'Melilla'}]} />
         </div>
       </section>
 
