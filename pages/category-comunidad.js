@@ -105,6 +105,25 @@ const PostsByCategoryComunidad = (props) => (
         <IntlProvider defaultLocale='es'>
 
           <section>
+          {props.marcasofertas.length >= 1 ?
+          <ul className='gallery national-gallery'>
+              {props.marcasofertas.reduce((marcas, marcasoferta) => {
+                if (marcasoferta.marca == false) {
+                  return marcas
+                }
+                marcas[marcasoferta.marca.term_id] =
+                (
+                <span key={marcasoferta.marca.term_id}>            
+                <li className='benefit align-center'>
+                  <Link prefetch as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`} href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}>
+                    <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}><img src={'/static/' + marcasoferta.marca.slug +'-familias-numerosas.png'} /><br/> <span dangerouslySetInnerHTML={ {__html: marcasoferta.marca.name} } /></a>
+                  </Link>
+                </li>
+                </span>
+                )
+                return marcas
+            },[])}
+            </ul> :'' }
 
             <p className='align-center'>... O si lo prefieres accede directamente a cualquiera de las fichas</p>
 
@@ -137,6 +156,12 @@ const PostsByCategoryComunidad = (props) => (
         </IntlProvider>
       </section>
           <style jsx>{`
+          .national-gallery {
+            background:#eeeeee;
+            margin-top:1em!important;
+            margin-bottom:1em!important;
+            padding-top:.75em!important;
+          }
             @media screen and (min-width: 768px) {
                 .wrapper {
                 width: 80%;
@@ -256,12 +281,15 @@ const PostsByCategoryComunidad = (props) => (
 PostsByCategoryComunidad.getInitialProps = async function(context) {
   const { id } = context.query
   const { comunidad } = context.query
+  const { caid } = context.query
   const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}&comunidad=${comunidad}`)
   const posts = await res.json()
+  const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${id}&comunidad=${caid}&sim-model=id-marca`)
+  const marcasofertas = await res2.json()
 
-  console.log(`Posts data fetched. Count: ${posts.length}`)
+  console.log(`Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}`)
 
-  return { posts }
+  return { posts, marcasofertas }
 }
 
 export default PostsByCategoryComunidad

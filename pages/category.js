@@ -41,25 +41,25 @@ const PostsByCategory = (props) => (
            inputClass= 'comunidad'
            inputValue= 'Buscar el mejor descuento'
            options={[
-             {slug:'andalucia', key:0, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Andaluc`, label:'Andalucía'},
-             {slug:'aragon', key:1, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Aragon`, label:'Aragon'},
-             {slug:'asturias', key:2, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Asturias`, label:'Principado de Asturias'},
-             {slug:'balears', key:3, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Baleares`, label:'Islas Baleares'},
-             {slug:'canarias', key:4, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=canarias`, label:'Canarias'},
-             {slug:'cantabria', key:5, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Cantabria`, label:'Cantabria'},
-             {slug:'castilla-la-mancha', key:6, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Mancha`, label:'Castilla la Mancha'},
-             {slug:'castilla-y-leon', key:7, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Leon`, label:'Castilla y Leon'},
-             {slug:'catalunya', key:7, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Catalu`, label:'Cataluña'},
-             {slug:'comunidad-valenciana', key:8, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Valenciana`, label:'Comunidad Valenciana'},
-             {slug:'extremadura', key:9, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Extremadura`, label:'Extremadura'},
-             {slug:'galicia', key:10, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Galicia`, label:'Galicia'},
-             {slug:'la-rioja', key:11, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Rioja`, label:'La Rioja'},
-             {slug:'madrid', key:12, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Madrid`, label:'Comunidad de Madrid'},
-             {slug:'region-de-murcia', key:13, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Murcia`, label:'Región de Murcia'},
-             {slug:'navarra', key:14, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Navarra`, label:'Comunidad Foral de Navarra'},
-             {slug:'pais-vasco', key:15, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Vasco`, label:'País Vasco'},
-             {slug:'ceuta', key:16, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Ceuta`, label:'Ceuta'},
-             {slug:'melilla', key:17, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Melilla`, label:'Melilla'}]} />
+             {slug:'andalucia', key:8135, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Andaluc&caid=8135`, label:'Andalucía'},
+             {slug:'aragon', key:8136, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Aragon&caid=8136`, label:'Aragon'},
+             {slug:'asturias', key:8137, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Asturias&caid=8137`, label:'Principado de Asturias'},
+             {slug:'balears', key:9107, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Baleares&caid=9107`, label:'Islas Baleares'},
+             {slug:'canarias', key:8139, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=canarias&caid=8139`, label:'Canarias'},
+             {slug:'cantabria', key:8140, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Cantabria&caid=8140`, label:'Cantabria'},
+             {slug:'castilla-la-mancha', key:8141, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Mancha&caid=8141`, label:'Castilla la Mancha'},
+             {slug:'castilla-y-leon', key:8142, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Leon&caid=8142`, label:'Castilla y Leon'},
+             {slug:'catalunya', key:8143, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Catalu&caid=8143`, label:'Cataluña'},
+             {slug:'comunidad-valenciana', key:8151, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Valenciana&caid=8151`, label:'Comunidad Valenciana'},
+             {slug:'extremadura', key:8144, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Extremadura&caid=8144`, label:'Extremadura'},
+             {slug:'galicia', key:8145, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Galicia&caid=8145`, label:'Galicia'},
+             {slug:'la-rioja', key:8146, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Rioja&caid=8146`, label:'La Rioja'},
+             {slug:'madrid', key:8147, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Madrid&caid=8147`, label:'Comunidad de Madrid'},
+             {slug:'region-de-murcia', key:8148, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Murcia&caid=8148`, label:'Región de Murcia'},
+             {slug:'navarra', key:8149, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Navarra&caid=8149`, label:'Comunidad Foral de Navarra'},
+             {slug:'pais-vasco', key:8150, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Vasco&caid=8150`, label:'País Vasco'},
+             {slug:'ceuta', key:8152, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Ceuta&ciad=8152`, label:'Ceuta'},
+             {slug:'melilla', key:8153, value:`/category-comunidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=Melilla&caid=8153`, label:'Melilla'}]} />
         </div>
       </section>
 
