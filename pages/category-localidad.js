@@ -25,6 +25,27 @@ const PostsByCategoryLocalidad = (props) => (
       <h1>Beneficios de {props.posts[0].categoria_de_la_prestacion.name} en {props.posts[0].localidad_del_beneficio.name}</h1>
       <p className='align-center'><small><Link prefetch as={`/m-c-l/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`} href={`/mapa-category-localidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&localidad=${props.posts[0].localidad_del_beneficio.term_id}`}><a><img src='/static/icona-mapa-familias-numerosas.png' /> ver en el mapa</a></Link></small></p>
       <IntlProvider defaultLocale='es'>
+        <section>
+          {props.marcasofertas.length >= 1 ?
+          <ul className='gallery national-gallery'>
+              {props.marcasofertas.reduce((marcas, marcasoferta) => {
+                if (marcasoferta.marca == false) {
+                  return marcas
+                }
+                marcas[marcasoferta.marca.term_id] =
+                (
+                <span key={marcasoferta.marca.term_id}>            
+                <li className='benefit align-center'>
+                <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'>
+                  <Link prefetch as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`} href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}>
+                    <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}><img src={'/static/' + marcasoferta.marca.slug +'-familias-numerosas.png'} /><br/> <span dangerouslySetInnerHTML={ {__html: marcasoferta.marca.name} } /></a>
+                  </Link></p>)} />
+                </li>
+                </span>
+                )
+                return marcas
+            },[])}
+            </ul> :'' }
           <ul className='gallery'>
             {props.posts.map((post, index) => (
               <li className='benefit' key={index}>
@@ -48,10 +69,16 @@ const PostsByCategoryLocalidad = (props) => (
               </li>
             ))}
           </ul>
-
+        </section>
       </IntlProvider>
     </section>
         <style jsx>{`
+          .national-gallery {
+            background:#eeeeee;
+            margin-top:1em!important;
+            margin-bottom:1em!important;
+            padding-top:.75em!important;
+          }
           .breadcrumbs {
             margin-bottom:1em;
           }
@@ -160,10 +187,12 @@ PostsByCategoryLocalidad.getInitialProps = async function(context) {
   const { localidad } = context.query
   const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}&localidad=${localidad}`)
   const posts = await res.json()
+  const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${id}&localidad=${localidad}&sim-model=id-marca`)
+  const marcasofertas = await res2.json()
 
-  console.log(`Posts data fetched. Count: ${posts.length}`)
+  console.log(`Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}`)
 
-  return { posts }
+  return { posts, marcasofertas }
 }
 
 export default PostsByCategoryLocalidad

@@ -353,6 +353,15 @@ function ofertas_grandes_marc_idMarca($fields){
         );
 }
 
+function ofertas_grandes_marc_idMarcaComunidad($fields){
+    
+        return array(
+            "ID" => $fields["ID"],
+            "comunidad_autonoma" => $fields['comunidad_autonoma']
+            "marca" => $fields["marca"]
+        );
+}
+
 function ofertas_grandes_marc_nameIdSlugDescripcion_de_la_ofertaMarca($fields){
     
         return array(
