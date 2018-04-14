@@ -94,9 +94,9 @@ const OfertaOnLine =  (props) => (
               
               {props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios} }/> : '' }
              
-              {props.ofertaonline.acf.titulo_de_la_oferta_oferta_general ? <h4>{props.ofertaonline.acf.titulo_de_la_oferta_oferta_general}</h4> : '' }
+              {props.ofertaonline.acf.titulo_de_la_oferta_general_online ? <h4>{props.ofertaonline.acf.titulo_de_la_oferta_general_online}</h4> : '' }
               
-              {props.ofertaonline.acf.descripcion_de_la_oferta_oferta_general ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.descripcion_de_la_oferta_oferta_general} }/> : '' }
+              {props.ofertaonline.acf.descripcion_de_la_oferta_general_online ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.descripcion_de_la_oferta_general_online} }/> : '' }
 
               <div className='social-share-icons'>
 
