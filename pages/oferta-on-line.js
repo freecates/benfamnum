@@ -5,7 +5,6 @@ import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import FontAwesome from 'react-fontawesome'
 import {ShareButtons, ShareCounts, generateShareIcon} from 'react-share'
-import {IntlProvider, FormattedDate} from 'react-intl'
 
 const {
   FacebookShareButton,
@@ -87,10 +86,6 @@ const OfertaOnLine =  (props) => (
               /></span></h1> : ''}
               
               {props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios ? <h4>{props.ofertaonline.acf.titulo_de_la_oferta_online_exclusiva_socios}</h4> : '' }
-
-            <IntlProvider defaultLocale='es'>
-              <p><small><FormattedDate value={props.ofertaonline.date} day='numeric' month='long' year='numeric' /></small></p>
-            </IntlProvider>
               
               {props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.descripcion_de_la_oferta_online_exclusiva_socios} }/> : '' }
              
