@@ -22,6 +22,7 @@ const PostsByCategory = (props) => (
       <ul className="breadcrumbs">
         <li><Link prefetch href="/"><a>Inicio</a></Link></li>
         <li><Link prefetch href="/beneficios"><a>Ofertas para familias</a></Link></li>
+        <li><Link prefetch href="/ofertas-por-sectores"><a>Ofertas por sectores</a></Link></li>
         <li>
           <span className="show-for-sr">Actual: </span> {props.posts[0].categoria_de_la_prestacion.name} 
         </li>
