@@ -94,33 +94,16 @@ const PostsByCategory = (props) => (
                 return marcas
             },[])}
             </ul> :'' }
-
-          <p className='align-center'>... O si lo prefieres accede directamente a cualquiera de las fichas</p>
-
-          <ul className='gallery'>
-            {props.posts.map((post, index) => (
-              <li className='benefit' key={index}>
-                {post.imagen_destacada_de_la_oferta_general_thumb ? <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a title={'Ver la ficha de ' + post.name}><img className='fade-in' width='250' src={post.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_general} /></a></Link></p>)} /> : ''}
-
-                {post.imagen_destacada_de_la_oferta_socios_thumb ? <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a title={'Ver la ficha de ' + post.name}><img className='fade-in' width='250' src={post.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_socios} /><span className='label alert gallery-label'><small>EXCLUSIVO<br/> SOCIOS</small></span></a></Link></p>)} /> : ''}
-
-                <p><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
-                  <a title={'Ver la ficha de ' + post.name} dangerouslySetInnerHTML={ {__html: post.name} } />
-                </Link><br/>
-                {post.categoria_de_la_prestacion ?<small><Link prefetch as={`/c-l/${post.categoria_de_la_prestacion.term_id}/${post.categoria_de_la_prestacion.slug}/${post.localidad_del_beneficio.term_id}/${post.localidad_del_beneficio.slug}`} href={`/category-localidad?id=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad_del_beneficio.term_id}`}><a title={'Ver todos los beneficios de ' + post.categoria_de_la_prestacion.name + ' en ' + post.localidad_del_beneficio.name}><span dangerouslySetInnerHTML={ {__html: post.localidad_del_beneficio.name} } /></a></Link></small> : <small>{post.localidad_del_beneficio.name}</small>} <br/>
-
-                {post.titulo_de_la_oferta_oferta_general ?
-                <span className='titulo-oferta'>{post.titulo_de_la_oferta_oferta_general}</span> : '' }
-
-                {post.titulo_de_la_oferta_oferta_socios ?
-                <span className='titulo-oferta'>{post.titulo_de_la_oferta_oferta_socios}</span> : '' }
-
-                </p>
-              </li>
-            ))}
-          </ul>
         </section>
       </IntlProvider>
+        <section>
+        {props.ofertasonlines.length >= 1 ?
+          
+          <div className='promo'>
+          <p className='align-center'><span className='label alert file-label'><Link prefetch as={`/c-o-o/${props.ofertasonlines[0].categoria_de_la_oferta.term_id}/${props.ofertasonlines[0].categoria_de_la_oferta.slug}`} href={`/category-ofertas-on-line?id=${props.ofertasonlines[0].categoria_de_la_oferta.term_id}`}><a title={'Clica aquí para ver todas las ofertas online de ' + props.ofertasonlines[0].categoria_de_la_oferta.name}>Ver también ofertas on line de <br/>{props.ofertasonlines[0].categoria_de_la_oferta.name}</a></Link></span></p>
+        </div>
+         : ''}
+        </section>
     </section>
         <style jsx>{`
           .national-gallery {
@@ -139,6 +122,22 @@ const PostsByCategory = (props) => (
               .wrapper {
               width: 50%;
               }
+          }
+          .promo {
+            margin-top:2em;
+          }
+          .file-label {
+            background:#cc0033!important;
+            color:#ffffff;
+            font-weight:400;
+            font-size:1rem;
+            white-space:normal;
+          }
+          .file-label a {
+            color:#ffffff!important;
+          }
+          .file-label a:hover {
+            text-decoration:none;
           }
           .breadcrumbs {
             margin-bottom:1em;
@@ -249,10 +248,12 @@ PostsByCategory.getInitialProps = async function(context) {
   const posts = await res.json()
   const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${id}&sim-model=id-marca`)
   const marcasofertas = await res2.json()
+  const res3 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_online?categoria_de_la_oferta=${id}`)
+  const ofertasonlines = await res3.json()
 
-  console.log(`Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}`)
+  console.log(`Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${ofertasonlines.length}`)
 
-  return { posts, marcasofertas }
+  return { posts, marcasofertas, ofertasonlines }
 }
 
 export default PostsByCategory
