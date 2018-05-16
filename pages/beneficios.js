@@ -123,7 +123,7 @@ const Localidades = (props) => (
               position:absolute;
               text-align:center;
               top: 65px;
-              width: 100%
+              width: 100%;
               font-size:1em;
           }        
           .call-to-action .text-icona.city-text {

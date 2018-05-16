@@ -54,19 +54,19 @@ function chunks(app) {
 }
 
 function app() {
-	const app = {
-		buildId: fs.readFileSync(`${dotNext}/BUILD_ID`, 'utf8'),
-		precaches: []
-	}
+  const app = {
+    buildId: fs.readFileSync(`${dotNext}/BUILD_ID`, 'utf8'),
+    precaches: []
+  }
 
-	return loadJsonFile(`${dotNext}/build-stats.json`).then(stats => {
-		Object.keys(stats).map(src => {
-			// /_next/9265fa769281943ee96625770433e573/app.js
-			app.precaches.push(`/_next/${stats[src].hash}/${src}`)
-		})
+  return loadJsonFile(`${dotNext}/build-stats.json`).then(stats => {
+    Object.keys(stats).map(src => {
+      console.log(`/_next/${stats[src].hash}/${src}`)
+      //app.precaches.push(`/_next/${stats[src].hash}/${src}`)
+    })
 
-		return app
-	})
+    return app
+  })
 }
 
 const swSnippet = (precache) =>
