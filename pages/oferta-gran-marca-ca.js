@@ -38,7 +38,7 @@ const OfertaGranMarca =  (props) => (
         {props.ofertagranmarca.acf.nombre_del_establecimiento ? <title dangerouslySetInnerHTML={ {__html: props.ofertagranmarca._embedded['wp:term'][3][0].name + " - " + props.ofertagranmarca.acf.nombre_del_establecimiento + " - Familias Numerosas"} } /> : ''}
         {props.ofertagranmarca.acf.telefono ? <link rel="stylesheet" href="/static/custom.css" /> : '' }
 
-        <meta property="og:url" content={`/ogm/${props.ofertagranmarca.id}/${props.ofertagranmarca.slug}`} />
+        <meta property="og:url" content={`/ogmca/${props.ofertagranmarca.id}/${props.ofertagranmarca.slug}`} />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={props.ofertagranmarca.acf.nombre_del_establecimiento} />
         {props.ofertagranmarca.acf.descripcion_de_la_oferta ?
@@ -72,7 +72,7 @@ const OfertaGranMarca =  (props) => (
         <ul className="breadcrumbs">
           <li><Link prefetch href="/"><a>Inicio</a></Link></li>
           <li><Link prefetch href="/grandes-marcas"><a>Ofertas nacionales</a></Link></li>
-          <li><Link prefetch as={`/mm/${props.ofertagranmarca.marca}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`} href={`/mapa-de-la-marca?id=${props.ofertagranmarca.marca}`}><a>{props.ofertagranmarca._embedded['wp:term'][3][0].name}</a></Link></li>
+          <li><Link prefetch as={`/mmca/${props.ofertagranmarca.marca}/${props.ofertagranmarca._embedded['wp:term'][3][0].slug}`} href={`/mapa-de-la-marca-ca?id=${props.ofertagranmarca.marca}`}><a>{props.ofertagranmarca._embedded['wp:term'][3][0].name}</a></Link></li>
           <li>
             <span className="show-for-sr">Actual: </span> <span dangerouslySetInnerHTML={ {__html: props.ofertagranmarca.acf.nombre_del_establecimiento} } />
           </li>

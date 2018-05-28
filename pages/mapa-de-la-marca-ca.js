@@ -25,9 +25,7 @@ const markerStyle = {
 }
 
 const MarkerComponent = ({ text }) => <div style={markerStyle}>{text}</div>;
-
-const CENTER = [40.1301508,-1.8518527]
-const ZOOM = 6
+const ZOOM = 8
 
 const MapByMarcaCa = (props) => (
   <Layout>
@@ -50,7 +48,7 @@ const MapByMarcaCa = (props) => (
       
       <div style={{width: '100%', height: '500px'}}>     
        <GoogleMapReact
-          center={CENTER}
+          center={[parseFloat(`${props.markers[0].lat}`),parseFloat(`${props.markers[0].lon}`)]}
           zoom={ZOOM}
         >
         {props.markers.map((marker, index) => (
