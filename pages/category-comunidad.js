@@ -134,6 +134,25 @@ const PostsByCategoryComunidad = (props) => (
                 return marcas
             },[])}
             </ul> :'' }
+          {props.marcascaofertas.length >= 1 ?
+          <ul className='gallery national-gallery'>
+              {props.marcascaofertas.reduce((marcas, marcascaoferta) => {
+                if (marcascaoferta.marca == false) {
+                  return marcas
+                }
+                marcas[marcascaoferta.marca.term_id] =
+                (
+                <span key={marcascaoferta.marca.term_id}>            
+                <li className='benefit align-center'>
+                  <Link prefetch as={`/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`} href={`/ofertas-de-la-marca-ca?id=${marcascaoferta.marca.term_id}&caid=${marcascaoferta.comunidad_autonoma.term_id}`}>
+                    <a title={'Ver todas las ofertas de ' + marcascaoferta.marca.name}><img src={'/static/' + marcascaoferta.marca.slug +'-familias-numerosas.png'} /><br/> <span dangerouslySetInnerHTML={ {__html: marcascaoferta.marca.name} } /></a>
+                  </Link>
+                </li>
+                </span>
+                )
+                return marcas
+            },[])}
+            </ul> :'' }
 
             <p className='align-center'>... O si lo prefieres accede directamente a cualquiera de las fichas</p>
 
@@ -296,10 +315,12 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
   const posts = await res.json()
   const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${id}&comunidad=${caid}&sim-model=id-marca`)
   const marcasofertas = await res2.json()
+  const res3 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&categoria_de_la_of_gr_m_ca=${id}&comunidad=${caid}&sim-model=id-marca-comunidad`)
+  const marcascaofertas = await res3.json()
 
-  console.log(`Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}`)
+  console.log(`Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${marcascaofertas.length}`)
 
-  return { posts, marcasofertas }
+  return { posts, marcasofertas, marcascaofertas }
 }
 
 export default PostsByCategoryComunidad

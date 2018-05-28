@@ -229,7 +229,7 @@ const PostsByCategory = props => (
                 key: 8152,
                 value: `/category-comunidad?id=${
                   props.posts[0].categoria_de_la_prestacion.term_id
-                }&comunidad=Ceuta&ciad=8152`,
+                }&comunidad=Ceuta&caid=8152`,
                 label: 'Ceuta'
               },
               {
