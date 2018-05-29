@@ -276,6 +276,10 @@ const PostsByCategoryComunidad = (props) => (
             @media screen and (min-width: 1024px) {   
               .gallery {
                 width: 100%;
+              }  
+              .national-gallery.gallery {
+                width: 50%;
+                float:left;
               }
             .benefit {
                 width: 220px;

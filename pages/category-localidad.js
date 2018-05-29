@@ -46,6 +46,26 @@ const PostsByCategoryLocalidad = (props) => (
                 return marcas
             },[])}
             </ul> :'' }
+          {props.marcacasofertas.length >= 1 ?
+          <ul className='gallery national-gallery'>
+              {props.marcacasofertas.reduce((marcas, marcacasoferta) => {
+                if (marcacasoferta.marca == false) {
+                  return marcas
+                }
+                marcas[marcacasoferta.marca.term_id] =
+                (
+                <span key={marcacasoferta.marca.term_id}>            
+                <li className='benefit align-center'>
+                <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'>
+                  <Link prefetch as={`/m-o-g-m/${marcacasoferta.marca.term_id}/${marcacasoferta.marca.slug}`} href={`/ofertas-de-la-marca?id=${marcacasoferta.marca.term_id}`}>
+                    <a title={'Ver todas las ofertas de ' + marcacasoferta.marca.name}><img src={'/static/' + marcacasoferta.marca.slug +'-familias-numerosas.png'} /><br/> <span dangerouslySetInnerHTML={ {__html: marcacasoferta.marca.name} } /></a>
+                  </Link></p>)} />
+                </li>
+                </span>
+                )
+                return marcas
+            },[])}
+            </ul> :'' }
           <ul className='gallery'>
             {props.posts.map((post, index) => (
               <li className='benefit' key={index}>
@@ -153,6 +173,10 @@ const PostsByCategoryLocalidad = (props) => (
           @media screen and (min-width: 1024px) {   
             .gallery {
               width: 100%;
+            }  
+            .national-gallery.gallery {
+              width: 50%;
+              float:left;
             }
           .benefit {
               width: 220px;
@@ -179,6 +203,7 @@ const PostsByCategoryLocalidad = (props) => (
             }
           }
         `}</style>
+        <style jsx>{``}</style>
   </Layout>
 )
 
@@ -189,10 +214,21 @@ PostsByCategoryLocalidad.getInitialProps = async function(context) {
   const posts = await res.json()
   const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${id}&localidad=${localidad}&sim-model=id-marca`)
   const marcasofertas = await res2.json()
+  const res3 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&categoria_de_la_oferta_grande_marc=${id}&localidad=${localidad}&sim-model=id-marca`)
+  const marcacasofertas = await res3.json()
 
-  console.log(`Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}`)
+  console.log(`Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${marcacasofertas.length}`)
+  const marcasreduced = 
+  marcasofertas.reduce((marcas, marcasoferta) => {
+    if (marcasoferta.marca == false) {
+      console.log(`Les primeres ${marcas}`)
+      return marcas
+    }
+    console.log(`Les segones ${JSON.stringify(marcas)}`)
+    return marcas
+},[])
 
-  return { posts, marcasofertas }
+  return { posts, marcasofertas, marcacasofertas }
 }
 
 export default PostsByCategoryLocalidad

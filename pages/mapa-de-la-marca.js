@@ -32,20 +32,34 @@ const ZOOM = 6
 const MapByMarca = (props) => (
   <Layout>
     <Head>
-      <title>Ofertas de la Marca {props.markers[0].marca.name} para familias numerosas</title>
+      <title>Ofertas de la Marca {props.markers.length >= 1 ? props.markers[0].marca.name : ''}{props.camarkers.length >= 1 ? props.camarkers[0].marca.name : ''} para familias numerosas</title>
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li><Link prefetch href="/"><a>Inicio</a></Link></li>
         <li><Link prefetch href="/grandes-marcas"><a>Grandes Marcas</a></Link></li>
         <li>
-          <span className="show-for-sr">Actual: </span> {props.markers[0].marca.name} 
+          <span className="show-for-sr">Actual: </span> {props.markers.length >= 1 ? props.markers[0].marca.name : ''}{props.camarkers.length >= 1 ? props.camarkers[0].marca.name : ''} 
         </li>
       </ul>
     </nav>
     <section>
-    <h1><img src={'/static/' + props.markers[0].marca.slug +'-familias-numerosas.png'} /><br/>{props.markers[0].marca.name}</h1>
-    <p className='align-center'><small><Link prefetch as={`/m-o-g-m/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`} href={`/ofertas-de-la-marca?id=${props.markers[0].marca.term_id}`}><a>ver listado</a></Link></small></p>
+    {props.markers.length >= 1 ? (
+      <div>
+        <h1><img src={'/static/' + props.markers[0].marca.slug +'-familias-numerosas.png'} /><br/>{props.markers[0].marca.name}</h1>
+      <p className='align-center'><small><Link prefetch as={`/m-o-g-m/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`} href={`/ofertas-de-la-marca?id=${props.markers[0].marca.term_id}`}><a>ver listado</a></Link></small></p>
+      </div>
+    ) : (
+      ''
+    )}
+    {props.camarkers.length >= 1 ? (
+      <div>
+        <h1><img src={'/static/' + props.camarkers[0].marca.slug +'-familias-numerosas.png'} /><br/>{props.camarkers[0].marca.name}</h1>
+      <p className='align-center'><small><Link prefetch as={`/m-o-g-m/${props.camarkers[0].marca.term_id}/${props.camarkers[0].marca.slug}`} href={`/ofertas-de-la-marca?id=${props.camarkers[0].marca.term_id}`}><a>ver listado</a></Link></small></p>
+      </div>
+    ) : (
+      ''
+    )}
     <IntlProvider defaultLocale='es'>
       
       <div style={{width: '100%', height: '500px'}}>     
@@ -53,15 +67,36 @@ const MapByMarca = (props) => (
           center={CENTER}
           zoom={ZOOM}
         >
-        {props.markers.map((marker, index) => (
+        
+        {props.markers.length >= 1 ? (
+
+          props.markers.map((marker, index) => (
           
-          <MarkerComponent
-            key={index}
-            lat={marker.lat.includes(',') || marker.lat.includes('!') ? marker.lat.replace(',', '.') : marker.lat}
-            lng={marker.lon.includes(',') || marker.lon.includes('!') ? marker.lon.replace(',', '.') : marker.lon}
-            text={<Link prefetch as={`/ogm/${marker.ID}/${marker.slug}`} href={`/oferta-gran-marca?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + props.markers[0].marca.slug +'-familias-numerosas.png'} /></span></a></Link>}
-          />
-              ))}
+            <MarkerComponent
+              key={index}
+              lat={marker.lat.includes(',') || marker.lat.includes('!') ? marker.lat.replace(',', '.') : marker.lat}
+              lng={marker.lon.includes(',') || marker.lon.includes('!') ? marker.lon.replace(',', '.') : marker.lon}
+              text={<Link prefetch as={`/ogm/${marker.ID}/${marker.slug}`} href={`/oferta-gran-marca?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + props.markers[0].marca.slug +'-familias-numerosas.png'} /></span></a></Link>}
+            />
+                ))
+        ) : (
+          ''
+        )}
+        
+        {props.camarkers.length >= 1 ? (
+
+          props.camarkers.map((marker, index) => (
+          
+            <MarkerComponent
+              key={index}
+              lat={marker.lat.includes(',') || marker.lat.includes('!') ? marker.lat.replace(',', '.') : marker.lat}
+              lng={marker.lon.includes(',') || marker.lon.includes('!') ? marker.lon.replace(',', '.') : marker.lon}
+              text={<Link prefetch as={`/ogm/${marker.ID}/${marker.slug}`} href={`/oferta-gran-marca?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + props.camarkers[0].marca.slug +'-familias-numerosas.png'} /></span></a></Link>}
+            />
+                ))
+        ) : (
+          ''
+        )}
         </GoogleMapReact>
 
           </div>
@@ -157,10 +192,12 @@ MapByMarca.getInitialProps = async function(context) {
   const { id } = context.query
   const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?marca=${id}&sim-model=name-id-slug-lat-lon-marca`)
   const markers = await res.json()
+  const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/of_gr_m_ca?marca=${id}&sim-model=name-id-slug-lat-lon-marca`)
+  const camarkers = await res2.json()
 
-  console.log(`Markers data fetched. Count: ${markers.length}`)
+  console.log(`Markers data fetched. Count: ${markers.length}, ${camarkers.length}`)
 
-  return { markers }
+  return { markers , camarkers }
 }
 
 export default MapByMarca
