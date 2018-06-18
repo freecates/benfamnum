@@ -595,6 +595,12 @@ const PostsByCategoryComunidad = props => (
             .breadcrumbs {
               margin-bottom: 1em;
             }
+            .dk {
+              display: none;
+            }
+            .promo {
+              margin-top: 1em;
+            }
             h1,
             .align-center {
               text-align: center;
@@ -662,6 +668,12 @@ const PostsByCategoryComunidad = props => (
               .benefit {
                 width: 200px;
                 margin: 7.5px;
+              }
+              .dk {
+                display: block;
+              }
+              .mb {
+                display: none;
               }
             }
             @media screen and (min-width: 1024px) {
