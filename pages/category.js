@@ -16,6 +16,9 @@ const SelectCity = dynamic(import('../components/SelectCity'), {
   )
 })
 
+const today = Date.now()
+const todayISO = new Date(today).toISOString()
+
 const PostsByCategory = props => (
   <Layout>
     <Head>
@@ -48,6 +51,29 @@ const PostsByCategory = props => (
       </ul>
     </nav>
     <section>
+      {props.banners[0].acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
+      props.banners[0].acf.la_publicidad_es_de_ca != true ? (
+        <React.Fragment>
+          <p className="align-center promo dk">
+            <Link href={props.banners[0].acf.url_de_destino_del_banner}>
+              <a target="_blank">
+                <img
+                  src={props.banners[0].acf.banner_grande_728x90.sizes.large}
+                />
+              </a>
+            </Link>
+          </p>
+          <p className="align-center promo mb">
+            <Link href={props.banners[0].acf.url_de_destino_del_banner}>
+              <a target="_blank">
+                <img src={props.banners[0].acf.baner_movil.sizes.large} />
+              </a>
+            </Link>
+          </p>
+        </React.Fragment>
+      ) : (
+        ''
+      )}
       <h1>
         <img
           src={
@@ -348,27 +374,31 @@ const PostsByCategory = props => (
         </section>
       </IntlProvider>
       <section>
-        <hr/>
+        <hr />
         {props.ofertasonlines.length >= 1 ? (
           <div className="promo">
-            <p className="align-center">Si lo prefiere, también puede ver las <Link
-                  prefetch
-                  as={`/c-o-o/${
-                    props.ofertasonlines[0].categoria_de_la_oferta.term_id
-                  }/${props.ofertasonlines[0].categoria_de_la_oferta.slug}`}
-                  href={`/category-ofertas-on-line?id=${
-                    props.ofertasonlines[0].categoria_de_la_oferta.term_id
-                  }`}
+            <p className="align-center">
+              Si lo prefiere, también puede ver las{' '}
+              <Link
+                prefetch
+                as={`/c-o-o/${
+                  props.ofertasonlines[0].categoria_de_la_oferta.term_id
+                }/${props.ofertasonlines[0].categoria_de_la_oferta.slug}`}
+                href={`/category-ofertas-on-line?id=${
+                  props.ofertasonlines[0].categoria_de_la_oferta.term_id
+                }`}
+              >
+                <a
+                  className="label alert file-label"
+                  title={
+                    'Clica aquí para ver todas las ofertas online de ' +
+                    props.ofertasonlines[0].categoria_de_la_oferta.name
+                  }
                 >
-                  <a className='label alert file-label'
-                    title={
-                      'Clica aquí para ver todas las ofertas online de ' +
-                      props.ofertasonlines[0].categoria_de_la_oferta.name
-                    }
-                  >
-                    ofertas on line de {props.ofertasonlines[0].categoria_de_la_oferta.name}
-                  </a>
-                </Link>
+                  ofertas on line de{' '}
+                  {props.ofertasonlines[0].categoria_de_la_oferta.name}
+                </a>
+              </Link>
             </p>
           </div>
         ) : (
@@ -383,10 +413,19 @@ const PostsByCategory = props => (
         margin-bottom: 1em !important;
         padding-top: 0.75em !important;
       }
+      .dk {
+        display: none;
+      }
       @media screen and (min-width: 768px) {
         .wrapper {
           width: 80%;
           margin: 0 auto;
+        }
+        .dk {
+          display: block;
+        }
+        .mb {
+          display: none;
         }
       }
       @media screen and (min-width: 1024px) {
@@ -395,19 +434,19 @@ const PostsByCategory = props => (
         }
       }
       .promo {
-        margin-top: 2em;
+        margin-top: 1em;
       }
       .file-label {
         background: #cc0033 !important;
         color: #ffffff;
         font-weight: 400;
-        font-size: .9rem;
+        font-size: 0.9rem;
         white-space: normal;
       }
       .file-label:hover {
-        background:#960025 !important;
+        background: #960025 !important;
         text-decoration: none;
-        cursor:pointer;
+        cursor: pointer;
       }
       .breadcrumbs {
         margin-bottom: 1em;
@@ -519,22 +558,29 @@ PostsByCategory.getInitialProps = async function(context) {
     `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}`
   )
   const posts = await res.json()
+
   const res2 = await fetch(
     `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${id}&sim-model=id-marca`
   )
   const marcasofertas = await res2.json()
+
   const res3 = await fetch(
     `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_online?categoria_de_la_oferta=${id}`
   )
   const ofertasonlines = await res3.json()
 
+  const res4 = await fetch(
+    `https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/banners`
+  )
+  const banners = await res4.json()
+
   console.log(
     `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${
       ofertasonlines.length
-    }`
+    }, ${banners.length}`
   )
 
-  return { posts, marcasofertas, ofertasonlines }
+  return { posts, marcasofertas, ofertasonlines, banners }
 }
 
 export default PostsByCategory

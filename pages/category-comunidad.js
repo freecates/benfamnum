@@ -16,6 +16,9 @@ const SelectCity = dynamic(import('../components/SelectCity'), {
   )
 })
 
+const today = Date.now()
+const todayISO = new Date(today).toISOString()
+
 const PostsByCategoryComunidad = props => (
   <section>
     {props.posts.length == 0 ? (
@@ -116,6 +119,31 @@ const PostsByCategoryComunidad = props => (
           </ul>
         </nav>
         <section>
+          {props.banners[0].acf.fecha_de_finalizaciion_de_la_promocion >
+            todayISO && props.banners[0].acf.la_publicidad_es_de_ca == true  && props.banners[0].comunidad == props.caid ? (
+            <React.Fragment>
+              <p className="align-center promo dk">
+                <Link href={props.banners[0].acf.url_de_destino_del_banner}>
+                  <a target="_blank">
+                    <img
+                      src={
+                        props.banners[0].acf.banner_grande_728x90.sizes.large
+                      }
+                    />
+                  </a>
+                </Link>
+              </p>
+              <p className="align-center promo mb">
+                <Link href={props.banners[0].acf.url_de_destino_del_banner}>
+                  <a target="_blank">
+                    <img src={props.banners[0].acf.baner_movil.sizes.large} />
+                  </a>
+                </Link>
+              </p>
+            </React.Fragment>
+          ) : (
+            ''
+          )}
           <h1>
             <img
               src={
@@ -452,6 +480,12 @@ const PostsByCategoryComunidad = props => (
             .align-center {
               text-align: center;
             }
+            .dk {
+              display: none;
+            }
+            .promo {
+              margin-top: 1em;
+            }
             h1 {
               color: #391f92;
             }
@@ -515,6 +549,12 @@ const PostsByCategoryComunidad = props => (
               .benefit {
                 width: 200px;
                 margin: 7.5px;
+              }
+              .dk {
+                display: block;
+              }
+              .mb {
+                display: none;
               }
             }
             @media screen and (min-width: 1024px) {
@@ -668,16 +708,21 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
   )
   const marcascaofertas = await res3.json()
 
+  const res4 = await fetch(
+    `https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/banners`
+  )
+  const banners = await res4.json()
+
   console.log(
     `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${
       marcascaofertas.length
-    }`
+    }, ${banners.length}`
   )
   const uniquemarcas = [
     ...new Set(marcasofertas.map(({ marca }) => marca.name))
   ]
 
-  return { posts, marcasofertas, marcascaofertas, uniquemarcas }
+  return { posts, marcasofertas, marcascaofertas, uniquemarcas, banners, caid }
 }
 
 export default PostsByCategoryComunidad
