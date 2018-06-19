@@ -91,7 +91,8 @@ app
     server.get('/ca/:comunidad', (req, res) => {
       const actualPage = '/comunidad'
       const queryParams = { id: req.params.comunidad }
-      app.render(req, res, actualPage, queryParams)
+      const queryParamsS = { id: req.params.caid }
+      app.render(req, res, actualPage, queryParams, queryParamsS)
     })
 
     server.get('/c-ca/:id/:slug/:comunidad/:caid', (req, res) => {

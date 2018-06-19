@@ -5,6 +5,9 @@ import fetch from 'isomorphic-unfetch'
 import Observer from 'react-intersection-observer'
 import {IntlProvider, FormattedDate} from 'react-intl'
 
+const today = Date.now()
+const todayISO = new Date(today).toISOString()
+
 const PostsByLocalidad = (props) => (
   <Layout>
     <Head>
@@ -21,6 +24,31 @@ const PostsByLocalidad = (props) => (
       </ul>
     </nav>
     <section>
+          {props.banners[0].acf.fecha_de_finalizaciion_de_la_promocion >
+            todayISO && props.banners[0].acf.la_publicidad_es_de_ca == true  && props.banners[0].acf.comunidad_autonoma.name == props.posts[0].comunidad_autonoma ? (
+            <React.Fragment>
+              <p className="align-center promo dk">
+                <Link href={props.banners[0].acf.url_de_destino_del_banner}>
+                  <a target="_blank">
+                    <img
+                      src={
+                        props.banners[0].acf.banner_grande_728x90.sizes.large
+                      }
+                    />
+                  </a>
+                </Link>
+              </p>
+              <p className="align-center promo mb">
+                <Link href={props.banners[0].acf.url_de_destino_del_banner}>
+                  <a target="_blank">
+                    <img src={props.banners[0].acf.baner_movil.sizes.large} />
+                  </a>
+                </Link>
+              </p>
+            </React.Fragment>
+          ) : (
+            ''
+          )}
       <h1>Beneficios en {props.posts[0].localidad_del_beneficio.name}</h1>
       <p className='align-center'><small><Link prefetch as={`/m-l/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`} href={`/mapa-localidad?localidad=${props.posts[0].localidad_del_beneficio.term_id}`}><a><img src='/static/icona-mapa-familias-numerosas.png' /> ver en el mapa</a></Link></small></p>
       <IntlProvider defaultLocale='es'>
@@ -87,6 +115,12 @@ const PostsByLocalidad = (props) => (
           h1 {
             color:#391f92;
           }
+          .dk {
+            display: none;
+          }
+          .promo {
+            margin-top: 1em;
+          }
           .gallery {
             display: -ms-flexbox;
             display: flex;
@@ -148,6 +182,12 @@ const PostsByLocalidad = (props) => (
               width: 200px;
               margin: 7.5px;
             }
+            .dk {
+              display: block;
+            }
+            .mb {
+              display: none;
+            }
           }
           @media screen and (min-width: 1024px) {   
             .gallery {
@@ -187,10 +227,14 @@ PostsByLocalidad.getInitialProps = async function(context) {
   const posts = await res.json()
   const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&localidad=${localidad}`)
   const marcasofertas = await res2.json()
+  const res3 = await fetch(
+    `https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/banners`
+  )
+  const banners = await res3.json()
 
-  console.log(`Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}`)
+  console.log(`Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${banners.length}`)
 
-  return { posts, marcasofertas }
+  return { posts, marcasofertas, banners }
 }
 
 export default PostsByLocalidad
