@@ -50,6 +50,9 @@ const MapByCategory = (props) => (
       
       <div style={{width: '100%', height: '500px'}}>     
        <GoogleMapReact
+          bootstrapURLKeys={{
+            key: 'AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90'
+          }}
           center={CENTER}
           zoom={ZOOM}
         >

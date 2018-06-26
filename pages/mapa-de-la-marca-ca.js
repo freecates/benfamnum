@@ -83,6 +83,9 @@ const MapByMarcaCa = props => (
       <IntlProvider defaultLocale="es">
         <div style={{ width: '100%', height: '500px' }}>
           <GoogleMapReact
+            bootstrapURLKeys={{
+              key: 'AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90'
+            }}
             center={[
               parseFloat(`${props.markers[0].lat}`),
               parseFloat(`${props.markers[0].lon}`)

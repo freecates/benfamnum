@@ -50,6 +50,9 @@ const MapByLocalidad = (props) => (
       
       <div style={{width: '100%', height: '500px'}}>     
        <GoogleMapReact
+          bootstrapURLKeys={{
+            key: 'AIzaSyCpb701GdEKst5BwD_bw7gzIc7vR65_f90'
+          }}
           center={[props.markers[0].lat.includes(',') || props.markers[0].lat.includes('!') ? 40.1301508 : Number(props.markers[0].lat), props.markers[0].lon.includes(',') || props.markers[0].lon.includes('!') ? -1.8518527 : Number(props.markers[0].lon)]}
           zoom={ZOOM}
         >
