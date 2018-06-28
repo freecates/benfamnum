@@ -50,8 +50,7 @@ const PostsByCategoryComunidad = props => (
         </nav>
         <section>
           <h1>
-            Actualmente no existen ofertas para familias de este sector en esta
-            Comunidad
+          Actualmente no existen ofertas con empresas locales de esta Comunidad para este sector
           </h1>
           <p className="align-center">
             Por favor, escoge{' '}
@@ -61,7 +60,7 @@ const PostsByCategoryComunidad = props => (
           </p>
               {props.uniquemarcas.length >= 1 ? (
                 <React.Fragment>
-              <p className="align-center">Si lo prefieres puedes consultar las ofertas nacionales de <strong>{props.marcasofertas[0].categoria_del_beneficio.name}</strong> en <strong>{props.marcasofertas[0].comunidad_autonoma.name}</strong>.</p>
+              <h3 className="align-center">Si lo prefieres puedes consultar las ofertas nacionales de <strong>{props.marcasofertas[0].categoria_del_beneficio.name}</strong> en <strong>{props.marcasofertas[0].comunidad_autonoma.name}</strong>.</h3>
                 <ul className="gallery national-gallery">
                   {props.marcasofertas.reduce((marcas, marcasoferta) => {
                     if (marcasoferta.marca == false) {
