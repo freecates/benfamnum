@@ -56,13 +56,72 @@ const PostsByCategoryComunidad = props => (
           <p className="align-center">
             Por favor, escoge{' '}
             <Link prefetch href="/ofertas-por-sectores">
-              <a>otro</a>
+              <a>otro sector</a>
             </Link>.
           </p>
+              {props.uniquemarcas.length >= 1 ? (
+                <React.Fragment>
+              <p className="align-center">Si lo prefieres puedes consultar las ofertas nacionales de <strong>{props.marcasofertas[0].categoria_del_beneficio.name}</strong> en <strong>{props.marcasofertas[0].comunidad_autonoma.name}</strong>.</p>
+                <ul className="gallery national-gallery">
+                  {props.marcasofertas.reduce((marcas, marcasoferta) => {
+                    if (marcasoferta.marca == false) {
+                      return marcas
+                    }
+                    marcas[marcasoferta.marca.term_id] = (
+                      <span key={marcasoferta.marca.term_id}>
+                        <li className="benefit align-center">
+                          <Link
+                            prefetch
+                            as={`/m-o-g-m/${marcasoferta.marca.term_id}/${
+                              marcasoferta.marca.slug
+                            }`}
+                            href={`/ofertas-de-la-marca?id=${
+                              marcasoferta.marca.term_id
+                            }`}
+                          >
+                            <a
+                              title={
+                                'Ver todas las ofertas de ' +
+                                marcasoferta.marca.name
+                              }
+                            >
+                              <img
+                                src={
+                                  '/static/' +
+                                  marcasoferta.marca.slug +
+                                  '-familias-numerosas.png'
+                                }
+                              />
+                              <br />{' '}
+                              <span
+                                dangerouslySetInnerHTML={{
+                                  __html: marcasoferta.marca.name
+                                }}
+                              />
+                            </a>
+                          </Link>
+                        </li>
+                      </span>
+                    )
+                    return marcas
+                  }, [])}
+                </ul>
+                </React.Fragment>
+              ) : (
+                ''
+              )}
         </section>
         <style jsx>{`
           .breadcrumbs {
             margin-bottom: 1em;
+          }
+          .national-gallery {
+            background: #eeeeee;
+            margin-top: 1em !important;
+            padding-top: 0.75em !important;
+          }
+          .national-gallery:last-child {
+            margin-bottom: 1em !important;
           }
           h1,
           .align-center {
@@ -76,6 +135,82 @@ const PostsByCategoryComunidad = props => (
           }
           nav a {
             color: #3f3fff;
+          }
+          .gallery {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            padding: 5px;
+          }
+          ul {
+            list-style-type: none;
+            margin-left: 0;
+            margin: 0 auto !important;
+          }
+          nav a {
+            color: #3f3fff;
+          }
+          .benefit {
+            width: 150px;
+          }
+          .gallery-label {
+            position: relative;
+            margin-top: -40px;
+            margin-right: 5px;
+            float: right;
+            text-align: center;
+            background: #cc0033 !important;
+          }
+          .titulo-oferta {
+            color: #ff0000;
+          }
+          @media screen and (min-width: 320px) {
+            .gallery {
+              width: 100%;
+            }
+            .benefit {
+              margin: 5px;
+            }
+          }
+          @media screen and (max-width: 375px) {
+            .benefit {
+              width: 124px;
+            }
+          }
+          @media screen and (min-width: 360px) {
+            .gallery {
+              width: 90%;
+            }
+          }
+          @media screen and (min-width: 768px) {
+            .gallery {
+              width: 90%;
+            }
+            .benefit {
+              width: 200px;
+              margin: 7.5px;
+            }
+          }
+          @media screen and (min-width: 1024px) {
+            .gallery {
+              width: 100%;
+            }
+            .benefit {
+              width: 220px;
+              margin: 0 10px;
+            }
+          }
+          @media screen and (min-width: 1160px) {
+            .benefit {
+              width: 245px;
+            }
+          }
+          .fade-in {
+            animation-name: fadeIn;
+            animation-duration: 1.3s;
+            animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+            animation-fill-mode: forwards;
           }
         `}</style>
       </Layout>

@@ -125,8 +125,8 @@ const Post =  (props) => (
               name='facebook-square'
               size='1x'
               style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#666666' }}
-            /></a></span> : '' } {props.post.acf.sitio_web_del_establecimiento ? <span>| <Link href={props.post.acf.sitio_web_del_establecimiento}><a><FontAwesome
-            name='external-link-square'
+            /></a></span> : '' } {props.post.acf.sitio_web_del_establecimiento ? <span>| <Link href={props.post.acf.sitio_web_del_establecimiento}><a title='Visita la web'><FontAwesome
+            name='globe'
             size='1x'
             style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#666666' }}
           /></a></Link></span> : '' }</span></h4>

@@ -28,7 +28,7 @@ const Footer = () => (
                 </p>
               </div>
           </div>
-          <p className='grey'>Federación Española de Familias Numerosas &#169; 2017
+          <p className='grey'>Federación Española de Familias Numerosas &#169; 2018
           <Link prefetch href="/aviso-legal">
             <a title='Aviso legal' style={linkStyle}>Aviso Legal</a>
           </Link>
