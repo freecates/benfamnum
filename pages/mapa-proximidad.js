@@ -166,7 +166,7 @@ const MapByCategory = (props) => (
         nav a {
           color:#3f3fff;
         }
-        .benefit {/c-l/8/moda/Talavera%20de%20la%20Reina
+        .benefit {
           width: 150px;
         }
         .gallery-label {

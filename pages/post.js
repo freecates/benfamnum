@@ -112,7 +112,7 @@ const Post =  (props) => (
            
             <h4 className='location dont-break-out'><span><span dangerouslySetInnerHTML={ {__html:props.post.acf.direccion} }/>. <span>{props.post.acf.codigo_postal}</span>, <Link prefetch as={`/l/${props.post.acf.localidad_del_beneficio.term_id}/${props.post.acf.localidad_del_beneficio.slug}`} href={`/localidad?localidad=${props.post.acf.localidad_del_beneficio.term_id}`}><a title={'Ver todos los beneficios de ' + props.post.acf.localidad_del_beneficio.name}><span dangerouslySetInnerHTML={ {__html: props.post.acf.localidad_del_beneficio.name} } /></a></Link></span></h4>
             <h4 className='location dont-break-out'><span> 
-            {props.post.acf.telefono ? <span><a href={'tel:' + props.post.acf.telefono}>{props.post.acf.telefono}</a></span> : ''}
+            {props.post.acf.telefono ? <span><a href={'tel:' + props.post.acf.telefono}>{props.post.acf.telefono}</a></span> : ''}{props.post.acf.telefono_m ? <span> | <a href={'tel:' + props.post.acf.telefono_}>{props.post.acf.telefono_m}</a></span> : ''}
             {props.post.acf.correo_electronico_del_establecimiento ?  <span>. <a href={'mailto:' + props.post.acf.correo_electronico_del_establecimiento}><FontAwesome
                 name='envelope'
                 size='1x'
@@ -167,6 +167,10 @@ const Post =  (props) => (
               {props.post.acf.titulo_de_la_oferta_oferta_general ? <h4>{props.post.acf.titulo_de_la_oferta_oferta_general}</h4> : '' }
               
               {props.post.acf.descripcion_de_la_oferta_oferta_general ? <p className='dont-break-out' dangerouslySetInnerHTML={ {__html: props.post.acf.descripcion_de_la_oferta_oferta_general} }/> : '' }
+              
+              {props.post.acf.texto_descriptivo_adicional_con_enlace ? <p> <Link href={props.post.acf.enlace_con_informacion_adicional_de_la_oferta}><a title={props.post.acf.texto_descriptivo_adicional_con_enlace} target='_blank'><span className='label alert file-label-additional'>{props.post.acf.texto_descriptivo_adicional_con_enlace}</span></a></Link></p> : '' }
+
+
 
               <div className='social-share-icons'>
 
@@ -239,19 +243,26 @@ const Post =  (props) => (
         a {
           color:#3f3fff!important;
         }
-        .file-label {
+        .file-label, .file-label-additional {
           background:#cc0033!important;
           color:#ffffff;
           font-weight:bold;
           font-size:1rem;
           white-space:normal;
         }
-        a .file-label  {
+        .file-label-additional {
+          background:#e0e4e8!important;
+          color:#000000!important;
+        }
+        a .file-label, a .file-label-additional  {
           color:#ffffff!important;
           cursor:pointer;
         }
-        a:hover .file-label {
+        a:hover .file-label, a:hover .file-label-additional {
           text-decoration:none;
+        }
+        a .file-label-additional  {
+          color:#000000!important;
         }
         .margin-invert {
           margin-bottom:2rem;
