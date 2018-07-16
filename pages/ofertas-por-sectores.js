@@ -24,7 +24,7 @@ const OfertasPorSectores = (props) => (
           <ul className='gallery'>
           {props.ofertasporsectores.map((ofertasporsectore, index) => (           
             <li className='item' key={index}>
-              <Link prefetch as={`/c/${ofertasporsectore.term_id}/${ofertasporsectore.slug}`} href={`/category?id=${ofertasporsectore.term_id}`}>
+              <Link prefetch as={`/c/${ofertasporsectore.term_id}/${ofertasporsectore.slug}`} href={`/category?sid=${ofertasporsectore.term_id}`}>
                 <h3><a title={'Clica aquí para ver todas las ofertas de ' + ofertasporsectore.name}><img src={'/static/' + ofertasporsectore.slug +'-familias-numerosas.png'} width='64'/> <span dangerouslySetInnerHTML={ {__html: ofertasporsectore.name} } /></a></h3>
               </Link>
             </li>

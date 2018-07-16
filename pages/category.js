@@ -51,29 +51,34 @@ const PostsByCategory = props => (
       </ul>
     </nav>
     <section>
-      {props.banners[0].acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
-      props.banners[0].acf.la_publicidad_es_de_ca != true ? (
-        <React.Fragment>
-          <p className="align-center promo dk">
-            <Link href={props.banners[0].acf.url_de_destino_del_banner}>
-              <a target="_blank">
-                <img
-                  src={props.banners[0].acf.banner_grande_728x90.sizes.large}
-                />
-              </a>
-            </Link>
-          </p>
-          <p className="align-center promo mb">
-            <Link href={props.banners[0].acf.url_de_destino_del_banner}>
-              <a target="_blank">
-                <img src={props.banners[0].acf.baner_movil.sizes.large} />
-              </a>
-            </Link>
-          </p>
-        </React.Fragment>
-      ) : (
-        ''
-      )}
+      <div>
+        {props.banners.map((banner, index) => (
+          <React.Fragment key={index}>
+            {banner.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
+            banner.acf.la_publicidad_es_de_ca != true &&
+            banner.acf.sector_del_banner.term_id == props.sid ? (
+              <React.Fragment>
+                <p className="align-center promo dk">
+                  <Link href={banner.acf.url_de_destino_del_banner}>
+                    <a target="_blank">
+                      <img src={banner.acf.banner_grande_728x90.sizes.large} />
+                    </a>
+                  </Link>
+                </p>
+                <p className="align-center promo mb">
+                  <Link href={banner.acf.url_de_destino_del_banner}>
+                    <a target="_blank">
+                      <img src={banner.acf.baner_movil_320x100.sizes.large} />
+                    </a>
+                  </Link>
+                </p>
+              </React.Fragment>
+            ) : (
+              ''
+            )}
+          </React.Fragment>
+        ))}
+      </div>
       <h1>
         <img
           src={
@@ -117,7 +122,7 @@ const PostsByCategory = props => (
               {
                 slug: 'andalucia',
                 key: 8135,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Andaluc&caid=8135`,
                 label: 'Andalucía'
@@ -125,7 +130,7 @@ const PostsByCategory = props => (
               {
                 slug: 'aragon',
                 key: 8136,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Aragon&caid=8136`,
                 label: 'Aragon'
@@ -133,7 +138,7 @@ const PostsByCategory = props => (
               {
                 slug: 'asturias',
                 key: 8137,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Asturias&caid=8137`,
                 label: 'Principado de Asturias'
@@ -141,7 +146,7 @@ const PostsByCategory = props => (
               {
                 slug: 'balears',
                 key: 9107,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Baleares&caid=9107`,
                 label: 'Islas Baleares'
@@ -149,7 +154,7 @@ const PostsByCategory = props => (
               {
                 slug: 'canarias',
                 key: 8139,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=canarias&caid=8139`,
                 label: 'Canarias'
@@ -157,7 +162,7 @@ const PostsByCategory = props => (
               {
                 slug: 'cantabria',
                 key: 8140,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Cantabria&caid=8140`,
                 label: 'Cantabria'
@@ -165,7 +170,7 @@ const PostsByCategory = props => (
               {
                 slug: 'castilla-la-mancha',
                 key: 8141,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Mancha&caid=8141`,
                 label: 'Castilla la Mancha'
@@ -173,7 +178,7 @@ const PostsByCategory = props => (
               {
                 slug: 'castilla-y-leon',
                 key: 8142,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Leon&caid=8142`,
                 label: 'Castilla y Leon'
@@ -181,7 +186,7 @@ const PostsByCategory = props => (
               {
                 slug: 'catalunya',
                 key: 8143,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Catalu&caid=8143`,
                 label: 'Cataluña'
@@ -189,7 +194,7 @@ const PostsByCategory = props => (
               {
                 slug: 'comunidad-valenciana',
                 key: 8151,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Valenciana&caid=8151`,
                 label: 'Comunidad Valenciana'
@@ -197,7 +202,7 @@ const PostsByCategory = props => (
               {
                 slug: 'extremadura',
                 key: 8144,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Extremadura&caid=8144`,
                 label: 'Extremadura'
@@ -205,7 +210,7 @@ const PostsByCategory = props => (
               {
                 slug: 'galicia',
                 key: 8145,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Galicia&caid=8145`,
                 label: 'Galicia'
@@ -213,7 +218,7 @@ const PostsByCategory = props => (
               {
                 slug: 'la-rioja',
                 key: 8146,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Rioja&caid=8146`,
                 label: 'La Rioja'
@@ -221,7 +226,7 @@ const PostsByCategory = props => (
               {
                 slug: 'madrid',
                 key: 8147,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Madrid&caid=8147`,
                 label: 'Comunidad de Madrid'
@@ -229,7 +234,7 @@ const PostsByCategory = props => (
               {
                 slug: 'region-de-murcia',
                 key: 8148,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Murcia&caid=8148`,
                 label: 'Región de Murcia'
@@ -237,7 +242,7 @@ const PostsByCategory = props => (
               {
                 slug: 'navarra',
                 key: 8149,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Navarra&caid=8149`,
                 label: 'Comunidad Foral de Navarra'
@@ -245,7 +250,7 @@ const PostsByCategory = props => (
               {
                 slug: 'pais-vasco',
                 key: 8150,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Vasco&caid=8150`,
                 label: 'País Vasco'
@@ -253,7 +258,7 @@ const PostsByCategory = props => (
               {
                 slug: 'ceuta',
                 key: 8152,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Ceuta&caid=8152`,
                 label: 'Ceuta'
@@ -261,7 +266,7 @@ const PostsByCategory = props => (
               {
                 slug: 'melilla',
                 key: 8153,
-                value: `/category-comunidad?id=${
+                value: `/category-comunidad?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }&comunidad=Melilla&caid=8153`,
                 label: 'Melilla'
@@ -553,24 +558,24 @@ const PostsByCategory = props => (
 )
 
 PostsByCategory.getInitialProps = async function(context) {
-  const { id } = context.query
+  const { sid } = context.query
   const res = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}`
+    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}`
   )
   const posts = await res.json()
 
   const res2 = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${id}&sim-model=id-marca`
+    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${sid}&sim-model=id-marca`
   )
   const marcasofertas = await res2.json()
 
   const res3 = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_online?categoria_de_la_oferta=${id}`
+    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_online?categoria_de_la_oferta=${sid}`
   )
   const ofertasonlines = await res3.json()
 
   const res4 = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/banners`
+    `https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/banners_sectoriales`
   )
   const banners = await res4.json()
 
@@ -580,7 +585,7 @@ PostsByCategory.getInitialProps = async function(context) {
     }, ${banners.length}`
   )
 
-  return { posts, marcasofertas, ofertasonlines, banners }
+  return { posts, marcasofertas, ofertasonlines, banners, sid }
 }
 
 export default PostsByCategory

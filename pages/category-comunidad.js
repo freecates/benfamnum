@@ -253,31 +253,34 @@ const PostsByCategoryComunidad = props => (
           </ul>
         </nav>
         <section>
-          {props.banners[0].acf.fecha_de_finalizaciion_de_la_promocion >
-            todayISO && props.banners[0].acf.la_publicidad_es_de_ca == true  && props.banners[0].comunidad == props.caid ? (
-            <React.Fragment>
-              <p className="align-center promo dk">
-                <Link href={props.banners[0].acf.url_de_destino_del_banner}>
-                  <a target="_blank">
-                    <img
-                      src={
-                        props.banners[0].acf.banner_grande_728x90.sizes.large
-                      }
-                    />
-                  </a>
-                </Link>
-              </p>
-              <p className="align-center promo mb">
-                <Link href={props.banners[0].acf.url_de_destino_del_banner}>
-                  <a target="_blank">
-                    <img src={props.banners[0].acf.baner_movil.sizes.large} />
-                  </a>
-                </Link>
-              </p>
-            </React.Fragment>
-          ) : (
-            ''
-          )}
+      <div>
+        {props.banners.map((banner, index) => (
+          <React.Fragment key={index}>
+            {banner.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
+            banner.acf.la_publicidad_es_de_ca == true &&
+            banner.acf.sector_del_banner.term_id == props.sid && banner.comunidad == props.caid ? (
+              <React.Fragment>
+                <p className="align-center promo dk">
+                  <Link href={banner.acf.url_de_destino_del_banner}>
+                    <a target="_blank">
+                      <img src={banner.acf.banner_grande_728x90.sizes.large} />
+                    </a>
+                  </Link>
+                </p>
+                <p className="align-center promo mb">
+                  <Link href={banner.acf.url_de_destino_del_banner}>
+                    <a target="_blank">
+                      <img src={banner.acf.baner_movil_320x100.sizes.large} />
+                    </a>
+                  </Link>
+                </p>
+              </React.Fragment>
+            ) : (
+              ''
+            )}
+          </React.Fragment>
+        ))}
+      </div>
           <h1>
             <img
               src={
@@ -308,7 +311,7 @@ const PostsByCategoryComunidad = props => (
                       slug: post.localidad_del_beneficio.slug,
                       key: post.localidad_del_beneficio.term_id,
                       value: post.categoria_de_la_prestacion
-                        ? `/category-localidad?id=${
+                        ? `/category-localidad?sid=${
                             post.categoria_de_la_prestacion.term_id
                           }&localidad=${post.localidad_del_beneficio.term_id}`
                         : '',
@@ -838,24 +841,24 @@ const PostsByCategoryComunidad = props => (
 )
 
 PostsByCategoryComunidad.getInitialProps = async function(context) {
-  const { id } = context.query
+  const { sid } = context.query
   const { comunidad } = context.query
   const { caid } = context.query
   const res = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}&comunidad=${comunidad}`
+    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}&comunidad=${comunidad}`
   )
   const posts = await res.json()
   const res2 = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${id}&comunidad=${caid}&sim-model=id-marca`
+    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${sid}&comunidad=${caid}&sim-model=id-marca`
   )
   const marcasofertas = await res2.json()
   const res3 = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&categoria_de_la_of_gr_m_ca=${id}&comunidad=${caid}&sim-model=id-marca-comunidad`
+    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&categoria_de_la_of_gr_m_ca=${sid}&comunidad=${caid}&sim-model=id-marca-comunidad`
   )
   const marcascaofertas = await res3.json()
 
   const res4 = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/banners`
+    `https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/banners_sectoriales`
   )
   const banners = await res4.json()
 
@@ -868,7 +871,7 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
     ...new Set(marcasofertas.map(({ marca }) => marca.name))
   ]
 
-  return { posts, marcasofertas, marcascaofertas, uniquemarcas, banners, caid }
+  return { posts, marcasofertas, marcascaofertas, uniquemarcas, banners, caid, sid }
 }
 
 export default PostsByCategoryComunidad

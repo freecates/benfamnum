@@ -74,9 +74,9 @@ app
       app.render(req, res, actualPage, queryParams, queryParamsS)
     })
 
-    server.get('/c/:id/:slug', (req, res) => {
+    server.get('/c/:sid/:slug', (req, res) => {
       const actualPage = '/category'
-      const queryParams = { id: req.params.id }
+      const queryParams = { sid: req.params.sid }
       const queryParamsS = { id: req.params.slug }
       app.render(req, res, actualPage, queryParams, queryParamsS)
     })
@@ -95,9 +95,9 @@ app
       app.render(req, res, actualPage, queryParams, queryParamsS)
     })
 
-    server.get('/c-ca/:id/:slug/:comunidad/:caid', (req, res) => {
+    server.get('/c-ca/:sid/:slug/:comunidad/:caid', (req, res) => {
       const actualPage = '/category-comunidad'
-      const queryParams = { id: req.params.id }
+      const queryParams = { sid: req.params.sid }
       const queryParamsS = { id: req.params.slug }
       const queryParamsSS = { id: req.params.comunidad }
       const queryParamsSSS = { id: req.params.caid }
@@ -180,9 +180,9 @@ app
       app.render(req, res, actualPage, queryParams, queryParamsS)
     })
 
-    server.get('/c-l/:id/:slug/:localidad/:slug', (req, res) => {
+    server.get('/c-l/:sid/:slug/:localidad/:slug', (req, res) => {
       const actualPage = '/category-localidad'
-      const queryParams = { id: req.params.id }
+      const queryParams = { sid: req.params.sid }
       const queryParamsS = { id: req.params.slug }
       const queryParamsL = { localidad: req.params.localidad }
       const queryParamsSL = { slug: req.params.slug }

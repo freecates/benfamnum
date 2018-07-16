@@ -24,31 +24,41 @@ const PostsByLocalidad = (props) => (
       </ul>
     </nav>
     <section>
-          {props.banners[0].acf.fecha_de_finalizaciion_de_la_promocion >
-            todayISO && props.banners[0].acf.la_publicidad_es_de_ca == true  && props.banners[0].acf.comunidad_autonoma.name == props.posts[0].comunidad_autonoma ? (
-            <React.Fragment>
-              <p className="align-center promo dk">
-                <Link href={props.banners[0].acf.url_de_destino_del_banner}>
-                  <a target="_blank">
-                    <img
-                      src={
-                        props.banners[0].acf.banner_grande_728x90.sizes.large
-                      }
-                    />
-                  </a>
-                </Link>
-              </p>
-              <p className="align-center promo mb">
-                <Link href={props.banners[0].acf.url_de_destino_del_banner}>
-                  <a target="_blank">
-                    <img src={props.banners[0].acf.baner_movil.sizes.large} />
-                  </a>
-                </Link>
-              </p>
-            </React.Fragment>
-          ) : (
-            ''
-          )}
+          <div>
+            {props.banners.map((banner, index) => (
+              <React.Fragment key={index}>
+                {banner.acf.fecha_de_finalizaciion_de_la_promocion >
+                  todayISO &&
+                banner.acf.la_publicidad_es_de_ca == true &&
+                banner.acf.comunidad_autonoma.name == props.posts[0].comunidad_autonoma ? (
+                  <React.Fragment>
+                    <p className="align-center promo dk">
+                      <Link href={banner.acf.url_de_destino_del_banner}>
+                        <a target="_blank">
+                          <img
+                            src={
+                              banner.acf.banner_grande_728x90.sizes.large
+                            }
+                          />
+                        </a>
+                      </Link>
+                    </p>
+                    <p className="align-center promo mb">
+                      <Link href={banner.acf.url_de_destino_del_banner}>
+                        <a target="_blank">
+                          <img
+                            src={banner.acf.baner_movil.sizes.large}
+                          />
+                        </a>
+                      </Link>
+                    </p>
+                  </React.Fragment>
+                ) : (
+                  ''
+                )}
+              </React.Fragment>
+            ))}
+          </div>
       <h1>Beneficios en {props.posts[0].localidad_del_beneficio.name}</h1>
       <p className='align-center'><small><Link prefetch as={`/m-l/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`} href={`/mapa-localidad?localidad=${props.posts[0].localidad_del_beneficio.term_id}`}><a><img src='/static/icona-mapa-familias-numerosas.png' /> ver en el mapa</a></Link></small></p>
       <IntlProvider defaultLocale='es'>

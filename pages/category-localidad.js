@@ -5,6 +5,9 @@ import fetch from 'isomorphic-unfetch'
 import Observer from 'react-intersection-observer'
 import {IntlProvider, FormattedDate} from 'react-intl'
 
+const today = Date.now()
+const todayISO = new Date(today).toISOString()
+
 const PostsByCategoryLocalidad = (props) => (
   <Layout>
     <Head>
@@ -22,6 +25,42 @@ const PostsByCategoryLocalidad = (props) => (
       </ul>
     </nav>
     <section>
+          <div>
+            {props.banners.map((banner, index) => (
+              <React.Fragment key={index}>
+                {banner.acf.fecha_de_finalizaciion_de_la_promocion >
+                  todayISO &&
+                banner.acf.la_publicidad_es_de_ca == true &&
+                banner.acf.comunidad_autonoma.name == props.posts[0].comunidad_autonoma &&
+                banner.acf.sector_del_banner.term_id == props.sid ? (
+                  <React.Fragment>
+                    <p className="align-center promo dk">
+                      <Link href={banner.acf.url_de_destino_del_banner}>
+                        <a target="_blank">
+                          <img
+                            src={
+                              banner.acf.banner_grande_728x90.sizes.large
+                            }
+                          />
+                        </a>
+                      </Link>
+                    </p>
+                    <p className="align-center promo mb">
+                      <Link href={banner.acf.url_de_destino_del_banner}>
+                        <a target="_blank">
+                          <img
+                            src={banner.acf.baner_movil_320x100.sizes.large}
+                          />
+                        </a>
+                      </Link>
+                    </p>
+                  </React.Fragment>
+                ) : (
+                  ''
+                )}
+              </React.Fragment>
+            ))}
+          </div>
       <h1>Beneficios de {props.posts[0].categoria_de_la_prestacion.name} en {props.posts[0].localidad_del_beneficio.name}</h1>
       <p className='align-center'><small><Link prefetch as={`/m-c-l/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`} href={`/mapa-category-localidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&localidad=${props.posts[0].localidad_del_beneficio.term_id}`}><a><img src='/static/icona-mapa-familias-numerosas.png' /> ver en el mapa</a></Link></small></p>
       <IntlProvider defaultLocale='es'>
@@ -113,6 +152,12 @@ const PostsByCategoryLocalidad = (props) => (
           .breadcrumbs {
             margin-bottom:1em;
           }
+          .dk {
+            display: none;
+          }
+          .promo {
+            margin-top: 1em;
+          }
           h1, .align-center {
             text-align:center;
           }
@@ -180,6 +225,12 @@ const PostsByCategoryLocalidad = (props) => (
               width: 200px;
               margin:7.5px;
             }
+            .dk {
+              display: block;
+            }
+            .mb {
+              display: none;
+            }
           }
           @media screen and (min-width: 1024px) {   
             .gallery {
@@ -224,6 +275,12 @@ const PostsByCategoryLocalidad = (props) => (
         }
         h1 {
           color:#391f92;
+        }
+        .dk {
+          display: none;
+        }
+        .promo {
+          margin-top: 1em;
         }
         .gallery {
           display: -ms-flexbox;
@@ -286,6 +343,12 @@ const PostsByCategoryLocalidad = (props) => (
             width: 200px;
             margin:7.5px;
           }
+          .dk {
+            display: block;
+          }
+          .mb {
+            display: none;
+          }
         }
         @media screen and (min-width: 1024px) {   
           .gallery {
@@ -312,19 +375,24 @@ const PostsByCategoryLocalidad = (props) => (
 )
 
 PostsByCategoryLocalidad.getInitialProps = async function(context) {
-  const { id } = context.query
+  const { sid } = context.query
   const { localidad } = context.query
-  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}&localidad=${localidad}`)
+  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}&localidad=${localidad}`)
   const posts = await res.json()
-  const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${id}&localidad=${localidad}&sim-model=id-marca`)
+  const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${sid}&localidad=${localidad}&sim-model=id-marca`)
   const marcasofertas = await res2.json()
-  const res3 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&categoria_de_la_oferta_grande_marc=${id}&localidad=${localidad}&sim-model=id-marca`)
+  const res3 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&categoria_de_la_oferta_grande_marc=${sid}&localidad=${localidad}&sim-model=id-marca`)
   const marcacasofertas = await res3.json()
+
+  const res4 = await fetch(
+    `https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/banners_sectoriales`
+  )
+  const banners = await res4.json()
 
   console.log(`Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${marcacasofertas.length}`)
   const uniquemarcas = [...(new Set(marcasofertas.map(({ marca }) => marca.name)))];
 
-  return { posts, marcasofertas, marcacasofertas, uniquemarcas }
+  return { posts, marcasofertas, marcacasofertas, uniquemarcas, banners, sid }
 }
 
 export default PostsByCategoryLocalidad
