@@ -377,11 +377,12 @@ const PostsByCategoryLocalidad = (props) => (
 PostsByCategoryLocalidad.getInitialProps = async function(context) {
   const { sid } = context.query
   const { localidad } = context.query
+  const { caid } = context.query
   const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}&localidad=${localidad}`)
   const posts = await res.json()
   const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${sid}&localidad=${localidad}&sim-model=id-marca`)
   const marcasofertas = await res2.json()
-  const res3 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&categoria_de_la_oferta_grande_marc=${sid}&localidad=${localidad}&sim-model=id-marca`)
+  const res3 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&categoria_de_la_of_gr_m_ca=${sid}&localidad=${localidad}&sim-model=id-marca`)
   const marcacasofertas = await res3.json()
 
   const res4 = await fetch(
@@ -389,7 +390,7 @@ PostsByCategoryLocalidad.getInitialProps = async function(context) {
   )
   const banners = await res4.json()
 
-  console.log(`Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${marcacasofertas.length}`)
+  console.log(`Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${marcacasofertas.length}, ${sid}, ${caid}`)
   const uniquemarcas = [...(new Set(marcasofertas.map(({ marca }) => marca.name)))];
 
   return { posts, marcasofertas, marcacasofertas, uniquemarcas, banners, sid }

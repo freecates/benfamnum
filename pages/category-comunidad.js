@@ -239,7 +239,7 @@ const PostsByCategoryComunidad = props => (
                 as={`/c/${props.posts[0].categoria_de_la_prestacion.term_id}/${
                   props.posts[0].categoria_de_la_prestacion.slug
                 }`}
-                href={`/category?id=${
+                href={`/category?sid=${
                   props.posts[0].categoria_de_la_prestacion.term_id
                 }`}
               >
@@ -865,7 +865,7 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
   console.log(
     `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${
       marcascaofertas.length
-    }, ${banners.length}`
+    }, ${banners.length}, ${caid}, ${sid}, ${comunidad}`
   )
   const uniquemarcas = [
     ...new Set(marcasofertas.map(({ marca }) => marca.name))
