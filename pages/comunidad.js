@@ -175,6 +175,27 @@ const PostByComunidad = props => (
 
           <IntlProvider defaultLocale="es">
             <section>
+
+          {props.marcasofertas.length >= 1 ?
+          <ul className='gallery national-gallery'>
+              {props.marcasofertas.reduce((marcas, marcasoferta) => {
+                if (marcasoferta.marca == false) {
+                  return marcas
+                }
+                marcas[marcasoferta.marca.term_id] =
+                (
+                <span key={marcasoferta.marca.term_id}>            
+                <li className='benefit align-center'>
+                <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'>
+                  <Link prefetch as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`} href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}>
+                    <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}><img src={'/static/' + marcasoferta.marca.slug +'-familias-numerosas.png'} /><br/> <span dangerouslySetInnerHTML={ {__html: marcasoferta.marca.name} } /></a>
+                  </Link></p>)} />
+                </li>
+                </span>
+                )
+                return marcas
+            },[])}
+            </ul> :'' }
               <p className="align-center">
                 ... O si lo prefieres accede directamente a cualquiera de las
                 fichas
@@ -462,6 +483,14 @@ PostByComunidad.getInitialProps = async function(context) {
   )
   const posts = await res.json()
 
+  const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&comunidad=${caid}&sim-model=id-marca`)
+
+  const marcasofertas = await res2.json()
+  const res3 = await fetch(
+    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&comunidad=${caid}&sim-model=id-marca-comunidad`
+  )
+  const marcascaofertas = await res3.json()
+
   const res4 = await fetch(
     `https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/banners`
   )
@@ -469,7 +498,7 @@ PostByComunidad.getInitialProps = async function(context) {
 
   console.log(`Posts data fetched. Count: ${posts.length}, ${banners.length}`)
 
-  return { posts, banners, caid }
+  return { posts, banners, marcasofertas, marcascaofertas, caid }
 }
 
 export default PostByComunidad
