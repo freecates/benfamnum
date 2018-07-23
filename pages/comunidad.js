@@ -196,6 +196,56 @@ const PostByComunidad = props => (
                 return marcas
             },[])}
             </ul> :'' }
+            {props.marcascaofertas.length >= 1 ? (
+              <ul className="gallery national-gallery">
+                {props.marcascaofertas.reduce((marcas, marcascaoferta) => {
+                  if (marcascaoferta.marca == false) {
+                    return marcas
+                  }
+                  marcas[marcascaoferta.marca.term_id] = (
+                    <span key={marcascaoferta.marca.term_id}>
+                      <li className="benefit align-center">
+                        <Link
+                          prefetch
+                          as={`/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${
+                            marcascaoferta.marca.slug
+                          }`}
+                          href={`/ofertas-de-la-marca-ca?id=${
+                            marcascaoferta.marca.term_id
+                          }&caid=${
+                            marcascaoferta.comunidad_autonoma.term_id
+                          }`}
+                        >
+                          <a
+                            title={
+                              'Ver todas las ofertas de ' +
+                              marcascaoferta.marca.name
+                            }
+                          >
+                            <img
+                              src={
+                                '/static/' +
+                                marcascaoferta.marca.slug +
+                                '-familias-numerosas.png'
+                              }
+                            />
+                            <br />{' '}
+                            <span
+                              dangerouslySetInnerHTML={{
+                                __html: marcascaoferta.marca.name
+                              }}
+                            />
+                          </a>
+                        </Link>
+                      </li>
+                    </span>
+                  )
+                  return marcas
+                }, [])}
+              </ul>
+            ) : (
+              ''
+            )}
               <p className="align-center">
                 ... O si lo prefieres accede directamente a cualquiera de las
                 fichas
@@ -498,7 +548,11 @@ PostByComunidad.getInitialProps = async function(context) {
 
   console.log(`Posts data fetched. Count: ${posts.length}, ${banners.length}`)
 
-  return { posts, banners, marcasofertas, marcascaofertas, caid }
+  const uniquemarcas = [
+    ...new Set(marcasofertas.map(({ marca }) => marca.name))
+  ]
+
+  return { posts, banners, marcasofertas, marcascaofertas, caid, uniquemarcas }
 }
 
 export default PostByComunidad
