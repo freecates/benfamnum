@@ -93,7 +93,8 @@ workboxSW.router.registerRoute(/.*(?:googleapis)\.com.*$/,
 workboxSW.strategies.cacheFirst({
   cacheName: 'googleapis',
   cacheExpiration: {
-	maxEntries: 100
+	maxEntries: 100,
+	maxAgeSeconds: 1 * 24 * 60 * 60
   },
   cacheableResponse: {statuses: [0, 200]}
 })
