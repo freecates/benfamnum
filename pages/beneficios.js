@@ -59,7 +59,7 @@ const Localidades = props => (
                   {
                     slug: 'aragon',
                     key: 1,
-                    value: '/comunidad?comunidad=Aragoncaid=8136',
+                    value: '/comunidad?comunidad=Aragon&caid=8136',
                     label: 'Aragon'
                   },
                   {
