@@ -843,9 +843,10 @@ const PostsByCategoryComunidad = props => (
 PostsByCategoryComunidad.getInitialProps = async function(context) {
   const { sid } = context.query
   const { comunidad } = context.query
+  const comunidadEncoded = encodeURI(comunidad)
   const { caid } = context.query
   const res = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}&comunidad=${comunidad}`
+    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}&comunidad=${comunidadEncoded}`
   )
   const posts = await res.json()
   const res2 = await fetch(

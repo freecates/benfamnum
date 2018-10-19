@@ -97,19 +97,18 @@ app
 
     server.get('/c-ca/:sid/:slug/:comunidad/:caid', (req, res) => {
       const actualPage = '/category-comunidad'
-      const queryParams = { sid: req.params.sid }
-      const queryParamsS = { slug: req.params.slug }
-      const queryParamsSS = { comunidad: req.params.comunidad }
+      const queryParams = { 
+        sid: req.params.sid,
+        slug: req.params.slug,
+        comunidad: req.params.comunidad,
+        caid: req.params.caid 
+      }
       console.log(req.params.comunidad)
-      const queryParamsSSS = { caid: req.params.caid }
       app.render(
         req,
         res,
         actualPage,
-        queryParams,
-        queryParamsS,
-        queryParamsSS,
-        queryParamsSSS
+        queryParams
       )
     })
 
