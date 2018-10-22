@@ -46,7 +46,7 @@ const MapByCategoryLocalidad = (props) => (
     </nav>
     <section>
     <h1><img src={'/static/' + props.markers[0].categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /><br/>{props.markers[0].categoria_de_la_prestacion.name} - {props.markers[0].localidad_del_beneficio.name}</h1>
-    <p className='align-center'><small><Link prefetch as={`/c-l/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}/${props.markers[0].localidad_del_beneficio.term_id}/${props.markers[0].localidad_del_beneficio.slug}`} href={`/category-localidad?id=${props.markers[0].categoria_de_la_prestacion.term_id}&localidad=${props.markers[0].localidad_del_beneficio.term_id}`}><a title={'Ver los beneficios de ' + props.markers[0].categoria_de_la_prestacion.name + ' en ' + props.markers[0].localidad_del_beneficio.name}>ver listado</a></Link></small></p>
+    <p className='align-center'><small><Link prefetch as={`/c-l/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}/${props.markers[0].localidad_del_beneficio.term_id}/${props.markers[0].localidad_del_beneficio.slug}`} href={`/category-localidad?sid=${props.markers[0].categoria_de_la_prestacion.term_id}&localidad=${props.markers[0].localidad_del_beneficio.term_id}`}><a title={'Ver los beneficios de ' + props.markers[0].categoria_de_la_prestacion.name + ' en ' + props.markers[0].localidad_del_beneficio.name}>ver listado</a></Link></small></p>
     <IntlProvider defaultLocale='es'>
       
       <div style={{width: '100%', height: '500px'}}>     
@@ -158,9 +158,9 @@ const MapByCategoryLocalidad = (props) => (
 )
 
 MapByCategoryLocalidad.getInitialProps = async function(context) {
-  const { id } = context.query
+  const { sid } = context.query
   const { localidad } = context.query
-  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${id}&localidad=${localidad}`)
+  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}&localidad=${localidad}`)
   const markers = await res.json()
 
   console.log(`Markers data fetched. Count: ${markers.length}`)

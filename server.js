@@ -34,131 +34,158 @@ app
 
     server.get('/p/:id/:slug', (req, res) => {
       const actualPage = '/post'
-      const queryParams = { id: req.params.id }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        id: req.params.id,
+        slug: req.params.slug
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/pr/:id/:slug', (req, res) => {
       const actualPage = '/prestacion'
-      const queryParams = { id: req.params.id }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        id: req.params.id,
+        slug: req.params.slug
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/pro/:id/:slug', (req, res) => {
       const actualPage = '/promocion'
-      const queryParams = { id: req.params.id }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        id: req.params.id,
+        slug: req.params.slug
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/oo/:id/:slug', (req, res) => {
       const actualPage = '/oferta-on-line'
-      const queryParams = { id: req.params.id }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        id: req.params.id,
+        slug: req.params.slug
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/ogm/:id/:slug', (req, res) => {
       const actualPage = '/oferta-gran-marca'
-      const queryParams = { id: req.params.id }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        id: req.params.id,
+        slug: req.params.slug
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/ogmca/:id/:slug', (req, res) => {
       const actualPage = '/oferta-gran-marca-ca'
-      const queryParams = { id: req.params.id }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        id: req.params.id,
+        slug: req.params.slug
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/c/:sid/:slug', (req, res) => {
       const actualPage = '/category'
-      const queryParams = { sid: req.params.sid }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        sid: req.params.sid,
+        slug: req.params.slug
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/c-o-o/:id/:slug', (req, res) => {
       const actualPage = '/category-ofertas-on-line'
-      const queryParams = { id: req.params.id }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        id: req.params.id,
+        slug: req.params.slug
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/ca/:comunidad', (req, res) => {
       const actualPage = '/comunidad'
-      const queryParams = { id: req.params.comunidad }
-      const queryParamsS = { id: req.params.caid }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        comunidad: req.params.comunidad,
+        caid: req.params.caid
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/c-ca/:sid/:slug/:comunidad/:caid', (req, res) => {
       const actualPage = '/category-comunidad'
-      const queryParams = { 
+      const queryParams = {
         sid: req.params.sid,
         slug: req.params.slug,
         comunidad: req.params.comunidad,
-        caid: req.params.caid 
+        caid: req.params.caid
       }
       console.log(req.params.comunidad)
-      app.render(
-        req,
-        res,
-        actualPage,
-        queryParams
-      )
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/m-o-g-m/:id/:slug', (req, res) => {
       const actualPage = '/ofertas-de-la-marca'
-      const queryParams = { id: req.params.id }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        id: req.params.id,
+        slug: req.params.slug
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/m-o-g-m-ca/:id/:slug', (req, res) => {
       const actualPage = '/ofertas-de-la-marca-ca'
-      const queryParams = { id: req.params.id }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        id: req.params.id,
+        slug: req.params.slug
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/m/:id/:slug', (req, res) => {
       const actualPage = '/mapa'
-      const queryParams = { id: req.params.id }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        id: req.params.id,
+        slug: req.params.slug
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/mm/:id/:slug', (req, res) => {
       const actualPage = '/mapa-de-la-marca'
-      const queryParams = { id: req.params.id }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        id: req.params.id,
+        slug: req.params.slug
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/mmca/:id/:slug', (req, res) => {
       const actualPage = '/mapa-de-la-marca-ca'
-      const queryParams = { id: req.params.id }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        id: req.params.id,
+        slug: req.params.slug
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/l/:localidad/:slug', (req, res) => {
       const actualPage = '/localidad'
-      const queryParams = { localidad: req.params.localidad }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        localidad: req.params.localidad,
+        slug: req.params.slug
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/p-m/:localidad/:slug', (req, res) => {
       const actualPage = '/prestaciones-municipio'
-      const queryParams = { localidad: req.params.localidad }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        localidad: req.params.localidad,
+        slug: req.params.slug
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/m-p', (req, res) => {
@@ -168,41 +195,44 @@ app
 
     server.get('/p-c/:comunidad/:slug', (req, res) => {
       const actualPage = '/prestaciones-comunidad'
-      const queryParams = { comunidad: req.params.comunidad }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        comunidad: req.params.comunidad,
+        slug: req.params.slug
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('/m-l/:localidad/:slug', (req, res) => {
       const actualPage = '/mapa-localidad'
-      const queryParams = { localidad: req.params.localidad }
-      const queryParamsS = { id: req.params.slug }
-      app.render(req, res, actualPage, queryParams, queryParamsS)
+      const queryParams = {
+        localidad: req.params.localidad,
+        slug: req.params.slug
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
-    server.get('/c-l/:sid/:slug/:localidad/:slug', (req, res) => {
+    server.get('/c-l/:sid/:slug/:localidad/:slugl', (req, res) => {
       const actualPage = '/category-localidad'
-      const queryParams = { sid: req.params.sid }
-      const queryParamsS = { id: req.params.slug }
-      const queryParamsL = { localidad: req.params.localidad }
-      const queryParamsSL = { slug: req.params.slug }
+      const queryParams = { sid: req.params.sid,
+        slug: req.params.slug,
+        localidad: req.params.localidad,
+        slugl: req.params.slugl }
       app.render(
         req,
         res,
         actualPage,
-        queryParams,
-        queryParamsS,
-        queryParamsL,
-        queryParamsSL
+        queryParams
       )
     })
 
     server.get('/m-c-l/:id/:slug/:localidad', (req, res) => {
       const actualPage = '/mapa-category-localidad'
-      const queryParams = { id: req.params.id }
-      const queryParamsS = { id: req.params.slug }
-      const queryParamsL = { localidad: req.params.localidad }
-      app.render(req, res, actualPage, queryParams, queryParamsS, queryParamsL)
+      const queryParams = {
+        id: req.params.id,
+        slug: req.params.slug,
+        localidad: req.params.localidad
+      }
+      app.render(req, res, actualPage, queryParams)
     })
 
     server.get('*', (req, res) => {

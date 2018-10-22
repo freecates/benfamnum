@@ -45,7 +45,7 @@ const MapByCategory = (props) => (
     </nav>
     <section>
     <h1><img src={'/static/' + props.markers[0].categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /><br/>{props.markers[0].categoria_de_la_prestacion.name}</h1>
-    <p className='align-center'><small><Link prefetch as={`/c/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}`} href={`/category?id=${props.markers[0].categoria_de_la_prestacion.term_id}`}><a>ver listado</a></Link></small></p>
+    <p className='align-center'><small><Link prefetch as={`/c/${props.markers[0].categoria_de_la_prestacion.term_id}/${props.markers[0].categoria_de_la_prestacion.slug}`} href={`/category?sid=${props.markers[0].categoria_de_la_prestacion.term_id}`}><a>ver listado</a></Link></small></p>
     <IntlProvider defaultLocale='es'>
       
       <div style={{width: '100%', height: '500px'}}>     

@@ -342,7 +342,7 @@ const PostByComunidad = props => (
                             }/${post.categoria_de_la_prestacion.slug}/${
                               post.localidad_del_beneficio.term_id
                             }/${post.localidad_del_beneficio.slug}`}
-                            href={`/category-localidad?id=${
+                            href={`/category-localidad?sid=${
                               post.categoria_de_la_prestacion.term_id
                             }&localidad=${
                               post.localidad_del_beneficio.term_id
