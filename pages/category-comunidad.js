@@ -481,7 +481,7 @@ const PostsByCategoryComunidad = props => (
                 ''
               )}
 
-              <p className="align-center">
+              <p className="align-center clear">
                 ... O si lo prefieres accede directamente a cualquiera de las
                 fichas
               </p>
@@ -592,7 +592,7 @@ const PostsByCategoryComunidad = props => (
             </section>
           </IntlProvider>
         </section>
-        {props.uniquemarcas.length >= 2 ? (
+        {props.uniquemarcas.length >= 2 && props.uniquecamarcas.length >= 1 ? (
           <style jsx>{`
             .national-gallery {
               background: #eeeeee;
@@ -705,6 +705,9 @@ const PostsByCategoryComunidad = props => (
               .benefit {
                 width: 220px;
                 margin: 0 10px;
+              }
+              .clear {
+                clear:both;
               }
             }
             @media screen and (min-width: 1160px) {
@@ -871,8 +874,11 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
   const uniquemarcas = [
     ...new Set(marcasofertas.map(({ marca }) => marca.name))
   ]
+  const uniquecamarcas = [
+    ...new Set(marcascaofertas.map(({ marca }) => marca.name))
+  ]
 
-  return { posts, marcasofertas, marcascaofertas, uniquemarcas, banners, caid, sid }
+  return { posts, marcasofertas, marcascaofertas, uniquemarcas, uniquecamarcas, banners, caid, sid }
 }
 
 export default PostsByCategoryComunidad
