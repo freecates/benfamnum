@@ -28,7 +28,8 @@ class IsSearch extends React.Component {
   }
 
   handleSubmit = async function(event) {
-    const title = this.state.Title;
+    const noEncTitle = this.state.Title;
+    const title = encodeURI(noEncTitle);
 
     const res = await fetch(
       `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?title=${title}`
