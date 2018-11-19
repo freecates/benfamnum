@@ -438,12 +438,12 @@ class IsSearch extends React.Component {
               padding: 1em 5px;
             }
             ul {
-              list-style-type: none;
+              list-style-type: none!important;
               margin-left: 0;
               margin: 0 auto !important;
             }
             a {
-              color: inherit;
+              color: inherit!important;
             }
             a:hover {
               text-decoration: underline;
@@ -535,7 +535,7 @@ class IsSearch extends React.Component {
               border-radius: 6.5%;
             }
             label {
-              color: #ffffff;
+              color: #ffffff!important;
             }
             .wrapper-input {
               width: 100%;
@@ -577,7 +577,7 @@ class IsSearch extends React.Component {
             }
             .file-label {
               background: #cc0033 !important;
-              color: #ffffff;
+              color: #ffffff!important;
               font-weight: bold;
               padding: 1em;
               white-space: normal;
@@ -650,7 +650,7 @@ class IsSearch extends React.Component {
               border-radius: 6.5%;
             }
             label {
-              color: #ffffff;
+              color: #ffffff!important;
             }
             .wrapper-input {
               width: 100%;
@@ -688,7 +688,7 @@ class IsSearch extends React.Component {
             }
             .file-label {
               background: #cc0033 !important;
-              color: #ffffff;
+              color: #ffffff!important;
               font-weight: bold;
               padding: 1em;
               white-space: normal;
@@ -755,7 +755,7 @@ class IsSearch extends React.Component {
               border-radius: 6.5%;
             }
             label {
-              color: #ffffff;
+              color: #ffffff!important;
             }
             .wrapper-input {
               width: 100%;
@@ -794,7 +794,7 @@ class IsSearch extends React.Component {
             }
             .file-label {
               background: #cc0033 !important;
-              color: #ffffff;
+              color: #ffffff!important;
               font-weight: bold;
               padding: 1em;
               white-space: normal;

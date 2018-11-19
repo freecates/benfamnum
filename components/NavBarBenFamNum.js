@@ -81,11 +81,11 @@ export default class NavBarBenFamNum extends React.Component {
         </Navbar>
         <style jsx>{`
           a {
-            color: #ffffff;
+            color: #ffffff!important;
             margin: 0 1em;
           }
           a:hover {
-            color: #ffffff;
+            color: #ffffff!important;
             text-decoration: underline;
           }
           @media screen and (min-width: 768px) {

@@ -221,7 +221,7 @@ const Localidades = props => (
       }
       .file-label {
         background: #cc0033 !important;
-        color: #ffffff;
+        color: #ffffff!important;
         font-weight: 400;
         font-size: 1.25rem;
         white-space: normal;
@@ -238,7 +238,7 @@ const Localidades = props => (
       .call-to-action {
         text-align: center;
         margin: 1em auto;
-        color: #ffffff;
+        color: #ffffff!important;
       }
       .call-to-action .icona {
         position: relative;

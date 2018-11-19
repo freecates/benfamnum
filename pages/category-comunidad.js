@@ -1,10 +1,10 @@
-import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
-import Link from 'next/link'
-import fetch from 'isomorphic-unfetch'
-import dynamic from 'next/dynamic'
-import Observer from 'react-intersection-observer'
-import { IntlProvider, FormattedDate } from 'react-intl'
+import Head from 'next/head';
+import Layout from '../components/MyLayout.js';
+import Link from 'next/link';
+import fetch from 'isomorphic-unfetch';
+import dynamic from 'next/dynamic';
+import Observer from 'react-intersection-observer';
+import { IntlProvider, FormattedDate } from 'react-intl';
 
 const SelectCity = dynamic(import('../components/SelectCity'), {
   loading: () => (
@@ -14,10 +14,10 @@ const SelectCity = dynamic(import('../components/SelectCity'), {
       </p>
     </div>
   )
-})
+});
 
-const today = Date.now()
-const todayISO = new Date(today).toISOString()
+const today = Date.now();
+const todayISO = new Date(today).toISOString();
 
 const PostsByCategoryComunidad = props => (
   <section>
@@ -50,65 +50,57 @@ const PostsByCategoryComunidad = props => (
         </nav>
         <section>
           <h1>
-          Actualmente no existen ofertas con empresas locales de esta Comunidad para este sector
+            Actualmente no existen ofertas con empresas locales de esta Comunidad para este sector
           </h1>
           <p className="align-center">
             Por favor, escoge{' '}
             <Link prefetch href="/ofertas-por-sectores">
               <a>otro sector</a>
-            </Link>.
+            </Link>
+            .
           </p>
-              {props.uniquemarcas.length >= 1 ? (
-                <React.Fragment>
-              <h3 className="align-center">Si lo prefieres puedes consultar las ofertas nacionales de <strong>{props.marcasofertas[0].categoria_del_beneficio.name}</strong> en <strong>{props.marcasofertas[0].comunidad_autonoma.name}</strong>.</h3>
-                <ul className="gallery national-gallery">
-                  {props.marcasofertas.reduce((marcas, marcasoferta) => {
-                    if (marcasoferta.marca == false) {
-                      return marcas
-                    }
-                    marcas[marcasoferta.marca.term_id] = (
-                      <span key={marcasoferta.marca.term_id}>
-                        <li className="benefit align-center">
-                          <Link
-                            prefetch
-                            as={`/m-o-g-m/${marcasoferta.marca.term_id}/${
-                              marcasoferta.marca.slug
-                            }`}
-                            href={`/ofertas-de-la-marca?id=${
-                              marcasoferta.marca.term_id
-                            }`}
-                          >
-                            <a
-                              title={
-                                'Ver todas las ofertas de ' +
-                                marcasoferta.marca.name
-                              }
-                            >
-                              <img
-                                src={
-                                  '/static/' +
-                                  marcasoferta.marca.slug +
-                                  '-familias-numerosas.png'
-                                }
-                              />
-                              <br />{' '}
-                              <span
-                                dangerouslySetInnerHTML={{
-                                  __html: marcasoferta.marca.name
-                                }}
-                              />
-                            </a>
-                          </Link>
-                        </li>
-                      </span>
-                    )
-                    return marcas
-                  }, [])}
-                </ul>
-                </React.Fragment>
-              ) : (
-                ''
-              )}
+          {props.uniquemarcas.length >= 1 ? (
+            <React.Fragment>
+              <h3 className="align-center">
+                Si lo prefieres puedes consultar las ofertas nacionales de{' '}
+                <strong>{props.marcasofertas[0].categoria_del_beneficio.name}</strong> en{' '}
+                <strong>{props.marcasofertas[0].comunidad_autonoma.name}</strong>.
+              </h3>
+              <ul className="gallery national-gallery">
+                {props.marcasofertas.reduce((marcas, marcasoferta) => {
+                  if (marcasoferta.marca == false) {
+                    return marcas;
+                  }
+                  marcas[marcasoferta.marca.term_id] = (
+                    <span key={marcasoferta.marca.term_id}>
+                      <li className="benefit align-center">
+                        <Link
+                          prefetch
+                          as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
+                          href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
+                        >
+                          <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}>
+                            <img
+                              src={'/static/' + marcasoferta.marca.slug + '-familias-numerosas.png'}
+                            />
+                            <br />{' '}
+                            <span
+                              dangerouslySetInnerHTML={{
+                                __html: marcasoferta.marca.name
+                              }}
+                            />
+                          </a>
+                        </Link>
+                      </li>
+                    </span>
+                  );
+                  return marcas;
+                }, [])}
+              </ul>
+            </React.Fragment>
+          ) : (
+            ''
+          )}
         </section>
         <style jsx>{`
           .breadcrumbs {
@@ -143,7 +135,7 @@ const PostsByCategoryComunidad = props => (
             padding: 5px;
           }
           ul {
-            list-style-type: none;
+            list-style-type: none !important;
             margin-left: 0;
             margin: 0 auto !important;
           }
@@ -239,48 +231,46 @@ const PostsByCategoryComunidad = props => (
                 as={`/c/${props.posts[0].categoria_de_la_prestacion.term_id}/${
                   props.posts[0].categoria_de_la_prestacion.slug
                 }`}
-                href={`/category?sid=${
-                  props.posts[0].categoria_de_la_prestacion.term_id
-                }`}
+                href={`/category?sid=${props.posts[0].categoria_de_la_prestacion.term_id}`}
               >
                 <a>{props.posts[0].categoria_de_la_prestacion.name}</a>
               </Link>
             </li>
             <li>
-              <span className="show-for-sr">Actual: </span>{' '}
-              {props.posts[0].comunidad_autonoma}
+              <span className="show-for-sr">Actual: </span> {props.posts[0].comunidad_autonoma}
             </li>
           </ul>
         </nav>
         <section>
-      <div>
-        {props.banners.map((banner, index) => (
-          <React.Fragment key={index}>
-            {banner.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
-            banner.acf.la_publicidad_es_de_ca == true &&
-            banner.acf.sector_del_banner.term_id == props.sid && banner.comunidad == props.caid ? (
-              <React.Fragment>
-                <p className="align-center promo dk">
-                  <Link href={banner.acf.url_de_destino_del_banner}>
-                    <a target="_blank">
-                      <img src={banner.acf.banner_grande_728x90.sizes.large} />
-                    </a>
-                  </Link>
-                </p>
-                <p className="align-center promo mb">
-                  <Link href={banner.acf.url_de_destino_del_banner}>
-                    <a target="_blank">
-                      <img src={banner.acf.baner_movil_320x100.sizes.large} />
-                    </a>
-                  </Link>
-                </p>
+          <div>
+            {props.banners.map((banner, index) => (
+              <React.Fragment key={index}>
+                {banner.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
+                banner.acf.la_publicidad_es_de_ca == true &&
+                banner.acf.sector_del_banner.term_id == props.sid &&
+                banner.comunidad == props.caid ? (
+                  <React.Fragment>
+                    <p className="align-center promo dk">
+                      <Link href={banner.acf.url_de_destino_del_banner}>
+                        <a target="_blank">
+                          <img src={banner.acf.banner_grande_728x90.sizes.large} />
+                        </a>
+                      </Link>
+                    </p>
+                    <p className="align-center promo mb">
+                      <Link href={banner.acf.url_de_destino_del_banner}>
+                        <a target="_blank">
+                          <img src={banner.acf.baner_movil_320x100.sizes.large} />
+                        </a>
+                      </Link>
+                    </p>
+                  </React.Fragment>
+                ) : (
+                  ''
+                )}
               </React.Fragment>
-            ) : (
-              ''
-            )}
-          </React.Fragment>
-        ))}
-      </div>
+            ))}
+          </div>
           <h1>
             <img
               src={
@@ -289,8 +279,9 @@ const PostsByCategoryComunidad = props => (
                 '-familias-numerosas.png'
               }
             />
-            <br />Beneficios de {props.posts[0].categoria_de_la_prestacion.name}{' '}
-            en {props.posts[0].comunidad_autonoma}
+            <br />
+            Beneficios de {props.posts[0].categoria_de_la_prestacion.name} en{' '}
+            {props.posts[0].comunidad_autonoma}
           </h1>
 
           <section id="select-city">
@@ -305,7 +296,7 @@ const PostsByCategoryComunidad = props => (
                 options={props.posts
                   .reduce((ciutats, post) => {
                     if (post.localidad_del_beneficio == false) {
-                      return ciutats
+                      return ciutats;
                     }
                     ciutats[post.localidad_del_beneficio.term_id] = {
                       slug: post.localidad_del_beneficio.slug,
@@ -318,13 +309,13 @@ const PostsByCategoryComunidad = props => (
                       label: post.categoria_de_la_prestacion
                         ? `${post.localidad_del_beneficio.name}`
                         : ''
-                    }
-                    return ciutats
+                    };
+                    return ciutats;
                   }, [])
                   .sort((a, b) => {
-                    if (a.slug < b.slug) return -1
-                    if (a.slug > b.slug) return 1
-                    return 0
+                    if (a.slug < b.slug) return -1;
+                    if (a.slug > b.slug) return 1;
+                    return 0;
                   })}
               />
             </div>
@@ -386,31 +377,20 @@ const PostsByCategoryComunidad = props => (
                 <ul className="gallery national-gallery">
                   {props.marcasofertas.reduce((marcas, marcasoferta) => {
                     if (marcasoferta.marca == false) {
-                      return marcas
+                      return marcas;
                     }
                     marcas[marcasoferta.marca.term_id] = (
                       <span key={marcasoferta.marca.term_id}>
                         <li className="benefit align-center">
                           <Link
                             prefetch
-                            as={`/m-o-g-m/${marcasoferta.marca.term_id}/${
-                              marcasoferta.marca.slug
-                            }`}
-                            href={`/ofertas-de-la-marca?id=${
-                              marcasoferta.marca.term_id
-                            }`}
+                            as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
+                            href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
                           >
-                            <a
-                              title={
-                                'Ver todas las ofertas de ' +
-                                marcasoferta.marca.name
-                              }
-                            >
+                            <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}>
                               <img
                                 src={
-                                  '/static/' +
-                                  marcasoferta.marca.slug +
-                                  '-familias-numerosas.png'
+                                  '/static/' + marcasoferta.marca.slug + '-familias-numerosas.png'
                                 }
                               />
                               <br />{' '}
@@ -423,8 +403,8 @@ const PostsByCategoryComunidad = props => (
                           </Link>
                         </li>
                       </span>
-                    )
-                    return marcas
+                    );
+                    return marcas;
                   }, [])}
                 </ul>
               ) : (
@@ -434,7 +414,7 @@ const PostsByCategoryComunidad = props => (
                 <ul className="gallery national-gallery">
                   {props.marcascaofertas.reduce((marcas, marcascaoferta) => {
                     if (marcascaoferta.marca == false) {
-                      return marcas
+                      return marcas;
                     }
                     marcas[marcascaoferta.marca.term_id] = (
                       <span key={marcascaoferta.marca.term_id}>
@@ -446,21 +426,12 @@ const PostsByCategoryComunidad = props => (
                             }`}
                             href={`/ofertas-de-la-marca-ca?id=${
                               marcascaoferta.marca.term_id
-                            }&caid=${
-                              marcascaoferta.comunidad_autonoma.term_id
-                            }`}
+                            }&caid=${marcascaoferta.comunidad_autonoma.term_id}`}
                           >
-                            <a
-                              title={
-                                'Ver todas las ofertas de ' +
-                                marcascaoferta.marca.name
-                              }
-                            >
+                            <a title={'Ver todas las ofertas de ' + marcascaoferta.marca.name}>
                               <img
                                 src={
-                                  '/static/' +
-                                  marcascaoferta.marca.slug +
-                                  '-familias-numerosas.png'
+                                  '/static/' + marcascaoferta.marca.slug + '-familias-numerosas.png'
                                 }
                               />
                               <br />{' '}
@@ -473,8 +444,8 @@ const PostsByCategoryComunidad = props => (
                           </Link>
                         </li>
                       </span>
-                    )
-                    return marcas
+                    );
+                    return marcas;
                   }, [])}
                 </ul>
               ) : (
@@ -482,8 +453,7 @@ const PostsByCategoryComunidad = props => (
               )}
 
               <p className="align-center clear">
-                ... O si lo prefieres accede directamente a cualquiera de las
-                fichas
+                ... O si lo prefieres accede directamente a cualquiera de las fichas
               </p>
 
               <ul className="gallery">
@@ -504,9 +474,7 @@ const PostsByCategoryComunidad = props => (
                                 <img
                                   width="250"
                                   src={
-                                    post
-                                      .imagen_destacada_de_la_oferta_general_thumb
-                                      .sizes.thumbnail
+                                    post.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail
                                   }
                                   alt={post.titulo_de_la_oferta_oferta_general}
                                 />
@@ -534,15 +502,14 @@ const PostsByCategoryComunidad = props => (
                                 <img
                                   width="250"
                                   src={
-                                    post
-                                      .imagen_destacada_de_la_oferta_socios_thumb
-                                      .sizes.thumbnail
+                                    post.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail
                                   }
                                   alt={post.titulo_de_la_oferta_oferta_socios}
                                 />
                                 <span className="label alert gallery-label">
                                   <small>
-                                    EXCLUSIVO<br /> SOCIOS
+                                    EXCLUSIVO
+                                    <br /> SOCIOS
                                   </small>
                                 </span>
                               </a>
@@ -555,11 +522,7 @@ const PostsByCategoryComunidad = props => (
                     )}
 
                     <p>
-                      <Link
-                        prefetch
-                        as={`/p/${post.ID}/${post.slug}`}
-                        href={`/post?id=${post.ID}`}
-                      >
+                      <Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
                         <a
                           title={'Ver la ficha de ' + post.name}
                           dangerouslySetInnerHTML={{ __html: post.name }}
@@ -634,12 +597,12 @@ const PostsByCategoryComunidad = props => (
               padding: 5px;
             }
             ul {
-              list-style-type: none;
+              list-style-type: none !important;
               margin-left: 0;
               margin: 0 auto !important;
             }
             a {
-              color: inherit;
+              color: inherit !important;
             }
             a:hover {
               text-decoration: underline;
@@ -707,7 +670,7 @@ const PostsByCategoryComunidad = props => (
                 margin: 0 10px;
               }
               .clear {
-                clear:both;
+                clear: both;
               }
             }
             @media screen and (min-width: 1160px) {
@@ -756,12 +719,12 @@ const PostsByCategoryComunidad = props => (
               padding: 5px;
             }
             ul {
-              list-style-type: none;
+              list-style-type: none !important;
               margin-left: 0;
               margin: 0 auto !important;
             }
             a {
-              color: inherit;
+              color: inherit !important;
             }
             a:hover {
               text-decoration: underline;
@@ -841,44 +804,49 @@ const PostsByCategoryComunidad = props => (
       </Layout>
     )}
   </section>
-)
+);
 
 PostsByCategoryComunidad.getInitialProps = async function(context) {
-  const { sid } = context.query
-  const { comunidad } = context.query
-  const comunidadEncoded = encodeURI(comunidad)
-  const { caid } = context.query
+  const { sid } = context.query;
+  const { comunidad } = context.query;
+  const comunidadEncoded = encodeURI(comunidad);
+  const { caid } = context.query;
   const res = await fetch(
     `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&categoria_del_beneficio=${sid}&comunidad=${comunidadEncoded}`
-  )
-  const posts = await res.json()
+  );
+  const posts = await res.json();
   const res2 = await fetch(
     `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&categoria_de_la_oferta_grande_marc=${sid}&comunidad=${caid}&sim-model=id-marca`
-  )
-  const marcasofertas = await res2.json()
+  );
+  const marcasofertas = await res2.json();
   const res3 = await fetch(
     `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&categoria_de_la_of_gr_m_ca=${sid}&comunidad=${caid}&sim-model=id-marca-comunidad`
-  )
-  const marcascaofertas = await res3.json()
+  );
+  const marcascaofertas = await res3.json();
 
   const res4 = await fetch(
     `https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/banners_sectoriales`
-  )
-  const banners = await res4.json()
+  );
+  const banners = await res4.json();
 
   console.log(
     `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${
       marcascaofertas.length
     }, ${banners.length}, ${caid}, ${sid}, ${comunidad}`
-  )
-  const uniquemarcas = [
-    ...new Set(marcasofertas.map(({ marca }) => marca.name))
-  ]
-  const uniquecamarcas = [
-    ...new Set(marcascaofertas.map(({ marca }) => marca.name))
-  ]
+  );
+  const uniquemarcas = [...new Set(marcasofertas.map(({ marca }) => marca.name))];
+  const uniquecamarcas = [...new Set(marcascaofertas.map(({ marca }) => marca.name))];
 
-  return { posts, marcasofertas, marcascaofertas, uniquemarcas, uniquecamarcas, banners, caid, sid }
-}
+  return {
+    posts,
+    marcasofertas,
+    marcascaofertas,
+    uniquemarcas,
+    uniquecamarcas,
+    banners,
+    caid,
+    sid
+  };
+};
 
-export default PostsByCategoryComunidad
+export default PostsByCategoryComunidad;

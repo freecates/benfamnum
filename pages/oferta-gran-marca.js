@@ -534,7 +534,7 @@ const OfertaGranMarca = props => (
         color: #391f92;
       }
       h1 small {
-        color: #ffffff;
+        color: #ffffff!important;
         font-weight: bold;
       }
       a {
@@ -542,7 +542,7 @@ const OfertaGranMarca = props => (
       }
       .file-label {
         background: #cc0033 !important;
-        color: #ffffff;
+        color: #ffffff!important;
         font-weight: bold;
         font-size: 1rem;
         white-space: normal;

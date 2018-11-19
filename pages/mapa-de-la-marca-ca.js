@@ -149,12 +149,12 @@ const MapByMarcaCa = props => (
         padding: 5px;
       }
       ul {
-        list-style-type: none;
+        list-style-type: none!important;
         margin-left: 0;
         margin: 0 auto !important;
       }
       a {
-        color: inherit;
+        color: inherit!important;
       }
       a:hover {
         text-decoration: underline;
@@ -178,7 +178,7 @@ const MapByMarcaCa = props => (
       }
       .marker {
         width: 50px;
-        background-color: #ffffff;
+        background-color: #ffffff!important;
         text-align: center;
       }
       @media screen and (min-width: 320px) {

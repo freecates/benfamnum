@@ -1,10 +1,10 @@
-import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
-import Link from 'next/link'
-import dynamic from 'next/dynamic'
-import fetch from 'isomorphic-unfetch'
-import Observer from 'react-intersection-observer'
-import { IntlProvider, FormattedDate } from 'react-intl'
+import Head from 'next/head';
+import Layout from '../components/MyLayout.js';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import fetch from 'isomorphic-unfetch';
+import Observer from 'react-intersection-observer';
+import { IntlProvider, FormattedDate } from 'react-intl';
 
 const SelectCity = dynamic(import('../components/SelectCity'), {
   loading: () => (
@@ -14,10 +14,10 @@ const SelectCity = dynamic(import('../components/SelectCity'), {
       </p>
     </div>
   )
-})
+});
 
-const today = Date.now()
-const todayISO = new Date(today).toISOString()
+const today = Date.now();
+const todayISO = new Date(today).toISOString();
 
 const PostByComunidad = props => (
   <section>
@@ -44,14 +44,13 @@ const PostByComunidad = props => (
           </ul>
         </nav>
         <section>
-          <h1>
-            Actualmente no existen ofertas para familias en esta Comunidad
-          </h1>
+          <h1>Actualmente no existen ofertas para familias en esta Comunidad</h1>
           <p className="align-center">
             Por favor, escoge{' '}
             <Link prefetch href="/beneficios">
               <a>otra</a>
-            </Link>.
+            </Link>
+            .
           </p>
         </section>
         <style jsx>{`
@@ -76,9 +75,7 @@ const PostByComunidad = props => (
     ) : (
       <Layout>
         <Head>
-          <title>
-            Beneficios Familias Numerosas - {props.posts[0].comunidad_autonoma}
-          </title>
+          <title>Beneficios Familias Numerosas - {props.posts[0].comunidad_autonoma}</title>
         </Head>
         <nav aria-label="Estás aquí:" role="navigation">
           <ul className="breadcrumbs">
@@ -93,8 +90,7 @@ const PostByComunidad = props => (
               </Link>
             </li>
             <li>
-              <span className="show-for-sr">Actual: </span>{' '}
-              {props.posts[0].comunidad_autonoma}
+              <span className="show-for-sr">Actual: </span> {props.posts[0].comunidad_autonoma}
             </li>
           </ul>
         </nav>
@@ -102,28 +98,21 @@ const PostByComunidad = props => (
           <div>
             {props.banners.map((banner, index) => (
               <React.Fragment key={index}>
-                {banner.acf.fecha_de_finalizaciion_de_la_promocion >
-                  todayISO &&
+                {banner.acf.fecha_de_finalizaciion_de_la_promocion > todayISO &&
                 banner.acf.la_publicidad_es_de_ca == true &&
                 banner.comunidad == props.caid ? (
                   <React.Fragment>
                     <p className="align-center promo dk">
                       <Link href={banner.acf.url_de_destino_del_banner}>
                         <a target="_blank">
-                          <img
-                            src={
-                              banner.acf.banner_grande_728x90.sizes.large
-                            }
-                          />
+                          <img src={banner.acf.banner_grande_728x90.sizes.large} />
                         </a>
                       </Link>
                     </p>
                     <p className="align-center promo mb">
                       <Link href={banner.acf.url_de_destino_del_banner}>
                         <a target="_blank">
-                          <img
-                            src={banner.acf.baner_movil.sizes.large}
-                          />
+                          <img src={banner.acf.baner_movil.sizes.large} />
                         </a>
                       </Link>
                     </p>
@@ -148,26 +137,24 @@ const PostByComunidad = props => (
                 options={props.posts
                   .reduce((ciutats, post) => {
                     if (post.localidad_del_beneficio == false) {
-                      return ciutats
+                      return ciutats;
                     }
                     ciutats[post.localidad_del_beneficio.term_id] = {
                       slug: post.localidad_del_beneficio.slug,
                       key: post.localidad_del_beneficio.term_id,
                       value: post.localidad_del_beneficio
-                        ? `/localidad?localidad=${
-                            post.localidad_del_beneficio.term_id
-                          }`
+                        ? `/localidad?localidad=${post.localidad_del_beneficio.term_id}`
                         : '',
                       label: post.localidad_del_beneficio
                         ? `${post.localidad_del_beneficio.name}`
                         : ''
-                    }
-                    return ciutats
+                    };
+                    return ciutats;
                   }, [])
                   .sort((a, b) => {
-                    if (a.slug < b.slug) return -1
-                    if (a.slug > b.slug) return 1
-                    return 0
+                    if (a.slug < b.slug) return -1;
+                    if (a.slug > b.slug) return 1;
+                    return 0;
                   })}
               />
             </div>
@@ -175,80 +162,96 @@ const PostByComunidad = props => (
 
           <IntlProvider defaultLocale="es">
             <section>
-
-          {props.marcasofertas.length >= 1 ?
-          <ul className='gallery national-gallery'>
-              {props.marcasofertas.reduce((marcas, marcasoferta) => {
-                if (marcasoferta.marca == false) {
-                  return marcas
-                }
-                marcas[marcasoferta.marca.term_id] =
-                (
-                <span key={marcasoferta.marca.term_id}>            
-                <li className='benefit align-center'>
-                <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'>
-                  <Link prefetch as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`} href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}>
-                    <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}><img src={'/static/' + marcasoferta.marca.slug +'-familias-numerosas.png'} /><br/> <span dangerouslySetInnerHTML={ {__html: marcasoferta.marca.name} } /></a>
-                  </Link></p>)} />
-                </li>
-                </span>
-                )
-                return marcas
-            },[])}
-            </ul> :'' }
-            {props.marcascaofertas.length >= 1 ? (
-              <ul className="gallery national-gallery">
-                {props.marcascaofertas.reduce((marcas, marcascaoferta) => {
-                  if (marcascaoferta.marca == false) {
-                    return marcas
-                  }
-                  marcas[marcascaoferta.marca.term_id] = (
-                    <span key={marcascaoferta.marca.term_id}>
-                      <li className="benefit align-center">
-                        <Link
-                          prefetch
-                          as={`/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${
-                            marcascaoferta.marca.slug
-                          }`}
-                          href={`/ofertas-de-la-marca-ca?id=${
-                            marcascaoferta.marca.term_id
-                          }&caid=${
-                            marcascaoferta.comunidad_autonoma.term_id
-                          }`}
-                        >
-                          <a
-                            title={
-                              'Ver todas las ofertas de ' +
-                              marcascaoferta.marca.name
-                            }
+              {props.marcasofertas.length >= 1 ? (
+                <ul className="gallery national-gallery">
+                  {props.marcasofertas.reduce((marcas, marcasoferta) => {
+                    if (marcasoferta.marca == false) {
+                      return marcas;
+                    }
+                    marcas[marcasoferta.marca.term_id] = (
+                      <span key={marcasoferta.marca.term_id}>
+                        <li className="benefit align-center">
+                          <Observer
+                            threshold={1}
+                            triggerOnce={true}
+                            render={() => (
+                              <p className="fade-in">
+                                <Link
+                                  prefetch
+                                  as={`/m-o-g-m/${marcasoferta.marca.term_id}/${
+                                    marcasoferta.marca.slug
+                                  }`}
+                                  href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
+                                >
+                                  <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}>
+                                    <img
+                                      src={
+                                        '/static/' +
+                                        marcasoferta.marca.slug +
+                                        '-familias-numerosas.png'
+                                      }
+                                    />
+                                    <br />{' '}
+                                    <span
+                                      dangerouslySetInnerHTML={{ __html: marcasoferta.marca.name }}
+                                    />
+                                  </a>
+                                </Link>
+                              </p>
+                            )}
+                          />
+                        </li>
+                      </span>
+                    );
+                    return marcas;
+                  }, [])}
+                </ul>
+              ) : (
+                ''
+              )}
+              {props.marcascaofertas.length >= 1 ? (
+                <ul className="gallery national-gallery">
+                  {props.marcascaofertas.reduce((marcas, marcascaoferta) => {
+                    if (marcascaoferta.marca == false) {
+                      return marcas;
+                    }
+                    marcas[marcascaoferta.marca.term_id] = (
+                      <span key={marcascaoferta.marca.term_id}>
+                        <li className="benefit align-center">
+                          <Link
+                            prefetch
+                            as={`/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${
+                              marcascaoferta.marca.slug
+                            }`}
+                            href={`/ofertas-de-la-marca-ca?id=${
+                              marcascaoferta.marca.term_id
+                            }&caid=${marcascaoferta.comunidad_autonoma.term_id}`}
                           >
-                            <img
-                              src={
-                                '/static/' +
-                                marcascaoferta.marca.slug +
-                                '-familias-numerosas.png'
-                              }
-                            />
-                            <br />{' '}
-                            <span
-                              dangerouslySetInnerHTML={{
-                                __html: marcascaoferta.marca.name
-                              }}
-                            />
-                          </a>
-                        </Link>
-                      </li>
-                    </span>
-                  )
-                  return marcas
-                }, [])}
-              </ul>
-            ) : (
-              ''
-            )}
+                            <a title={'Ver todas las ofertas de ' + marcascaoferta.marca.name}>
+                              <img
+                                src={
+                                  '/static/' + marcascaoferta.marca.slug + '-familias-numerosas.png'
+                                }
+                              />
+                              <br />{' '}
+                              <span
+                                dangerouslySetInnerHTML={{
+                                  __html: marcascaoferta.marca.name
+                                }}
+                              />
+                            </a>
+                          </Link>
+                        </li>
+                      </span>
+                    );
+                    return marcas;
+                  }, [])}
+                </ul>
+              ) : (
+                ''
+              )}
               <p className="align-center">
-                ... O si lo prefieres accede directamente a cualquiera de las
-                fichas
+                ... O si lo prefieres accede directamente a cualquiera de las fichas
               </p>
 
               <ul className="gallery">
@@ -270,9 +273,7 @@ const PostByComunidad = props => (
                                   className="fade-in"
                                   width="250"
                                   src={
-                                    post
-                                      .imagen_destacada_de_la_oferta_general_thumb
-                                      .sizes.thumbnail
+                                    post.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail
                                   }
                                   alt={post.titulo_de_la_oferta_oferta_general}
                                 />
@@ -301,15 +302,14 @@ const PostByComunidad = props => (
                                   className="fade-in"
                                   width="250"
                                   src={
-                                    post
-                                      .imagen_destacada_de_la_oferta_socios_thumb
-                                      .sizes.thumbnail
+                                    post.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail
                                   }
                                   alt={post.titulo_de_la_oferta_oferta_socios}
                                 />
                                 <span className="label alert gallery-label">
                                   <small>
-                                    EXCLUSIVO<br /> SOCIOS
+                                    EXCLUSIVO
+                                    <br /> SOCIOS
                                   </small>
                                 </span>
                               </a>
@@ -322,11 +322,7 @@ const PostByComunidad = props => (
                     )}
 
                     <p>
-                      <Link
-                        prefetch
-                        as={`/p/${post.ID}/${post.slug}`}
-                        href={`/post?id=${post.ID}`}
-                      >
+                      <Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
                         <a
                           title={'Ver la ficha de ' + post.name}
                           dangerouslySetInnerHTML={{ __html: post.name }}
@@ -337,16 +333,14 @@ const PostByComunidad = props => (
                         <small>
                           <Link
                             prefetch
-                            as={`/c-l/${
-                              post.categoria_de_la_prestacion.term_id
-                            }/${post.categoria_de_la_prestacion.slug}/${
-                              post.localidad_del_beneficio.term_id
-                            }/${post.localidad_del_beneficio.slug}`}
+                            as={`/c-l/${post.categoria_de_la_prestacion.term_id}/${
+                              post.categoria_de_la_prestacion.slug
+                            }/${post.localidad_del_beneficio.term_id}/${
+                              post.localidad_del_beneficio.slug
+                            }`}
                             href={`/category-localidad?sid=${
                               post.categoria_de_la_prestacion.term_id
-                            }&localidad=${
-                              post.localidad_del_beneficio.term_id
-                            }`}
+                            }&localidad=${post.localidad_del_beneficio.term_id}`}
                           >
                             <a
                               title={
@@ -431,12 +425,12 @@ const PostByComunidad = props => (
             padding: 5px;
           }
           ul {
-            list-style-type: none;
+            list-style-type: none!important;
             margin-left: 0;
             margin: 0 auto !important;
           }
           a {
-            color: inherit;
+            color: inherit!important;
           }
           a:hover {
             text-decoration: underline;
@@ -523,36 +517,32 @@ const PostByComunidad = props => (
       </Layout>
     )}
   </section>
-)
+);
 
 PostByComunidad.getInitialProps = async function(context) {
-  const { comunidad } = context.query
-  const { caid } = context.query
+  const { comunidad } = context.query;
+  const { caid } = context.query;
   const res = await fetch(
     `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/beneficios?_embed&comunidad=${comunidad}`
-  )
-  const posts = await res.json()
+  );
+  const posts = await res.json();
 
-  const res2 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&comunidad=${caid}&sim-model=id-marca`)
+  const res2 = await fetch(
+    `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/ofertas_grandes_marc?_embed&comunidad=${caid}&sim-model=id-marca`
+  );
 
-  const marcasofertas = await res2.json()
+  const marcasofertas = await res2.json();
   const res3 = await fetch(
     `https://gestorbeneficios.familiasnumerosas.org/wp-json/lanauva/v1/of_gr_m_ca?_embed&comunidad=${caid}&sim-model=id-marca-comunidad`
-  )
-  const marcascaofertas = await res3.json()
+  );
+  const marcascaofertas = await res3.json();
 
-  const res4 = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/banners`
-  )
-  const banners = await res4.json()
+  const res4 = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/banners`);
+  const banners = await res4.json();
 
-  console.log(`Posts data fetched. Count: ${posts.length}, ${banners.length}`)
+  console.log(`Posts data fetched. Count: ${posts.length}, ${banners.length}`);
 
-  const uniquemarcas = [
-    ...new Set(marcasofertas.map(({ marca }) => marca.name))
-  ]
+  return { posts, banners, marcasofertas, marcascaofertas, caid };
+};
 
-  return { posts, banners, marcasofertas, marcascaofertas, caid, uniquemarcas }
-}
-
-export default PostByComunidad
+export default PostByComunidad;
