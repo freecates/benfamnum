@@ -168,41 +168,51 @@ const PostByComunidad = props => (
                     if (marcasoferta.marca == false) {
                       return marcas;
                     }
-                    marcas[marcasoferta.marca.term_id] = (
-                      <span key={marcasoferta.marca.term_id}>
-                        <li className="benefit align-center">
-                          <Observer
-                            threshold={1}
-                            triggerOnce={true}
-                            render={() => (
-                              <p className="fade-in">
-                                <Link
-                                  prefetch
-                                  as={`/m-o-g-m/${marcasoferta.marca.term_id}/${
-                                    marcasoferta.marca.slug
-                                  }`}
-                                  href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
-                                >
-                                  <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}>
-                                    <img
-                                      src={
-                                        '/static/' +
-                                        marcasoferta.marca.slug +
-                                        '-familias-numerosas.png'
-                                      }
-                                    />
-                                    <br />{' '}
-                                    <span
-                                      dangerouslySetInnerHTML={{ __html: marcasoferta.marca.name }}
-                                    />
-                                  </a>
-                                </Link>
-                              </p>
-                            )}
-                          />
-                        </li>
-                      </span>
-                    );
+                    if (
+                      marcasoferta.marca != false &&
+                      marcasoferta.marca != null &&
+                      marcasoferta.marca != ''
+                    ) {
+                      marcas[marcasoferta.marca.term_id] = (
+                        <span key={marcasoferta.marca.term_id}>
+                          <li className="benefit align-center">
+                            <Observer
+                              threshold={1}
+                              triggerOnce={true}
+                              render={() => (
+                                <p className="fade-in">
+                                  <Link
+                                    prefetch
+                                    as={`/m-o-g-m/${marcasoferta.marca.term_id}/${
+                                      marcasoferta.marca.slug
+                                    }`}
+                                    href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
+                                  >
+                                    <a
+                                      title={'Ver todas las ofertas de ' + marcasoferta.marca.name}
+                                    >
+                                      <img
+                                        src={
+                                          '/static/' +
+                                          marcasoferta.marca.slug +
+                                          '-familias-numerosas.png'
+                                        }
+                                      />
+                                      <br />{' '}
+                                      <span
+                                        dangerouslySetInnerHTML={{
+                                          __html: marcasoferta.marca.name
+                                        }}
+                                      />
+                                    </a>
+                                  </Link>
+                                </p>
+                              )}
+                            />
+                          </li>
+                        </span>
+                      );
+                    }
                     return marcas;
                   }, [])}
                 </ul>
@@ -425,12 +435,12 @@ const PostByComunidad = props => (
             padding: 5px;
           }
           ul {
-            list-style-type: none!important;
+            list-style-type: none !important;
             margin-left: 0;
             margin: 0 auto !important;
           }
           a {
-            color: inherit!important;
+            color: inherit !important;
           }
           a:hover {
             text-decoration: underline;
