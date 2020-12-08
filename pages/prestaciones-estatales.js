@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import Observer from 'react-intersection-observer'
 import fetch from 'isomorphic-unfetch'
@@ -12,8 +12,8 @@ const PrestacionesEstatales = (props) => (
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
-        <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-        <li><Link prefetch href="/prestaciones"><a>Prestaciones</a></Link></li>
+        <li><Link  href="/"><a>Inicio</a></Link></li>
+        <li><Link  href="/prestaciones"><a>Prestaciones</a></Link></li>
         <li>
           <span className="show-for-sr">Actual: </span> Estatales 
         </li>
@@ -48,7 +48,7 @@ const PrestacionesEstatales = (props) => (
                 <td><span dangerouslySetInnerHTML={ {__html: prestacion.name} } />. {prestacion.nombre_de_la_prestacion ?
                   <span>{prestacion.nombre_de_la_prestacion}</span> : '' }</td>
                 <td width='150'>
-                  <Link prefetch as={`/pr/${prestacion.ID}/${prestacion.slug}`} href={`/prestacion?id=${prestacion.ID}`}>
+                  <Link  as={`/pr/${prestacion.ID}/${prestacion.slug}`} href={`/prestacion?id=${prestacion.ID}`}>
                     <a title={'Acceder a la ficha de ' + prestacion.name} className='button small'>Acceder a la ficha</a>
                   </Link></td>
               </tr>

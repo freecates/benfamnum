@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import Observer from 'react-intersection-observer'
@@ -8,14 +8,14 @@ import FontAwesome from 'react-fontawesome'
 import {ShareButtons, ShareCounts, generateShareIcon} from 'react-share'
 
 const MapaDeGoogle = dynamic(
-  import('../components/MapaDeGoogle'),
+  import('@components/MapaDeGoogle'),
   {
     loading: () => (<div><p style={{textAlign: 'center'}}><img src='/static/rolling.gif'/></p></div>)
   }
 )
 
 const IsMember = dynamic(
-  import('../components/IsMember'),
+  import('@components/IsMember'),
   {
     loading: () => (<div><p style={{textAlign: 'center'}}><img src='/static/rolling.gif'/></p></div>)
   }
@@ -95,9 +95,9 @@ const Post =  (props) => (
       </Head>
       <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
-          <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-          <li><Link prefetch href="/beneficios"><a>Ofertas para familias</a></Link></li>
-          <li><Link prefetch as={`/c/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}`} href={`/category?sid=${props.post.categoria_del_beneficio}`}><a>{props.post._embedded['wp:term'][0][0].name}</a></Link></li>
+          <li><Link  href="/"><a>Inicio</a></Link></li>
+          <li><Link  href="/beneficios"><a>Ofertas para familias</a></Link></li>
+          <li><Link  as={`/c/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}`} href={`/category?sid=${props.post.categoria_del_beneficio}`}><a>{props.post._embedded['wp:term'][0][0].name}</a></Link></li>
           <li>
             <span className="show-for-sr">Actual: </span> <span dangerouslySetInnerHTML={ {__html: props.post.acf.nombre_del_establecimiento} } />
           </li>
@@ -110,7 +110,7 @@ const Post =  (props) => (
             
             <h1><img src={'/static/' + props.post._embedded['wp:term'][0][0].slug +'-familias-numerosas.png'} /><br/><span dangerouslySetInnerHTML={ {__html: props.post.acf.nombre_del_establecimiento} } /> {props.post.acf.descripcion_de_la_oferta_oferta_socios ? <span className='label alert file-label'><small>EXCLUSIVO<br /> SOCIOS</small></span> : '' }</h1>
            
-            <h4 className='location dont-break-out'><span><span dangerouslySetInnerHTML={ {__html:props.post.acf.direccion} }/>. <span>{props.post.acf.codigo_postal}</span>, <Link prefetch as={`/l/${props.post.acf.localidad_del_beneficio.term_id}/${props.post.acf.localidad_del_beneficio.slug}`} href={`/localidad?localidad=${props.post.acf.localidad_del_beneficio.term_id}`}><a title={'Ver todos los beneficios de ' + props.post.acf.localidad_del_beneficio.name}><span dangerouslySetInnerHTML={ {__html: props.post.acf.localidad_del_beneficio.name} } /></a></Link></span></h4>
+            <h4 className='location dont-break-out'><span><span dangerouslySetInnerHTML={ {__html:props.post.acf.direccion} }/>. <span>{props.post.acf.codigo_postal}</span>, <Link  as={`/l/${props.post.acf.localidad_del_beneficio.term_id}/${props.post.acf.localidad_del_beneficio.slug}`} href={`/localidad?localidad=${props.post.acf.localidad_del_beneficio.term_id}`}><a title={'Ver todos los beneficios de ' + props.post.acf.localidad_del_beneficio.name}><span dangerouslySetInnerHTML={ {__html: props.post.acf.localidad_del_beneficio.name} } /></a></Link></span></h4>
             <h4 className='location dont-break-out'><span> 
             {props.post.acf.telefono ? <span><a href={'tel:' + props.post.acf.telefono}>{props.post.acf.telefono}</a></span> : ''}{props.post.acf.telefono_m ? <span> | <a href={'tel:' + props.post.acf.telefono_}>{props.post.acf.telefono_m}</a></span> : ''}
             {props.post.acf.correo_electronico_del_establecimiento ?  <span>. <a href={'mailto:' + props.post.acf.correo_electronico_del_establecimiento}><FontAwesome
@@ -131,7 +131,7 @@ const Post =  (props) => (
             style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)', color:'#666666' }}
           /></a></Link></span> : '' }</span></h4>
 
-            <p className='category'><strong>Categoria</strong>: <Link prefetch as={`/c/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}`} href={`/category?sid=${props.post.categoria_del_beneficio}`}><a title={'Ver todos los beneficios de la categoría ' + props.post._embedded['wp:term'][0][0].name}>{props.post._embedded['wp:term'][0][0].name}</a></Link></p>
+            <p className='category'><strong>Categoria</strong>: <Link  as={`/c/${props.post.categoria_del_beneficio}/${props.post._embedded['wp:term'][0][0].slug}`} href={`/category?sid=${props.post.categoria_del_beneficio}`}><a title={'Ver todos los beneficios de la categoría ' + props.post._embedded['wp:term'][0][0].name}>{props.post._embedded['wp:term'][0][0].name}</a></Link></p>
 
             {props.post.acf.lat ? <MapaDeGoogle lat={props.post.acf.lat} lng={props.post.acf.lon} /> : '' }
 

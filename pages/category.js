@@ -1,12 +1,12 @@
 import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
+import Layout from '@components/MyLayout.js';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
 import Observer from 'react-intersection-observer';
 import { IntlProvider } from 'react-intl';
 
-const SelectCity = dynamic(import('../components/SelectCity'), {
+const SelectCity = dynamic(import('@components/SelectCity'), {
   loading: () => (
     <div>
       <p style={{ textAlign: 'center' }}>
@@ -29,17 +29,17 @@ const PostsByCategory = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/">
+          <Link  href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/beneficios">
+          <Link  href="/beneficios">
             <a>Ofertas para familias</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/ofertas-por-sectores">
+          <Link  href="/ofertas-por-sectores">
             <a>Ofertas por sectores</a>
           </Link>
         </li>
@@ -90,7 +90,7 @@ const PostsByCategory = props => (
       <p className="align-center">
         <small>
           <Link
-            prefetch
+            
             as={`/m/${props.posts[0].categoria_de_la_prestacion.term_id}/${
               props.posts[0].categoria_de_la_prestacion.slug
             }`}
@@ -330,7 +330,7 @@ const PostsByCategory = props => (
                   <span key={marcasoferta.marca.term_id}>
                     <li className="benefit align-center">
                       <Link
-                        prefetch
+                        
                         as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                         href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
                       >
@@ -364,7 +364,7 @@ const PostsByCategory = props => (
             <p className="align-center">
               Si lo prefiere, también puede ver las{' '}
               <Link
-                prefetch
+                
                 as={`/c-o-o/${props.ofertasonlines[0].categoria_de_la_oferta.term_id}/${
                   props.ofertasonlines[0].categoria_de_la_oferta.slug
                 }`}

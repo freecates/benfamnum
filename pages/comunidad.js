@@ -1,12 +1,12 @@
 import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
+import Layout from '@components/MyLayout.js';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
 import Observer from 'react-intersection-observer';
 import { IntlProvider, FormattedDate } from 'react-intl';
 
-const SelectCity = dynamic(import('../components/SelectCity'), {
+const SelectCity = dynamic(import('@components/SelectCity'), {
   loading: () => (
     <div>
       <p style={{ textAlign: 'center' }}>
@@ -29,12 +29,12 @@ const PostByComunidad = props => (
         <nav aria-label="Estás aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>
-              <Link prefetch href="/">
+              <Link  href="/">
                 <a>Inicio</a>
               </Link>
             </li>
             <li>
-              <Link prefetch href="/beneficios">
+              <Link  href="/beneficios">
                 <a>Ofertas para familias</a>
               </Link>
             </li>
@@ -47,7 +47,7 @@ const PostByComunidad = props => (
           <h1>Actualmente no existen ofertas para familias en esta Comunidad</h1>
           <p className="align-center">
             Por favor, escoge{' '}
-            <Link prefetch href="/beneficios">
+            <Link  href="/beneficios">
               <a>otra</a>
             </Link>
             .
@@ -80,12 +80,12 @@ const PostByComunidad = props => (
         <nav aria-label="Estás aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>
-              <Link prefetch href="/">
+              <Link  href="/">
                 <a>Inicio</a>
               </Link>
             </li>
             <li>
-              <Link prefetch href="/beneficios">
+              <Link  href="/beneficios">
                 <a>Ofertas para familias</a>
               </Link>
             </li>
@@ -182,7 +182,7 @@ const PostByComunidad = props => (
                               render={() => (
                                 <p className="fade-in">
                                   <Link
-                                    prefetch
+                                    
                                     as={`/m-o-g-m/${marcasoferta.marca.term_id}/${
                                       marcasoferta.marca.slug
                                     }`}
@@ -229,7 +229,7 @@ const PostByComunidad = props => (
                       <span key={marcascaoferta.marca.term_id}>
                         <li className="benefit align-center">
                           <Link
-                            prefetch
+                            
                             as={`/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${
                               marcascaoferta.marca.slug
                             }`}
@@ -274,7 +274,7 @@ const PostByComunidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              prefetch
+                              
                               as={`/p/${post.ID}/${post.slug}`}
                               href={`/post?id=${post.ID}`}
                             >
@@ -303,7 +303,7 @@ const PostByComunidad = props => (
                         render={() => (
                           <p className="fade-in">
                             <Link
-                              prefetch
+                              
                               as={`/p/${post.ID}/${post.slug}`}
                               href={`/post?id=${post.ID}`}
                             >
@@ -332,7 +332,7 @@ const PostByComunidad = props => (
                     )}
 
                     <p>
-                      <Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
+                      <Link  as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
                         <a
                           title={'Ver la ficha de ' + post.name}
                           dangerouslySetInnerHTML={{ __html: post.name }}
@@ -342,7 +342,7 @@ const PostByComunidad = props => (
                       {post.categoria_de_la_prestacion ? (
                         <small>
                           <Link
-                            prefetch
+                            
                             as={`/c-l/${post.categoria_de_la_prestacion.term_id}/${
                               post.categoria_de_la_prestacion.slug
                             }/${post.localidad_del_beneficio.term_id}/${

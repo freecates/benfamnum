@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import Observer from 'react-intersection-observer'
@@ -15,10 +15,10 @@ const PostsByCategoryLocalidad = (props) => (
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
-        <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-        <li><Link prefetch href="/beneficios"><a>Ofertas para familias</a></Link></li>
-        <li><Link prefetch as={`/c/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`} href={`/category?sid=${props.posts[0].categoria_de_la_prestacion.term_id}`}><a>{props.posts[0].categoria_de_la_prestacion.name}</a></Link></li>
-        {props.marcasofertas[0] ? <li><Link prefetch as={`/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].comunidad_autonoma}/${props.marcasofertas[0].comunidad_autonoma.term_id}`} href={`/category-comunidad?sid=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=${props.posts[0].comunidad_autonoma}&caid=${props.marcasofertas[0].comunidad_autonoma.term_id}`}><a>{props.posts[0].comunidad_autonoma}</a></Link></li> : ''}
+        <li><Link  href="/"><a>Inicio</a></Link></li>
+        <li><Link  href="/beneficios"><a>Ofertas para familias</a></Link></li>
+        <li><Link  as={`/c/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`} href={`/category?sid=${props.posts[0].categoria_de_la_prestacion.term_id}`}><a>{props.posts[0].categoria_de_la_prestacion.name}</a></Link></li>
+        {props.marcasofertas[0] ? <li><Link  as={`/c-ca/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].comunidad_autonoma}/${props.marcasofertas[0].comunidad_autonoma.term_id}`} href={`/category-comunidad?sid=${props.posts[0].categoria_de_la_prestacion.term_id}&comunidad=${props.posts[0].comunidad_autonoma}&caid=${props.marcasofertas[0].comunidad_autonoma.term_id}`}><a>{props.posts[0].comunidad_autonoma}</a></Link></li> : ''}
         <li>
           <span className="show-for-sr">Actual: </span> {props.posts[0].localidad_del_beneficio.name} 
         </li>
@@ -62,7 +62,7 @@ const PostsByCategoryLocalidad = (props) => (
             ))}
           </div>
       <h1>Beneficios de {props.posts[0].categoria_de_la_prestacion.name} en {props.posts[0].localidad_del_beneficio.name}</h1>
-      <p className='align-center'><small><Link prefetch as={`/m-c-l/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`} href={`/mapa-category-localidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&localidad=${props.posts[0].localidad_del_beneficio.term_id}`}><a><img src='/static/icona-mapa-familias-numerosas.png' /> ver en el mapa</a></Link></small></p>
+      <p className='align-center'><small><Link  as={`/m-c-l/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`} href={`/mapa-category-localidad?id=${props.posts[0].categoria_de_la_prestacion.term_id}&localidad=${props.posts[0].localidad_del_beneficio.term_id}`}><a><img src='/static/icona-mapa-familias-numerosas.png' /> ver en el mapa</a></Link></small></p>
       <IntlProvider defaultLocale='es'>
         <section>
           {props.uniquemarcas.length >= 1 ?
@@ -76,7 +76,7 @@ const PostsByCategoryLocalidad = (props) => (
                 <span key={marcasoferta.marca.term_id}>            
                 <li className='benefit align-center'>
                 <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'>
-                  <Link prefetch as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`} href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}>
+                  <Link  as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`} href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}>
                     <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}><img src={'/static/' + marcasoferta.marca.slug +'-familias-numerosas.png'} /><br/> <span dangerouslySetInnerHTML={ {__html: marcasoferta.marca.name} } /></a>
                   </Link></p>)} />
                 </li>
@@ -96,7 +96,7 @@ const PostsByCategoryLocalidad = (props) => (
                 <span key={marcacasoferta.marca.term_id}>            
                 <li className='benefit align-center'>
                 <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'>
-                  <Link prefetch as={`/m-o-g-m-ca/${marcacasoferta.marca.term_id}/${marcacasoferta.marca.slug}`} href={`/ofertas-de-la-marca-ca?id=${marcacasoferta.marca.term_id}`}>
+                  <Link  as={`/m-o-g-m-ca/${marcacasoferta.marca.term_id}/${marcacasoferta.marca.slug}`} href={`/ofertas-de-la-marca-ca?id=${marcacasoferta.marca.term_id}`}>
                     <a title={'Ver todas las ofertas de ' + marcacasoferta.marca.name}><img src={'/static/' + marcacasoferta.marca.slug +'-familias-numerosas.png'} /><br/> <span dangerouslySetInnerHTML={ {__html: marcacasoferta.marca.name} } /></a>
                   </Link></p>)} />
                 </li>
@@ -108,11 +108,11 @@ const PostsByCategoryLocalidad = (props) => (
           <ul className='gallery'>
             {props.posts.map((post, index) => (
               <li className='benefit' key={index}>
-                {post.imagen_destacada_de_la_oferta_general_thumb ? <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a title={'Ver la ficha de ' + post.name}><img width='250' src={post.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_general} /></a></Link></p>)} /> : ''}
+                {post.imagen_destacada_de_la_oferta_general_thumb ? <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'><Link  as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a title={'Ver la ficha de ' + post.name}><img width='250' src={post.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_general} /></a></Link></p>)} /> : ''}
 
-                {post.imagen_destacada_de_la_oferta_socios_thumb ? <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a title={'Ver la ficha de ' + post.name}><img width='250' src={post.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_socios} /><span className='label alert gallery-label'><small>EXCLUSIVO<br/> SOCIOS</small></span></a></Link></p>)} /> : ''}
+                {post.imagen_destacada_de_la_oferta_socios_thumb ? <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'><Link  as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a title={'Ver la ficha de ' + post.name}><img width='250' src={post.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_socios} /><span className='label alert gallery-label'><small>EXCLUSIVO<br/> SOCIOS</small></span></a></Link></p>)} /> : ''}
 
-                <p><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
+                <p><Link  as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
                   <a title={'Ver la ficha de ' + post.name} dangerouslySetInnerHTML={ {__html: post.name} } />
                 </Link><br/>
                 

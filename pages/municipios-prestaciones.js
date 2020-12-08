@@ -1,12 +1,12 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
 
 const SelectCity = dynamic(
-  import('../components/SelectCity'),
+  import('@components/SelectCity'),
   {
     loading: () => (<p>cargando ...</p>)
   }
@@ -19,8 +19,8 @@ const MunicipiosPrestaciones = (props) => (
     </Head>
       <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
-          <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-          <li><Link prefetch href="/prestaciones"><a>Prestaciones ofciales</a></Link></li>
+          <li><Link  href="/"><a>Inicio</a></Link></li>
+          <li><Link  href="/prestaciones"><a>Prestaciones ofciales</a></Link></li>
           <li>
           <span className="show-for-sr">Actual: </span> Municipios con prestaciones 
           </li>

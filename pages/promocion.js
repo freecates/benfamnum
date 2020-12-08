@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import FontAwesome from 'react-fontawesome'
@@ -32,9 +32,9 @@ const Promocion =  (props) => (
       </Head>
       <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
-          <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-          <li><Link prefetch href="/beneficios"><a>Ofertas comerciales</a></Link></li>
-          <li><Link prefetch href="/promociones"><a>Promociones</a></Link></li>
+          <li><Link  href="/"><a>Inicio</a></Link></li>
+          <li><Link  href="/beneficios"><a>Ofertas comerciales</a></Link></li>
+          <li><Link  href="/promociones"><a>Promociones</a></Link></li>
           <li>
             <span className="show-for-sr">Actual: </span> <span dangerouslySetInnerHTML={ {__html: props.promocion.acf.nombre_de_la_empresa} } />
           </li>

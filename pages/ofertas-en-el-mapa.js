@@ -1,12 +1,12 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
 
 const SelectCity = dynamic(
-  import('../components/SelectCity'),
+  import('@components/SelectCity'),
   {
     loading: () => (<p>cargando ...</p>)
   }
@@ -19,8 +19,8 @@ const Localidades = (props) => (
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
     <ul className="breadcrumbs">
-        <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-        <li><Link prefetch href="/beneficios"><a>Ofertas para familias numerosas</a></Link></li>
+        <li><Link  href="/"><a>Inicio</a></Link></li>
+        <li><Link  href="/beneficios"><a>Ofertas para familias numerosas</a></Link></li>
         <li>
         <span className="show-for-sr">Actual: </span> En el mapa 
         </li>
@@ -31,7 +31,7 @@ const Localidades = (props) => (
         <section className='padding-4x'>
           <div className='wrapper wrapper-top'>
             <div className='left'>
-              <p className='align-center no-margin-bottom padding'><Link prefetch as='/m-p' href='/mapa-proximidad'><a className='button button-blue'>Buscar cerca de tí</a></Link></p>
+              <p className='align-center no-margin-bottom padding'><Link  as='/m-p' href='/mapa-proximidad'><a className='button button-blue'>Buscar cerca de tí</a></Link></p>
             </div>
             <div className='right'>
               <div className='form-component form-component-full'>       

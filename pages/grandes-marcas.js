@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
@@ -16,7 +16,7 @@ const GRandesMarcas = (props) => (
           <ul className='gallery'>
           {props.grandesmarcas.map((grandesmarca, index) => (
             <li className='item align-center' key={index}>
-              <Link prefetch as={`/m-o-g-m/${grandesmarca.id}/${grandesmarca.slug}`} href={`/ofertas-de-la-marca?id=${grandesmarca.id}`}>
+              <Link  as={`/m-o-g-m/${grandesmarca.id}/${grandesmarca.slug}`} href={`/ofertas-de-la-marca?id=${grandesmarca.id}`}>
                 <a title={'Clica aquí para ver las ofertas de ' + grandesmarca.name}><img src={'/static/' + grandesmarca.slug +'-familias-numerosas.png'} /><br/><span dangerouslySetInnerHTML={ {__html: grandesmarca.name} } /></a>
               </Link>
             </li>

@@ -29,10 +29,10 @@ const Footer = () => (
               </div>
           </div>
           <p className='grey'>Federación Española de Familias Numerosas &#169; 2018
-          <Link prefetch href="/aviso-legal">
+          <Link  href="/aviso-legal">
             <a title='Aviso legal' style={linkStyle}>Aviso Legal</a>
           </Link>
-          <Link prefetch href="/politica-de-cookies">
+          <Link  href="/politica-de-cookies">
             <a title='Enlace externo' style={linkStyle}>Política de Cookies</a>
           </Link>        
           </p>

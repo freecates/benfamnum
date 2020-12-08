@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 
 export default () => (
     <Layout>
       <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
-          <li><Link prefetch href="/"><a>Inicio</a></Link></li>
+          <li><Link  href="/"><a>Inicio</a></Link></li>
           <li>
             <span className="show-for-sr">Actual: </span>Hazte socio
           </li>

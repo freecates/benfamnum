@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
@@ -11,8 +11,8 @@ const OfertasPorSectores = (props) => (
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
     <ul className="breadcrumbs">
-        <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-        <li><Link prefetch href="/beneficios"><a>Ofertas para familias numerosas</a></Link></li>
+        <li><Link  href="/"><a>Inicio</a></Link></li>
+        <li><Link  href="/beneficios"><a>Ofertas para familias numerosas</a></Link></li>
         <li>
         <span className="show-for-sr">Actual: </span> Sectores 
         </li>
@@ -24,7 +24,7 @@ const OfertasPorSectores = (props) => (
           <ul className='gallery'>
           {props.ofertasporsectores.map((ofertasporsectore, index) => (           
             <li className='item' key={index}>
-              <Link prefetch as={`/c/${ofertasporsectore.term_id}/${ofertasporsectore.slug}`} href={`/category?sid=${ofertasporsectore.term_id}`}>
+              <Link  as={`/c/${ofertasporsectore.term_id}/${ofertasporsectore.slug}`} href={`/category?sid=${ofertasporsectore.term_id}`}>
               <a title={'Clica aquí para ver todas las ofertas de ' + ofertasporsectore.name}><h3><img src={'/static/' + ofertasporsectore.slug +'-familias-numerosas.png'} width='64'/> <span dangerouslySetInnerHTML={ {__html: ofertasporsectore.name} } /></h3></a>
               </Link>
             </li>

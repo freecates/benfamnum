@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
@@ -72,8 +72,8 @@ const MapByCategory = (props) => (
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
-        <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-        <li><Link prefetch href="/beneficios"><a>Ofertas para familias</a></Link></li>
+        <li><Link  href="/"><a>Inicio</a></Link></li>
+        <li><Link  href="/beneficios"><a>Ofertas para familias</a></Link></li>
         <li>
           <span className="show-for-sr">Actual: </span> Beneficios cerca de tí 
         </li>
@@ -102,18 +102,18 @@ const MapByCategory = (props) => (
               key={index}
               lat={marker.lat.includes(',') || marker.lat.includes('!') ? '' : marker.lat}
               lng={marker.lon.includes(',') || marker.lon.includes('!') ? '' : marker.lon}
-              text={<Link prefetch as={`/p/${marker.ID}/${marker.slug}`} href={`/post?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + marker.categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /></span></a></Link>}
+              text={<Link  as={`/p/${marker.ID}/${marker.slug}`} href={`/post?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + marker.categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /></span></a></Link>}
             />
                 ))}
           </GoogleMapReact>
 
             </div>
-            <p className='text-center'>Si no tienes Beneficios cerca de tí,<strong>prueba de hacer menos zoom en el mapa</strong> hasta encontarlos. O vuelve a probar haciendo clic <Link prefetch as='/m-p' href='/mapa-proximidad'><a className='blue-underline'><strong>aquí</strong></a></Link></p>
+            <p className='text-center'>Si no tienes Beneficios cerca de tí,<strong>prueba de hacer menos zoom en el mapa</strong> hasta encontarlos. O vuelve a probar haciendo clic <Link  as='/m-p' href='/mapa-proximidad'><a className='blue-underline'><strong>aquí</strong></a></Link></p>
 
           </section>
        :
        <section>
-       <p className='text-center'><Link prefetch as='/m-p' href='/mapa-proximidad'><a className='button'>Localízate</a></Link></p>
+       <p className='text-center'><Link  as='/m-p' href='/mapa-proximidad'><a className='button'>Localízate</a></Link></p>
 
        </section>}
         

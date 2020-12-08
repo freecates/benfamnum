@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import Observer from 'react-intersection-observer'
@@ -15,9 +15,9 @@ const PostsByLocalidad = (props) => (
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
-        <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-        <li><Link prefetch href="/beneficios"><a>Ofertas para familias</a></Link></li>
-        <li><Link prefetch as={`/ca/${props.posts[0].comunidad_autonoma}`} href={`/comunidad?comunidad=${props.posts[0].comunidad_autonoma}`}><a>{props.posts[0].comunidad_autonoma}</a></Link></li>
+        <li><Link  href="/"><a>Inicio</a></Link></li>
+        <li><Link  href="/beneficios"><a>Ofertas para familias</a></Link></li>
+        <li><Link  as={`/ca/${props.posts[0].comunidad_autonoma}`} href={`/comunidad?comunidad=${props.posts[0].comunidad_autonoma}`}><a>{props.posts[0].comunidad_autonoma}</a></Link></li>
         <li>
           <span className="show-for-sr">Actual: </span> Localidad: {props.posts[0].localidad_del_beneficio.name} 
         </li>
@@ -60,7 +60,7 @@ const PostsByLocalidad = (props) => (
             ))}
           </div>
       <h1>Beneficios en {props.posts[0].localidad_del_beneficio.name}</h1>
-      <p className='align-center'><small><Link prefetch as={`/m-l/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`} href={`/mapa-localidad?localidad=${props.posts[0].localidad_del_beneficio.term_id}`}><a><img src='/static/icona-mapa-familias-numerosas.png' /> ver en el mapa</a></Link></small></p>
+      <p className='align-center'><small><Link  as={`/m-l/${props.posts[0].localidad_del_beneficio.term_id}/${props.posts[0].localidad_del_beneficio.slug}`} href={`/mapa-localidad?localidad=${props.posts[0].localidad_del_beneficio.term_id}`}><a><img src='/static/icona-mapa-familias-numerosas.png' /> ver en el mapa</a></Link></small></p>
       <IntlProvider defaultLocale='es'>
         <section>
           {props.marcasofertas.length >= 1 ?
@@ -74,7 +74,7 @@ const PostsByLocalidad = (props) => (
                 <span key={marcasoferta.marca.term_id}>            
                 <li className='benefit align-center'>
                 <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'>
-                  <Link prefetch as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`} href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}>
+                  <Link  as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`} href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}>
                     <a title={'Ver todas las ofertas de ' + marcasoferta.marca.name}><img src={'/static/' + marcasoferta.marca.slug +'-familias-numerosas.png'} /><br/> <span dangerouslySetInnerHTML={ {__html: marcasoferta.marca.name} } /></a>
                   </Link></p>)} />
                 </li>
@@ -86,11 +86,11 @@ const PostsByLocalidad = (props) => (
           <ul className='gallery'>
             {props.posts.map((post, index) => (
               <li className='benefit' key={index}>
-                {post.imagen_destacada_de_la_oferta_general_thumb ? <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a><img width='250' src={post.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_general} /></a></Link></p>)} /> : ''}
+                {post.imagen_destacada_de_la_oferta_general_thumb ? <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'><Link  as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a><img width='250' src={post.imagen_destacada_de_la_oferta_general_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_general} /></a></Link></p>)} /> : ''}
 
-                {post.imagen_destacada_de_la_oferta_socios_thumb ? <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a><img width='250' src={post.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_socios} /><span className='label alert gallery-label'><small>EXCLUSIVO<br/> SOCIOS</small></span></a></Link></p>)} /> : ''}
+                {post.imagen_destacada_de_la_oferta_socios_thumb ? <Observer threshold={1} triggerOnce={true} render={() => (<p className='fade-in'><Link  as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}><a><img width='250' src={post.imagen_destacada_de_la_oferta_socios_thumb.sizes.thumbnail} alt={post.titulo_de_la_oferta_oferta_socios} /><span className='label alert gallery-label'><small>EXCLUSIVO<br/> SOCIOS</small></span></a></Link></p>)} /> : ''}
 
-                <p><Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
+                <p><Link  as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
                   <a dangerouslySetInnerHTML={ {__html: post.name} } />
                 </Link><br/>
                 <small>{post.localidad_del_beneficio.name}</small><br />

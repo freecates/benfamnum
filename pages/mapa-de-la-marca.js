@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
@@ -36,8 +36,8 @@ const MapByMarca = (props) => (
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
-        <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-        <li><Link prefetch href="/grandes-marcas"><a>Grandes Marcas</a></Link></li>
+        <li><Link  href="/"><a>Inicio</a></Link></li>
+        <li><Link  href="/grandes-marcas"><a>Grandes Marcas</a></Link></li>
         <li>
           <span className="show-for-sr">Actual: </span> {props.markers.length >= 1 ? props.markers[0].marca.name : ''}{props.camarkers.length >= 1 ? props.camarkers[0].marca.name : ''} 
         </li>
@@ -47,7 +47,7 @@ const MapByMarca = (props) => (
     {props.markers.length >= 1 ? (
       <div>
         <h1><img src={'/static/' + props.markers[0].marca.slug +'-familias-numerosas.png'} /><br/>{props.markers[0].marca.name}</h1>
-      <p className='align-center'><small><Link prefetch as={`/m-o-g-m/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`} href={`/ofertas-de-la-marca?id=${props.markers[0].marca.term_id}`}><a>ver listado</a></Link></small></p>
+      <p className='align-center'><small><Link  as={`/m-o-g-m/${props.markers[0].marca.term_id}/${props.markers[0].marca.slug}`} href={`/ofertas-de-la-marca?id=${props.markers[0].marca.term_id}`}><a>ver listado</a></Link></small></p>
       </div>
     ) : (
       ''
@@ -55,7 +55,7 @@ const MapByMarca = (props) => (
     {props.camarkers.length >= 1 ? (
       <div>
         <h1><img src={'/static/' + props.camarkers[0].marca.slug +'-familias-numerosas.png'} /><br/>{props.camarkers[0].marca.name}</h1>
-      <p className='align-center'><small><Link prefetch as={`/m-o-g-m/${props.camarkers[0].marca.term_id}/${props.camarkers[0].marca.slug}`} href={`/ofertas-de-la-marca?id=${props.camarkers[0].marca.term_id}`}><a>ver listado</a></Link></small></p>
+      <p className='align-center'><small><Link  as={`/m-o-g-m/${props.camarkers[0].marca.term_id}/${props.camarkers[0].marca.slug}`} href={`/ofertas-de-la-marca?id=${props.camarkers[0].marca.term_id}`}><a>ver listado</a></Link></small></p>
       </div>
     ) : (
       ''
@@ -79,7 +79,7 @@ const MapByMarca = (props) => (
               key={index}
               lat={marker.lat.includes(',') || marker.lat.includes('!') ? marker.lat.replace(',', '.') : marker.lat}
               lng={marker.lon.includes(',') || marker.lon.includes('!') ? marker.lon.replace(',', '.') : marker.lon}
-              text={<Link prefetch as={`/ogm/${marker.ID}/${marker.slug}`} href={`/oferta-gran-marca?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + props.markers[0].marca.slug +'-familias-numerosas.png'} /></span></a></Link>}
+              text={<Link  as={`/ogm/${marker.ID}/${marker.slug}`} href={`/oferta-gran-marca?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + props.markers[0].marca.slug +'-familias-numerosas.png'} /></span></a></Link>}
             />
                 ))
         ) : (
@@ -94,7 +94,7 @@ const MapByMarca = (props) => (
               key={index}
               lat={marker.lat.includes(',') || marker.lat.includes('!') ? marker.lat.replace(',', '.') : marker.lat}
               lng={marker.lon.includes(',') || marker.lon.includes('!') ? marker.lon.replace(',', '.') : marker.lon}
-              text={<Link prefetch as={`/ogm/${marker.ID}/${marker.slug}`} href={`/oferta-gran-marca?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + props.camarkers[0].marca.slug +'-familias-numerosas.png'} /></span></a></Link>}
+              text={<Link  as={`/ogm/${marker.ID}/${marker.slug}`} href={`/oferta-gran-marca?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + props.camarkers[0].marca.slug +'-familias-numerosas.png'} /></span></a></Link>}
             />
                 ))
         ) : (

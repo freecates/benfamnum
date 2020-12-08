@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
@@ -23,7 +23,7 @@ const OfertasOnLine = (props) => (
             (
             <span key={ofertasonline.categoria_de_la_oferta.term_id}>            
             <li className='item align-center'>
-              <Link prefetch as={`/c-o-o/${ofertasonline.categoria_de_la_oferta.term_id}/${ofertasonline.categoria_de_la_oferta.slug}`} href={`/category-ofertas-on-line?id=${ofertasonline.categoria_de_la_oferta.term_id}`}>
+              <Link  as={`/c-o-o/${ofertasonline.categoria_de_la_oferta.term_id}/${ofertasonline.categoria_de_la_oferta.slug}`} href={`/category-ofertas-on-line?id=${ofertasonline.categoria_de_la_oferta.term_id}`}>
                 <a title={'Clica aquí para ver todas las ofertas online de ' + ofertasonline.categoria_de_la_oferta.name}><img src={'/static/' + ofertasonline.categoria_de_la_oferta.slug +'-familias-numerosas.png'} /><br/><span dangerouslySetInnerHTML={ {__html: ofertasonline.categoria_de_la_oferta.name} } /></a>
               </Link>
             </li>

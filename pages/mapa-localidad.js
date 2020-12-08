@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
@@ -36,8 +36,8 @@ const MapByLocalidad = (props) => (
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
-        <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-        <li><Link prefetch href="/beneficios"><a>Ofertas para familias</a></Link></li>
+        <li><Link  href="/"><a>Inicio</a></Link></li>
+        <li><Link  href="/beneficios"><a>Ofertas para familias</a></Link></li>
         <li>
           <span className="show-for-sr">Actual: </span> {props.markers[0].localidad_del_beneficio.name} 
         </li>
@@ -45,7 +45,7 @@ const MapByLocalidad = (props) => (
     </nav>
     <section>
     <h1>Beneficios en {props.markers[0].localidad_del_beneficio.name}</h1>
-    <p className='align-center'><small><Link prefetch as={`/l/${props.markers[0].localidad_del_beneficio.term_id}/${props.markers[0].localidad_del_beneficio.slug}`} href={`/localidad?localidad=${props.markers[0].localidad_del_beneficio.term_id}`}><a title={'Ver todos los beneficios de ' + props.markers[0].localidad_del_beneficio.name}>ver listado</a></Link></small></p>
+    <p className='align-center'><small><Link  as={`/l/${props.markers[0].localidad_del_beneficio.term_id}/${props.markers[0].localidad_del_beneficio.slug}`} href={`/localidad?localidad=${props.markers[0].localidad_del_beneficio.term_id}`}><a title={'Ver todos los beneficios de ' + props.markers[0].localidad_del_beneficio.name}>ver listado</a></Link></small></p>
     <IntlProvider defaultLocale='es'>
       
       <div style={{width: '100%', height: '500px'}}>     
@@ -62,7 +62,7 @@ const MapByLocalidad = (props) => (
               key={index}
               lat={nationalmarker.lat.includes(',') || nationalmarker.lat.includes('!') ? nationalmarker.lat.replace(',', '.') : nationalmarker.lat}
               lng={nationalmarker.lon.includes(',') || nationalmarker.lon.includes('!') ? nationalmarker.lon.replace(',', '.') : nationalmarker.lon}
-              text={<Link prefetch as={`/ogm/${nationalmarker.ID}/${nationalmarker.slug}`} href={`/oferta-gran-marca?id=${nationalmarker.ID}`}><a title={nationalmarker.name}><span><img src={'/static/32/' + nationalmarker.marca.slug +'-familias-numerosas.png'} /></span></a></Link>}
+              text={<Link  as={`/ogm/${nationalmarker.ID}/${nationalmarker.slug}`} href={`/oferta-gran-marca?id=${nationalmarker.ID}`}><a title={nationalmarker.name}><span><img src={'/static/32/' + nationalmarker.marca.slug +'-familias-numerosas.png'} /></span></a></Link>}
             />
                 ))}
         {props.markers.map((marker, index) => (
@@ -71,7 +71,7 @@ const MapByLocalidad = (props) => (
             key={index}
             lat={marker.lat.includes(',') || marker.lat.includes('!') ? '' : marker.lat}
             lng={marker.lon.includes(',') || marker.lon.includes('!') ? '' : marker.lon}
-            text={<Link prefetch as={`/p/${marker.ID}/${marker.slug}`} href={`/post?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + marker.categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /></span></a></Link>}
+            text={<Link  as={`/p/${marker.ID}/${marker.slug}`} href={`/post?id=${marker.ID}`}><a title={marker.name}><span><img src={'/static/32/' + marker.categoria_de_la_prestacion.slug +'-familias-numerosas.png'} /></span></a></Link>}
           />
               ))}
         </GoogleMapReact>

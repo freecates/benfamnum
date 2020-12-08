@@ -22,7 +22,7 @@ export default class NavBarBenFamNum extends React.Component {
       <div>
         <Navbar inverse expand="lg">
           <NavbarToggler title="Commutador" className="ml-2" onClick={this.toggle} />
-          <Link prefetch href="/">
+          <Link  href="/">
             <NavbarBrand title="Inicio" className="ml-auto">
               <img src="/static/logo-familias-numerosas.png" alt="Inicio" />
             </NavbarBrand>
@@ -30,17 +30,17 @@ export default class NavBarBenFamNum extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <Link prefetch href="/prestaciones">
+                <Link  href="/prestaciones">
                   <a title="Prestaciones para familias numerosas">Prestaciones oficiales</a>
                 </Link>
               </NavItem>
               <NavItem>
-                <Link prefetch href="/beneficios">
+                <Link  href="/beneficios">
                   <a title="Ofertas comerciales para familias numerosas">Ofertas para familias</a>
                 </Link>
               </NavItem>
               <NavItem>
-                <Link prefetch href="/contacto">
+                <Link  href="/contacto">
                   <a title="Contacta con nosotros">Contacto</a>
                 </Link>
               </NavItem>
@@ -66,7 +66,7 @@ export default class NavBarBenFamNum extends React.Component {
                 </Link>
               </NavItem>
               <NavItem>
-                <Link prefetch href="/buscador">
+                <Link  href="/buscador">
                   <a title="Buscador">
                     <FontAwesome
                       name="search"

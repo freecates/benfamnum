@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
@@ -11,9 +11,9 @@ const OfertasOnLineByCategory = (props) => (
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
-        <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-        <li><Link prefetch href="/beneficios"><a>Ofertas para familias</a></Link></li>
-        <li><Link prefetch href="/ofertas-on-line"><a>Ofertas On Line</a></Link></li>
+        <li><Link  href="/"><a>Inicio</a></Link></li>
+        <li><Link  href="/beneficios"><a>Ofertas para familias</a></Link></li>
+        <li><Link  href="/ofertas-on-line"><a>Ofertas On Line</a></Link></li>
         <li>
           <span className="show-for-sr">Actual: </span> Categoría: {props.ofertasonlines[0].categoria_de_la_oferta.name} 
         </li>
@@ -47,7 +47,7 @@ const OfertasOnLineByCategory = (props) => (
                 <td width='200'>{ ofertasonline.categoria_de_la_oferta.name}</td>
                 <td><span dangerouslySetInnerHTML={ {__html: ofertasonline.nombre_del_establecimiento} } /></td>
                 <td width='150'>
-                  <Link prefetch as={`/oo/${ofertasonline.ID}/${ofertasonline.slug}`} href={`/oferta-on-line?id=${ofertasonline.ID}`}>
+                  <Link  as={`/oo/${ofertasonline.ID}/${ofertasonline.slug}`} href={`/oferta-on-line?id=${ofertasonline.ID}`}>
                     <a title={'Acceder a la ficha de ' + ofertasonline.nombre_del_establecimiento} className='button small'>Acceder a la ficha</a>
                   </Link></td>
               </tr>

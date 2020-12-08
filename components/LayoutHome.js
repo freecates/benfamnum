@@ -1,6 +1,5 @@
 import HeaderHome from './HeaderHome';
 import Footer from './Footer';
-import ServiceWorker from '../pages/service-worker';
 import Styles from './Styles';
 
 const layoutStyle = {
@@ -14,7 +13,6 @@ const LayoutHome = props => (
     <HeaderHome />
     <main>{props.children}</main>
     <Footer />
-    <ServiceWorker />
     <Styles />
   </div>
 );
