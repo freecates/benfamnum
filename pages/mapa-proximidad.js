@@ -99,19 +99,21 @@ const MapByCategory = props => (
                     lat={
                       marker.lat.includes(',') ||
                       marker.lat.includes('!') ||
+                      marker.lat.includes('No disponible') ||
                       marker.lat.includes('-')
-                        ? ''
+                        ? null
                         : marker.lat
                     }
                     lng={
                       marker.lon.includes(',') ||
                       marker.lon.includes('!') ||
+                      marker.lat.includes('No disponible') ||
                       marker.lon.includes('-')
-                        ? ''
+                        ? null
                         : marker.lon
                     }
                     text={
-                      <a href={`/p/${marker.ID}/${marker.slug}`} title={marker.name}>
+                      <a href={`/post?id=${marker.ID}`} title={marker.name}>
                         <span>
                           <img
                             src={
