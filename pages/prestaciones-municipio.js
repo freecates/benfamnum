@@ -48,7 +48,7 @@ const PrestacionesByMunicipio = (props) => (
                 <td><span dangerouslySetInnerHTML={ {__html: prestacion.name} } />. {prestacion.nombre_de_la_prestacion ?
                   <span>{prestacion.nombre_de_la_prestacion}</span> : '' }</td>
                 <td width='150'>
-                  <Link  as={`/pr/${prestacion.ID}/${prestacion.slug}`} href={`/prestacion?id=${prestacion.ID}`}>
+                  <Link  href={`/pr/${prestacion.ID}/${prestacion.slug}`}>
                     <a title={'Acceder a la ficha de ' + prestacion.name} className='button small'>Acceder a la ficha</a>
                   </Link></td>
               </tr>
