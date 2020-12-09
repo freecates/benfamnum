@@ -47,7 +47,7 @@ const OfertasEnElMapa = ({ beneficios }) => (
                   inputClass="map"
                   options={beneficios
                     .reduce((ciutats, beneficio) => {
-                      if (beneficio.localidad_del_beneficio == false) {
+                      if (beneficio.localidad_del_beneficio === false || beneficio.localidad_del_beneficio === null) {
                         return ciutats;
                       }
                       ciutats[beneficio.localidad_del_beneficio.term_id] = {
