@@ -131,246 +131,252 @@ const PostsByCategoryLocalidad = (props) => (
         </section>
       </IntlProvider>
     </section>
-        {props.uniquemarcas.length >= 2 && props.uniquecamarcas.length >= 1 ?
+        {props.uniquemarcas.length >= 2 && props.uniquecamarcas.length >= 1 ? (
           <style jsx>{`
-          .national-gallery {
-            background:#eeeeee;
-            margin-top:1em!important;
-            margin-bottom:1em!important;
-            padding-top:.75em!important;
-          }
-          @media screen and (max-width: 1023px) {
             .national-gallery {
-              margin-top:1em!important;
-              margin-bottom:0!important;
+              background: #eeeeee;
+              margin-top: 1em !important;
+              margin-bottom: 1em !important;
+              padding-top: 0.75em !important;
             }
-          section ul.national-gallery:nth-child(2) {
-            margin-bottom:1em!important;
-            margin-top:0!important;
-          }
-          }
-          .breadcrumbs {
-            margin-bottom:1em;
-          }
-          .dk {
-            display: none;
-          }
-          .promo {
-            margin-top: 1em;
-          }
-          h1, .align-center {
-            text-align:center;
-          }
-          h1 {
-            color:#391f92;
-          }
-          .gallery {
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-wrap: wrap;
-                flex-wrap: wrap;
-            padding: 5px;
-          }
-          ul {
-            list-style-type:none;
-            margin-left:0;
-            margin:0 auto!important;
-          }
-          a {
-            color:inherit;
-          }
-          a:hover {
-            text-decoration:underline;
-          }
-          nav a {
-            color:#3f3fff;
-          }
-          .benefit {
-            width: 150px;
-          }
-          .gallery-label {
-            position:relative;
-            margin-top:-40px;
-            margin-right:5px;
-            float:right;
-            text-align:center;
-            background:#cc0033!important;
-          }
-          .titulo-oferta {
-            color:#ff0000;
-          }
-          @media screen and (min-width: 320px) {   
-            .gallery {
-              width: 100%;
-            }              
-            .benefit {
-              margin: 5px;
+            @media screen and (max-width: 1023px) {
+              .national-gallery {
+                margin-top: 1em !important;
+                margin-bottom: 0 !important;
+              }
+              section ul.national-gallery:nth-child(2) {
+                margin-bottom: 1em !important;
+                margin-top: 0 !important;
+              }
             }
-          }
-          @media screen and (max-width: 375px) {              
-            .benefit {
-              width: 124px;
+            .breadcrumbs {
+              margin-bottom: 1em;
             }
-          }
-          @media screen and (min-width: 360px) {   
-            .gallery {
-              width: 90%;
-            }
-          }
-          @media screen and (min-width: 768px) {   
-            .gallery {
-              width: 90%;
-            }
-          .benefit {
-              width: 200px;
-              margin:7.5px;
+            h1,
+            .align-center {
+              text-align: center;
             }
             .dk {
-              display: block;
-            }
-            .mb {
               display: none;
             }
-          }
-          @media screen and (min-width: 1024px) {   
+            .promo {
+              margin-top: 1em;
+            }
+            h1 {
+              color: #391f92;
+            }
             .gallery {
-              width: 100%;
-            }  
-            .national-gallery.gallery {
-              width:50%;
-              float:left;
-            }
-          .benefit {
-              width: 220px;
-              margin:0 10px;
-            }
-          }
-          @media screen and (min-width: 1160px) {
-          .benefit {
-              width: 245px;
-            }
-          }
-          .fade-in {
-            animation-name: fadeIn;
-            animation-duration: 1.3s;
-            animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
-            animation-fill-mode: forwards;
-          }
-          `}</style> :
-           
-        <style jsx>{`
-        .national-gallery {
-          background:#eeeeee;
-          margin-top:1em!important;
-          padding-top:.75em!important;
-        }
-        .national-gallery:last-child {
-          margin-bottom:1em!important;
-        }
-        .breadcrumbs {
-          margin-bottom:1em;
-        }
-        h1, .align-center {
-          text-align:center;
-        }
-        h1 {
-          color:#391f92;
-        }
-        .dk {
-          display: none;
-        }
-        .promo {
-          margin-top: 1em;
-        }
-        .gallery {
-          display: -ms-flexbox;
-          display: flex;
-          -ms-flex-wrap: wrap;
+              display: -ms-flexbox;
+              display: flex;
+              -ms-flex-wrap: wrap;
               flex-wrap: wrap;
-          padding: 5px;
-        }
-        ul {
-          list-style-type:none;
-          margin-left:0;
-          margin:0 auto!important;
-        }
-        a {
-          color:inherit;
-        }
-        a:hover {
-          text-decoration:underline;
-        }
-        nav a {
-          color:#3f3fff;
-        }
-        .benefit {
-          width: 150px;
-        }
-        .gallery-label {
-          position:relative;
-          margin-top:-40px;
-          margin-right:5px;
-          float:right;
-          text-align:center;
-          background:#cc0033!important;
-        }
-        .titulo-oferta {
-          color:#ff0000;
-        }
-        @media screen and (min-width: 320px) {   
-          .gallery {
-            width: 100%;
-          }              
-          .benefit {
-            margin: 5px;
-          }
-        }
-        @media screen and (max-width: 375px) {              
-          .benefit {
-            width: 124px;
-          }
-        }
-        @media screen and (min-width: 360px) {   
-          .gallery {
-            width: 90%;
-          }
-        }
-        @media screen and (min-width: 768px) {   
-          .gallery {
-            width: 90%;
-          }
-        .benefit {
-            width: 200px;
-            margin:7.5px;
-          }
-          .dk {
-            display: block;
-          }
-          .mb {
-            display: none;
-          }
-        }
-        @media screen and (min-width: 1024px) {   
-          .gallery {
-            width: 100%;
-          }
-        .benefit {
-            width: 220px;
-            margin:0 10px;
-          }
-        }
-        @media screen and (min-width: 1160px) {
-        .benefit {
-            width: 245px;
-          }
-        }
-        .fade-in {
-          animation-name: fadeIn;
-          animation-duration: 1.3s;
-          animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
-          animation-fill-mode: forwards;
-        }`}</style>
-           }
+              padding: 5px;
+            }
+            ul {
+              list-style-type: none !important;
+              margin-left: 0;
+              margin: 0 auto !important;
+            }
+            a {
+              color: inherit !important;
+            }
+            a:hover {
+              text-decoration: underline;
+            }
+            nav a {
+              color: #3f3fff;
+            }
+            .benefit {
+              width: 150px;
+            }
+            .gallery-label {
+              position: relative;
+              margin-top: -40px;
+              margin-right: 5px;
+              float: right;
+              text-align: center;
+              background: #cc0033 !important;
+            }
+            .titulo-oferta {
+              color: #ff0000;
+            }
+            @media screen and (min-width: 320px) {
+              .gallery {
+                width: 100%;
+              }
+              .benefit {
+                margin: 5px;
+              }
+            }
+            @media screen and (max-width: 375px) {
+              .benefit {
+                width: 124px;
+              }
+            }
+            @media screen and (min-width: 360px) {
+              .gallery {
+                width: 90%;
+              }
+            }
+            @media screen and (min-width: 768px) {
+              .gallery {
+                width: 90%;
+              }
+              .benefit {
+                width: 200px;
+                margin: 7.5px;
+              }
+              .dk {
+                display: block;
+              }
+              .mb {
+                display: none;
+              }
+            }
+            @media screen and (min-width: 1024px) {
+              .gallery {
+                width: 100%;
+              }
+              .national-gallery.gallery {
+                width: 50%;
+                float: left;
+              }
+              .benefit {
+                width: 220px;
+                margin: 0 10px;
+              }
+              .clear {
+                clear: both;
+              }
+            }
+            @media screen and (min-width: 1160px) {
+              .benefit {
+                width: 245px;
+              }
+            }
+            .fade-in {
+              animation-name: fadeIn;
+              animation-duration: 1.3s;
+              animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+              animation-fill-mode: forwards;
+            }
+          `}</style>
+        ) : (
+          <style jsx>{`
+            .national-gallery {
+              background: #eeeeee;
+              margin-top: 1em !important;
+              padding-top: 0.75em !important;
+            }
+            .national-gallery:last-child {
+              margin-bottom: 1em !important;
+            }
+            .breadcrumbs {
+              margin-bottom: 1em;
+            }
+            .dk {
+              display: none;
+            }
+            .promo {
+              margin-top: 1em;
+            }
+            h1,
+            .align-center {
+              text-align: center;
+            }
+            h1 {
+              color: #391f92;
+            }
+            .gallery {
+              display: -ms-flexbox;
+              display: flex;
+              -ms-flex-wrap: wrap;
+              flex-wrap: wrap;
+              padding: 5px;
+            }
+            ul {
+              list-style-type: none !important;
+              margin-left: 0;
+              margin: 0 auto !important;
+            }
+            a {
+              color: inherit !important;
+            }
+            a:hover {
+              text-decoration: underline;
+            }
+            nav a {
+              color: #3f3fff;
+            }
+            .benefit {
+              width: 150px;
+            }
+            .gallery-label {
+              position: relative;
+              margin-top: -40px;
+              margin-right: 5px;
+              float: right;
+              text-align: center;
+              background: #cc0033 !important;
+            }
+            .titulo-oferta {
+              color: #ff0000;
+            }
+            @media screen and (min-width: 320px) {
+              .gallery {
+                width: 100%;
+              }
+              .benefit {
+                margin: 5px;
+              }
+            }
+            @media screen and (max-width: 375px) {
+              .benefit {
+                width: 124px;
+              }
+            }
+            @media screen and (min-width: 360px) {
+              .gallery {
+                width: 90%;
+              }
+            }
+            @media screen and (min-width: 768px) {
+              .gallery {
+                width: 90%;
+              }
+              .benefit {
+                width: 200px;
+                margin: 7.5px;
+              }
+              .dk {
+                display: block;
+              }
+              .mb {
+                display: none;
+              }
+            }
+            @media screen and (min-width: 1024px) {
+              .gallery {
+                width: 100%;
+              }
+              .benefit {
+                width: 220px;
+                margin: 0 10px;
+              }
+            }
+            @media screen and (min-width: 1160px) {
+              .benefit {
+                width: 245px;
+              }
+            }
+            .fade-in {
+              animation-name: fadeIn;
+              animation-duration: 1.3s;
+              animation-timing-function: cubic-bezier(0, 0, 0.4, 1);
+              animation-fill-mode: forwards;
+            }
+          `}</style>
+        )}
   </Layout>
 )
 
