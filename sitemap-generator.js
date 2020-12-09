@@ -1,7 +1,7 @@
 const sitemap = require('nextjs-sitemap-generator');
 
 sitemap({
-  baseUrl: 'https://beneficis.fanoc.org',
+  baseUrl: 'https://beneficiosfamiliasnumerosas.org',
   ignoredPaths: ['admin'],
   pagesDirectory: 'pages',
   targetDirectory: 'static/'
