@@ -62,7 +62,7 @@ const MapByLocalidad = (props) => (
               key={index}
               lat={nationalmarker.lat.includes(',') || nationalmarker.lat.includes('!') ? nationalmarker.lat.replace(',', '.') : nationalmarker.lat}
               lng={nationalmarker.lon.includes(',') || nationalmarker.lon.includes('!') ? nationalmarker.lon.replace(',', '.') : nationalmarker.lon}
-              text={<Link  as={`/ogm/${nationalmarker.ID}/${nationalmarker.slug}`} href={`/oferta-gran-marca?id=${nationalmarker.ID}`}><a title={nationalmarker.name}><span><img src={'/static/32/' + nationalmarker.marca.slug +'-familias-numerosas.png'} /></span></a></Link>}
+              text={<Link  as={`/ogm/${nationalmarker.ID}/${nationalmarker.slug}`} href={`/oferta-gran-marca?id=${nationalmarker.ID}`}><a title={nationalmarker.name}><span>{nationalmarker.marca && <img src={'/static/32/' + nationalmarker.marca.slug +'-familias-numerosas.png'} />}</span></a></Link>}
             />
                 ))}
         {props.markers.map((marker, index) => (
