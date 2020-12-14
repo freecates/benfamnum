@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
-import IsMember from '../components/IsMember.js'
+import Layout from '@components/MyLayout.js'
+import IsMember from '@components/IsMember.js'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import FontAwesome from 'react-fontawesome'
@@ -41,10 +41,10 @@ const OfertaOnLine =  (props) => (
       </Head>
       <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
-          <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-        <li><Link prefetch href="/beneficios"><a>Ofertas para familias</a></Link></li>
-          <li><Link prefetch href="/ofertas-on-line"><a>Ofertas On Line</a></Link></li>
-          <li><Link prefetch as={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`} href={`/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}><a>{props.ofertaonline._embedded['wp:term'][0][0].name}</a></Link></li>
+          <li><Link  href="/"><a>Inicio</a></Link></li>
+        <li><Link  href="/beneficios"><a>Ofertas para familias</a></Link></li>
+          <li><Link  href="/ofertas-on-line"><a>Ofertas On Line</a></Link></li>
+          <li><Link  as={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`} href={`/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}><a>{props.ofertaonline._embedded['wp:term'][0][0].name}</a></Link></li>
           <li>
             <span className="show-for-sr">Actual: </span> <span dangerouslySetInnerHTML={ {__html: props.ofertaonline.acf.nombre_del_establecimiento} } />
           </li>
@@ -60,7 +60,7 @@ const OfertaOnLine =  (props) => (
             <h4 className='location dont-break-out'><span>
             {props.ofertaonline.acf.url_de_la_oferta_online ? <span><Link href={props.ofertaonline.acf.url_de_la_oferta_online}><a>Accede a su web</a></Link></span> : '' }</span></h4>
 
-            <p className='category'><small><strong>Categoria</strong>: <Link prefetch as={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`} href={`/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}><a title={'Ver todas las ofertas de la categoría ' + props.ofertaonline._embedded['wp:term'][0][0].name}>{props.ofertaonline._embedded['wp:term'][0][0].name}</a></Link></small></p>
+            <p className='category'><small><strong>Categoria</strong>: <Link  as={`/c-o-o/${props.ofertaonline.acf.categoria_de_la_oferta.term_id}/${props.ofertaonline._embedded['wp:term'][0][0].slug}`} href={`/category-ofertas-on-line?id=${props.ofertaonline.acf.categoria_de_la_oferta.term_id}`}><a title={'Ver todas las ofertas de la categoría ' + props.ofertaonline._embedded['wp:term'][0][0].name}>{props.ofertaonline._embedded['wp:term'][0][0].name}</a></Link></small></p>
 
           <div className='file-data'>
 

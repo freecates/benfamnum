@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
@@ -14,8 +14,8 @@ const Promociones = (props) => (
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
-        <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-        <li><Link prefetch href="/beneficios"><a>Ofertas para familias</a></Link></li>
+        <li><Link  href="/"><a>Inicio</a></Link></li>
+        <li><Link  href="/beneficios"><a>Ofertas para familias</a></Link></li>
         <li>
           <span className="show-for-sr">Actual: </span> Promociones
         </li>
@@ -52,7 +52,7 @@ const Promociones = (props) => (
                 <strong> <FormattedDate value={promocione.acf.fecha_de_finalizaciion_de_la_promocion} day='numeric' month='long' year='numeric' /></strong></span>
                 </td>
                 <td width='150'>
-                  <Link prefetch as={`/pro/${promocione.id}/${promocione.slug}`} href={`/promocion?id=${promocione.id}`}>
+                  <Link  as={`/pro/${promocione.id}/${promocione.slug}`} href={`/promocion?id=${promocione.id}`}>
                     <a title={'Acceder a la ficha de ' + promocione.acf.nombre_de_la_empresa} className='button small'>Ver detalle</a>
                   </Link></td>
               </tr>

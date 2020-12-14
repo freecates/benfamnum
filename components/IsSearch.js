@@ -82,7 +82,7 @@ class IsSearch extends React.Component {
                           render={() => (
                             <p className="fade-in">
                               <Link
-                                prefetch
+                                
                                 as={`/p/${PostResult.ID}/${PostResult.slug}`}
                                 href={`/post?id=${PostResult.ID}`}
                               >
@@ -112,7 +112,7 @@ class IsSearch extends React.Component {
                           render={() => (
                             <p className="fade-in">
                               <Link
-                                prefetch
+                                
                                 as={`/p/${PostResult.ID}/${PostResult.slug}`}
                                 href={`/post?id=${PostResult.ID}`}
                               >
@@ -143,7 +143,7 @@ class IsSearch extends React.Component {
 
                       <p>
                         <Link
-                          prefetch
+                          
                           as={`/p/${PostResult.ID}/${PostResult.slug}`}
                           href={`/post?id=${PostResult.ID}`}
                         >
@@ -156,7 +156,7 @@ class IsSearch extends React.Component {
                         {PostResult.categoria_de_la_prestacion ? (
                           <small>
                             <Link
-                              prefetch
+                              
                               as={`/c-l/${PostResult.categoria_de_la_prestacion.term_id}/${
                                 PostResult.categoria_de_la_prestacion.slug
                               }/${PostResult.localidad_del_beneficio.term_id}/${
@@ -227,7 +227,7 @@ class IsSearch extends React.Component {
                           render={() => (
                             <p className="fade-in">
                               <Link
-                                prefetch
+                                
                                 as={`/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
                                 href={`/oferta-on-line?id=${OfertasResult.ID}`}
                               >
@@ -257,7 +257,7 @@ class IsSearch extends React.Component {
                           render={() => (
                             <p className="fade-in">
                               <Link
-                                prefetch
+                                
                                 as={`/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
                                 href={`/oferta-on-line?id=${OfertasResult.ID}`}
                               >
@@ -288,7 +288,7 @@ class IsSearch extends React.Component {
 
                       <p>
                         <Link
-                          prefetch
+                          
                           as={`/oo/${OfertasResult.ID}/${OfertasResult.slug}`}
                           href={`/oferta-on-line?id=${OfertasResult.ID}`}
                         >
@@ -301,7 +301,7 @@ class IsSearch extends React.Component {
                         {OfertasResult.categoria_de_la_oferta ? (
                           <small>
                             <Link
-                              prefetch
+                              
                               as={`/c-o-o/${OfertasResult.categoria_de_la_oferta.term_id}/${
                                 OfertasResult.categoria_de_la_oferta.slug
                               }`}
@@ -363,7 +363,7 @@ class IsSearch extends React.Component {
                     <li className="benefit-simple" key={index}>
                       <p className="align-left">
                         <Link
-                          prefetch
+                          
                           as={`/ogm/${OfertasGrandeMarcasResult.ID}/${
                             OfertasGrandeMarcasResult.slug
                           }`}

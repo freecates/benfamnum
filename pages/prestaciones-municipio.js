@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
@@ -11,9 +11,9 @@ const PrestacionesByMunicipio = (props) => (
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
-        <li><Link prefetch href="/"><a>Inicio</a></Link></li>
-        <li><Link prefetch href="/prestaciones"><a>Prestaciones</a></Link></li>
-        <li><Link prefetch href="/municipios-prestaciones"><a>Municipios</a></Link></li>
+        <li><Link  href="/"><a>Inicio</a></Link></li>
+        <li><Link  href="/prestaciones"><a>Prestaciones</a></Link></li>
+        <li><Link  href="/municipios-prestaciones"><a>Municipios</a></Link></li>
         <li>
           <span className="show-for-sr">Actual: </span> Municipio: {props.prestaciones[0].localidad.name} 
         </li>
@@ -48,7 +48,7 @@ const PrestacionesByMunicipio = (props) => (
                 <td><span dangerouslySetInnerHTML={ {__html: prestacion.name} } />. {prestacion.nombre_de_la_prestacion ?
                   <span>{prestacion.nombre_de_la_prestacion}</span> : '' }</td>
                 <td width='150'>
-                  <Link prefetch as={`/pr/${prestacion.ID}/${prestacion.slug}`} href={`/prestacion?id=${prestacion.ID}`}>
+                  <Link  href={`/pr/${prestacion.ID}/${prestacion.slug}`}>
                     <a title={'Acceder a la ficha de ' + prestacion.name} className='button small'>Acceder a la ficha</a>
                   </Link></td>
               </tr>

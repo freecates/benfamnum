@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import {IntlProvider, FormattedDate} from 'react-intl'
@@ -11,7 +11,7 @@ const OfertasGrandesMarcasByMarcaCa = (props) => (
     </Head>
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
-        <li><Link prefetch href="/"><a>Inicio</a></Link></li>
+        <li><Link  href="/"><a>Inicio</a></Link></li>
         <li><a href="javascript:history.back()">Ofertas</a></li>
         <li>
           <span className="show-for-sr">Actual: </span> {props.granmarcacaofertas.name} 
@@ -44,7 +44,7 @@ const OfertasGrandesMarcasByMarcaCa = (props) => (
                 </td>
                 <td>
                   <p className='align-center'>
-                    <Link prefetch as={`/mmca/${props.granmarcacaofertas.term_id}/${props.granmarcacaofertas.slug}`} href={`/mapa-de-la-marca-ca?id=${props.granmarcacaofertas.term_id}`}>
+                    <Link  as={`/mmca/${props.granmarcacaofertas.term_id}/${props.granmarcacaofertas.slug}`} href={`/mapa-de-la-marca-ca?id=${props.granmarcacaofertas.term_id}`}>
                       <a title={'Ver ' + props.granmarcacaofertas.name + ' en el mapa'} className='button small'>{'Ver ' + props.granmarcacaofertas.name + ' en el mapa'}</a>
                     </Link>
                   </p>

@@ -1,12 +1,12 @@
 import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import fetch from 'isomorphic-unfetch'
 import FontAwesome from 'react-fontawesome'
 import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share'
 
-const MapaDeGoogle = dynamic(import('../components/MapaDeGoogle'), {
+const MapaDeGoogle = dynamic(import('@components/MapaDeGoogle'), {
   loading: () => (
     <div>
       <p style={{ textAlign: 'center' }}>
@@ -16,7 +16,7 @@ const MapaDeGoogle = dynamic(import('../components/MapaDeGoogle'), {
   )
 })
 
-const IsMember = dynamic(import('../components/IsMember'), {
+const IsMember = dynamic(import('@components/IsMember'), {
   loading: () => (
     <div>
       <p style={{ textAlign: 'center' }}>
@@ -115,18 +115,18 @@ const OfertaGranMarca = props => (
     <nav aria-label="Estás aquí:" role="navigation">
       <ul className="breadcrumbs">
         <li>
-          <Link prefetch href="/">
+          <Link  href="/">
             <a>Inicio</a>
           </Link>
         </li>
         <li>
-          <Link prefetch href="/grandes-marcas">
+          <Link  href="/grandes-marcas">
             <a>Ofertas nacionales</a>
           </Link>
         </li>
         <li>
           <Link
-            prefetch
+            
             as={`/mmca/${props.ofertagranmarca.marca}/${
               props.ofertagranmarca._embedded['wp:term'][3][0].slug
             }`}
@@ -309,7 +309,7 @@ const OfertaGranMarca = props => (
 
         <p className="category">
           <Link
-            prefetch
+            
             as={`/mmca/${props.ofertagranmarca.categoria_del_beneficio}/${
               props.ofertagranmarca._embedded['wp:term'][3][0].slug
             }`}

@@ -1,6 +1,5 @@
 import Header from './Header';
 import Footer from './Footer';
-import ServiceWorker from '../pages/service-worker';
 import { initGA, logPageView } from '../utils/analytics';
 import Styles from './Styles';
 
@@ -100,7 +99,6 @@ export default class Layout extends React.Component {
           </div>
         )}
         <Footer />
-        <ServiceWorker />
         <Styles />
       </div>
     );

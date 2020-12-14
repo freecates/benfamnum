@@ -1,12 +1,12 @@
 import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
+import Layout from '@components/MyLayout.js';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
 import dynamic from 'next/dynamic';
 import Observer from 'react-intersection-observer';
 import { IntlProvider, FormattedDate } from 'react-intl';
 
-const SelectCity = dynamic(import('../components/SelectCity'), {
+const SelectCity = dynamic(import('@components/SelectCity'), {
   loading: () => (
     <div>
       <p style={{ textAlign: 'center' }}>
@@ -29,17 +29,17 @@ const PostsByCategoryComunidad = props => (
         <nav aria-label="Estás aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>
-              <Link prefetch href="/">
+              <Link href="/">
                 <a>Inicio</a>
               </Link>
             </li>
             <li>
-              <Link prefetch href="/beneficios">
+              <Link href="/beneficios">
                 <a>Ofertas para familias</a>
               </Link>
             </li>
             <li>
-              <Link prefetch href="/ofertas-por-sectores">
+              <Link href="/ofertas-por-sectores">
                 <a>Ofertas por sectores</a>
               </Link>
             </li>
@@ -54,7 +54,7 @@ const PostsByCategoryComunidad = props => (
           </h1>
           <p className="align-center">
             Por favor, escoge{' '}
-            <Link prefetch href="/ofertas-por-sectores">
+            <Link href="/ofertas-por-sectores">
               <a>otro sector</a>
             </Link>
             .
@@ -75,7 +75,6 @@ const PostsByCategoryComunidad = props => (
                     <span key={marcasoferta.marca.term_id}>
                       <li className="benefit align-center">
                         <Link
-                          prefetch
                           as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                           href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
                         >
@@ -216,21 +215,18 @@ const PostsByCategoryComunidad = props => (
         <nav aria-label="Estás aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>
-              <Link prefetch href="/">
+              <Link href="/">
                 <a>Inicio</a>
               </Link>
             </li>
             <li>
-              <Link prefetch href="/beneficios">
+              <Link href="/beneficios">
                 <a>Ofertas para familias</a>
               </Link>
             </li>
             <li>
               <Link
-                prefetch
-                as={`/c/${props.posts[0].categoria_de_la_prestacion.term_id}/${
-                  props.posts[0].categoria_de_la_prestacion.slug
-                }`}
+                as={`/c/${props.posts[0].categoria_de_la_prestacion.term_id}/${props.posts[0].categoria_de_la_prestacion.slug}`}
                 href={`/category?sid=${props.posts[0].categoria_de_la_prestacion.term_id}`}
               >
                 <a>{props.posts[0].categoria_de_la_prestacion.name}</a>
@@ -302,9 +298,7 @@ const PostsByCategoryComunidad = props => (
                       slug: post.localidad_del_beneficio.slug,
                       key: post.localidad_del_beneficio.term_id,
                       value: post.categoria_de_la_prestacion
-                        ? `/category-localidad?sid=${
-                            post.categoria_de_la_prestacion.term_id
-                          }&localidad=${post.localidad_del_beneficio.term_id}`
+                        ? `/category-localidad?sid=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad_del_beneficio.term_id}`
                         : '',
                       label: post.categoria_de_la_prestacion
                         ? `${post.localidad_del_beneficio.name}`
@@ -383,7 +377,6 @@ const PostsByCategoryComunidad = props => (
                       <span key={marcasoferta.marca.term_id}>
                         <li className="benefit align-center">
                           <Link
-                            prefetch
                             as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                             href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
                           >
@@ -420,13 +413,8 @@ const PostsByCategoryComunidad = props => (
                       <span key={marcascaoferta.marca.term_id}>
                         <li className="benefit align-center">
                           <Link
-                            prefetch
-                            as={`/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${
-                              marcascaoferta.marca.slug
-                            }`}
-                            href={`/ofertas-de-la-marca-ca?id=${
-                              marcascaoferta.marca.term_id
-                            }&caid=${marcascaoferta.comunidad_autonoma.term_id}`}
+                            as={`/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`}
+                            href={`/ofertas-de-la-marca-ca?id=${marcascaoferta.marca.term_id}&caid=${marcascaoferta.comunidad_autonoma.term_id}`}
                           >
                             <a title={'Ver todas las ofertas de ' + marcascaoferta.marca.name}>
                               <img
@@ -459,17 +447,15 @@ const PostsByCategoryComunidad = props => (
               <ul className="gallery">
                 {props.posts.map((post, index) => (
                   <li className="benefit" key={index}>
-                    {post.imagen_destacada_de_la_oferta_general_thumb ? (
+                    {post.imagen_destacada_de_la_oferta_general_thumb &&
+                    post.imagen_destacada_de_la_oferta_general_thumb !== undefined &&
+                    post.imagen_destacada_de_la_oferta_general_thumb.sizes !== undefined ? (
                       <Observer
                         threshold={1}
                         triggerOnce={true}
                         render={() => (
                           <p className="fade-in">
-                            <Link
-                              prefetch
-                              as={`/p/${post.ID}/${post.slug}`}
-                              href={`/post?id=${post.ID}`}
-                            >
+                            <Link href={`/p/${post.ID}/${post.slug}`}>
                               <a title={'Ver la ficha de ' + post.name}>
                                 <img
                                   width="250"
@@ -487,17 +473,15 @@ const PostsByCategoryComunidad = props => (
                       ''
                     )}
 
-                    {post.imagen_destacada_de_la_oferta_socios_thumb ? (
+                    {post.imagen_destacada_de_la_oferta_socios_thumb &&
+                    post.imagen_destacada_de_la_oferta_socios_thumb !== undefined &&
+                    post.imagen_destacada_de_la_oferta_socios_thumb.sizes !== undefined ? (
                       <Observer
                         threshold={1}
                         triggerOnce={true}
                         render={() => (
                           <p className="fade-in">
-                            <Link
-                              prefetch
-                              as={`/p/${post.ID}/${post.slug}`}
-                              href={`/post?id=${post.ID}`}
-                            >
+                            <Link href={`/p/${post.ID}/${post.slug}`}>
                               <a title={'Ver la ficha de ' + post.name}>
                                 <img
                                   width="250"
@@ -522,7 +506,7 @@ const PostsByCategoryComunidad = props => (
                     )}
 
                     <p>
-                      <Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
+                      <Link href={`/p/${post.ID}/${post.slug}`}>
                         <a
                           title={'Ver la ficha de ' + post.name}
                           dangerouslySetInnerHTML={{ __html: post.name }}
@@ -830,9 +814,7 @@ PostsByCategoryComunidad.getInitialProps = async function(context) {
   const banners = await res4.json();
 
   console.log(
-    `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${
-      marcascaofertas.length
-    }, ${banners.length}, ${caid}, ${sid}, ${comunidad}`
+    `Posts data fetched. Count: ${posts.length}, ${marcasofertas.length}, ${marcascaofertas.length}, ${banners.length}, ${caid}, ${sid}, ${comunidad}`
   );
   const uniquemarcas = [...new Set(marcasofertas.map(({ marca }) => marca.name))];
   const uniquecamarcas = [...new Set(marcascaofertas.map(({ marca }) => marca.name))];

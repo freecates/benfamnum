@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Layout from '../components/MyLayout.js'
+import Layout from '@components/MyLayout.js'
 
 export default class Error extends React.Component {
   static getInitialProps({ res, err }) {
@@ -12,7 +12,7 @@ export default class Error extends React.Component {
       <Layout>
         <nav aria-label="Estás aquí:" role="navigation">
           <ul className="breadcrumbs">
-            <li><Link prefetch href="/"><a>Inicio</a></Link></li>
+            <li><Link  href="/"><a>Inicio</a></Link></li>
             <li>
               <span className="show-for-sr">Actual: </span>Error
             </li>
@@ -25,7 +25,7 @@ export default class Error extends React.Component {
             : 'Se ha producido un error en el cliente'}
         </h2>
   
-          <p>Por favor, regrese a la página de <Link prefetch href="/"><a>Inicio</a></Link>.</p>
+          <p>Por favor, regrese a la página de <Link  href="/"><a>Inicio</a></Link>.</p>
   
           <p>Si el error persiste, póngase en contacto con <Link href='mailto:info@familiasnumerosas.org'><a>info@familiasnumerosas.org</a></Link></p>
   

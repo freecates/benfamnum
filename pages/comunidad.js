@@ -1,12 +1,12 @@
 import Head from 'next/head';
-import Layout from '../components/MyLayout.js';
+import Layout from '@components/MyLayout.js';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import fetch from 'isomorphic-unfetch';
 import Observer from 'react-intersection-observer';
-import { IntlProvider, FormattedDate } from 'react-intl';
+import { IntlProvider } from 'react-intl';
 
-const SelectCity = dynamic(import('../components/SelectCity'), {
+const SelectCity = dynamic(import('@components/SelectCity'), {
   loading: () => (
     <div>
       <p style={{ textAlign: 'center' }}>
@@ -29,12 +29,12 @@ const PostByComunidad = props => (
         <nav aria-label="Estás aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>
-              <Link prefetch href="/">
+              <Link href="/">
                 <a>Inicio</a>
               </Link>
             </li>
             <li>
-              <Link prefetch href="/beneficios">
+              <Link href="/beneficios">
                 <a>Ofertas para familias</a>
               </Link>
             </li>
@@ -47,7 +47,7 @@ const PostByComunidad = props => (
           <h1>Actualmente no existen ofertas para familias en esta Comunidad</h1>
           <p className="align-center">
             Por favor, escoge{' '}
-            <Link prefetch href="/beneficios">
+            <Link href="/beneficios">
               <a>otra</a>
             </Link>
             .
@@ -80,12 +80,12 @@ const PostByComunidad = props => (
         <nav aria-label="Estás aquí:" role="navigation">
           <ul className="breadcrumbs">
             <li>
-              <Link prefetch href="/">
+              <Link href="/">
                 <a>Inicio</a>
               </Link>
             </li>
             <li>
-              <Link prefetch href="/beneficios">
+              <Link href="/beneficios">
                 <a>Ofertas para familias</a>
               </Link>
             </li>
@@ -130,13 +130,15 @@ const PostByComunidad = props => (
               <p className="align-center">
                 ¿Dónde quieres disfrutar del beneficio? Selecciona la localidad
               </p>
-
               <SelectCity
                 inputClass="city"
                 inputValue="Buscar el mejor descuento"
                 options={props.posts
                   .reduce((ciutats, post) => {
-                    if (post.localidad_del_beneficio == false) {
+                    if (
+                      post.localidad_del_beneficio === false ||
+                      post.localidad_del_beneficio === undefined
+                    ) {
                       return ciutats;
                     }
                     ciutats[post.localidad_del_beneficio.term_id] = {
@@ -144,10 +146,10 @@ const PostByComunidad = props => (
                       key: post.localidad_del_beneficio.term_id,
                       value: post.localidad_del_beneficio
                         ? `/localidad?localidad=${post.localidad_del_beneficio.term_id}`
-                        : '',
+                        : null,
                       label: post.localidad_del_beneficio
                         ? `${post.localidad_del_beneficio.name}`
-                        : ''
+                        : null
                     };
                     return ciutats;
                   }, [])
@@ -182,10 +184,7 @@ const PostByComunidad = props => (
                               render={() => (
                                 <p className="fade-in">
                                   <Link
-                                    prefetch
-                                    as={`/m-o-g-m/${marcasoferta.marca.term_id}/${
-                                      marcasoferta.marca.slug
-                                    }`}
+                                    as={`/m-o-g-m/${marcasoferta.marca.term_id}/${marcasoferta.marca.slug}`}
                                     href={`/ofertas-de-la-marca?id=${marcasoferta.marca.term_id}`}
                                   >
                                     <a
@@ -229,13 +228,8 @@ const PostByComunidad = props => (
                       <span key={marcascaoferta.marca.term_id}>
                         <li className="benefit align-center">
                           <Link
-                            prefetch
-                            as={`/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${
-                              marcascaoferta.marca.slug
-                            }`}
-                            href={`/ofertas-de-la-marca-ca?id=${
-                              marcascaoferta.marca.term_id
-                            }&caid=${marcascaoferta.comunidad_autonoma.term_id}`}
+                            as={`/m-o-g-m-ca/${marcascaoferta.marca.term_id}/${marcascaoferta.marca.slug}`}
+                            href={`/ofertas-de-la-marca-ca?id=${marcascaoferta.marca.term_id}&caid=${marcascaoferta.comunidad_autonoma.term_id}`}
                           >
                             <a title={'Ver todas las ofertas de ' + marcascaoferta.marca.name}>
                               <img
@@ -267,17 +261,14 @@ const PostByComunidad = props => (
               <ul className="gallery">
                 {props.posts.map((post, index) => (
                   <li className="benefit" key={index}>
-                    {post.imagen_destacada_de_la_oferta_general_thumb ? (
+                    {post.imagen_destacada_de_la_oferta_general_thumb &&
+                    post.imagen_destacada_de_la_oferta_general_thumb !== undefined && post.imagen_destacada_de_la_oferta_general_thumb.sizes !== undefined ? (
                       <Observer
                         threshold={1}
                         triggerOnce={true}
                         render={() => (
                           <p className="fade-in">
-                            <Link
-                              prefetch
-                              as={`/p/${post.ID}/${post.slug}`}
-                              href={`/post?id=${post.ID}`}
-                            >
+                            <Link href={`/p/${post.ID}/${post.slug}`}>
                               <a title={'Ver la ficha de ' + post.name}>
                                 <img
                                   className="fade-in"
@@ -292,21 +283,16 @@ const PostByComunidad = props => (
                           </p>
                         )}
                       />
-                    ) : (
-                      ''
-                    )}
+                    ) : null}
 
-                    {post.imagen_destacada_de_la_oferta_socios_thumb ? (
+                    {post.imagen_destacada_de_la_oferta_socios_thumb &&
+                    post.imagen_destacada_de_la_oferta_socios_thumb !== undefined && post.imagen_destacada_de_la_oferta_socios_thumb.sizes !== undefined ? (
                       <Observer
                         threshold={1}
                         triggerOnce={true}
                         render={() => (
                           <p className="fade-in">
-                            <Link
-                              prefetch
-                              as={`/p/${post.ID}/${post.slug}`}
-                              href={`/post?id=${post.ID}`}
-                            >
+                            <Link href={`/p/${post.ID}/${post.slug}`}>
                               <a title={'Ver la ficha de ' + post.name}>
                                 <img
                                   className="fade-in"
@@ -327,65 +313,54 @@ const PostByComunidad = props => (
                           </p>
                         )}
                       />
-                    ) : (
-                      ''
-                    )}
+                    ) : null}
 
                     <p>
-                      <Link prefetch as={`/p/${post.ID}/${post.slug}`} href={`/post?id=${post.ID}`}>
+                      <Link href={`/p/${post.ID}/${post.slug}`}>
                         <a
                           title={'Ver la ficha de ' + post.name}
                           dangerouslySetInnerHTML={{ __html: post.name }}
                         />
                       </Link>
                       <br />
-                      {post.categoria_de_la_prestacion ? (
-                        <small>
-                          <Link
-                            prefetch
-                            as={`/c-l/${post.categoria_de_la_prestacion.term_id}/${
-                              post.categoria_de_la_prestacion.slug
-                            }/${post.localidad_del_beneficio.term_id}/${
-                              post.localidad_del_beneficio.slug
-                            }`}
-                            href={`/category-localidad?sid=${
-                              post.categoria_de_la_prestacion.term_id
-                            }&localidad=${post.localidad_del_beneficio.term_id}`}
-                          >
-                            <a
-                              title={
-                                'Ver todos los beneficios de ' +
-                                post.categoria_de_la_prestacion.name +
-                                ' en ' +
-                                post.localidad_del_beneficio.name
-                              }
+                      {post.localidad_del_beneficio !== undefined ? (
+                        post.categoria_de_la_prestacion ? (
+                          <small>
+                            <Link
+                              as={`/c-l/${post.categoria_de_la_prestacion.term_id}/${post.categoria_de_la_prestacion.slug}/${post.localidad_del_beneficio.term_id}/${post.localidad_del_beneficio.slug}`}
+                              href={`/category-localidad?sid=${post.categoria_de_la_prestacion.term_id}&localidad=${post.localidad_del_beneficio.term_id}`}
                             >
-                              <span
-                                dangerouslySetInnerHTML={{
-                                  __html: post.localidad_del_beneficio.name
-                                }}
-                              />
-                            </a>
-                          </Link>
-                        </small>
-                      ) : (
-                        <small>{post.localidad_del_beneficio.name}</small>
-                      )}{' '}
+                              <a
+                                title={
+                                  'Ver todos los beneficios de ' +
+                                  post.categoria_de_la_prestacion.name +
+                                  ' en ' +
+                                  post.localidad_del_beneficio.name
+                                }
+                              >
+                                <span
+                                  dangerouslySetInnerHTML={{
+                                    __html: post.localidad_del_beneficio.name
+                                  }}
+                                />
+                              </a>
+                            </Link>
+                          </small>
+                        ) : (
+                          <small>{post.localidad_del_beneficio.name}</small>
+                        )
+                      ) : null}{' '}
                       <br />
                       {post.titulo_de_la_oferta_oferta_general ? (
                         <span className="titulo-oferta">
                           {post.titulo_de_la_oferta_oferta_general}
                         </span>
-                      ) : (
-                        ''
-                      )}
+                      ) : null}
                       {post.titulo_de_la_oferta_oferta_socios ? (
                         <span className="titulo-oferta">
                           {post.titulo_de_la_oferta_oferta_socios}
                         </span>
-                      ) : (
-                        ''
-                      )}
+                      ) : null}
                     </p>
                   </li>
                 ))}

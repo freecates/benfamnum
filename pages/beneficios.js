@@ -1,18 +1,16 @@
-import Head from 'next/head'
-import Layout from '../components/MyLayout.js'
-import Link from 'next/link'
-import dynamic from 'next/dynamic'
-import fetch from 'isomorphic-unfetch'
-import { IntlProvider, FormattedDate } from 'react-intl'
+import Head from 'next/head';
+import Layout from '@components/MyLayout.js';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
 
-const SelectCity = dynamic(import('../components/SelectCity'), {
+const SelectCity = dynamic(import('@components/SelectCity'), {
   loading: () => <p>cargando ...</p>
-})
+});
 
-const today = Date.now()
-const todayISO = new Date(today).toISOString()
+const today = Date.now();
+const todayISO = new Date(today).toISOString();
 
-const Localidades = props => (
+const Beneficios = ({ promociones }) => (
   <Layout layout>
     <Head>
       <title>Ofertas para familias numerosas</title>
@@ -21,20 +19,19 @@ const Localidades = props => (
       <nav aria-label="Estás aquí:" role="navigation">
         <ul className="breadcrumbs">
           <li>
-            <Link prefetch href="/">
+            <Link href="/">
               <a>Inicio</a>
             </Link>
           </li>
           <li>
-            <span className="show-for-sr">Actual: </span> Ofertas para familias
-            numerosas
+            <span className="show-for-sr">Actual: </span> Ofertas para familias numerosas
           </li>
         </ul>
       </nav>
       <section className="call-to-action">
         <div className="icones-prestacions">
           <div className="icona">
-            <Link prefetch href="/ofertas-por-sectores">
+            <Link href="/ofertas-por-sectores">
               <a>
                 <img src="/static/icona-ofertas-por-sectores-familias-numerosas.png" />
                 <div className="text-icona">Ofertas por sectores</div>
@@ -44,7 +41,8 @@ const Localidades = props => (
           <div className="icona">
             <img src="/static/icona-ofertas-por-poblacion-familias-numerosas.png" />
             <div className="text-icona city-text">
-              Ofertas por población<br />
+              Ofertas por población
+              <br />
               <SelectCity
                 inputClass="comunidad"
                 inputClass2="green"
@@ -169,7 +167,7 @@ const Localidades = props => (
             </div>
           </div>
           <div className="icona">
-            <Link prefetch href="/ofertas-on-line">
+            <Link href="/ofertas-on-line">
               <a>
                 <img src="/static/icona-ofertas-online-familias-numerosas.png" />
                 <div className="text-icona">Ofertas online</div>
@@ -177,7 +175,7 @@ const Localidades = props => (
             </Link>
           </div>
           <div className="icona">
-            <Link prefetch href="/ofertas-en-el-mapa">
+            <Link href="/ofertas-en-el-mapa">
               <a>
                 <img src="/static/icona-ofertas-en-el-mapa-familias-numerosas.png" />
                 <div className="text-icona">Ofertas en el mapa</div>
@@ -185,14 +183,15 @@ const Localidades = props => (
             </Link>
           </div>
           <br className="clear" />
-          {props.promociones[0].acf.fecha_de_finalizaciion_de_la_promocion >
-          todayISO ? (
+          {promociones[0].acf.fecha_de_finalizaciion_de_la_promocion > todayISO ? (
             <div className="promo">
               <h4 className="align-center">
                 <span className="label alert file-label">
-                  <Link prefetch href="/promociones">
+                  <Link href="/promociones">
                     <a>
-                      Mira aquí promociones que te<br />pueden interesar
+                      Mira aquí promociones que te
+                      <br />
+                      pueden interesar
                     </a>
                   </Link>
                 </span>
@@ -221,7 +220,7 @@ const Localidades = props => (
       }
       .file-label {
         background: #cc0033 !important;
-        color: #ffffff!important;
+        color: #ffffff !important;
         font-weight: 400;
         font-size: 1.25rem;
         white-space: normal;
@@ -238,7 +237,7 @@ const Localidades = props => (
       .call-to-action {
         text-align: center;
         margin: 1em auto;
-        color: #ffffff!important;
+        color: #ffffff !important;
       }
       .call-to-action .icona {
         position: relative;
@@ -305,17 +304,15 @@ const Localidades = props => (
       }
     `}</style>
   </Layout>
-)
+);
 
-Localidades.getInitialProps = async function() {
-  const res2 = await fetch(
-    `https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/promociones`
-  )
-  const promociones = await res2.json()
+export async function getStaticProps() {
+  const res = await fetch(`https://gestorbeneficios.familiasnumerosas.org/wp-json/wp/v2/promociones`);
+  const promociones = await res.json();
 
-  console.log(`Ofertas data fetched. Count: ${promociones.length}`)
-
-  return { promociones }
+  return {
+    props: { promociones }
+  };
 }
 
-export default Localidades
+export default Beneficios;
