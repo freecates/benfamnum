@@ -121,7 +121,7 @@ export async function getStaticProps() {
   );
   const ofertasporsectores = await res.json();
   return {
-    props: { ofertasporsectores }
+    props: { ofertasporsectores }, relative: 1
   };
 }
 
