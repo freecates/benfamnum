@@ -80,7 +80,7 @@ const OfertaOnLine =  (props) => (
 
             {props.ofertaonline.acf.como_conseguir_la_oferta_online_exclusiva_socios ?
                   
-                <h1><span className='label alert file-label'><Link href="#how-to-get-it"><a>EXCLUSIVO SOCIOS.<br/>MIRA COMO CONSEGUIR ESTA OFERTA</a></Link><br/><FontAwesome
+                <h1><span className='label alert file-label'><a href="#how-to-get-it">EXCLUSIVO SOCIOS.<br/>MIRA COMO CONSEGUIR ESTA OFERTA</a><br/><FontAwesome
                 name='check-circle-o'
                 size='2x'
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
