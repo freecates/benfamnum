@@ -173,11 +173,11 @@ const Post = ({ post }) => {
               
               {post.acf.como_conseguir_la_oferta_oferta_socios ?
                   
-                <h1 className='align-none'><Link href="#how-to-get-it"><a><span className='label alert file-label'>EXCLUSIVO SOCIOS.<br/> Introduce tu usuario y contraseña de asociado para saber como obtener esta oferta<br/><FontAwesome
+                <h1 className='align-none'><a href="#how-to-get-it"><span className='label alert file-label'>EXCLUSIVO SOCIOS.<br/> Introduce tu usuario y contraseña de asociado para saber como obtener esta oferta<br/><FontAwesome
                 name='check-circle-o'
                 size='2x'
                 style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
-              /></span></a></Link></h1> : ''}
+              /></span></a></h1> : ''}
               
               {post.acf.titulo_de_la_oferta_oferta_socios ? <h4>{post.acf.titulo_de_la_oferta_oferta_socios}</h4> : '' }
               
