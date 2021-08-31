@@ -25,6 +25,7 @@ const nextConfig = {
     ]
   },
   target: 'serverless',
+  webpack5: false,
   webpack: config => {
     // Fixes npm packages that depend on `fs` module
     config.node = {

@@ -1,3 +1,4 @@
+import React from 'react';
 import Head from 'next/head';
 import Layout from '@components/MyLayout.js';
 import Link from 'next/link';
@@ -60,7 +61,7 @@ const PostsByCategoryComunidad = props => (
             .
           </p>
           {props.uniquemarcas.length >= 1 ? (
-            <React.Fragment>
+            <>
               <h3 className="align-center">
                 Si lo prefieres puedes consultar las ofertas nacionales de{' '}
                 <strong>{props.marcasofertas[0].categoria_del_beneficio.name}</strong> en{' '}
@@ -96,7 +97,7 @@ const PostsByCategoryComunidad = props => (
                   return marcas;
                 }, [])}
               </ul>
-            </React.Fragment>
+            </>
           ) : (
             ''
           )}
@@ -245,7 +246,7 @@ const PostsByCategoryComunidad = props => (
                 banner.acf.la_publicidad_es_de_ca == true &&
                 banner.acf.sector_del_banner.term_id == props.sid &&
                 banner.comunidad == props.caid ? (
-                  <React.Fragment>
+                  <>
                     <p className="align-center promo dk">
                       <Link href={banner.acf.url_de_destino_del_banner}>
                         <a target="_blank">
@@ -260,7 +261,7 @@ const PostsByCategoryComunidad = props => (
                         </a>
                       </Link>
                     </p>
-                  </React.Fragment>
+                  </>
                 ) : (
                   ''
                 )}
