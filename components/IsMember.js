@@ -1,3 +1,4 @@
+import React from "react";
 import btoa from 'btoa'
 import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
@@ -306,4 +307,4 @@ class IsMember extends React.Component {
             }
     }
   }
-  export default IsMember
+export default IsMember

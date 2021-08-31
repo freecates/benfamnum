@@ -1,3 +1,4 @@
+import React from "react";
 class SelectCity extends React.Component {
       constructor(props) {
         super(props);
@@ -122,4 +123,4 @@ class SelectCity extends React.Component {
        );
      }
    }
-   export default SelectCity
+export default SelectCity
