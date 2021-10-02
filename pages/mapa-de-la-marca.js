@@ -116,12 +116,12 @@ const MapByMarca = ({ markers, camarkers }) => (
                     lat={
                       marker.lat.includes(',') || marker.lat.includes('!')
                         ? marker.lat.replace(',', '.')
-                        : marker.lat
+                        : marker.lat.replace(/(?<=\..*)\./g, '')
                     }
                     lng={
                       marker.lon.includes(',') || marker.lon.includes('!')
                         ? marker.lon.replace(',', '.')
-                        : marker.lon
+                        : marker.lon.replace(/(?<=\..*)\./g, '')
                     }
                     text={
                       <a href={`/oferta-gran-marca?id=${marker.ID}`} title={marker.name}>
