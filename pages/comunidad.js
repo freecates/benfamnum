@@ -488,7 +488,7 @@ PostByComunidad.getInitialProps = async function(context) {
 
   console.log(`Posts data fetched. Count: ${posts.length}, ${banners.length}`);
 
-  return { posts, banners, marcasofertas, marcascaofertas, caid };
+  return { posts, banners, marcasofertas, caid };
 };
 
 export default PostByComunidad;
