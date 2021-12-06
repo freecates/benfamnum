@@ -67,7 +67,7 @@ const PostsByLocalidad = (props) => (
           {props.marcasofertas.length >= 1 ?
           <ul className='gallery national-gallery'>
               {props.marcasofertas.reduce((marcas, marcasoferta) => {
-                if (marcasoferta.marca == false) {
+                if (marcasoferta.marca == null) {
                   return marcas
                 }
                 marcas[marcasoferta.marca.term_id] =
