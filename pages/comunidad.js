@@ -222,7 +222,7 @@ const PostByComunidad = props => (
               {props.marcascaofertas.length >= 1 ? (
                 <ul className="gallery national-gallery">
                   {props.marcascaofertas.reduce((marcas, marcascaoferta) => {
-                    if (marcascaoferta.marca == false) {
+                    if (marcascaoferta.marca == null) {
                       return marcas;
                     }
                     marcas[marcascaoferta.marca.term_id] = (

@@ -4,10 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next -p 3001",
-    "now-build": "next build",
-    "start": "next start -p 3001"
+    "dev": "next dev",
+    "build": "next build",
+    "postbuild": "next-sitemap",
+    "start": "next start"
   },
   "keywords": [
     "js",
@@ -29,11 +29,10 @@
     "fg-loadcss": "^2.0.1",
     "google-map-react": "1.0.4",
     "google-maps-react": "^1.1.0",
-    "isomorphic-unfetch": "1.0.0",
+    "isomorphic-unfetch": "^3.1.0",
     "limax": "^2.1.0",
-    "next": "11.1.2",
-    "next-offline": "5.0.2",
-    "nextjs-sitemap-generator": "^0.0.4",
+    "next": "^12.0.0",
+    "next-pwa": "^5.4.0",
     "nprogress": "0.2.0",
     "react": "17.0.2",
     "react-addons-css-transition-group": "15.6.0",
@@ -51,7 +50,7 @@
     "reactstrap": "5.0.0-alpha.3"
   },
   "devDependencies": {
-    "eslint": "^6.0.1",
+    "eslint": "^8.4.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
@@ -60,7 +59,6 @@
     "globby": "6.1.0",
     "load-json-file": "2.0.0",
     "prettier": "1.18.2",
-    "workbox-build": "1.0.1",
-    "workbox-webpack-plugin": "1.0.1"
+    "next-sitemap": "^1.4.17"
   }
 }
