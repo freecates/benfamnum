@@ -181,7 +181,7 @@ OfertasGrandesMarcasByMarca.getInitialProps = async function(context) {
   );
   const granmarcaofertas = await res.json();
 
-  console.log(`Ofertas de la Marca data fetched. Count: ${granmarcaofertas.length}`);
+  console.log(`Ofertas de la Marca data fetched. Count: ${granmarcaofertas.count}`);
 
   return { granmarcaofertas };
 };
